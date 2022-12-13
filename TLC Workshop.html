@@ -1,0 +1,1198 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TLC Workshop</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Archibald Prize" href="Archies.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/ACDElogo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   About
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="RmdTest.html">
+   DAAO 500 Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Archies.html">
+   Archibald Prize
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TLC Workshop
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/TLC Workshop.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTLC Workshop.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/TLC Workshop.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-data-analysis">
+   Exploratory Data Analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temporal-trends">
+     Temporal trends
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#venue-frequency">
+     Venue Frequency
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#suburb-level">
+       Suburb level
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#north-or-south-of-the-river">
+       North or South of the river?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#s">
+       1970s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       1980s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       1990s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       2000s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       2010s
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#genre">
+     Genre
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#genre-map-and-network-analysis">
+   Genre Map and Network analysis
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>TLC Workshop</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exploratory-data-analysis">
+   Exploratory Data Analysis
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#temporal-trends">
+     Temporal trends
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#venue-frequency">
+     Venue Frequency
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#suburb-level">
+       Suburb level
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#north-or-south-of-the-river">
+       North or South of the river?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#s">
+       1970s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       1980s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       1990s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       2000s
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       2010s
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#genre">
+     Genre
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#genre-map-and-network-analysis">
+   Genre Map and Network analysis
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="tlc-workshop">
+<h1>TLC Workshop<a class="headerlink" href="#tlc-workshop" title="Permalink to this headline">¶</a></h1>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s1">&#39;J9MOMpYWpt8&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="800"
+            height="400"
+            src="https://www.youtube.com/embed/J9MOMpYWpt8"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<div class="section" id="exploratory-data-analysis">
+<h2>Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="temporal-trends">
+<h3>Temporal trends<a class="headerlink" href="#temporal-trends" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a frequency table of venue occurences by year</span>
+<span class="n">data_yearly</span> <span class="o">=</span> <span class="n">mel_df</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>\
+<span class="o">.</span><span class="n">sum</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># clean column names</span>
+<span class="n">data_yearly</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+
+<span class="c1"># visualise data over time</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">data_yearly</span><span class="p">,</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+              <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Venue activity in Melbourne, Yearly, 1869-2022&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a frequency table of venue occurences by individual dates</span>
+<span class="n">data_daily</span> <span class="o">=</span> <span class="n">mel_df</span><span class="p">[[</span><span class="s1">&#39;Date&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span>\
+<span class="o">.</span><span class="n">sum</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># clean column names</span>
+<span class="n">data_daily</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+
+<span class="c1"># Get weekly count for last two years</span>
+<span class="n">daily_placeholder</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">,</span> 
+                                                        <span class="n">data_daily</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;Date&#39;</span><span class="p">])})</span>
+<span class="n">data_daily</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">daily_placeholder</span><span class="p">,</span> <span class="n">data_daily</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">data_daily</span> <span class="o">=</span> <span class="n">data_daily</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+<span class="n">data_daily</span> <span class="o">=</span> <span class="n">data_daily</span><span class="p">[</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="c1">#.plot()</span>
+<span class="n">data_daily</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_daily</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># visualise data over time</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">data_daily</span><span class="p">,</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Date&quot;</span><span class="p">,</span> 
+              <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Venue activity in Melbourne, Daily, 2020-2022 &lt;br&gt;&lt;sup&gt;Lockdowns highlighted in red&lt;/sup&gt;&#39;</span><span class="p">)</span>
+
+<span class="n">highlighting_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;line_width&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;fillcolor&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> 
+                       <span class="s1">&#39;opacity&#39;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s1">&#39;annotation_position&#39;</span><span class="p">:</span><span class="s2">&quot;top right&quot;</span><span class="p">,</span>
+                       <span class="s1">&#39;annotation_textangle&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vrect</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="s1">&#39;2020-03-30&#39;</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="s1">&#39;2020-05-12&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">highlighting_params</span><span class="p">,</span> <span class="n">annotation_text</span><span class="o">=</span><span class="s2">&quot;1st&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vrect</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="s1">&#39;2020-08-08&#39;</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="s1">&#39;2020-10-27&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">highlighting_params</span><span class="p">,</span> <span class="n">annotation_text</span><span class="o">=</span><span class="s2">&quot;2nd&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vrect</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="s1">&#39;2021-02-12&#39;</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="s1">&#39;2021-02-17&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">highlighting_params</span><span class="p">,</span> <span class="n">annotation_text</span><span class="o">=</span><span class="s2">&quot;3rd&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vrect</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="s1">&#39;2021-05-27&#39;</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="s1">&#39;2021-06-10&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">highlighting_params</span><span class="p">,</span> <span class="n">annotation_text</span><span class="o">=</span><span class="s2">&quot;4th&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vrect</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="s1">&#39;2021-07-15&#39;</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="s1">&#39;2021-07-27&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">highlighting_params</span><span class="p">,</span> <span class="n">annotation_text</span><span class="o">=</span><span class="s2">&quot;5th&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">add_vrect</span><span class="p">(</span><span class="n">x0</span><span class="o">=</span><span class="s1">&#39;2021-08-05&#39;</span><span class="p">,</span> <span class="n">x1</span><span class="o">=</span><span class="s1">&#39;2021-10-21&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">highlighting_params</span><span class="p">,</span> <span class="n">annotation_text</span><span class="o">=</span><span class="s2">&quot;6th&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># fig.write_image(&#39;COVID_MelbourneMusicScene.png&#39; ,scale=5)</span>
+
+<span class="c1"># from IPython.display import Image</span>
+<span class="c1"># Image(filename=&#39;COVID_MelbourneMusicScene.png&#39;) </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a frequency table of venue occurences by year</span>
+<span class="n">data_yearly</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="p">[[</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>\
+<span class="o">.</span><span class="n">sum</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># clean column names</span>
+<span class="n">data_yearly</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+
+<span class="c1"># visualise data over time</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">data_yearly</span><span class="p">,</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> 
+              <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Venue activity in Melbourne, Yearly, 1974-2019&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="venue-frequency">
+<h3>Venue Frequency<a class="headerlink" href="#venue-frequency" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="suburb-level">
+<h4>Suburb level<a class="headerlink" href="#suburb-level" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;suburb_nopc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfu</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="p">[</span><span class="n">venue_activity_complete</span><span class="o">.</span><span class="n">suburb_nopc</span>\
+                                <span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;suburb_nopc&#39;</span><span class="p">]</span><span class="o">.</span>\
+                                      <span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
+<span class="n">dfu</span> <span class="o">=</span> <span class="n">dfu</span><span class="p">[</span><span class="n">dfu</span><span class="o">.</span><span class="n">suburb_nopc</span> <span class="o">!=</span> <span class="s1">&#39;Melbourne VIC&#39;</span><span class="p">]</span>
+
+<span class="c1"># to get the dataframe in the correct shape, unstack the groupby result</span>
+<span class="n">dfu</span> <span class="o">=</span> <span class="n">dfu</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">suburb_nopc</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+<span class="c1"># plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">dfu</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Prop&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfu</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="p">[</span><span class="n">venue_activity_complete</span><span class="o">.</span><span class="n">suburb_nopc</span>\
+                                <span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;suburb_nopc&#39;</span><span class="p">]</span><span class="o">.</span>\
+                                      <span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+
+<span class="n">dfu</span> <span class="o">=</span> <span class="n">dfu</span><span class="p">[</span><span class="n">dfu</span><span class="o">.</span><span class="n">suburb_nopc</span> <span class="o">!=</span> <span class="s1">&#39;Melbourne VIC&#39;</span><span class="p">]</span>
+
+<span class="c1"># to get the dataframe in the correct shape, unstack the groupby result</span>
+<span class="n">dfu</span> <span class="o">=</span> <span class="n">dfu</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">suburb_nopc</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+<span class="c1"># plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">dfu</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Freq&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="north-or-south-of-the-river">
+<h4>North or South of the river?<a class="headerlink" href="#north-or-south-of-the-river" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;Side of River&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to get the dataframe in the correct shape, unstack the groupby result</span>
+<span class="n">dfu</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">])[</span><span class="s1">&#39;Side of River&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+<span class="c1"># plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">dfu</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Prop&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;North or South River?&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfu</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">])[</span><span class="s1">&#39;Side of River&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+
+<span class="c1"># plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">dfu</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Freq&#39;</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;North or South River?&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Top venues by decade</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a frequency table of venue occurences by decade </span>
+<span class="n">all_events</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="p">[[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Decade&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Decade&#39;</span><span class="p">])</span>\
+<span class="o">.</span><span class="n">sum</span><span class="p">()</span>\
+<span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># clean column names</span>
+<span class="n">all_events</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+
+<span class="c1"># show first rows</span>
+<span class="n">all_events</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Freq&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="s">
+<h4>1970s<a class="headerlink" href="#s" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_venues</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">active_in_1970s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">1970</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">40</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">top_venues_70s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">top_venues</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">active_in_1970s</span><span class="p">))</span>
+
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[</span><span class="n">all_events</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_venues_70s</span><span class="p">)]</span>\
+<span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span><span class="s1">&#39;Venue&#39;</span><span class="p">])</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Decade&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Decade&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues active in 1970s (Melbourne):&lt;/b&gt; Decades&#39;</span><span class="p">,</span>
+              <span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="p">[</span><span class="n">venue_activity_complete</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_1970s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1965</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">1980</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues most active in 1970s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">active_in_1970s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">1970</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="p">[</span><span class="n">venue_activity_complete</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_1970s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1973</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">1980</span><span class="p">)</span> <span class="o">&amp;</span>
+                              <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">all_events_yr</span><span class="p">[</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))]</span>
+
+<span class="n">piv70s</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Freq&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">piv70s</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">piv70s</span> <span class="o">=</span> <span class="n">piv70s</span><span class="p">[</span><span class="n">piv70s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">clipped</span><span class="p">[</span><span class="n">clipped</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Venue</span><span class="p">)]</span>
+
+<span class="n">change70s</span> <span class="o">=</span> <span class="n">piv70s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># change70s[&#39;70-71&#39;] = change70s[[1970,1971]].pct_change(axis=1)[1971]</span>
+<span class="c1"># change70s[&#39;71-72&#39;] = change70s[[1971,1972]].pct_change(axis=1)[1972]</span>
+<span class="c1"># change70s[&#39;72-73&#39;] = change70s[[1972,1973]].pct_change(axis=1)[1973]</span>
+<span class="c1"># change70s[&#39;73-74&#39;] = change70s[[1973,1974]].pct_change(axis=1)[1974]</span>
+<span class="n">change70s</span><span class="p">[</span><span class="s1">&#39;74-75&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change70s</span><span class="p">[[</span><span class="mi">1974</span><span class="p">,</span><span class="mi">1975</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1975</span><span class="p">]</span>
+<span class="n">change70s</span><span class="p">[</span><span class="s1">&#39;75-76&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change70s</span><span class="p">[[</span><span class="mi">1975</span><span class="p">,</span><span class="mi">1976</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1976</span><span class="p">]</span>
+<span class="n">change70s</span><span class="p">[</span><span class="s1">&#39;76-77&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change70s</span><span class="p">[[</span><span class="mi">1976</span><span class="p">,</span><span class="mi">1977</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1977</span><span class="p">]</span>
+<span class="n">change70s</span><span class="p">[</span><span class="s1">&#39;77-78&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change70s</span><span class="p">[[</span><span class="mi">1977</span><span class="p">,</span><span class="mi">1978</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1978</span><span class="p">]</span>
+<span class="n">change70s</span><span class="p">[</span><span class="s1">&#39;78-79&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change70s</span><span class="p">[[</span><span class="mi">1978</span><span class="p">,</span><span class="mi">1979</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1979</span><span class="p">]</span>
+<span class="n">change70s</span> <span class="o">=</span> <span class="n">change70s</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">1974</span><span class="p">,</span><span class="mi">1975</span><span class="p">,</span><span class="mi">1976</span><span class="p">,</span><span class="mi">1977</span><span class="p">,</span><span class="mi">1978</span><span class="p">,</span><span class="mi">1979</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="c1"># change70s = change70s.drop([1970,1971,1972,1973,1974,1975,1976,1977,1978,1979],axis=1).unstack().reset_index()</span>
+<span class="n">change70s</span> <span class="o">=</span> <span class="n">change70s</span><span class="p">[</span><span class="o">~</span><span class="n">change70s</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">biggestmovers70s</span> <span class="o">=</span> <span class="n">change70s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">piv70s</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">forheatmap</span> <span class="o">=</span> <span class="n">change70s</span><span class="p">[</span><span class="n">change70s</span><span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">biggestmovers70s</span><span class="p">)]</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">forheatmap</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Largest YoY fluctuations fot venues in the 70s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">venue_activity_complete</span><span class="p">[</span><span class="n">venue_activity_complete</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">biggestmovers70s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1970</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">1985</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Venues, Biggest Movers, 1970s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which band played at the Bananas the most times?</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Which band played at the Bananas the most times?</span>
+<span class="n">venue_activity_complete</span><span class="p">[</span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Bananas&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">Artist</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which band played at the Hearts Nightclub (Polaris Inn) the most times?</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Which band played at the Hearts Nightclub (Polaris Inn) the most times?</span>
+<span class="n">venue_activity_complete</span><span class="p">[</span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Polaris Inn&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">Artist</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which venue did The Boys Next Door / The Birthday Party play most at?</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Which venue did The Boys Next Door / The Birthday Party play most at? </span>
+<span class="n">venue_activity_complete</span><span class="p">[(</span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;The Boys Next Door&#39;</span><span class="p">))</span> <span class="o">|</span>
+             <span class="p">(</span><span class="n">venue_activity_complete</span><span class="p">[</span><span class="s1">&#39;Artist&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;The Birthday Party&#39;</span><span class="p">))]</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h4>1980s<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_venues</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">active_in_1980s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">1980</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">top_venues_80s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">top_venues</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">active_in_1980s</span><span class="p">))</span>
+
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[</span><span class="n">all_events</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_venues_80s</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span><span class="s1">&#39;Venue&#39;</span><span class="p">])</span>
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">top_in_state</span><span class="p">[</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">Decade</span> <span class="o">&gt;</span> <span class="mi">1969</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Decade&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Decade&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues active in 1980s (Melbourne):&lt;/b&gt; Music&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_setlists</span> <span class="o">=</span> <span class="n">venue_activity_complete</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_1980s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1975</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">1990</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues active in 1980s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">active_in_1980s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">1980</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_1980s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1979</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">1990</span><span class="p">)</span> <span class="o">&amp;</span>
+                              <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">all_events_yr</span><span class="p">[</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))]</span>
+
+<span class="n">piv80s</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Freq&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">piv80s</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">piv80s</span> <span class="o">=</span> <span class="n">piv80s</span><span class="p">[</span><span class="n">piv80s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">clipped</span><span class="p">[</span><span class="n">clipped</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Venue</span><span class="p">)]</span>
+
+<span class="n">change80s</span> <span class="o">=</span> <span class="n">piv80s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;80-81&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1980</span><span class="p">,</span><span class="mi">1981</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1981</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;81-82&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1981</span><span class="p">,</span><span class="mi">1982</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1982</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;82-83&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1982</span><span class="p">,</span><span class="mi">1983</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1983</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;83-84&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1983</span><span class="p">,</span><span class="mi">1984</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1984</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;84-85&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1984</span><span class="p">,</span><span class="mi">1985</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1985</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;85-86&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1985</span><span class="p">,</span><span class="mi">1986</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1986</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;86-87&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1986</span><span class="p">,</span><span class="mi">1987</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1987</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;87-88&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1987</span><span class="p">,</span><span class="mi">1988</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1988</span><span class="p">]</span>
+<span class="n">change80s</span><span class="p">[</span><span class="s1">&#39;88-89&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[[</span><span class="mi">1988</span><span class="p">,</span><span class="mi">1989</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1989</span><span class="p">]</span>
+<span class="n">change80s</span> <span class="o">=</span> <span class="n">change80s</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">1980</span><span class="p">,</span><span class="mi">1981</span><span class="p">,</span><span class="mi">1982</span><span class="p">,</span><span class="mi">1983</span><span class="p">,</span><span class="mi">1984</span><span class="p">,</span><span class="mi">1985</span><span class="p">,</span><span class="mi">1986</span><span class="p">,</span><span class="mi">1987</span><span class="p">,</span><span class="mi">1988</span><span class="p">,</span><span class="mi">1989</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> 
+<span class="n">change80s</span> <span class="o">=</span> <span class="n">change80s</span><span class="p">[</span><span class="o">~</span><span class="n">change80s</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">biggestmovers80s</span> <span class="o">=</span> <span class="n">change80s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Largest YoY fluctuations for venues in the 80s&#39;</span><span class="p">)</span>
+<span class="n">change80s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change80s.sort_values(0, ascending=False).head(10).value_counts(&#39;Year&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">biggestmovers80s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1980</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">1995</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Venues, Biggest Movers, 1980s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h4>1990s<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_venues</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">active_in_1990s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">1990</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">top_venues_90s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">top_venues</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">active_in_1990s</span><span class="p">))</span>
+
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[</span><span class="n">all_events</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_venues_90s</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span><span class="s1">&#39;Venue&#39;</span><span class="p">])</span>
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">top_in_state</span><span class="p">[</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">Decade</span> <span class="o">&gt;</span> <span class="mi">1979</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Decade&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Decade&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues active in 1990s (Melbourne):&lt;/b&gt; Decades&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_1990s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1985</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues active in 1990s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">active_in_1990s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">1990</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_1990s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1989</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)</span> <span class="o">&amp;</span>
+                              <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">all_events_yr</span><span class="p">[</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))]</span>
+
+<span class="n">piv90s</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Freq&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">piv90s</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">piv90s</span> <span class="o">=</span> <span class="n">piv90s</span><span class="p">[</span><span class="n">piv90s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">clipped</span><span class="p">[</span><span class="n">clipped</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Venue</span><span class="p">)]</span>
+
+<span class="n">change90s</span> <span class="o">=</span> <span class="n">piv90s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;90-91&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1990</span><span class="p">,</span><span class="mi">1991</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1991</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;91-92&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1992</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1992</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;92-93&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1992</span><span class="p">,</span><span class="mi">1993</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1993</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;93-94&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1993</span><span class="p">,</span><span class="mi">1994</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1994</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;94-95&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1994</span><span class="p">,</span><span class="mi">1995</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1995</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;95-96&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1995</span><span class="p">,</span><span class="mi">1996</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1996</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;96-97&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1996</span><span class="p">,</span><span class="mi">1997</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1997</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;97-98&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1997</span><span class="p">,</span><span class="mi">1998</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1998</span><span class="p">]</span>
+<span class="n">change90s</span><span class="p">[</span><span class="s1">&#39;98-99&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[[</span><span class="mi">1998</span><span class="p">,</span><span class="mi">1999</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1999</span><span class="p">]</span>
+<span class="n">change90s</span> <span class="o">=</span> <span class="n">change90s</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">1990</span><span class="p">,</span><span class="mi">1991</span><span class="p">,</span><span class="mi">1992</span><span class="p">,</span><span class="mi">1993</span><span class="p">,</span><span class="mi">1994</span><span class="p">,</span><span class="mi">1995</span><span class="p">,</span><span class="mi">1996</span><span class="p">,</span><span class="mi">1997</span><span class="p">,</span><span class="mi">1998</span><span class="p">,</span><span class="mi">1999</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> 
+<span class="n">change90s</span> <span class="o">=</span> <span class="n">change90s</span><span class="p">[</span><span class="o">~</span><span class="n">change90s</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">biggestmovers90s</span> <span class="o">=</span> <span class="n">change90s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Largest YoY fluctuations fot venues in the 90s&#39;</span><span class="p">)</span>
+<span class="n">change90s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change90s.sort_values(0, ascending=False).head(10).value_counts(&#39;Year&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">biggestmovers90s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1990</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2000</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Venues, Biggest Movers, 1990s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h4>2000s<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_venues</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">active_in_2000s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">150</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">top_venues_00s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">top_venues</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">active_in_2000s</span><span class="p">))</span>
+
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[</span><span class="n">all_events</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_venues_00s</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span><span class="s1">&#39;Venue&#39;</span><span class="p">])</span>
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">top_in_state</span><span class="p">[</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">Decade</span> <span class="o">&gt;</span> <span class="mi">1989</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Decade&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Decade&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Top music venues active in 2000s (Melbourne):&lt;/b&gt; Decades&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_2000s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1995</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2010</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues active in 2000s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">active_in_2000s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_2000s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1999</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2010</span><span class="p">)</span> <span class="o">&amp;</span>
+                              <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">all_events_yr</span><span class="p">[</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))]</span>
+
+<span class="n">piv00s</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Freq&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">piv00s</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">piv00s</span> <span class="o">=</span> <span class="n">piv00s</span><span class="p">[</span><span class="n">piv00s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">clipped</span><span class="p">[</span><span class="n">clipped</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Venue</span><span class="p">)]</span>
+
+<span class="n">change00s</span> <span class="o">=</span> <span class="n">piv00s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;00-01&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2001</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2001</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;01-02&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2002</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;02-03&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2003</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2003</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;03-04&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2003</span><span class="p">,</span><span class="mi">2004</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2004</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;04-05&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2004</span><span class="p">,</span><span class="mi">2005</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2005</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;05-06&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2005</span><span class="p">,</span><span class="mi">2006</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2006</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;06-07&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2006</span><span class="p">,</span><span class="mi">2007</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2007</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;07-08&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2007</span><span class="p">,</span><span class="mi">2008</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2008</span><span class="p">]</span>
+<span class="n">change00s</span><span class="p">[</span><span class="s1">&#39;08-09&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[[</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2009</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2009</span><span class="p">]</span>
+<span class="n">change00s</span> <span class="o">=</span> <span class="n">change00s</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">2000</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">2003</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">2005</span><span class="p">,</span><span class="mi">2006</span><span class="p">,</span><span class="mi">2007</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">2009</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> 
+<span class="n">change00s</span> <span class="o">=</span> <span class="n">change00s</span><span class="p">[</span><span class="o">~</span><span class="n">change00s</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">biggestmovers00s</span> <span class="o">=</span> <span class="n">change00s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Largest YoY fluctuations for venues in the 00s&#39;</span><span class="p">)</span>
+<span class="n">change00s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change00s.sort_values(0, ascending=False).head(10).value_counts(&#39;Year&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">biggestmovers00s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">1995</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2010</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Venues, Biggest Movers, 2000s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h4>2010s<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top_venues</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">active_in_2010s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">250</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">top_venues_10s</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">top_venues</span><span class="p">)</span> <span class="o">&amp;</span> <span class="nb">set</span><span class="p">(</span><span class="n">active_in_2010s</span><span class="p">))</span>
+
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[</span><span class="n">all_events</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_venues_00s</span><span class="p">)]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Decade&#39;</span><span class="p">,</span><span class="s1">&#39;Venue&#39;</span><span class="p">])</span>
+<span class="n">top_in_state</span> <span class="o">=</span> <span class="n">top_in_state</span><span class="p">[</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">Decade</span> <span class="o">&gt;</span> <span class="mi">1999</span><span class="p">]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">top_in_state</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Decade&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Decade&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Top music venues active in 2010s (Melbourne):&lt;/b&gt; Decades&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_2000s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">2005</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2015</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Music venues active in 2010s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">active_in_2010s</span> <span class="o">=</span> <span class="n">all_events</span><span class="p">[(</span><span class="n">all_events</span><span class="o">.</span><span class="n">Decade</span> <span class="o">==</span> <span class="mi">2010</span><span class="p">)][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">active_in_2010s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">2009</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2020</span><span class="p">)</span> <span class="o">&amp;</span>
+                              <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">all_events_yr</span><span class="p">[</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Freq</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">][</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))]</span>
+
+<span class="n">piv10s</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Freq&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">clipped</span> <span class="o">=</span> <span class="n">piv10s</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">upper</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">piv10s</span> <span class="o">=</span> <span class="n">piv10s</span><span class="p">[</span><span class="n">piv10s</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">clipped</span><span class="p">[</span><span class="n">clipped</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">Venue</span><span class="p">)]</span>
+
+<span class="n">change10s</span> <span class="o">=</span> <span class="n">piv10s</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;10-11&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2010</span><span class="p">,</span><span class="mi">2011</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2011</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;11-12&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2011</span><span class="p">,</span><span class="mi">2012</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2012</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;12-13&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2012</span><span class="p">,</span><span class="mi">2013</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2013</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;13-14&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2013</span><span class="p">,</span><span class="mi">2014</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2014</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;14-15&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2015</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2015</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;15-16&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2016</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2016</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;16-17&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2016</span><span class="p">,</span><span class="mi">2017</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2017</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;17-18&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2017</span><span class="p">,</span><span class="mi">2018</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2018</span><span class="p">]</span>
+<span class="n">change10s</span><span class="p">[</span><span class="s1">&#39;18-19&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[[</span><span class="mi">2018</span><span class="p">,</span><span class="mi">2019</span><span class="p">]]</span><span class="o">.</span><span class="n">pct_change</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="mi">2019</span><span class="p">]</span>
+<span class="n">change10s</span> <span class="o">=</span> <span class="n">change10s</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">2010</span><span class="p">,</span><span class="mi">2011</span><span class="p">,</span><span class="mi">2012</span><span class="p">,</span><span class="mi">2013</span><span class="p">,</span><span class="mi">2014</span><span class="p">,</span><span class="mi">2015</span><span class="p">,</span><span class="mi">2016</span><span class="p">,</span><span class="mi">2017</span><span class="p">,</span><span class="mi">2018</span><span class="p">,</span><span class="mi">2019</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> 
+<span class="n">change10s</span> <span class="o">=</span> <span class="n">change10s</span><span class="p">[</span><span class="o">~</span><span class="n">change10s</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">biggestmovers10s</span> <span class="o">=</span> <span class="n">change10s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)[</span><span class="s1">&#39;Venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Largest YoY fluctuations for venues in the 2010s&#39;</span><span class="p">)</span>
+<span class="n">change10s</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change10s.sort_values(0, ascending=False).head(10).value_counts(&#39;Year&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_setlists</span><span class="p">[</span><span class="n">all_setlists</span><span class="o">.</span><span class="n">Venue</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">biggestmovers10s</span><span class="p">)][[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">]]</span>\
+<span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Venue&#39;</span><span class="p">,</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Freq&#39;</span><span class="p">]</span>
+<span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">all_events_yr</span> <span class="o">=</span> <span class="n">all_events_yr</span><span class="p">[(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&gt;</span> <span class="mi">2005</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">Year</span> <span class="o">&lt;</span> <span class="mi">2015</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">all_events_yr</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">),</span> 
+              <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;Freq&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span><span class="n">line_group</span><span class="o">=</span><span class="s2">&quot;Venue&quot;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;b&gt;Venues, Biggest Movers, 2010s (Melbourne):&lt;/b&gt; Year&#39;</span><span class="p">,</span><span class="n">markers</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="genre">
+<h3>Genre<a class="headerlink" href="#genre" title="Permalink to this headline">¶</a></h3>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/TLC Workshop_60_0.png" src="_images/TLC Workshop_60_0.png" />
+<img alt="_images/TLC Workshop_60_1.png" src="_images/TLC Workshop_60_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="genre-map-and-network-analysis">
+<h2>Genre Map and Network analysis<a class="headerlink" href="#genre-map-and-network-analysis" title="Permalink to this headline">¶</a></h2>
+<p>Explore cultural hotspots over time using this <a class="reference external" href="https://jmunoz.shinyapps.io/CulturalHotspotsTLC/">tool</a>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Archies.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Archibald Prize</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Justin Munoz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

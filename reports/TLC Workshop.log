@@ -1,0 +1,196 @@
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+### import modules
+# for data/string manipulation
+import re
+import json
+import pandas as pd
+import numpy as np
+from datetime import datetime
+from collections import Counter
+
+# for plotting
+import seaborn as sns
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+# import plotly.express as px
+# import sweetviz as sv
+# px.set_mapbox_access_token("pk.eyJ1Ijoia2FiaXJtYW5hbmRoYXIiLCJhIjoiY2w3ZTMxYWxpMDNtajN3bHZvbHJyYThueiJ9.DpnmOuQdHCWU_crpaEZqAg")
+# import plotly.graph_objects as go
+
+import plotly.io as pio
+import plotly.express as px
+import plotly.offline as py
+
+# # for network graphs
+# import networkx as nx
+# from pyvis import network as net
+
+# optional
+import warnings
+warnings.filterwarnings('ignore')
+
+#### Fetch data
+#### Setlist fm data
+# scraped data collected. Scraping occured on the 7/10/22
+mel_df = pd.read_csv('data/melbourne_setlist_data.csv', index_col=0)
+
+# remove redundant venues
+mel_df = mel_df[mel_df.Venue != 'Unknown Venue, Melbourne, Australia']
+mel_df = mel_df[mel_df.Venue != "Melbourne Hotel, Perth, Australia"]
+
+# clean venue names
+mel_df['Venue'] = mel_df['Venue'].str.replace(r', Melbourne, Australia', '')
+
+# formalise date fields
+dates = mel_df['Day'].astype(str)+"-"+mel_df['Month'].astype(str)+"-"+mel_df['Year'].astype(str)
+mel_df['Date'] = dates.apply(lambda x: datetime.strptime(x,'%d-%b-%Y'))
+
+# add decade column
+mel_df['Decade'] = mel_df.Date.apply(lambda x: x.year // 10 * 10)
+
+# drop any duplicate occurences
+mel_df = mel_df.drop_duplicates(subset=['Date','Venue'], keep='first')
+
+# show first rows
+mel_df.head(5)
+
+# venues_final.columns
+
+# fix geocodes mistakes
+venues_final = pd.read_csv('data/ACDE Internship-Final.csv', encoding='latin-1', index_col=0).iloc[:,1:]
+
+new_lats = []
+new_longs = []
+
+for idx, ven in venues_final.iterrows():
+    if ven.is_problem == 'No geocodes found.':
+        new_lats.append(ven.Lat); new_longs.append(ven.Long)
+        
+    elif ven.is_problem == 'Same match for venue and address.':
+        new_lats.append(ven.latitude2); new_longs.append(ven.longitude2)
+        
+    elif ven.is_problem == 'Address match, but venue no match. Check for accuracy.':
+        new_lats.append(ven.latitude); new_longs.append(ven.longitude)
+        
+    elif ven.is_problem == 'Address match and venue match found but they conflict. Choose the most accurate.':
+        new_lats.append(ven.latitude2); new_longs.append(ven.longitude2)
+        
+    else: pass
+    
+venues_final['new_lats'] = new_lats
+venues_final['new_longs'] = new_longs
+venues_final = venues_final[~venues_final.new_lats.isnull()]
+
+venue_activity_complete = pd.read_csv('data/TLC_final_data.csv', index_col=0)
+venue_activity_complete = pd.merge(venue_activity_complete, 
+                                   venues_final[['Venue','Side of River','new_lats','new_longs']], 
+                                   on=['Venue'])
+
+venue_activity_complete.drop(['new_lats_x','new_longs_x'],axis=1, inplace=True)
+venue_activity_complete = venue_activity_complete.rename(columns={'new_lats_y': 'new_lats', 'new_longs_y': 'new_longs'})
+
+# DATA ENTRY error
+venue_activity_complete.loc[venue_activity_complete.Venue.str.contains('Iceland'),'suburb_nopc'] = 'Ringwood VIC'
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn [2], line 59[0m
+[1;32m     54[0m mel_df[38;5;241m.[39mhead([38;5;241m5[39m)
+[1;32m     56[0m [38;5;66;03m# venues_final.columns[39;00m
+[1;32m     57[0m 
+[1;32m     58[0m [38;5;66;03m# fix geocodes mistakes[39;00m
+[0;32m---> 59[0m venues_final [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mdata/ACDE Internship-Final.csv[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mlatin-1[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mindex_col[49m[38;5;241;43m=[39;49m[38;5;241;43m0[39;49m[43m)[49m[38;5;241m.[39miloc[:,[38;5;241m1[39m:]
+[1;32m     61[0m new_lats [38;5;241m=[39m []
+[1;32m     62[0m new_longs [38;5;241m=[39m []
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/util/_decorators.py:211[0m, in [0;36mdeprecate_kwarg.<locals>._deprecate_kwarg.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    209[0m     [38;5;28;01melse[39;00m:
+[1;32m    210[0m         kwargs[new_arg_name] [38;5;241m=[39m new_arg_value
+[0;32m--> 211[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/util/_decorators.py:317[0m, in [0;36mdeprecate_nonkeyword_arguments.<locals>.decorate.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    311[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(args) [38;5;241m>[39m num_allow_args:
+[1;32m    312[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    313[0m         msg[38;5;241m.[39mformat(arguments[38;5;241m=[39marguments),
+[1;32m    314[0m         [38;5;167;01mFutureWarning[39;00m,
+[1;32m    315[0m         stacklevel[38;5;241m=[39mfind_stack_level(inspect[38;5;241m.[39mcurrentframe()),
+[1;32m    316[0m     )
+[0;32m--> 317[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:950[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)[0m
+[1;32m    935[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
+[1;32m    936[0m     dialect,
+[1;32m    937[0m     delimiter,
+[0;32m   (...)[0m
+[1;32m    946[0m     defaults[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mdelimiter[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m,[39m[38;5;124m"[39m},
+[1;32m    947[0m )
+[1;32m    948[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
+[0;32m--> 950[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:605[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    602[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
+[1;32m    604[0m [38;5;66;03m# Create the parser.[39;00m
+[0;32m--> 605[0m parser [38;5;241m=[39m [43mTextFileReader[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+[1;32m    607[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+[1;32m    608[0m     [38;5;28;01mreturn[39;00m parser
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1442[0m, in [0;36mTextFileReader.__init__[0;34m(self, f, engine, **kwds)[0m
+[1;32m   1439[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
+[1;32m   1441[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[0;32m-> 1442[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_engine[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mengine[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1729[0m, in [0;36mTextFileReader._make_engine[0;34m(self, f, engine)[0m
+[1;32m   1727[0m     is_text [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[1;32m   1728[0m     mode [38;5;241m=[39m [38;5;124m"[39m[38;5;124mrb[39m[38;5;124m"[39m
+[0;32m-> 1729[0m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;241m=[39m [43mget_handle[49m[43m([49m
+[1;32m   1730[0m [43m    [49m[43mf[49m[43m,[49m
+[1;32m   1731[0m [43m    [49m[43mmode[49m[43m,[49m
+[1;32m   1732[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1733[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mcompression[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1734[0m [43m    [49m[43mmemory_map[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mmemory_map[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1735[0m [43m    [49m[43mis_text[49m[38;5;241;43m=[39;49m[43mis_text[49m[43m,[49m
+[1;32m   1736[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding_errors[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mstrict[39;49m[38;5;124;43m"[39;49m[43m)[49m[43m,[49m
+[1;32m   1737[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mstorage_options[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1738[0m [43m[49m[43m)[49m
+[1;32m   1739[0m [38;5;28;01massert[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[1;32m   1740[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhandles[38;5;241m.[39mhandle
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/common.py:857[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    852[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(handle, [38;5;28mstr[39m):
+[1;32m    853[0m     [38;5;66;03m# Check whether the filename is to be opened in binary mode.[39;00m
+[1;32m    854[0m     [38;5;66;03m# Binary mode does not support 'encoding' and 'newline'.[39;00m
+[1;32m    855[0m     [38;5;28;01mif[39;00m ioargs[38;5;241m.[39mencoding [38;5;129;01mand[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m ioargs[38;5;241m.[39mmode:
+[1;32m    856[0m         [38;5;66;03m# Encoding[39;00m
+[0;32m--> 857[0m         handle [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m
+[1;32m    858[0m [43m            [49m[43mhandle[49m[43m,[49m
+[1;32m    859[0m [43m            [49m[43mioargs[49m[38;5;241;43m.[39;49m[43mmode[49m[43m,[49m
+[1;32m    860[0m [43m            [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mioargs[49m[38;5;241;43m.[39;49m[43mencoding[49m[43m,[49m
+[1;32m    861[0m [43m            [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m,[49m
+[1;32m    862[0m [43m            [49m[43mnewline[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    863[0m [43m        [49m[43m)[49m
+[1;32m    864[0m     [38;5;28;01melse[39;00m:
+[1;32m    865[0m         [38;5;66;03m# Binary mode[39;00m
+[1;32m    866[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(handle, ioargs[38;5;241m.[39mmode)
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'data/ACDE Internship-Final.csv'
+FileNotFoundError: [Errno 2] No such file or directory: 'data/ACDE Internship-Final.csv'
+
