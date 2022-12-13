@@ -1,4 +1,4 @@
 # jupyterbook
 
-Access book using this link:
+Access book (demo) using this link:
 https://acd-engine.github.io/jupyterbook
