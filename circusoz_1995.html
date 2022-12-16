@@ -1,0 +1,965 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/css/tom-select.min.css" integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/js/tom-select.complete.js" integrity="sha512-jeF9CfnvzDiw9G9xiksVjxR2lib44Gnovvkv+3CgCG6NXCD4gqlA5nDAVW5WjpA+i+/zKsUWV5xNEbW1X/HH0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 900px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 100%;
+                 height: 900px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="Robina Burton">Robina Burton</option>
+                                
+                                    <option value="Administration">Administration</option>
+                                
+                                    <option value="Elaine Stevens">Elaine Stevens</option>
+                                
+                                    <option value="Injured">Injured</option>
+                                
+                                    <option value="Michael Ling">Michael Ling</option>
+                                
+                                    <option value="Performer">Performer</option>
+                                
+                                    <option value="Per Westman">Per Westman</option>
+                                
+                                    <option value="Linda Mickleborough">Linda Mickleborough</option>
+                                
+                                    <option value="Madge Fletcher">Madge Fletcher</option>
+                                
+                                    <option value="Crew">Crew</option>
+                                
+                                    <option value="Gina Gascoigne">Gina Gascoigne</option>
+                                
+                                    <option value="KeyCreative">KeyCreative</option>
+                                
+                                    <option value="Sebastian Dickins">Sebastian Dickins</option>
+                                
+                                    <option value="Terry Lycos">Terry Lycos</option>
+                                
+                                    <option value="Mathew Hughes">Mathew Hughes</option>
+                                
+                                    <option value="Wiggy Brennan">Wiggy Brennan</option>
+                                
+                                    <option value="Dorota Scally">Dorota Scally</option>
+                                
+                                    <option value="Subsidiary">Subsidiary</option>
+                                
+                                    <option value="Carl Polke">Carl Polke</option>
+                                
+                                    <option value="Performer KeyCreative">Performer KeyCreative</option>
+                                
+                                    <option value="Stephen Burton">Stephen Burton</option>
+                                
+                                    <option value="Laurel Frank">Laurel Frank</option>
+                                
+                                    <option value="Nicci Wilks">Nicci Wilks</option>
+                                
+                                    <option value="Tim Coldwell">Tim Coldwell</option>
+                                
+                                    <option value="Tora La Rosa">Tora La Rosa</option>
+                                
+                                    <option value="Kevin Miah Fregon">Kevin Miah Fregon</option>
+                                
+                                    <option value="Chris Lewis">Chris Lewis</option>
+                                
+                                    <option value="Performer Musician">Performer Musician</option>
+                                
+                                    <option value="Michelle Stevens">Michelle Stevens</option>
+                                
+                                    <option value="Melinda Frith">Melinda Frith</option>
+                                
+                                    <option value="Toni Smith">Toni Smith</option>
+                                
+                                    <option value="Karla Wells-Duerr">Karla Wells-Duerr</option>
+                                
+                                    <option value="Margaret Kirby">Margaret Kirby</option>
+                                
+                                    <option value="Natalie Dyball">Natalie Dyball</option>
+                                
+                                    <option value="Darren Steffen">Darren Steffen</option>
+                                
+                                    <option value="Andrew Hepburn">Andrew Hepburn</option>
+                                
+                                    <option value="Anni Davey">Anni Davey</option>
+                                
+                                    <option value="Daryll John">Daryll John</option>
+                                
+                                    <option value="Kareena Oates">Kareena Oates</option>
+                                
+                                    <option value="Sara Ritchie">Sara Ritchie</option>
+                                
+                                    <option value="Leeroy Hart">Leeroy Hart</option>
+                                
+                                    <option value="Mary Cominos">Mary Cominos</option>
+                                
+                                    <option value="Lesley Adeney">Lesley Adeney</option>
+                                
+                                    <option value="Jaime Skye">Jaime Skye</option>
+                                
+                                    <option value="Luke Hayne-Keon">Luke Hayne-Keon</option>
+                                
+                                    <option value="Mike Finch">Mike Finch</option>
+                                
+                                    <option value="Kate Ellis">Kate Ellis</option>
+                                
+                                    <option value="John O'Hagan">John O'Hagan</option>
+                                
+                                    <option value="Anna Tregloan">Anna Tregloan</option>
+                                
+                                    <option value="Gretel Bowman">Gretel Bowman</option>
+                                
+                                    <option value="Kathryn Niesche">Kathryn Niesche</option>
+                                
+                                    <option value="Robin Laurie">Robin Laurie</option>
+                                
+                                    <option value="Julie McInnes">Julie McInnes</option>
+                                
+                                    <option value="Ben Anderson">Ben Anderson</option>
+                                
+                                    <option value="Kate McKibbin">Kate McKibbin</option>
+                                
+                                    <option value="Performer KeyCreative Musician">Performer KeyCreative Musician</option>
+                                
+                                    <option value="Tom Lycos">Tom Lycos</option>
+                                
+                                    <option value="Patrick Brennan">Patrick Brennan</option>
+                                
+                                    <option value="Debra Batton">Debra Batton</option>
+                                
+                                    <option value="Tanya Lester">Tanya Lester</option>
+                                
+                                    <option value="Alona Scott">Alona Scott</option>
+                                
+                                    <option value="Cliff Kelsall">Cliff Kelsall</option>
+                                
+                                    <option value="Dori Bicchierai">Dori Bicchierai</option>
+                                
+                                    <option value="Sue Broadway">Sue Broadway</option>
+                                
+                                    <option value="Anna Shelper">Anna Shelper</option>
+                                
+                                    <option value="Eleanor Davies">Eleanor Davies</option>
+                                
+                                    <option value="Zhongde Zhang">Zhongde Zhang</option>
+                                
+                                    <option value="Carmel Duffy">Carmel Duffy</option>
+                                
+                                    <option value="Christy Shelper">Christy Shelper</option>
+                                
+                                    <option value="Rita van Opzeeland">Rita van Opzeeland</option>
+                                
+                                    <option value="Simone O'Brien">Simone O'Brien</option>
+                                
+                                    <option value="Dan Mitchell">Dan Mitchell</option>
+                                
+                                    <option value="Hope Csutoros">Hope Csutoros</option>
+                                
+                                    <option value="Ben Cobham">Ben Cobham</option>
+                                
+                                    <option value="Ruth Bauer">Ruth Bauer</option>
+                                
+                                    <option value="Cassandra Goode">Cassandra Goode</option>
+                                
+                                    <option value="David Carlin">David Carlin</option>
+                                
+                                    <option value="Bruce Gladwin">Bruce Gladwin</option>
+                                
+                                    <option value="Derek Ives">Derek Ives</option>
+                                
+                                    <option value="Nicky Smith">Nicky Smith</option>
+                                
+                                    <option value="Tim Cole">Tim Cole</option>
+                                
+                                    <option value="Troy Picone">Troy Picone</option>
+                                
+                                    <option value="Genevieve Morris">Genevieve Morris</option>
+                                
+                                    <option value="Mathew Yates">Mathew Yates</option>
+                                
+                                    <option value="Zanette Clements">Zanette Clements</option>
+                                
+                                    <option value="Sergio Tell">Sergio Tell</option>
+                                
+                                    <option value="Kymberlyn Olsen">Kymberlyn Olsen</option>
+                                
+                                    <option value="Margarita Martinez">Margarita Martinez</option>
+                                
+                                    <option value="Bob Harris">Bob Harris</option>
+                                
+                                    <option value="Mel Fyfe">Mel Fyfe</option>
+                                
+                                    <option value="Brooke Lester">Brooke Lester</option>
+                                
+                                    <option value="Alan Robertson">Alan Robertson</option>
+                                
+                                    <option value="Phillip Glen">Phillip Glen</option>
+                                
+                                    <option value="Margot Storm">Margot Storm</option>
+                                
+                                    <option value="Wayne Appleton">Wayne Appleton</option>
+                                
+                                    <option value="Jane Mullett">Jane Mullett</option>
+                                
+                                    <option value="Pepe Lewis">Pepe Lewis</option>
+                                
+                                    <option value="Hung Le">Hung Le</option>
+                                
+                                    <option value="Performer Musician KeyCreative">Performer Musician KeyCreative</option>
+                                
+                                    <option value="Injured Performer">Injured Performer</option>
+                                
+                                    <option value="Felicia O'Brien">Felicia O'Brien</option>
+                                
+                                    <option value="Gail Kelly">Gail Kelly</option>
+                                
+                                    <option value="Alison Menzies">Alison Menzies</option>
+                                
+                                    <option value="Mark Anderson">Mark Anderson</option>
+                                
+                                    <option value="KeyCreative Performer">KeyCreative Performer</option>
+                                
+                                    <option value="Irine Vela">Irine Vela</option>
+                                
+                                    <option value="Michael Rice">Michael Rice</option>
+                                
+                                    <option value="Geoffrey Dunstan">Geoffrey Dunstan</option>
+                                
+                                    <option value="Robert Eastcott">Robert Eastcott</option>
+                                
+                                    <option value="Sue Simpson">Sue Simpson</option>
+                                
+                                    <option value="Ross Mathers">Ross Mathers</option>
+                                
+                                    <option value="Scott Grayland">Scott Grayland</option>
+                                
+                                    <option value="Jenny Thomas">Jenny Thomas</option>
+                                
+                                    <option value="Musician">Musician</option>
+                                
+                                    <option value="Michael Davis">Michael Davis</option>
+                                
+                                    <option value="Crew Performer">Crew Performer</option>
+                                
+                                    <option value="Dan McEoin">Dan McEoin</option>
+                                
+                                    <option value="Shirley Billing">Shirley Billing</option>
+                                
+                                    <option value="Danny O'Riordan">Danny O'Riordan</option>
+                                
+                                    <option value="Philip Lethlean">Philip Lethlean</option>
+                                
+                                    <option value="Bruce McIntyre">Bruce McIntyre</option>
+                                
+                                    <option value="Sharon Nathani">Sharon Nathani</option>
+                                
+                                    <option value="Subsidiary Administration">Subsidiary Administration</option>
+                                
+                                    <option value="Deborah Pope">Deborah Pope</option>
+                                
+                                    <option value="Rodrigo Matteus">Rodrigo Matteus</option>
+                                
+                                    <option value="Andrew Bright">Andrew Bright</option>
+                                
+                                    <option value="Theresa Blake">Theresa Blake</option>
+                                
+                                    <option value="Matt Wilson">Matt Wilson</option>
+                                
+                                    <option value="Michael (Nitrox) Petrani">Michael (Nitrox) Petrani</option>
+                                
+                                    <option value="Dee Martin">Dee Martin</option>
+                                
+                                    <option value="Donna Stevens">Donna Stevens</option>
+                                
+                                    <option value="Clytie Smith">Clytie Smith</option>
+                                
+                                    <option value="Clare Gallagher">Clare Gallagher</option>
+                                
+                                    <option value="Simon Mitchell">Simon Mitchell</option>
+                                
+                                    <option value="Alexander Stevenson">Alexander Stevenson</option>
+                                
+                                    <option value="Victoria Jones">Victoria Jones</option>
+                                
+                                    <option value="Subsidiary Performer">Subsidiary Performer</option>
+                                
+                                    <option value="KeyCreative Administration">KeyCreative Administration</option>
+                                
+                                    <option value="Tim Aris">Tim Aris</option>
+                                
+                                    <option value="Moses ">Moses </option>
+                                
+                                    <option value="Tracey Coldwell">Tracey Coldwell</option>
+                                
+                                    <option value="Performer Administration">Performer Administration</option>
+                                
+                                    <option value="Sue de Gennaro">Sue de Gennaro</option>
+                                
+                                    <option value="Administration KeyCreative">Administration KeyCreative</option>
+                                
+                                    <option value="Shio Otani">Shio Otani</option>
+                                
+                                    <option value="Rudy Mineur">Rudy Mineur</option>
+                                
+                                    <option value="Robyn McGregor">Robyn McGregor</option>
+                                
+                                    <option value="Reinhardt Bischel">Reinhardt Bischel</option>
+                                
+                                    <option value="Subsidiary Musician">Subsidiary Musician</option>
+                                
+                                    <option value="Myles Leroy">Myles Leroy</option>
+                                
+                                    <option value="Zoe Hartwig">Zoe Hartwig</option>
+                                
+                                    <option value="Ben Green">Ben Green</option>
+                                
+                                    <option value="Ben Garfield">Ben Garfield</option>
+                                
+                                    <option value="Christine Boyle">Christine Boyle</option>
+                                
+                                    <option value="Leah de Niese">Leah de Niese</option>
+                                
+                                    <option value="David Hope">David Hope</option>
+                                
+                                    <option value="Bryn Davies">Bryn Davies</option>
+                                
+                                    <option value="Kelly Smyth">Kelly Smyth</option>
+                                
+                                    <option value="Lin Tobias">Lin Tobias</option>
+                                
+                                    <option value="Craig Boyes">Craig Boyes</option>
+                                
+                                    <option value="Lindy MacCauley">Lindy MacCauley</option>
+                                
+                                    <option value="Che Sutherland">Che Sutherland</option>
+                                
+                                    <option value="Unknown">Unknown</option>
+                                
+                                    <option value="Lu Sexton">Lu Sexton</option>
+                                
+                                    <option value="Cathy Mickleborough">Cathy Mickleborough</option>
+                                
+                                    <option value="Susie Dee">Susie Dee</option>
+                                
+                                    <option value="Svetlana Bunic">Svetlana Bunic</option>
+                                
+                                    <option value="Byron Perry">Byron Perry</option>
+                                
+                                    <option value="Administration Crew">Administration Crew</option>
+                                
+                                    <option value="D Goldstraw">D Goldstraw</option>
+                                
+                                    <option value="Sonia Ganza">Sonia Ganza</option>
+                                
+                                    <option value="Subsidiary Unknown">Subsidiary Unknown</option>
+                                
+                                    <option value="Siri Metsar">Siri Metsar</option>
+                                
+                                    <option value="Edward Meysztowicz">Edward Meysztowicz</option>
+                                
+                                    <option value="Ryan Taplin">Ryan Taplin</option>
+                                
+                                    <option value="Samuel Joseph">Samuel Joseph</option>
+                                
+                                    <option value="Dudley Cole">Dudley Cole</option>
+                                
+                                    <option value="Subsidiary KeyCreative">Subsidiary KeyCreative</option>
+                                
+                                    <option value="David Pidd">David Pidd</option>
+                                
+                                    <option value="David Jolley">David Jolley</option>
+                                
+                                    <option value="David Franske">David Franske</option>
+                                
+                                    <option value="Darielle Crawford">Darielle Crawford</option>
+                                
+                                    <option value="Administration Performer">Administration Performer</option>
+                                
+                                    <option value="Daniel Murray">Daniel Murray</option>
+                                
+                                    <option value="Bruce Naylor">Bruce Naylor</option>
+                                
+                                    <option value="Vera Rudinica">Vera Rudinica</option>
+                                
+                                    <option value="Andrew Richardson">Andrew Richardson</option>
+                                
+                                    <option value="Trish Dunstone">Trish Dunstone</option>
+                                
+                                    <option value="Administration Subsidiary">Administration Subsidiary</option>
+                                
+                                    <option value="Andrew Kinch">Andrew Kinch</option>
+                                
+                                    <option value="Trudy Hayter">Trudy Hayter</option>
+                                
+                                    <option value="Vanessa Law">Vanessa Law</option>
+                                
+                                    <option value="Victor Navarro">Victor Navarro</option>
+                                
+                                    <option value="Alistair Davies">Alistair Davies</option>
+                                
+                                    <option value="Victoria La Rosa">Victoria La Rosa</option>
+                                
+                                    <option value="Alicia Gavin">Alicia Gavin</option>
+                                
+                                    <option value="Ali Egeh">Ali Egeh</option>
+                                
+                                    <option value="Alana Harris">Alana Harris</option>
+                                
+                                    <option value="Aeyesha Westman">Aeyesha Westman</option>
+                                
+                                    <option value="Andrew Taylor">Andrew Taylor</option>
+                                
+                                    <option value="Tony Hand">Tony Hand</option>
+                                
+                                    <option value="Andrew Wilkie">Andrew Wilkie</option>
+                                
+                                    <option value="Brett Daffy">Brett Daffy</option>
+                                
+                                    <option value="Russell Smith">Russell Smith</option>
+                                
+                                    <option value="Tiny Good">Tiny Good</option>
+                                
+                                    <option value="Barry Kay">Barry Kay</option>
+                                
+                                    <option value="Anthony Tzannes">Anthony Tzannes</option>
+                                
+                                    <option value="Angharad Wynne-Jones">Angharad Wynne-Jones</option>
+                                
+                                    <option value="Russell (William) Smith">Russell (William) Smith</option>
+                                
+                                    <option value="Ken Tait">Ken Tait</option>
+                                
+                                    <option value="Kathy Shelper">Kathy Shelper</option>
+                                
+                                    <option value="Michael Collins">Michael Collins</option>
+                                
+                                    <option value="Katherine Anson">Katherine Anson</option>
+                                
+                                    <option value="Michael Harris">Michael Harris</option>
+                                
+                                    <option value="Kate Kantor">Kate Kantor</option>
+                                
+                                    <option value="Kate Fryer">Kate Fryer</option>
+                                
+                                    <option value="Kat Gill">Kat Gill</option>
+                                
+                                    <option value="Miranda Jaques">Miranda Jaques</option>
+                                
+                                    <option value="Monica Daniellson">Monica Daniellson</option>
+                                
+                                    <option value="Subsidiary Crew">Subsidiary Crew</option>
+                                
+                                    <option value="Martin Hurley">Martin Hurley</option>
+                                
+                                    <option value="Malcolm McKay">Malcolm McKay</option>
+                                
+                                    <option value="Malcolm Merrett">Malcolm Merrett</option>
+                                
+                                    <option value="Lisa Meagher">Lisa Meagher</option>
+                                
+                                    <option value="Margie Medlin">Margie Medlin</option>
+                                
+                                    <option value="Adam Oulton">Adam Oulton</option>
+                                
+                                    <option value="Lin Onus">Lin Onus</option>
+                                
+                                    <option value="Maureen Haris">Maureen Haris</option>
+                                
+                                    <option value="Leslee Mason">Leslee Mason</option>
+                                
+                                    <option value="KeyCreative Subsidiary">KeyCreative Subsidiary</option>
+                                
+                                    <option value="Matthew Binnie">Matthew Binnie</option>
+                                
+                                    <option value="Maude Davey">Maude Davey</option>
+                                
+                                    <option value="Joseph Kiely">Joseph Kiely</option>
+                                
+                                    <option value="John O'Brien">John O'Brien</option>
+                                
+                                    <option value="Rinske Ginsberg">Rinske Ginsberg</option>
+                                
+                                    <option value="Geoff Kelly">Geoff Kelly</option>
+                                
+                                    <option value="Robert Young">Robert Young</option>
+                                
+                                    <option value="Garry (Gack) Manson">Garry (Gack) Manson</option>
+                                
+                                    <option value="Rebecca Etchell">Rebecca Etchell</option>
+                                
+                                    <option value="Esther Carlin">Esther Carlin</option>
+                                
+                                    <option value="Rod Primrose">Rod Primrose</option>
+                                
+                                    <option value="Rodney Lamb">Rodney Lamb</option>
+                                
+                                    <option value="Elizabeth Keen">Elizabeth Keen</option>
+                                
+                                    <option value="Liz Sadler">Liz Sadler</option>
+                                
+                                    <option value="Crew KeyCreative">Crew KeyCreative</option>
+                                
+                                    <option value="Phillip Watson">Phillip Watson</option>
+                                
+                                    <option value="Jo Lancaster">Jo Lancaster</option>
+                                
+                                    <option value="Ian MacDonald">Ian MacDonald</option>
+                                
+                                    <option value="Nicholas Frewen">Nicholas Frewen</option>
+                                
+                                    <option value="Jennifer Pryce">Jennifer Pryce</option>
+                                
+                                    <option value="Patrick Verdon">Patrick Verdon</option>
+                                
+                                    <option value="Patrick Worlsey">Patrick Worlsey</option>
+                                
+                                    <option value="Ivan Lipkan">Ivan Lipkan</option>
+                                
+                                    <option value="Peter Tetu">Peter Tetu</option>
+                                
+                                    <option value="Philip Cousins">Philip Cousins</option>
+                                
+                                    <option value="Hong Bui Thanh">Hong Bui Thanh</option>
+                                
+                                    <option value="Hamish McCormick">Hamish McCormick</option>
+                                
+                                    <option value="A Atterson">A Atterson</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "steelblue", "id": "Robina Burton", "label": "Robina Burton", "shape": "dot", "title": "Robina Burton"}, {"color": "green", "id": "Administration", "label": "Administration", "shape": "dot", "title": "Administration", "value": 1}, {"color": "orange", "id": "Elaine Stevens", "label": "Elaine Stevens", "shape": "dot", "title": "Elaine Stevens"}, {"color": "green", "id": "Injured", "label": "Injured", "shape": "dot", "title": "Injured", "value": 1}, {"color": "steelblue", "id": "Michael Ling", "label": "Michael Ling", "shape": "dot", "title": "Michael Ling"}, {"color": "green", "id": "Performer", "label": "Performer", "shape": "dot", "title": "Performer", "value": 1}, {"color": "steelblue", "id": "Per Westman", "label": "Per Westman", "shape": "dot", "title": "Per Westman"}, {"color": "orange", "id": "Linda Mickleborough", "label": "Linda Mickleborough", "shape": "dot", "title": "Linda Mickleborough"}, {"color": "steelblue", "id": "Madge Fletcher", "label": "Madge Fletcher", "shape": "dot", "title": "Madge Fletcher"}, {"color": "green", "id": "Crew", "label": "Crew", "shape": "dot", "title": "Crew", "value": 1}, {"color": "orange", "id": "Gina Gascoigne", "label": "Gina Gascoigne", "shape": "dot", "title": "Gina Gascoigne"}, {"color": "green", "id": "KeyCreative", "label": "KeyCreative", "shape": "dot", "title": "KeyCreative", "value": 1}, {"color": "steelblue", "id": "Sebastian Dickins", "label": "Sebastian Dickins", "shape": "dot", "title": "Sebastian Dickins"}, {"color": "steelblue", "id": "Terry Lycos", "label": "Terry Lycos", "shape": "dot", "title": "Terry Lycos"}, {"color": "steelblue", "id": "Mathew Hughes", "label": "Mathew Hughes", "shape": "dot", "title": "Mathew Hughes"}, {"color": "orange", "id": "Wiggy Brennan", "label": "Wiggy Brennan", "shape": "dot", "title": "Wiggy Brennan"}, {"color": "steelblue", "id": "Dorota Scally", "label": "Dorota Scally", "shape": "dot", "title": "Dorota Scally"}, {"color": "green", "id": "Subsidiary", "label": "Subsidiary", "shape": "dot", "title": "Subsidiary", "value": 1}, {"color": "steelblue", "id": "Carl Polke", "label": "Carl Polke", "shape": "dot", "title": "Carl Polke"}, {"color": "green", "id": "Performer KeyCreative", "label": "Performer KeyCreative", "shape": "dot", "title": "Performer KeyCreative", "value": 1}, {"color": "steelblue", "id": "Stephen Burton", "label": "Stephen Burton", "shape": "dot", "title": "Stephen Burton"}, {"color": "orange", "id": "Laurel Frank", "label": "Laurel Frank", "shape": "dot", "title": "Laurel Frank"}, {"color": "orange", "id": "Nicci Wilks", "label": "Nicci Wilks", "shape": "dot", "title": "Nicci Wilks"}, {"color": "steelblue", "id": "Tim Coldwell", "label": "Tim Coldwell", "shape": "dot", "title": "Tim Coldwell"}, {"color": "steelblue", "id": "Tora La Rosa", "label": "Tora La Rosa", "shape": "dot", "title": "Tora La Rosa"}, {"color": "steelblue", "id": "Kevin Miah Fregon", "label": "Kevin Miah Fregon", "shape": "dot", "title": "Kevin Miah Fregon"}, {"color": "steelblue", "id": "Chris Lewis", "label": "Chris Lewis", "shape": "dot", "title": "Chris Lewis"}, {"color": "green", "id": "Performer Musician", "label": "Performer Musician", "shape": "dot", "title": "Performer Musician", "value": 1}, {"color": "orange", "id": "Michelle Stevens", "label": "Michelle Stevens", "shape": "dot", "title": "Michelle Stevens"}, {"color": "orange", "id": "Melinda Frith", "label": "Melinda Frith", "shape": "dot", "title": "Melinda Frith"}, {"color": "orange", "id": "Toni Smith", "label": "Toni Smith", "shape": "dot", "title": "Toni Smith"}, {"color": "steelblue", "id": "Karla Wells-Duerr", "label": "Karla Wells-Duerr", "shape": "dot", "title": "Karla Wells-Duerr"}, {"color": "steelblue", "id": "Margaret Kirby", "label": "Margaret Kirby", "shape": "dot", "title": "Margaret Kirby"}, {"color": "orange", "id": "Natalie Dyball", "label": "Natalie Dyball", "shape": "dot", "title": "Natalie Dyball"}, {"color": "steelblue", "id": "Darren Steffen", "label": "Darren Steffen", "shape": "dot", "title": "Darren Steffen"}, {"color": "steelblue", "id": "Andrew Hepburn", "label": "Andrew Hepburn", "shape": "dot", "title": "Andrew Hepburn"}, {"color": "orange", "id": "Anni Davey", "label": "Anni Davey", "shape": "dot", "title": "Anni Davey"}, {"color": "steelblue", "id": "Daryll John", "label": "Daryll John", "shape": "dot", "title": "Daryll John"}, {"color": "orange", "id": "Kareena Oates", "label": "Kareena Oates", "shape": "dot", "title": "Kareena Oates"}, {"color": "orange", "id": "Sara Ritchie", "label": "Sara Ritchie", "shape": "dot", "title": "Sara Ritchie"}, {"color": "steelblue", "id": "Leeroy Hart", "label": "Leeroy Hart", "shape": "dot", "title": "Leeroy Hart"}, {"color": "steelblue", "id": "Mary Cominos", "label": "Mary Cominos", "shape": "dot", "title": "Mary Cominos"}, {"color": "orange", "id": "Lesley Adeney", "label": "Lesley Adeney", "shape": "dot", "title": "Lesley Adeney"}, {"color": "steelblue", "id": "Jaime Skye", "label": "Jaime Skye", "shape": "dot", "title": "Jaime Skye"}, {"color": "steelblue", "id": "Luke Hayne-Keon", "label": "Luke Hayne-Keon", "shape": "dot", "title": "Luke Hayne-Keon"}, {"color": "steelblue", "id": "Mike Finch", "label": "Mike Finch", "shape": "dot", "title": "Mike Finch"}, {"color": "orange", "id": "Kate Ellis", "label": "Kate Ellis", "shape": "dot", "title": "Kate Ellis"}, {"color": "steelblue", "id": "John O\u0027Hagan", "label": "John O\u0027Hagan", "shape": "dot", "title": "John O\u0027Hagan"}, {"color": "orange", "id": "Anna Tregloan", "label": "Anna Tregloan", "shape": "dot", "title": "Anna Tregloan"}, {"color": "steelblue", "id": "Gretel Bowman", "label": "Gretel Bowman", "shape": "dot", "title": "Gretel Bowman"}, {"color": "orange", "id": "Kathryn Niesche", "label": "Kathryn Niesche", "shape": "dot", "title": "Kathryn Niesche"}, {"color": "orange", "id": "Robin Laurie", "label": "Robin Laurie", "shape": "dot", "title": "Robin Laurie"}, {"color": "orange", "id": "Julie McInnes", "label": "Julie McInnes", "shape": "dot", "title": "Julie McInnes"}, {"color": "steelblue", "id": "Ben Anderson", "label": "Ben Anderson", "shape": "dot", "title": "Ben Anderson"}, {"color": "orange", "id": "Kate McKibbin", "label": "Kate McKibbin", "shape": "dot", "title": "Kate McKibbin"}, {"color": "green", "id": "Performer KeyCreative Musician", "label": "Performer KeyCreative Musician", "shape": "dot", "title": "Performer KeyCreative Musician", "value": 1}, {"color": "steelblue", "id": "Tom Lycos", "label": "Tom Lycos", "shape": "dot", "title": "Tom Lycos"}, {"color": "steelblue", "id": "Patrick Brennan", "label": "Patrick Brennan", "shape": "dot", "title": "Patrick Brennan"}, {"color": "steelblue", "id": "Debra Batton", "label": "Debra Batton", "shape": "dot", "title": "Debra Batton"}, {"color": "orange", "id": "Tanya Lester", "label": "Tanya Lester", "shape": "dot", "title": "Tanya Lester"}, {"color": "steelblue", "id": "Alona Scott", "label": "Alona Scott", "shape": "dot", "title": "Alona Scott"}, {"color": "steelblue", "id": "Cliff Kelsall", "label": "Cliff Kelsall", "shape": "dot", "title": "Cliff Kelsall"}, {"color": "orange", "id": "Dori Bicchierai", "label": "Dori Bicchierai", "shape": "dot", "title": "Dori Bicchierai"}, {"color": "orange", "id": "Sue Broadway", "label": "Sue Broadway", "shape": "dot", "title": "Sue Broadway"}, {"color": "orange", "id": "Anna Shelper", "label": "Anna Shelper", "shape": "dot", "title": "Anna Shelper"}, {"color": "orange", "id": "Eleanor Davies", "label": "Eleanor Davies", "shape": "dot", "title": "Eleanor Davies"}, {"color": "steelblue", "id": "Zhongde Zhang", "label": "Zhongde Zhang", "shape": "dot", "title": "Zhongde Zhang"}, {"color": "orange", "id": "Carmel Duffy", "label": "Carmel Duffy", "shape": "dot", "title": "Carmel Duffy"}, {"color": "orange", "id": "Christy Shelper", "label": "Christy Shelper", "shape": "dot", "title": "Christy Shelper"}, {"color": "steelblue", "id": "Rita van Opzeeland", "label": "Rita van Opzeeland", "shape": "dot", "title": "Rita van Opzeeland"}, {"color": "orange", "id": "Simone O\u0027Brien", "label": "Simone O\u0027Brien", "shape": "dot", "title": "Simone O\u0027Brien"}, {"color": "steelblue", "id": "Dan Mitchell", "label": "Dan Mitchell", "shape": "dot", "title": "Dan Mitchell"}, {"color": "orange", "id": "Hope Csutoros", "label": "Hope Csutoros", "shape": "dot", "title": "Hope Csutoros"}, {"color": "steelblue", "id": "Ben Cobham", "label": "Ben Cobham", "shape": "dot", "title": "Ben Cobham"}, {"color": "orange", "id": "Ruth Bauer", "label": "Ruth Bauer", "shape": "dot", "title": "Ruth Bauer"}, {"color": "steelblue", "id": "Cassandra Goode", "label": "Cassandra Goode", "shape": "dot", "title": "Cassandra Goode"}, {"color": "steelblue", "id": "David Carlin", "label": "David Carlin", "shape": "dot", "title": "David Carlin"}, {"color": "steelblue", "id": "Bruce Gladwin", "label": "Bruce Gladwin", "shape": "dot", "title": "Bruce Gladwin"}, {"color": "steelblue", "id": "Derek Ives", "label": "Derek Ives", "shape": "dot", "title": "Derek Ives"}, {"color": "orange", "id": "Nicky Smith", "label": "Nicky Smith", "shape": "dot", "title": "Nicky Smith"}, {"color": "steelblue", "id": "Tim Cole", "label": "Tim Cole", "shape": "dot", "title": "Tim Cole"}, {"color": "steelblue", "id": "Troy Picone", "label": "Troy Picone", "shape": "dot", "title": "Troy Picone"}, {"color": "orange", "id": "Genevieve Morris", "label": "Genevieve Morris", "shape": "dot", "title": "Genevieve Morris"}, {"color": "steelblue", "id": "Mathew Yates", "label": "Mathew Yates", "shape": "dot", "title": "Mathew Yates"}, {"color": "orange", "id": "Zanette Clements", "label": "Zanette Clements", "shape": "dot", "title": "Zanette Clements"}, {"color": "steelblue", "id": "Sergio Tell", "label": "Sergio Tell", "shape": "dot", "title": "Sergio Tell"}, {"color": "orange", "id": "Kymberlyn Olsen", "label": "Kymberlyn Olsen", "shape": "dot", "title": "Kymberlyn Olsen"}, {"color": "steelblue", "id": "Margarita Martinez", "label": "Margarita Martinez", "shape": "dot", "title": "Margarita Martinez"}, {"color": "steelblue", "id": "Bob Harris", "label": "Bob Harris", "shape": "dot", "title": "Bob Harris"}, {"color": "orange", "id": "Mel Fyfe", "label": "Mel Fyfe", "shape": "dot", "title": "Mel Fyfe"}, {"color": "steelblue", "id": "Brooke Lester", "label": "Brooke Lester", "shape": "dot", "title": "Brooke Lester"}, {"color": "steelblue", "id": "Alan Robertson", "label": "Alan Robertson", "shape": "dot", "title": "Alan Robertson"}, {"color": "steelblue", "id": "Phillip Glen", "label": "Phillip Glen", "shape": "dot", "title": "Phillip Glen"}, {"color": "orange", "id": "Margot Storm", "label": "Margot Storm", "shape": "dot", "title": "Margot Storm"}, {"color": "steelblue", "id": "Wayne Appleton", "label": "Wayne Appleton", "shape": "dot", "title": "Wayne Appleton"}, {"color": "orange", "id": "Jane Mullett", "label": "Jane Mullett", "shape": "dot", "title": "Jane Mullett"}, {"color": "steelblue", "id": "Pepe Lewis", "label": "Pepe Lewis", "shape": "dot", "title": "Pepe Lewis"}, {"color": "steelblue", "id": "Hung Le", "label": "Hung Le", "shape": "dot", "title": "Hung Le"}, {"color": "green", "id": "Performer Musician KeyCreative", "label": "Performer Musician KeyCreative", "shape": "dot", "title": "Performer Musician KeyCreative", "value": 1}, {"color": "green", "id": "Injured Performer", "label": "Injured Performer", "shape": "dot", "title": "Injured Performer", "value": 1}, {"color": "orange", "id": "Felicia O\u0027Brien", "label": "Felicia O\u0027Brien", "shape": "dot", "title": "Felicia O\u0027Brien"}, {"color": "orange", "id": "Gail Kelly", "label": "Gail Kelly", "shape": "dot", "title": "Gail Kelly"}, {"color": "steelblue", "id": "Alison Menzies", "label": "Alison Menzies", "shape": "dot", "title": "Alison Menzies"}, {"color": "steelblue", "id": "Mark Anderson", "label": "Mark Anderson", "shape": "dot", "title": "Mark Anderson"}, {"color": "green", "id": "KeyCreative Performer", "label": "KeyCreative Performer", "shape": "dot", "title": "KeyCreative Performer", "value": 1}, {"color": "orange", "id": "Irine Vela", "label": "Irine Vela", "shape": "dot", "title": "Irine Vela"}, {"color": "steelblue", "id": "Michael Rice", "label": "Michael Rice", "shape": "dot", "title": "Michael Rice"}, {"color": "steelblue", "id": "Geoffrey Dunstan", "label": "Geoffrey Dunstan", "shape": "dot", "title": "Geoffrey Dunstan"}, {"color": "steelblue", "id": "Robert Eastcott", "label": "Robert Eastcott", "shape": "dot", "title": "Robert Eastcott"}, {"color": "steelblue", "id": "Sue Simpson", "label": "Sue Simpson", "shape": "dot", "title": "Sue Simpson"}, {"color": "steelblue", "id": "Ross Mathers", "label": "Ross Mathers", "shape": "dot", "title": "Ross Mathers"}, {"color": "steelblue", "id": "Scott Grayland", "label": "Scott Grayland", "shape": "dot", "title": "Scott Grayland"}, {"color": "orange", "id": "Jenny Thomas", "label": "Jenny Thomas", "shape": "dot", "title": "Jenny Thomas"}, {"color": "green", "id": "Musician", "label": "Musician", "shape": "dot", "title": "Musician", "value": 1}, {"color": "steelblue", "id": "Michael Davis", "label": "Michael Davis", "shape": "dot", "title": "Michael Davis"}, {"color": "green", "id": "Crew Performer", "label": "Crew Performer", "shape": "dot", "title": "Crew Performer", "value": 1}, {"color": "steelblue", "id": "Dan McEoin", "label": "Dan McEoin", "shape": "dot", "title": "Dan McEoin"}, {"color": "orange", "id": "Shirley Billing", "label": "Shirley Billing", "shape": "dot", "title": "Shirley Billing"}, {"color": "steelblue", "id": "Danny O\u0027Riordan", "label": "Danny O\u0027Riordan", "shape": "dot", "title": "Danny O\u0027Riordan"}, {"color": "steelblue", "id": "Philip Lethlean", "label": "Philip Lethlean", "shape": "dot", "title": "Philip Lethlean"}, {"color": "steelblue", "id": "Bruce McIntyre", "label": "Bruce McIntyre", "shape": "dot", "title": "Bruce McIntyre"}, {"color": "steelblue", "id": "Sharon Nathani", "label": "Sharon Nathani", "shape": "dot", "title": "Sharon Nathani"}, {"color": "green", "id": "Subsidiary Administration", "label": "Subsidiary Administration", "shape": "dot", "title": "Subsidiary Administration", "value": 1}, {"color": "orange", "id": "Deborah Pope", "label": "Deborah Pope", "shape": "dot", "title": "Deborah Pope"}, {"color": "steelblue", "id": "Rodrigo Matteus", "label": "Rodrigo Matteus", "shape": "dot", "title": "Rodrigo Matteus"}, {"color": "steelblue", "id": "Andrew Bright", "label": "Andrew Bright", "shape": "dot", "title": "Andrew Bright"}, {"color": "orange", "id": "Theresa Blake", "label": "Theresa Blake", "shape": "dot", "title": "Theresa Blake"}, {"color": "steelblue", "id": "Matt Wilson", "label": "Matt Wilson", "shape": "dot", "title": "Matt Wilson"}, {"color": "steelblue", "id": "Michael (Nitrox) Petrani", "label": "Michael (Nitrox) Petrani", "shape": "dot", "title": "Michael (Nitrox) Petrani"}, {"color": "steelblue", "id": "Dee Martin", "label": "Dee Martin", "shape": "dot", "title": "Dee Martin"}, {"color": "orange", "id": "Donna Stevens", "label": "Donna Stevens", "shape": "dot", "title": "Donna Stevens"}, {"color": "steelblue", "id": "Clytie Smith", "label": "Clytie Smith", "shape": "dot", "title": "Clytie Smith"}, {"color": "orange", "id": "Clare Gallagher", "label": "Clare Gallagher", "shape": "dot", "title": "Clare Gallagher"}, {"color": "steelblue", "id": "Simon Mitchell", "label": "Simon Mitchell", "shape": "dot", "title": "Simon Mitchell"}, {"color": "steelblue", "id": "Alexander Stevenson", "label": "Alexander Stevenson", "shape": "dot", "title": "Alexander Stevenson"}, {"color": "steelblue", "id": "Victoria Jones", "label": "Victoria Jones", "shape": "dot", "title": "Victoria Jones"}, {"color": "green", "id": "Subsidiary Performer", "label": "Subsidiary Performer", "shape": "dot", "title": "Subsidiary Performer", "value": 1}, {"color": "green", "id": "KeyCreative Administration", "label": "KeyCreative Administration", "shape": "dot", "title": "KeyCreative Administration", "value": 1}, {"color": "steelblue", "id": "Tim Aris", "label": "Tim Aris", "shape": "dot", "title": "Tim Aris"}, {"color": "steelblue", "id": "Moses ", "label": "Moses ", "shape": "dot", "title": "Moses "}, {"color": "orange", "id": "Tracey Coldwell", "label": "Tracey Coldwell", "shape": "dot", "title": "Tracey Coldwell"}, {"color": "green", "id": "Performer Administration", "label": "Performer Administration", "shape": "dot", "title": "Performer Administration", "value": 1}, {"color": "steelblue", "id": "Sue de Gennaro", "label": "Sue de Gennaro", "shape": "dot", "title": "Sue de Gennaro"}, {"color": "green", "id": "Administration KeyCreative", "label": "Administration KeyCreative", "shape": "dot", "title": "Administration KeyCreative", "value": 1}, {"color": "steelblue", "id": "Shio Otani", "label": "Shio Otani", "shape": "dot", "title": "Shio Otani"}, {"color": "steelblue", "id": "Rudy Mineur", "label": "Rudy Mineur", "shape": "dot", "title": "Rudy Mineur"}, {"color": "orange", "id": "Robyn McGregor", "label": "Robyn McGregor", "shape": "dot", "title": "Robyn McGregor"}, {"color": "steelblue", "id": "Reinhardt Bischel", "label": "Reinhardt Bischel", "shape": "dot", "title": "Reinhardt Bischel"}, {"color": "green", "id": "Subsidiary Musician", "label": "Subsidiary Musician", "shape": "dot", "title": "Subsidiary Musician", "value": 1}, {"color": "steelblue", "id": "Myles Leroy", "label": "Myles Leroy", "shape": "dot", "title": "Myles Leroy"}, {"color": "orange", "id": "Zoe Hartwig", "label": "Zoe Hartwig", "shape": "dot", "title": "Zoe Hartwig"}, {"color": "steelblue", "id": "Ben Green", "label": "Ben Green", "shape": "dot", "title": "Ben Green"}, {"color": "steelblue", "id": "Ben Garfield", "label": "Ben Garfield", "shape": "dot", "title": "Ben Garfield"}, {"color": "steelblue", "id": "Christine Boyle", "label": "Christine Boyle", "shape": "dot", "title": "Christine Boyle"}, {"color": "steelblue", "id": "Leah de Niese", "label": "Leah de Niese", "shape": "dot", "title": "Leah de Niese"}, {"color": "steelblue", "id": "David Hope", "label": "David Hope", "shape": "dot", "title": "David Hope"}, {"color": "steelblue", "id": "Bryn Davies", "label": "Bryn Davies", "shape": "dot", "title": "Bryn Davies"}, {"color": "steelblue", "id": "Kelly Smyth", "label": "Kelly Smyth", "shape": "dot", "title": "Kelly Smyth"}, {"color": "steelblue", "id": "Lin Tobias", "label": "Lin Tobias", "shape": "dot", "title": "Lin Tobias"}, {"color": "steelblue", "id": "Craig Boyes", "label": "Craig Boyes", "shape": "dot", "title": "Craig Boyes"}, {"color": "steelblue", "id": "Lindy MacCauley", "label": "Lindy MacCauley", "shape": "dot", "title": "Lindy MacCauley"}, {"color": "steelblue", "id": "Che Sutherland", "label": "Che Sutherland", "shape": "dot", "title": "Che Sutherland"}, {"color": "green", "id": "Unknown", "label": "Unknown", "shape": "dot", "title": "Unknown", "value": 1}, {"color": "steelblue", "id": "Lu Sexton", "label": "Lu Sexton", "shape": "dot", "title": "Lu Sexton"}, {"color": "steelblue", "id": "Cathy Mickleborough", "label": "Cathy Mickleborough", "shape": "dot", "title": "Cathy Mickleborough"}, {"color": "orange", "id": "Susie Dee", "label": "Susie Dee", "shape": "dot", "title": "Susie Dee"}, {"color": "orange", "id": "Svetlana Bunic", "label": "Svetlana Bunic", "shape": "dot", "title": "Svetlana Bunic"}, {"color": "steelblue", "id": "Byron Perry", "label": "Byron Perry", "shape": "dot", "title": "Byron Perry"}, {"color": "green", "id": "Administration Crew", "label": "Administration Crew", "shape": "dot", "title": "Administration Crew", "value": 1}, {"color": "steelblue", "id": "D Goldstraw", "label": "D Goldstraw", "shape": "dot", "title": "D Goldstraw"}, {"color": "steelblue", "id": "Sonia Ganza", "label": "Sonia Ganza", "shape": "dot", "title": "Sonia Ganza"}, {"color": "green", "id": "Subsidiary Unknown", "label": "Subsidiary Unknown", "shape": "dot", "title": "Subsidiary Unknown", "value": 1}, {"color": "steelblue", "id": "Siri Metsar", "label": "Siri Metsar", "shape": "dot", "title": "Siri Metsar"}, {"color": "steelblue", "id": "Edward Meysztowicz", "label": "Edward Meysztowicz", "shape": "dot", "title": "Edward Meysztowicz"}, {"color": "steelblue", "id": "Ryan Taplin", "label": "Ryan Taplin", "shape": "dot", "title": "Ryan Taplin"}, {"color": "steelblue", "id": "Samuel Joseph", "label": "Samuel Joseph", "shape": "dot", "title": "Samuel Joseph"}, {"color": "steelblue", "id": "Dudley Cole", "label": "Dudley Cole", "shape": "dot", "title": "Dudley Cole"}, {"color": "green", "id": "Subsidiary KeyCreative", "label": "Subsidiary KeyCreative", "shape": "dot", "title": "Subsidiary KeyCreative", "value": 1}, {"color": "steelblue", "id": "David Pidd", "label": "David Pidd", "shape": "dot", "title": "David Pidd"}, {"color": "steelblue", "id": "David Jolley", "label": "David Jolley", "shape": "dot", "title": "David Jolley"}, {"color": "steelblue", "id": "David Franske", "label": "David Franske", "shape": "dot", "title": "David Franske"}, {"color": "steelblue", "id": "Darielle Crawford", "label": "Darielle Crawford", "shape": "dot", "title": "Darielle Crawford"}, {"color": "green", "id": "Administration Performer", "label": "Administration Performer", "shape": "dot", "title": "Administration Performer", "value": 1}, {"color": "steelblue", "id": "Daniel Murray", "label": "Daniel Murray", "shape": "dot", "title": "Daniel Murray"}, {"color": "steelblue", "id": "Bruce Naylor", "label": "Bruce Naylor", "shape": "dot", "title": "Bruce Naylor"}, {"color": "steelblue", "id": "Vera Rudinica", "label": "Vera Rudinica", "shape": "dot", "title": "Vera Rudinica"}, {"color": "steelblue", "id": "Andrew Richardson", "label": "Andrew Richardson", "shape": "dot", "title": "Andrew Richardson"}, {"color": "steelblue", "id": "Trish Dunstone", "label": "Trish Dunstone", "shape": "dot", "title": "Trish Dunstone"}, {"color": "green", "id": "Administration Subsidiary", "label": "Administration Subsidiary", "shape": "dot", "title": "Administration Subsidiary", "value": 1}, {"color": "steelblue", "id": "Andrew Kinch", "label": "Andrew Kinch", "shape": "dot", "title": "Andrew Kinch"}, {"color": "steelblue", "id": "Trudy Hayter", "label": "Trudy Hayter", "shape": "dot", "title": "Trudy Hayter"}, {"color": "steelblue", "id": "Vanessa Law", "label": "Vanessa Law", "shape": "dot", "title": "Vanessa Law"}, {"color": "steelblue", "id": "Victor Navarro", "label": "Victor Navarro", "shape": "dot", "title": "Victor Navarro"}, {"color": "steelblue", "id": "Alistair Davies", "label": "Alistair Davies", "shape": "dot", "title": "Alistair Davies"}, {"color": "steelblue", "id": "Victoria La Rosa", "label": "Victoria La Rosa", "shape": "dot", "title": "Victoria La Rosa"}, {"color": "steelblue", "id": "Alicia Gavin", "label": "Alicia Gavin", "shape": "dot", "title": "Alicia Gavin"}, {"color": "steelblue", "id": "Ali Egeh", "label": "Ali Egeh", "shape": "dot", "title": "Ali Egeh"}, {"color": "steelblue", "id": "Alana Harris", "label": "Alana Harris", "shape": "dot", "title": "Alana Harris"}, {"color": "steelblue", "id": "Aeyesha Westman", "label": "Aeyesha Westman", "shape": "dot", "title": "Aeyesha Westman"}, {"color": "steelblue", "id": "Andrew Taylor", "label": "Andrew Taylor", "shape": "dot", "title": "Andrew Taylor"}, {"color": "steelblue", "id": "Tony Hand", "label": "Tony Hand", "shape": "dot", "title": "Tony Hand"}, {"color": "steelblue", "id": "Andrew Wilkie", "label": "Andrew Wilkie", "shape": "dot", "title": "Andrew Wilkie"}, {"color": "steelblue", "id": "Brett Daffy", "label": "Brett Daffy", "shape": "dot", "title": "Brett Daffy"}, {"color": "steelblue", "id": "Russell Smith", "label": "Russell Smith", "shape": "dot", "title": "Russell Smith"}, {"color": "steelblue", "id": "Tiny Good", "label": "Tiny Good", "shape": "dot", "title": "Tiny Good"}, {"color": "steelblue", "id": "Barry Kay", "label": "Barry Kay", "shape": "dot", "title": "Barry Kay"}, {"color": "steelblue", "id": "Anthony Tzannes", "label": "Anthony Tzannes", "shape": "dot", "title": "Anthony Tzannes"}, {"color": "steelblue", "id": "Angharad Wynne-Jones", "label": "Angharad Wynne-Jones", "shape": "dot", "title": "Angharad Wynne-Jones"}, {"color": "steelblue", "id": "Russell (William) Smith", "label": "Russell (William) Smith", "shape": "dot", "title": "Russell (William) Smith"}, {"color": "steelblue", "id": "Ken Tait", "label": "Ken Tait", "shape": "dot", "title": "Ken Tait"}, {"color": "steelblue", "id": "Kathy Shelper", "label": "Kathy Shelper", "shape": "dot", "title": "Kathy Shelper"}, {"color": "steelblue", "id": "Michael Collins", "label": "Michael Collins", "shape": "dot", "title": "Michael Collins"}, {"color": "steelblue", "id": "Katherine Anson", "label": "Katherine Anson", "shape": "dot", "title": "Katherine Anson"}, {"color": "steelblue", "id": "Michael Harris", "label": "Michael Harris", "shape": "dot", "title": "Michael Harris"}, {"color": "orange", "id": "Kate Kantor", "label": "Kate Kantor", "shape": "dot", "title": "Kate Kantor"}, {"color": "orange", "id": "Kate Fryer", "label": "Kate Fryer", "shape": "dot", "title": "Kate Fryer"}, {"color": "steelblue", "id": "Kat Gill", "label": "Kat Gill", "shape": "dot", "title": "Kat Gill"}, {"color": "steelblue", "id": "Miranda Jaques", "label": "Miranda Jaques", "shape": "dot", "title": "Miranda Jaques"}, {"color": "steelblue", "id": "Monica Daniellson", "label": "Monica Daniellson", "shape": "dot", "title": "Monica Daniellson"}, {"color": "green", "id": "Subsidiary Crew", "label": "Subsidiary Crew", "shape": "dot", "title": "Subsidiary Crew", "value": 1}, {"color": "steelblue", "id": "Martin Hurley", "label": "Martin Hurley", "shape": "dot", "title": "Martin Hurley"}, {"color": "steelblue", "id": "Malcolm McKay", "label": "Malcolm McKay", "shape": "dot", "title": "Malcolm McKay"}, {"color": "steelblue", "id": "Malcolm Merrett", "label": "Malcolm Merrett", "shape": "dot", "title": "Malcolm Merrett"}, {"color": "orange", "id": "Lisa Meagher", "label": "Lisa Meagher", "shape": "dot", "title": "Lisa Meagher"}, {"color": "orange", "id": "Margie Medlin", "label": "Margie Medlin", "shape": "dot", "title": "Margie Medlin"}, {"color": "steelblue", "id": "Adam Oulton", "label": "Adam Oulton", "shape": "dot", "title": "Adam Oulton"}, {"color": "steelblue", "id": "Lin Onus", "label": "Lin Onus", "shape": "dot", "title": "Lin Onus"}, {"color": "steelblue", "id": "Maureen Haris", "label": "Maureen Haris", "shape": "dot", "title": "Maureen Haris"}, {"color": "steelblue", "id": "Leslee Mason", "label": "Leslee Mason", "shape": "dot", "title": "Leslee Mason"}, {"color": "green", "id": "KeyCreative Subsidiary", "label": "KeyCreative Subsidiary", "shape": "dot", "title": "KeyCreative Subsidiary", "value": 1}, {"color": "steelblue", "id": "Matthew Binnie", "label": "Matthew Binnie", "shape": "dot", "title": "Matthew Binnie"}, {"color": "orange", "id": "Maude Davey", "label": "Maude Davey", "shape": "dot", "title": "Maude Davey"}, {"color": "steelblue", "id": "Joseph Kiely", "label": "Joseph Kiely", "shape": "dot", "title": "Joseph Kiely"}, {"color": "steelblue", "id": "John O\u0027Brien", "label": "John O\u0027Brien", "shape": "dot", "title": "John O\u0027Brien"}, {"color": "orange", "id": "Rinske Ginsberg", "label": "Rinske Ginsberg", "shape": "dot", "title": "Rinske Ginsberg"}, {"color": "steelblue", "id": "Geoff Kelly", "label": "Geoff Kelly", "shape": "dot", "title": "Geoff Kelly"}, {"color": "steelblue", "id": "Robert Young", "label": "Robert Young", "shape": "dot", "title": "Robert Young"}, {"color": "steelblue", "id": "Garry (Gack) Manson", "label": "Garry (Gack) Manson", "shape": "dot", "title": "Garry (Gack) Manson"}, {"color": "orange", "id": "Rebecca Etchell", "label": "Rebecca Etchell", "shape": "dot", "title": "Rebecca Etchell"}, {"color": "steelblue", "id": "Esther Carlin", "label": "Esther Carlin", "shape": "dot", "title": "Esther Carlin"}, {"color": "steelblue", "id": "Rod Primrose", "label": "Rod Primrose", "shape": "dot", "title": "Rod Primrose"}, {"color": "steelblue", "id": "Rodney Lamb", "label": "Rodney Lamb", "shape": "dot", "title": "Rodney Lamb"}, {"color": "steelblue", "id": "Elizabeth Keen", "label": "Elizabeth Keen", "shape": "dot", "title": "Elizabeth Keen"}, {"color": "steelblue", "id": "Liz Sadler", "label": "Liz Sadler", "shape": "dot", "title": "Liz Sadler"}, {"color": "green", "id": "Crew KeyCreative", "label": "Crew KeyCreative", "shape": "dot", "title": "Crew KeyCreative", "value": 1}, {"color": "steelblue", "id": "Phillip Watson", "label": "Phillip Watson", "shape": "dot", "title": "Phillip Watson"}, {"color": "orange", "id": "Jo Lancaster", "label": "Jo Lancaster", "shape": "dot", "title": "Jo Lancaster"}, {"color": "steelblue", "id": "Ian MacDonald", "label": "Ian MacDonald", "shape": "dot", "title": "Ian MacDonald"}, {"color": "steelblue", "id": "Nicholas Frewen", "label": "Nicholas Frewen", "shape": "dot", "title": "Nicholas Frewen"}, {"color": "steelblue", "id": "Jennifer Pryce", "label": "Jennifer Pryce", "shape": "dot", "title": "Jennifer Pryce"}, {"color": "steelblue", "id": "Patrick Verdon", "label": "Patrick Verdon", "shape": "dot", "title": "Patrick Verdon"}, {"color": "steelblue", "id": "Patrick Worlsey", "label": "Patrick Worlsey", "shape": "dot", "title": "Patrick Worlsey"}, {"color": "steelblue", "id": "Ivan Lipkan", "label": "Ivan Lipkan", "shape": "dot", "title": "Ivan Lipkan"}, {"color": "steelblue", "id": "Peter Tetu", "label": "Peter Tetu", "shape": "dot", "title": "Peter Tetu"}, {"color": "steelblue", "id": "Philip Cousins", "label": "Philip Cousins", "shape": "dot", "title": "Philip Cousins"}, {"color": "steelblue", "id": "Hong Bui Thanh", "label": "Hong Bui Thanh", "shape": "dot", "title": "Hong Bui Thanh"}, {"color": "steelblue", "id": "Hamish McCormick", "label": "Hamish McCormick", "shape": "dot", "title": "Hamish McCormick"}, {"color": "steelblue", "id": "A Atterson", "label": "A Atterson", "shape": "dot", "title": "A Atterson"}]);
+                  edges = new vis.DataSet([{"from": "Robina Burton", "to": "Administration"}, {"from": "Elaine Stevens", "to": "Injured"}, {"from": "Michael Ling", "to": "Performer"}, {"from": "Per Westman", "to": "Performer"}, {"from": "Linda Mickleborough", "to": "Administration"}, {"from": "Madge Fletcher", "to": "Crew"}, {"from": "Gina Gascoigne", "to": "KeyCreative"}, {"from": "Sebastian Dickins", "to": "Performer"}, {"from": "Terry Lycos", "to": "Administration"}, {"from": "Mathew Hughes", "to": "Administration"}, {"from": "Wiggy Brennan", "to": "KeyCreative"}, {"from": "Dorota Scally", "to": "Subsidiary"}, {"from": "Carl Polke", "to": "Performer KeyCreative"}, {"from": "Stephen Burton", "to": "KeyCreative"}, {"from": "Laurel Frank", "to": "KeyCreative"}, {"from": "Nicci Wilks", "to": "Performer"}, {"from": "Tim Coldwell", "to": "Performer"}, {"from": "Tora La Rosa", "to": "Crew"}, {"from": "Kevin Miah Fregon", "to": "Crew"}, {"from": "Chris Lewis", "to": "Performer Musician"}, {"from": "Michelle Stevens", "to": "Crew"}, {"from": "Melinda Frith", "to": "Subsidiary"}, {"from": "Toni Smith", "to": "Performer"}, {"from": "Karla Wells-Duerr", "to": "Administration"}, {"from": "Margaret Kirby", "to": "Subsidiary"}, {"from": "Natalie Dyball", "to": "Subsidiary"}, {"from": "Darren Steffen", "to": "KeyCreative"}, {"from": "Andrew Hepburn", "to": "KeyCreative"}, {"from": "Anni Davey", "to": "Administration"}, {"from": "Daryll John", "to": "Crew"}, {"from": "Kareena Oates", "to": "Performer"}, {"from": "Sara Ritchie", "to": "Performer"}, {"from": "Leeroy Hart", "to": "Performer"}, {"from": "Mary Cominos", "to": "Subsidiary"}, {"from": "Lesley Adeney", "to": "Administration"}, {"from": "Jaime Skye", "to": "Crew"}, {"from": "Luke Hayne-Keon", "to": "Crew"}, {"from": "Mike Finch", "to": "KeyCreative"}, {"from": "Kate Ellis", "to": "Performer"}, {"from": "John O\u0027Hagan", "to": "Performer Musician"}, {"from": "Anna Tregloan", "to": "KeyCreative"}, {"from": "Gretel Bowman", "to": "Subsidiary"}, {"from": "Daryll John", "to": "Performer"}, {"from": "Kathryn Niesche", "to": "Subsidiary"}, {"from": "Robin Laurie", "to": "KeyCreative"}, {"from": "Julie McInnes", "to": "Performer Musician"}, {"from": "Ben Anderson", "to": "KeyCreative"}, {"from": "Kate McKibbin", "to": "Performer Musician"}, {"from": "Chris Lewis", "to": "Performer KeyCreative Musician"}, {"from": "Tom Lycos", "to": "Subsidiary"}, {"from": "Patrick Brennan", "to": "Performer"}, {"from": "Debra Batton", "to": "Performer"}, {"from": "Tanya Lester", "to": "Performer"}, {"from": "Alona Scott", "to": "Subsidiary"}, {"from": "Cliff Kelsall", "to": "Crew"}, {"from": "Dori Bicchierai", "to": "Crew"}, {"from": "Sue Broadway", "to": "KeyCreative"}, {"from": "Anna Shelper", "to": "Subsidiary"}, {"from": "Tim Coldwell", "to": "Performer KeyCreative"}, {"from": "Eleanor Davies", "to": "Performer"}, {"from": "Zhongde Zhang", "to": "Subsidiary"}, {"from": "Carmel Duffy", "to": "KeyCreative"}, {"from": "Christy Shelper", "to": "Subsidiary"}, {"from": "Rita van Opzeeland", "to": "Subsidiary"}, {"from": "Simone O\u0027Brien", "to": "Performer"}, {"from": "Dan Mitchell", "to": "KeyCreative"}, {"from": "Hope Csutoros", "to": "Performer Musician"}, {"from": "Julie McInnes", "to": "KeyCreative"}, {"from": "Carl Polke", "to": "KeyCreative"}, {"from": "Ben Cobham", "to": "KeyCreative"}, {"from": "Tim Coldwell", "to": "Administration"}, {"from": "Ruth Bauer", "to": "Performer"}, {"from": "Michelle Stevens", "to": "Subsidiary"}, {"from": "Cassandra Goode", "to": "Subsidiary"}, {"from": "David Carlin", "to": "KeyCreative"}, {"from": "Bruce Gladwin", "to": "KeyCreative"}, {"from": "Derek Ives", "to": "Crew"}, {"from": "Nicky Smith", "to": "KeyCreative"}, {"from": "Tim Cole", "to": "KeyCreative"}, {"from": "Troy Picone", "to": "Subsidiary"}, {"from": "Genevieve Morris", "to": "Performer"}, {"from": "Mathew Yates", "to": "Performer"}, {"from": "Nicci Wilks", "to": "Crew"}, {"from": "Zanette Clements", "to": "Performer"}, {"from": "Sergio Tell", "to": "KeyCreative"}, {"from": "Sebastian Dickins", "to": "Subsidiary"}, {"from": "Kymberlyn Olsen", "to": "Subsidiary"}, {"from": "Margarita Martinez", "to": "Crew"}, {"from": "Bob Harris", "to": "Subsidiary"}, {"from": "Toni Smith", "to": "Administration"}, {"from": "Mel Fyfe", "to": "Performer"}, {"from": "Brooke Lester", "to": "Performer"}, {"from": "Alan Robertson", "to": "KeyCreative"}, {"from": "Phillip Glen", "to": "KeyCreative"}, {"from": "Margot Storm", "to": "Crew"}, {"from": "Wayne Appleton", "to": "Crew"}, {"from": "Jane Mullett", "to": "Subsidiary"}, {"from": "Pepe Lewis", "to": "Performer"}, {"from": "Hung Le", "to": "KeyCreative"}, {"from": "Chris Lewis", "to": "Performer Musician KeyCreative"}, {"from": "Michael Ling", "to": "Injured"}, {"from": "Michael Ling", "to": "Injured Performer"}, {"from": "Felicia O\u0027Brien", "to": "Subsidiary"}, {"from": "Gail Kelly", "to": "Administration"}, {"from": "Gail Kelly", "to": "KeyCreative"}, {"from": "Alison Menzies", "to": "Subsidiary"}, {"from": "Mark Anderson", "to": "Crew"}, {"from": "Hung Le", "to": "Performer"}, {"from": "Toni Smith", "to": "Injured"}, {"from": "Julie McInnes", "to": "KeyCreative Performer"}, {"from": "Irine Vela", "to": "KeyCreative"}, {"from": "Michael Rice", "to": "Crew"}, {"from": "Geoffrey Dunstan", "to": "Subsidiary"}, {"from": "Geoffrey Dunstan", "to": "Performer"}, {"from": "Robert Eastcott", "to": "KeyCreative"}, {"from": "Sue Simpson", "to": "Performer Musician"}, {"from": "Ross Mathers", "to": "Subsidiary"}, {"from": "Scott Grayland", "to": "Performer"}, {"from": "Kate McKibbin", "to": "KeyCreative"}, {"from": "Jenny Thomas", "to": "Musician"}, {"from": "Michael Davis", "to": "Performer Musician"}, {"from": "Chris Lewis", "to": "Performer"}, {"from": "Daryll John", "to": "Crew Performer"}, {"from": "Melinda Frith", "to": "Musician"}, {"from": "Dan McEoin", "to": "Subsidiary"}, {"from": "Shirley Billing", "to": "Administration"}, {"from": "Danny O\u0027Riordan", "to": "Subsidiary"}, {"from": "Anni Davey", "to": "Subsidiary"}, {"from": "Philip Lethlean", "to": "KeyCreative"}, {"from": "Bruce McIntyre", "to": "Crew"}, {"from": "Sharon Nathani", "to": "Administration"}, {"from": "Tom Lycos", "to": "Subsidiary Administration"}, {"from": "Deborah Pope", "to": "Performer"}, {"from": "Rodrigo Matteus", "to": "Performer"}, {"from": "Per Westman", "to": "Injured"}, {"from": "Brooke Lester", "to": "Administration"}, {"from": "Chris Lewis", "to": "Performer KeyCreative"}, {"from": "Anna Shelper", "to": "Performer"}, {"from": "Andrew Bright", "to": "Performer"}, {"from": "Theresa Blake", "to": "Subsidiary"}, {"from": "Mathew Hughes", "to": "Performer"}, {"from": "Matt Wilson", "to": "Performer"}, {"from": "Per Westman", "to": "Subsidiary"}, {"from": "Stephen Burton", "to": "Administration"}, {"from": "Michael (Nitrox) Petrani", "to": "Crew"}, {"from": "Jenny Thomas", "to": "Performer Musician"}, {"from": "Sebastian Dickins", "to": "Injured Performer"}, {"from": "Sebastian Dickins", "to": "Injured"}, {"from": "Dee Martin", "to": "Administration"}, {"from": "Donna Stevens", "to": "Subsidiary"}, {"from": "Clytie Smith", "to": "Crew"}, {"from": "Michael Davis", "to": "Administration"}, {"from": "Clare Gallagher", "to": "KeyCreative"}, {"from": "Simon Mitchell", "to": "Subsidiary"}, {"from": "Nicci Wilks", "to": "Injured"}, {"from": "Luke Hayne-Keon", "to": "Injured"}, {"from": "Kate Ellis", "to": "Injured"}, {"from": "Alexander Stevenson", "to": "Subsidiary"}, {"from": "Victoria Jones", "to": "Administration"}, {"from": "Anna Shelper", "to": "Subsidiary Performer"}, {"from": "Anni Davey", "to": "KeyCreative Administration"}, {"from": "Simone O\u0027Brien", "to": "Injured Performer"}, {"from": "Tim Coldwell", "to": "Injured"}, {"from": "Tim Aris", "to": "Administration"}, {"from": "Moses ", "to": "Subsidiary"}, {"from": "Mathew Hughes", "to": "Crew"}, {"from": "Wiggy Brennan", "to": "Administration"}, {"from": "Tracey Coldwell", "to": "Performer"}, {"from": "Mary Cominos", "to": "Administration"}, {"from": "Tim Coldwell", "to": "Performer Administration"}, {"from": "Sue de Gennaro", "to": "Subsidiary"}, {"from": "Sue Simpson", "to": "Musician"}, {"from": "Sue Broadway", "to": "Administration KeyCreative"}, {"from": "Shio Otani", "to": "KeyCreative"}, {"from": "Rudy Mineur", "to": "Subsidiary"}, {"from": "Robyn McGregor", "to": "Administration"}, {"from": "Reinhardt Bischel", "to": "Administration"}, {"from": "Phillip Glen", "to": "Administration"}, {"from": "Melinda Frith", "to": "Subsidiary Musician"}, {"from": "Nicci Wilks", "to": "Administration"}, {"from": "Myles Leroy", "to": "Crew"}, {"from": "Scott Grayland", "to": "Administration"}, {"from": "Zoe Hartwig", "to": "Subsidiary"}, {"from": "Ben Green", "to": "KeyCreative"}, {"from": "Ben Garfield", "to": "Crew"}, {"from": "Chris Lewis", "to": "Musician"}, {"from": "Christine Boyle", "to": "KeyCreative"}, {"from": "Leah de Niese", "to": "Subsidiary"}, {"from": "Leeroy Hart", "to": "Injured"}, {"from": "David Hope", "to": "Crew"}, {"from": "Ben Cobham", "to": "Crew"}, {"from": "Carmel Duffy", "to": "Administration"}, {"from": "Bryn Davies", "to": "Crew"}, {"from": "Kelly Smyth", "to": "Subsidiary"}, {"from": "Carl Polke", "to": "Performer Musician"}, {"from": "Lin Tobias", "to": "Administration"}, {"from": "Julie McInnes", "to": "Performer"}, {"from": "Craig Boyes", "to": "Crew"}, {"from": "Lindy MacCauley", "to": "Crew"}, {"from": "John O\u0027Hagan", "to": "Musician"}, {"from": "John O\u0027Hagan", "to": "Injured"}, {"from": "Eleanor Davies", "to": "Injured"}, {"from": "Alan Robertson", "to": "Crew"}, {"from": "Kathryn Niesche", "to": "Administration"}, {"from": "Che Sutherland", "to": "Unknown"}, {"from": "Lu Sexton", "to": "Administration"}, {"from": "Cathy Mickleborough", "to": "Unknown"}, {"from": "Sue Simpson", "to": "Performer"}, {"from": "Carmel Duffy", "to": "Crew"}, {"from": "Susie Dee", "to": "Subsidiary"}, {"from": "Svetlana Bunic", "to": "Musician"}, {"from": "Byron Perry", "to": "Subsidiary"}, {"from": "Terry Lycos", "to": "Administration Crew"}, {"from": "Clare Gallagher", "to": "Crew"}, {"from": "D Goldstraw", "to": "Crew"}, {"from": "Sonia Ganza", "to": "Subsidiary Unknown"}, {"from": "Siri Metsar", "to": "Crew"}, {"from": "Edward Meysztowicz", "to": "Subsidiary Unknown"}, {"from": "Ryan Taplin", "to": "Crew"}, {"from": "Samuel Joseph", "to": "Unknown"}, {"from": "Dudley Cole", "to": "Crew"}, {"from": "Donna Stevens", "to": "Subsidiary KeyCreative"}, {"from": "Scott Grayland", "to": "Crew"}, {"from": "Derek Ives", "to": "Crew Performer"}, {"from": "David Pidd", "to": "Administration"}, {"from": "David Jolley", "to": "Crew"}, {"from": "David Hope", "to": "Unknown"}, {"from": "David Franske", "to": "Crew"}, {"from": "Daryll John", "to": "Injured"}, {"from": "Darielle Crawford", "to": "Performer"}, {"from": "Danny O\u0027Riordan", "to": "Performer"}, {"from": "Shirley Billing", "to": "Administration Performer"}, {"from": "Simon Mitchell", "to": "Crew"}, {"from": "Daniel Murray", "to": "Unknown"}, {"from": "Terry Lycos", "to": "Subsidiary"}, {"from": "Tim Coldwell", "to": "Injured Performer"}, {"from": "Bruce Naylor", "to": "Performer"}, {"from": "Vera Rudinica", "to": "Administration"}, {"from": "Tora La Rosa", "to": "Crew Performer"}, {"from": "Andrew Richardson", "to": "Crew"}, {"from": "Trish Dunstone", "to": "Administration"}, {"from": "Troy Picone", "to": "Administration Subsidiary"}, {"from": "Andrew Kinch", "to": "Crew"}, {"from": "Trudy Hayter", "to": "Subsidiary Unknown"}, {"from": "Vanessa Law", "to": "Administration"}, {"from": "Victor Navarro", "to": "Unknown"}, {"from": "Brooke Lester", "to": "Subsidiary"}, {"from": "Alistair Davies", "to": "Crew"}, {"from": "Victoria La Rosa", "to": "Unknown"}, {"from": "Alicia Gavin", "to": "Subsidiary"}, {"from": "Ali Egeh", "to": "Subsidiary Unknown"}, {"from": "Wiggy Brennan", "to": "Crew"}, {"from": "Alana Harris", "to": "Crew"}, {"from": "Aeyesha Westman", "to": "Unknown"}, {"from": "Andrew Taylor", "to": "Unknown"}, {"from": "Tony Hand", "to": "Unknown"}, {"from": "Andrew Wilkie", "to": "Administration"}, {"from": "Toni Smith", "to": "Injured Performer"}, {"from": "Brett Daffy", "to": "Subsidiary"}, {"from": "Russell Smith", "to": "Crew"}, {"from": "Tim Coldwell", "to": "KeyCreative"}, {"from": "Tim Coldwell", "to": "KeyCreative Performer"}, {"from": "Ben Green", "to": "Subsidiary"}, {"from": "Ben Garfield", "to": "Performer"}, {"from": "Tim Coldwell", "to": "Performer Musician"}, {"from": "Tim Cole", "to": "Crew"}, {"from": "Tiny Good", "to": "Crew"}, {"from": "Tom Lycos", "to": "Administration"}, {"from": "Tom Lycos", "to": "Crew"}, {"from": "Tom Lycos", "to": "Performer"}, {"from": "Barry Kay", "to": "KeyCreative"}, {"from": "Anthony Tzannes", "to": "Crew"}, {"from": "Angharad Wynne-Jones", "to": "Unknown"}, {"from": "Ruth Bauer", "to": "Crew"}, {"from": "Eleanor Davies", "to": "Subsidiary"}, {"from": "Russell Smith", "to": "Administration"}, {"from": "Russell (William) Smith", "to": "Administration"}, {"from": "Ken Tait", "to": "Crew"}, {"from": "Kathy Shelper", "to": "Administration"}, {"from": "Michael Collins", "to": "Subsidiary"}, {"from": "Katherine Anson", "to": "Crew"}, {"from": "Kate McKibbin", "to": "Injured"}, {"from": "Michael Harris", "to": "Crew"}, {"from": "Kate McKibbin", "to": "Administration"}, {"from": "Kate Kantor", "to": "Performer"}, {"from": "Kate Fryer", "to": "Subsidiary"}, {"from": "Kat Gill", "to": "Crew"}, {"from": "Kat Gill", "to": "Administration"}, {"from": "Kareena Oates", "to": "Injured"}, {"from": "Kareena Oates", "to": "Administration Performer"}, {"from": "Mike Finch", "to": "Performer KeyCreative"}, {"from": "Miranda Jaques", "to": "Crew"}, {"from": "Monica Daniellson", "to": "Administration"}, {"from": "Julie McInnes", "to": "Performer KeyCreative"}, {"from": "Mel Fyfe", "to": "Subsidiary Crew"}, {"from": "Kevin Miah Fregon", "to": "Injured"}, {"from": "Mel Fyfe", "to": "Injured"}, {"from": "Martin Hurley", "to": "Crew"}, {"from": "Madge Fletcher", "to": "Crew Performer"}, {"from": "Madge Fletcher", "to": "Performer"}, {"from": "Malcolm McKay", "to": "Crew"}, {"from": "Malcolm Merrett", "to": "Unknown"}, {"from": "Lisa Meagher", "to": "KeyCreative"}, {"from": "Margie Medlin", "to": "Unknown"}, {"from": "Adam Oulton", "to": "Subsidiary Unknown"}, {"from": "Lin Onus", "to": "Administration"}, {"from": "Maureen Haris", "to": "Administration"}, {"from": "Leslee Mason", "to": "Crew"}, {"from": "Leslee Mason", "to": "Administration"}, {"from": "Leeroy Hart", "to": "Injured Performer"}, {"from": "Mathew Hughes", "to": "Injured"}, {"from": "Laurel Frank", "to": "KeyCreative Subsidiary"}, {"from": "Matthew Binnie", "to": "Crew"}, {"from": "Maude Davey", "to": "Administration"}, {"from": "Myles Leroy", "to": "Administration"}, {"from": "Joseph Kiely", "to": "Subsidiary Unknown"}, {"from": "John O\u0027Brien", "to": "Crew"}, {"from": "Genevieve Morris", "to": "Subsidiary"}, {"from": "Rinske Ginsberg", "to": "Performer"}, {"from": "Rinske Ginsberg", "to": "Subsidiary"}, {"from": "Rita van Opzeeland", "to": "Performer"}, {"from": "Gina Gascoigne", "to": "Crew"}, {"from": "Geoff Kelly", "to": "Crew"}, {"from": "Robert Young", "to": "Unknown"}, {"from": "Robin Laurie", "to": "Injured"}, {"from": "Garry (Gack) Manson", "to": "Subsidiary"}, {"from": "Rebecca Etchell", "to": "Crew"}, {"from": "Robina Burton", "to": "Subsidiary"}, {"from": "Esther Carlin", "to": "Unknown"}, {"from": "Rod Primrose", "to": "Crew"}, {"from": "Rodney Lamb", "to": "Unknown"}, {"from": "Elizabeth Keen", "to": "Unknown"}, {"from": "Liz Sadler", "to": "Administration"}, {"from": "Ross Mathers", "to": "Subsidiary Crew"}, {"from": "Gina Gascoigne", "to": "Crew KeyCreative"}, {"from": "Phillip Watson", "to": "Subsidiary Unknown"}, {"from": "Jo Lancaster", "to": "Performer"}, {"from": "Ian MacDonald", "to": "Musician"}, {"from": "Nicholas Frewen", "to": "Unknown"}, {"from": "Jenny Thomas", "to": "Injured"}, {"from": "Jennifer Pryce", "to": "Subsidiary Unknown"}, {"from": "Patrick Verdon", "to": "Subsidiary Unknown"}, {"from": "Patrick Worlsey", "to": "Unknown"}, {"from": "Jaime Skye", "to": "Injured"}, {"from": "Ivan Lipkan", "to": "Subsidiary"}, {"from": "Hope Csutoros", "to": "Performer"}, {"from": "Gina Gascoigne", "to": "Injured"}, {"from": "Peter Tetu", "to": "Crew"}, {"from": "Philip Cousins", "to": "Crew"}, {"from": "Philip Lethlean", "to": "Crew"}, {"from": "Hong Bui Thanh", "to": "Unknown"}, {"from": "Hamish McCormick", "to": "Subsidiary"}, {"from": "Phillip Glen", "to": "Crew"}, {"from": "Phillip Glen", "to": "Injured"}, {"from": "A Atterson", "to": "Crew"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 12}}, "interaction": {"hover": "True"}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

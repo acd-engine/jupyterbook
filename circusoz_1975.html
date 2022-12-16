@@ -1,0 +1,476 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/css/tom-select.min.css" integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/js/tom-select.complete.js" integrity="sha512-jeF9CfnvzDiw9G9xiksVjxR2lib44Gnovvkv+3CgCG6NXCD4gqlA5nDAVW5WjpA+i+/zKsUWV5xNEbW1X/HH0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 900px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="Sue Broadway">Sue Broadway</option>
+                                
+                                    <option value="Performer">Performer</option>
+                                
+                                    <option value="Jack Daniel">Jack Daniel</option>
+                                
+                                    <option value="Robin Laurie">Robin Laurie</option>
+                                
+                                    <option value="Tim Coldwell">Tim Coldwell</option>
+                                
+                                    <option value="Jon Hawkes">Jon Hawkes</option>
+                                
+                                    <option value="Jane Mullett">Jane Mullett</option>
+                                
+                                    <option value="Stephen Champion">Stephen Champion</option>
+                                
+                                    <option value="Geoff Toll">Geoff Toll</option>
+                                
+                                    <option value="Kelvin Gedye">Kelvin Gedye</option>
+                                
+                                    <option value="Bob Thorneycroft">Bob Thorneycroft</option>
+                                
+                                    <option value="Missing">Missing</option>
+                                
+                                    <option value="Andrew Bell">Andrew Bell</option>
+                                
+                                    <option value="Rinske Ginsberg">Rinske Ginsberg</option>
+                                
+                                    <option value="Paul Jones">Paul Jones</option>
+                                
+                                    <option value="Celeste Howden">Celeste Howden</option>
+                                
+                                    <option value="Michael Price">Michael Price</option>
+                                
+                                    <option value="Pixi Robertson">Pixi Robertson</option>
+                                
+                                    <option value="Robin Anson">Robin Anson</option>
+                                
+                                    <option value="Jim Robertson">Jim Robertson</option>
+                                
+                                    <option value="Alan Robertson">Alan Robertson</option>
+                                
+                                    <option value="Tony Hargreaves">Tony Hargreaves</option>
+                                
+                                    <option value="Musician">Musician</option>
+                                
+                                    <option value="Colin Stevens">Colin Stevens</option>
+                                
+                                    <option value="Performer Musician">Performer Musician</option>
+                                
+                                    <option value="Rose Chong">Rose Chong</option>
+                                
+                                    <option value="KeyCreative">KeyCreative</option>
+                                
+                                    <option value="Peter Hill">Peter Hill</option>
+                                
+                                    <option value="Crew">Crew</option>
+                                
+                                    <option value="Tony Burkys">Tony Burkys</option>
+                                
+                                    <option value="Mic Conway">Mic Conway</option>
+                                
+                                    <option value="Mark Tanner">Mark Tanner</option>
+                                
+                                    <option value="Laurel Frank">Laurel Frank</option>
+                                
+                                    <option value="Ponch Hawkes">Ponch Hawkes</option>
+                                
+                                    <option value="Gordon McLean">Gordon McLean</option>
+                                
+                                    <option value="Steven Cooney">Steven Cooney</option>
+                                
+                                    <option value="Hellen Sky">Hellen Sky</option>
+                                
+                                    <option value="Jim Conway">Jim Conway</option>
+                                
+                                    <option value="Roberta Bonnin">Roberta Bonnin</option>
+                                
+                                    <option value="Performer Crew">Performer Crew</option>
+                                
+                                    <option value="Injured">Injured</option>
+                                
+                                    <option value="Roger Evans">Roger Evans</option>
+                                
+                                    <option value="Richard Ludbrook">Richard Ludbrook</option>
+                                
+                                    <option value="Ramesh Ayyar">Ramesh Ayyar</option>
+                                
+                                    <option value="Georgie Beard">Georgie Beard</option>
+                                
+                                    <option value="Administration">Administration</option>
+                                
+                                    <option value="Bayne Laurie">Bayne Laurie</option>
+                                
+                                    <option value="Unknown">Unknown</option>
+                                
+                                    <option value="Bob Daly">Bob Daly</option>
+                                
+                                    <option value="Musician Performer">Musician Performer</option>
+                                
+                                    <option value="Eve Glenn">Eve Glenn</option>
+                                
+                                    <option value="Fred Wallace">Fred Wallace</option>
+                                
+                                    <option value="Crew KeyCreative">Crew KeyCreative</option>
+                                
+                                    <option value="Graeme Brady">Graeme Brady</option>
+                                
+                                    <option value="Graeme Isaac">Graeme Isaac</option>
+                                
+                                    <option value="Jean Paul Bell">Jean Paul Bell</option>
+                                
+                                    <option value="Jeff Fiddes">Jeff Fiddes</option>
+                                
+                                    <option value="John Koning">John Koning</option>
+                                
+                                    <option value="John Pinder">John Pinder</option>
+                                
+                                    <option value="Albert Hunt">Albert Hunt</option>
+                                
+                                    <option value="Trina Parker">Trina Parker</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "orange", "id": "Sue Broadway", "label": "Sue Broadway", "shape": "dot", "title": "Sue Broadway"}, {"color": "green", "id": "Performer", "label": "Performer", "shape": "dot", "title": "Performer", "value": 1}, {"color": "steelblue", "id": "Jack Daniel", "label": "Jack Daniel", "shape": "dot", "title": "Jack Daniel"}, {"color": "orange", "id": "Robin Laurie", "label": "Robin Laurie", "shape": "dot", "title": "Robin Laurie"}, {"color": "steelblue", "id": "Tim Coldwell", "label": "Tim Coldwell", "shape": "dot", "title": "Tim Coldwell"}, {"color": "steelblue", "id": "Jon Hawkes", "label": "Jon Hawkes", "shape": "dot", "title": "Jon Hawkes"}, {"color": "orange", "id": "Jane Mullett", "label": "Jane Mullett", "shape": "dot", "title": "Jane Mullett"}, {"color": "steelblue", "id": "Stephen Champion", "label": "Stephen Champion", "shape": "dot", "title": "Stephen Champion"}, {"color": "steelblue", "id": "Geoff Toll", "label": "Geoff Toll", "shape": "dot", "title": "Geoff Toll"}, {"color": "steelblue", "id": "Kelvin Gedye", "label": "Kelvin Gedye", "shape": "dot", "title": "Kelvin Gedye"}, {"color": "steelblue", "id": "Bob Thorneycroft", "label": "Bob Thorneycroft", "shape": "dot", "title": "Bob Thorneycroft"}, {"color": "green", "id": "Missing", "label": "Missing", "shape": "dot", "title": "Missing", "value": 1}, {"color": "steelblue", "id": "Andrew Bell", "label": "Andrew Bell", "shape": "dot", "title": "Andrew Bell"}, {"color": "orange", "id": "Rinske Ginsberg", "label": "Rinske Ginsberg", "shape": "dot", "title": "Rinske Ginsberg"}, {"color": "steelblue", "id": "Paul Jones", "label": "Paul Jones", "shape": "dot", "title": "Paul Jones"}, {"color": "orange", "id": "Celeste Howden", "label": "Celeste Howden", "shape": "dot", "title": "Celeste Howden"}, {"color": "steelblue", "id": "Michael Price", "label": "Michael Price", "shape": "dot", "title": "Michael Price"}, {"color": "orange", "id": "Pixi Robertson", "label": "Pixi Robertson", "shape": "dot", "title": "Pixi Robertson"}, {"color": "steelblue", "id": "Robin Anson", "label": "Robin Anson", "shape": "dot", "title": "Robin Anson"}, {"color": "steelblue", "id": "Jim Robertson", "label": "Jim Robertson", "shape": "dot", "title": "Jim Robertson"}, {"color": "steelblue", "id": "Alan Robertson", "label": "Alan Robertson", "shape": "dot", "title": "Alan Robertson"}, {"color": "steelblue", "id": "Tony Hargreaves", "label": "Tony Hargreaves", "shape": "dot", "title": "Tony Hargreaves"}, {"color": "green", "id": "Musician", "label": "Musician", "shape": "dot", "title": "Musician", "value": 1}, {"color": "steelblue", "id": "Colin Stevens", "label": "Colin Stevens", "shape": "dot", "title": "Colin Stevens"}, {"color": "green", "id": "Performer Musician", "label": "Performer Musician", "shape": "dot", "title": "Performer Musician", "value": 1}, {"color": "orange", "id": "Rose Chong", "label": "Rose Chong", "shape": "dot", "title": "Rose Chong"}, {"color": "green", "id": "KeyCreative", "label": "KeyCreative", "shape": "dot", "title": "KeyCreative", "value": 1}, {"color": "steelblue", "id": "Peter Hill", "label": "Peter Hill", "shape": "dot", "title": "Peter Hill"}, {"color": "green", "id": "Crew", "label": "Crew", "shape": "dot", "title": "Crew", "value": 1}, {"color": "steelblue", "id": "Tony Burkys", "label": "Tony Burkys", "shape": "dot", "title": "Tony Burkys"}, {"color": "steelblue", "id": "Mic Conway", "label": "Mic Conway", "shape": "dot", "title": "Mic Conway"}, {"color": "steelblue", "id": "Mark Tanner", "label": "Mark Tanner", "shape": "dot", "title": "Mark Tanner"}, {"color": "orange", "id": "Laurel Frank", "label": "Laurel Frank", "shape": "dot", "title": "Laurel Frank"}, {"color": "orange", "id": "Ponch Hawkes", "label": "Ponch Hawkes", "shape": "dot", "title": "Ponch Hawkes"}, {"color": "steelblue", "id": "Gordon McLean", "label": "Gordon McLean", "shape": "dot", "title": "Gordon McLean"}, {"color": "steelblue", "id": "Steven Cooney", "label": "Steven Cooney", "shape": "dot", "title": "Steven Cooney"}, {"color": "orange", "id": "Hellen Sky", "label": "Hellen Sky", "shape": "dot", "title": "Hellen Sky"}, {"color": "steelblue", "id": "Jim Conway", "label": "Jim Conway", "shape": "dot", "title": "Jim Conway"}, {"color": "steelblue", "id": "Roberta Bonnin", "label": "Roberta Bonnin", "shape": "dot", "title": "Roberta Bonnin"}, {"color": "green", "id": "Performer Crew", "label": "Performer Crew", "shape": "dot", "title": "Performer Crew", "value": 1}, {"color": "green", "id": "Injured", "label": "Injured", "shape": "dot", "title": "Injured", "value": 1}, {"color": "steelblue", "id": "Roger Evans", "label": "Roger Evans", "shape": "dot", "title": "Roger Evans"}, {"color": "steelblue", "id": "Richard Ludbrook", "label": "Richard Ludbrook", "shape": "dot", "title": "Richard Ludbrook"}, {"color": "steelblue", "id": "Ramesh Ayyar", "label": "Ramesh Ayyar", "shape": "dot", "title": "Ramesh Ayyar"}, {"color": "steelblue", "id": "Georgie Beard", "label": "Georgie Beard", "shape": "dot", "title": "Georgie Beard"}, {"color": "green", "id": "Administration", "label": "Administration", "shape": "dot", "title": "Administration", "value": 1}, {"color": "steelblue", "id": "Bayne Laurie", "label": "Bayne Laurie", "shape": "dot", "title": "Bayne Laurie"}, {"color": "green", "id": "Unknown", "label": "Unknown", "shape": "dot", "title": "Unknown", "value": 1}, {"color": "steelblue", "id": "Bob Daly", "label": "Bob Daly", "shape": "dot", "title": "Bob Daly"}, {"color": "green", "id": "Musician Performer", "label": "Musician Performer", "shape": "dot", "title": "Musician Performer", "value": 1}, {"color": "orange", "id": "Eve Glenn", "label": "Eve Glenn", "shape": "dot", "title": "Eve Glenn"}, {"color": "orange", "id": "Fred Wallace", "label": "Fred Wallace", "shape": "dot", "title": "Fred Wallace"}, {"color": "green", "id": "Crew KeyCreative", "label": "Crew KeyCreative", "shape": "dot", "title": "Crew KeyCreative", "value": 1}, {"color": "steelblue", "id": "Graeme Brady", "label": "Graeme Brady", "shape": "dot", "title": "Graeme Brady"}, {"color": "steelblue", "id": "Graeme Isaac", "label": "Graeme Isaac", "shape": "dot", "title": "Graeme Isaac"}, {"color": "steelblue", "id": "Jean Paul Bell", "label": "Jean Paul Bell", "shape": "dot", "title": "Jean Paul Bell"}, {"color": "steelblue", "id": "Jeff Fiddes", "label": "Jeff Fiddes", "shape": "dot", "title": "Jeff Fiddes"}, {"color": "steelblue", "id": "John Koning", "label": "John Koning", "shape": "dot", "title": "John Koning"}, {"color": "steelblue", "id": "John Pinder", "label": "John Pinder", "shape": "dot", "title": "John Pinder"}, {"color": "steelblue", "id": "Albert Hunt", "label": "Albert Hunt", "shape": "dot", "title": "Albert Hunt"}, {"color": "orange", "id": "Trina Parker", "label": "Trina Parker", "shape": "dot", "title": "Trina Parker"}]);
+                  edges = new vis.DataSet([{"from": "Sue Broadway", "to": "Performer"}, {"from": "Jack Daniel", "to": "Performer"}, {"from": "Robin Laurie", "to": "Performer"}, {"from": "Tim Coldwell", "to": "Performer"}, {"from": "Jon Hawkes", "to": "Performer"}, {"from": "Jane Mullett", "to": "Performer"}, {"from": "Stephen Champion", "to": "Performer"}, {"from": "Geoff Toll", "to": "Performer"}, {"from": "Kelvin Gedye", "to": "Performer"}, {"from": "Bob Thorneycroft", "to": "Performer"}, {"from": "Geoff Toll", "to": "Missing"}, {"from": "Jack Daniel", "to": "Missing"}, {"from": "Stephen Champion", "to": "Missing"}, {"from": "Andrew Bell", "to": "Missing"}, {"from": "Robin Laurie", "to": "Missing"}, {"from": "Rinske Ginsberg", "to": "Performer"}, {"from": "Jane Mullett", "to": "Missing"}, {"from": "Kelvin Gedye", "to": "Missing"}, {"from": "Tim Coldwell", "to": "Missing"}, {"from": "Paul Jones", "to": "Performer"}, {"from": "Celeste Howden", "to": "Missing"}, {"from": "Sue Broadway", "to": "Missing"}, {"from": "Michael Price", "to": "Performer"}, {"from": "Pixi Robertson", "to": "Performer"}, {"from": "Robin Anson", "to": "Performer"}, {"from": "Jim Robertson", "to": "Performer"}, {"from": "Alan Robertson", "to": "Performer"}, {"from": "Andrew Bell", "to": "Performer"}, {"from": "Tony Hargreaves", "to": "Musician"}, {"from": "Colin Stevens", "to": "Performer Musician"}, {"from": "Rose Chong", "to": "KeyCreative"}, {"from": "Peter Hill", "to": "Crew"}, {"from": "Tony Burkys", "to": "Performer Musician"}, {"from": "Mic Conway", "to": "Performer Musician"}, {"from": "Mark Tanner", "to": "KeyCreative"}, {"from": "Laurel Frank", "to": "KeyCreative"}, {"from": "Ponch Hawkes", "to": "Performer"}, {"from": "Gordon McLean", "to": "Performer Musician"}, {"from": "Steven Cooney", "to": "Performer Musician"}, {"from": "Hellen Sky", "to": "Performer"}, {"from": "Jim Conway", "to": "Performer Musician"}, {"from": "Roberta Bonnin", "to": "KeyCreative"}, {"from": "Tim Coldwell", "to": "Crew"}, {"from": "Tim Coldwell", "to": "Performer Crew"}, {"from": "Sue Broadway", "to": "Injured"}, {"from": "Robin Laurie", "to": "Injured"}, {"from": "Tony Hargreaves", "to": "Performer Musician"}, {"from": "Roger Evans", "to": "Performer"}, {"from": "Richard Ludbrook", "to": "Performer Musician"}, {"from": "Ramesh Ayyar", "to": "Performer"}, {"from": "Kelvin Gedye", "to": "KeyCreative"}, {"from": "Ponch Hawkes", "to": "Crew"}, {"from": "Georgie Beard", "to": "Administration"}, {"from": "Bayne Laurie", "to": "Unknown"}, {"from": "Bob Daly", "to": "KeyCreative"}, {"from": "Bob Thorneycroft", "to": "Injured"}, {"from": "Celeste Howden", "to": "Musician"}, {"from": "Celeste Howden", "to": "Musician Performer"}, {"from": "Celeste Howden", "to": "Performer"}, {"from": "Eve Glenn", "to": "KeyCreative"}, {"from": "Fred Wallace", "to": "Crew KeyCreative"}, {"from": "Geoff Toll", "to": "Injured"}, {"from": "Graeme Brady", "to": "Crew"}, {"from": "Paul Jones", "to": "Injured"}, {"from": "Graeme Isaac", "to": "Performer Musician"}, {"from": "Hellen Sky", "to": "KeyCreative"}, {"from": "Jean Paul Bell", "to": "Performer"}, {"from": "Jeff Fiddes", "to": "Unknown"}, {"from": "John Koning", "to": "Crew"}, {"from": "John Pinder", "to": "Administration"}, {"from": "John Pinder", "to": "Performer"}, {"from": "Jon Hawkes", "to": "Injured"}, {"from": "Albert Hunt", "to": "KeyCreative"}, {"from": "Trina Parker", "to": "KeyCreative"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 12}}, "interaction": {"hover": "True"}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
