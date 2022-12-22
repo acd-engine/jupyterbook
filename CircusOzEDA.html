@@ -49,7 +49,6 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="DAQA Workshop" href="DAQA%20Workshop.html" />
@@ -59,6 +58,14 @@
 
     <!-- Google Analytics -->
     
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-R8Q003ZY5N');
+                </script>
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -302,46 +309,9 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#network-graphs">
-   Network graphs
+  <a class="reference internal nav-link" href="#network-graphs-and-association-rules">
+   Network graphs and association rules
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1975-1980
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     1980-1985
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     1985-1990
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     1990-1995
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     1995-2000
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     2000 -2005
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     2005-2010
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -441,46 +411,9 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#network-graphs">
-   Network graphs
+  <a class="reference internal nav-link" href="#network-graphs-and-association-rules">
+   Network graphs and association rules
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     1975-1980
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     1980-1985
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     1985-1990
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     1990-1995
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     1995-2000
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     2000 -2005
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
-     2005-2010
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -502,6 +435,11 @@
 
 <span class="c1"># for plotting</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># for network graphs</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">pyvis</span> <span class="kn">import</span> <span class="n">network</span> <span class="k">as</span> <span class="n">net</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">IFrame</span>
 
 <span class="c1"># for statistical processes</span>
 <span class="kn">from</span> <span class="nn">mlxtend.preprocessing</span> <span class="kn">import</span> <span class="n">TransactionEncoder</span>
@@ -1034,7 +972,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
                          <span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span>
                          <span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span>
                          <span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span>
-                         <span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span>
                          <span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">])</span>
 
 <span class="c1"># add bar labels</span>
@@ -1175,8 +1113,8 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
   </thead>
   <tbody>
     <tr>
-      <th>2</th>
-      <td>(Musician, KeyCreative)</td>
+      <th>3</th>
+      <td>(KeyCreative, Musician)</td>
       <td>(Performer)</td>
       <td>0.007494</td>
       <td>0.393256</td>
@@ -1187,7 +1125,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>1.950250</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>0.073439</td>
@@ -1199,8 +1137,8 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>1.037110</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>(Performer, KeyCreative)</td>
+      <th>2</th>
+      <td>(KeyCreative, Performer)</td>
       <td>(Musician)</td>
       <td>0.019567</td>
       <td>0.073439</td>
@@ -1211,7 +1149,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>1.258624</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>0</th>
       <td>(Performer)</td>
       <td>(Musician)</td>
       <td>0.393256</td>
@@ -1223,9 +1161,9 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>1.004395</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>(Musician)</td>
-      <td>(Performer, KeyCreative)</td>
+      <td>(KeyCreative, Performer)</td>
       <td>0.073439</td>
       <td>0.019567</td>
       <td>0.005162</td>
@@ -1235,9 +1173,9 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>1.054563</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>4</th>
       <td>(Performer)</td>
-      <td>(Musician, KeyCreative)</td>
+      <td>(KeyCreative, Musician)</td>
       <td>0.393256</td>
       <td>0.007494</td>
       <td>0.005162</td>
@@ -1314,7 +1252,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>(KeyCreative)</td>
       <td>(Performer)</td>
       <td>0.031</td>
@@ -1324,7 +1262,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>0.057</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>0.046</td>
@@ -1476,7 +1414,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>(Musician)</td>
       <td>(KeyCreative)</td>
       <td>0.007</td>
@@ -1486,7 +1424,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>-0.063</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>0.033</td>
@@ -1952,7 +1890,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>1975</td>
@@ -1966,42 +1904,42 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>27.526</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>(KeyCreative)</td>
       <td>(Performer)</td>
       <td>1995</td>
       <td>23.044</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>1995</td>
       <td>14.926</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>3</th>
       <td>(Performer)</td>
       <td>(KeyCreative)</td>
       <td>1995</td>
       <td>13.946</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>0</th>
       <td>(Performer)</td>
       <td>(Musician)</td>
       <td>1975</td>
       <td>12.264</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>7</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>1990</td>
       <td>6.591</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>6</th>
       <td>(Performer)</td>
       <td>(Musician)</td>
       <td>1990</td>
@@ -2015,14 +1953,14 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>5.265</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>4</th>
       <td>(Performer)</td>
       <td>(Musician)</td>
       <td>1980</td>
       <td>4.360</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>4</th>
       <td>(KeyCreative)</td>
       <td>(Performer)</td>
       <td>1990</td>
@@ -2057,14 +1995,14 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>0.423</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>4</th>
       <td>(Performer)</td>
       <td>(Musician)</td>
       <td>1995</td>
       <td>0.242</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>0</th>
       <td>(KeyCreative)</td>
       <td>(Crew)</td>
       <td>2000</td>
@@ -2099,7 +2037,7 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>-1.087</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>(Crew)</td>
       <td>(KeyCreative)</td>
       <td>2000</td>
@@ -2120,98 +2058,98 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
       <td>-1.594</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>(Crew)</td>
       <td>(KeyCreative)</td>
       <td>1980</td>
       <td>-1.779</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>0</th>
       <td>(KeyCreative)</td>
       <td>(Crew)</td>
       <td>1980</td>
       <td>-2.504</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>1980</td>
       <td>-8.462</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>0</th>
       <td>(KeyCreative)</td>
       <td>(Crew)</td>
       <td>1985</td>
       <td>-10.251</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>4</th>
       <td>(KeyCreative)</td>
       <td>(Musician)</td>
       <td>1985</td>
       <td>-10.746</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>(KeyCreative)</td>
       <td>(Subsidiary)</td>
       <td>2000</td>
       <td>-11.182</td>
     </tr>
     <tr>
-      <th>9</th>
+      <th>8</th>
       <td>(Performer)</td>
       <td>(Musician)</td>
       <td>1985</td>
       <td>-11.503</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>7</th>
       <td>(Performer)</td>
       <td>(KeyCreative)</td>
       <td>1985</td>
       <td>-12.251</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>(Performer)</td>
       <td>(KeyCreative)</td>
       <td>1990</td>
       <td>-12.933</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>1</th>
       <td>(Crew)</td>
       <td>(KeyCreative)</td>
       <td>1985</td>
       <td>-14.537</td>
     </tr>
     <tr>
-      <th>7</th>
+      <th>6</th>
       <td>(KeyCreative)</td>
       <td>(Performer)</td>
       <td>1985</td>
       <td>-17.833</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>3</th>
       <td>(Subsidiary)</td>
       <td>(KeyCreative)</td>
       <td>2000</td>
       <td>-25.762</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>5</th>
       <td>(Musician)</td>
       <td>(KeyCreative)</td>
       <td>1985</td>
       <td>-28.455</td>
     </tr>
     <tr>
-      <th>8</th>
+      <th>9</th>
       <td>(Musician)</td>
       <td>(Performer)</td>
       <td>1985</td>
@@ -2287,394 +2225,9 @@ PERSON.NUMBER  470.0  5.197872  13.083185  1.0  1.0  1.0  3.0  130.0
 </div>
 </div>
 </div>
-<div class="section" id="network-graphs">
-<h2>Network graphs<a class="headerlink" href="#network-graphs" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id1">
-<h3>1975-1980<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/gh-pages/circusoz_1975.html">Click here for 1975 network graph</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # for network graphs</span>
-<span class="c1"># import networkx as nx</span>
-<span class="c1"># from pyvis import network as net</span>
-
-<span class="c1"># g = net.Network(notebook=True, </span>
-<span class="c1">#                 height=&#39;900px&#39;,</span>
-<span class="c1">#                 width=&quot;100%&quot;,</span>
-<span class="c1">#                 cdn_resources = &#39;remote&#39;, </span>
-<span class="c1">#                 select_menu=True)</span>
-   
-<span class="c1"># nw_df = df[(df.Year &gt;= 1975) &amp; (df.Year &lt; 1980)]</span>
-
-<span class="c1"># np.random.seed(1)</span>
-<span class="c1"># # venue_sample = np.random.choice(df[&#39;COMBINED.NAME&#39;].unique(), size=30)</span>
-<span class="c1"># venue_sample = nw_df[&#39;COMBINED.NAME&#39;].unique()</span>
-
-<span class="c1"># df_sampled = nw_df[[&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;]][nw_df[&#39;COMBINED.NAME&#39;].isin(venue_sample)]\</span>
-<span class="c1"># .value_counts().reset_index()</span>
-
-<span class="c1"># df_sampled = pd.merge(df_sampled, </span>
-<span class="c1">#          nw_df[[&#39;COMBINED.NAME&#39;,&#39;Gender&#39;]], </span>
-<span class="c1">#          on=&#39;COMBINED.NAME&#39;,how=&#39;left&#39;)\</span>
-<span class="c1"># .drop_duplicates()</span>
-
-<span class="c1"># df_sampled.columns = [&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;,</span>
-<span class="c1">#                       &#39;Frequency&#39;,&#39;Gender&#39;]</span>
-
-<span class="c1"># for e in zip(df_sampled[&#39;COMBINED.NAME&#39;], df_sampled[&#39;Role.Category.Concatinate&#39;]):</span>
-<span class="c1">#     src = e[0]</span>
-<span class="c1">#     dst = e[1]</span>
-    
-<span class="c1">#     node_gender = df_sampled[df_sampled[&#39;COMBINED.NAME&#39;]==src][&#39;Gender&#39;].values[0]</span>
-<span class="c1">#     if node_gender == &#39;F&#39;: g.add_node(src, src, title=src, color=&#39;orange&#39;)</span>
-<span class="c1">#     else: g.add_node(src, src, title=src, color=&#39;steelblue&#39;)</span>
-        
-<span class="c1">#     g.add_node(dst, dst, title=dst, color=&#39;green&#39;, value=1)</span>
-<span class="c1">#     g.add_edge(src, dst)</span>
-
-<span class="c1"># var_options = &quot;&quot;&quot;var_options = {</span>
-<span class="c1">#                 &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 12}},</span>
-<span class="c1">#                 &quot;interaction&quot;: {&quot;hover&quot;: &quot;True&quot;}}</span>
-<span class="c1">#               &quot;&quot;&quot;</span>
-
-<span class="c1"># g.set_options(var_options)</span>
-<span class="c1"># g.show(&quot;circusoz_1975.html&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id2">
-<h3>1980-1985<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/gh-pages/circusoz_1980.html">Click here for 1980 network graph</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # for network graphs</span>
-<span class="c1"># import networkx as nx</span>
-<span class="c1"># from pyvis import network as net</span>
-
-<span class="c1"># g = net.Network(notebook=True, </span>
-<span class="c1">#                 height=&#39;900px&#39;,</span>
-<span class="c1">#                 width=&quot;100%&quot;,</span>
-<span class="c1">#                 cdn_resources = &#39;remote&#39;, </span>
-<span class="c1">#                 select_menu=True)</span>
-   
-<span class="c1"># nw_df = df[(df.Year &gt;= 1980) &amp; (df.Year &lt; 1985)]</span>
-
-<span class="c1"># np.random.seed(1)</span>
-<span class="c1"># # venue_sample = np.random.choice(df[&#39;COMBINED.NAME&#39;].unique(), size=30)</span>
-<span class="c1"># venue_sample = nw_df[&#39;COMBINED.NAME&#39;].unique()</span>
-
-<span class="c1"># df_sampled = nw_df[[&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;]][nw_df[&#39;COMBINED.NAME&#39;].isin(venue_sample)]\</span>
-<span class="c1"># .value_counts().reset_index()</span>
-
-<span class="c1"># df_sampled = pd.merge(df_sampled, </span>
-<span class="c1">#          nw_df[[&#39;COMBINED.NAME&#39;,&#39;Gender&#39;]], </span>
-<span class="c1">#          on=&#39;COMBINED.NAME&#39;,how=&#39;left&#39;)\</span>
-<span class="c1"># .drop_duplicates()</span>
-
-<span class="c1"># df_sampled.columns = [&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;,</span>
-<span class="c1">#                       &#39;Frequency&#39;,&#39;Gender&#39;]</span>
-
-<span class="c1"># for e in zip(df_sampled[&#39;COMBINED.NAME&#39;], df_sampled[&#39;Role.Category.Concatinate&#39;]):</span>
-<span class="c1">#     src = e[0]</span>
-<span class="c1">#     dst = e[1]</span>
-    
-<span class="c1">#     node_gender = df_sampled[df_sampled[&#39;COMBINED.NAME&#39;]==src][&#39;Gender&#39;].values[0]</span>
-<span class="c1">#     if node_gender == &#39;F&#39;: g.add_node(src, src, title=src, color=&#39;orange&#39;)</span>
-<span class="c1">#     else: g.add_node(src, src, title=src, color=&#39;steelblue&#39;)</span>
-        
-<span class="c1">#     g.add_node(dst, dst, title=dst, color=&#39;green&#39;, value=1)</span>
-<span class="c1">#     g.add_edge(src, dst)</span>
-
-<span class="c1"># var_options = &quot;&quot;&quot;var_options = {</span>
-<span class="c1">#                 &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 12}},</span>
-<span class="c1">#                 &quot;interaction&quot;: {&quot;hover&quot;: &quot;True&quot;}}</span>
-<span class="c1">#               &quot;&quot;&quot;</span>
-
-<span class="c1"># g.set_options(var_options)</span>
-<span class="c1"># g.show(&quot;circusoz_1980.html&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id3">
-<h3>1985-1990<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/gh-pages/1985.html">Click here for 1985 network graph</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # for network graphs</span>
-<span class="c1"># import networkx as nx</span>
-<span class="c1"># from pyvis import network as net</span>
-
-<span class="c1"># g = net.Network(notebook=True, </span>
-<span class="c1">#                 height=&#39;900px&#39;,</span>
-<span class="c1">#                 width=&quot;100%&quot;,</span>
-<span class="c1">#                 cdn_resources = &#39;remote&#39;, </span>
-<span class="c1">#                 select_menu=True)</span>
-   
-<span class="c1"># nw_df = df[(df.Year &gt;= 1985) &amp; (df.Year &lt; 1990)]</span>
-
-<span class="c1"># np.random.seed(1)</span>
-<span class="c1"># # venue_sample = np.random.choice(df[&#39;COMBINED.NAME&#39;].unique(), size=30)</span>
-<span class="c1"># venue_sample = nw_df[&#39;COMBINED.NAME&#39;].unique()</span>
-
-<span class="c1"># df_sampled = nw_df[[&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;]][nw_df[&#39;COMBINED.NAME&#39;].isin(venue_sample)]\</span>
-<span class="c1"># .value_counts().reset_index()</span>
-
-<span class="c1"># df_sampled = pd.merge(df_sampled, </span>
-<span class="c1">#          nw_df[[&#39;COMBINED.NAME&#39;,&#39;Gender&#39;]], </span>
-<span class="c1">#          on=&#39;COMBINED.NAME&#39;,how=&#39;left&#39;)\</span>
-<span class="c1"># .drop_duplicates()</span>
-
-<span class="c1"># df_sampled.columns = [&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;,</span>
-<span class="c1">#                       &#39;Frequency&#39;,&#39;Gender&#39;]</span>
-
-<span class="c1"># for e in zip(df_sampled[&#39;COMBINED.NAME&#39;], df_sampled[&#39;Role.Category.Concatinate&#39;]):</span>
-<span class="c1">#     src = e[0]</span>
-<span class="c1">#     dst = e[1]</span>
-    
-<span class="c1">#     node_gender = df_sampled[df_sampled[&#39;COMBINED.NAME&#39;]==src][&#39;Gender&#39;].values[0]</span>
-<span class="c1">#     if node_gender == &#39;F&#39;: g.add_node(src, src, title=src, color=&#39;orange&#39;)</span>
-<span class="c1">#     else: g.add_node(src, src, title=src, color=&#39;steelblue&#39;)</span>
-        
-<span class="c1">#     g.add_node(dst, dst, title=dst, color=&#39;green&#39;, value=1)</span>
-<span class="c1">#     g.add_edge(src, dst)</span>
-
-<span class="c1"># var_options = &quot;&quot;&quot;var_options = {</span>
-<span class="c1">#                 &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 12}},</span>
-<span class="c1">#                 &quot;interaction&quot;: {&quot;hover&quot;: &quot;True&quot;}}</span>
-<span class="c1">#               &quot;&quot;&quot;</span>
-
-<span class="c1"># g.set_options(var_options)</span>
-<span class="c1"># g.show(&quot;circusoz_1985.html&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id4">
-<h3>1990-1995<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/gh-pages/1990.html">Click here for 1990 network graph</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # for network graphs</span>
-<span class="c1"># import networkx as nx</span>
-<span class="c1"># from pyvis import network as net</span>
-
-<span class="c1"># g = net.Network(notebook=True, </span>
-<span class="c1">#                 height=&#39;900px&#39;,</span>
-<span class="c1">#                 width=&quot;100%&quot;,</span>
-<span class="c1">#                 cdn_resources = &#39;remote&#39;, </span>
-<span class="c1">#                 select_menu=True)</span>
-   
-<span class="c1"># nw_df = df[(df.Year &gt;= 1990) &amp; (df.Year &lt; 1995)]</span>
-
-<span class="c1"># np.random.seed(1)</span>
-<span class="c1"># # venue_sample = np.random.choice(df[&#39;COMBINED.NAME&#39;].unique(), size=30)</span>
-<span class="c1"># venue_sample = nw_df[&#39;COMBINED.NAME&#39;].unique()</span>
-
-<span class="c1"># df_sampled = nw_df[[&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;]][nw_df[&#39;COMBINED.NAME&#39;].isin(venue_sample)]\</span>
-<span class="c1"># .value_counts().reset_index()</span>
-
-<span class="c1"># df_sampled = pd.merge(df_sampled, </span>
-<span class="c1">#          nw_df[[&#39;COMBINED.NAME&#39;,&#39;Gender&#39;]], </span>
-<span class="c1">#          on=&#39;COMBINED.NAME&#39;,how=&#39;left&#39;)\</span>
-<span class="c1"># .drop_duplicates()</span>
-
-<span class="c1"># df_sampled.columns = [&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;,</span>
-<span class="c1">#                       &#39;Frequency&#39;,&#39;Gender&#39;]</span>
-
-<span class="c1"># for e in zip(df_sampled[&#39;COMBINED.NAME&#39;], df_sampled[&#39;Role.Category.Concatinate&#39;]):</span>
-<span class="c1">#     src = e[0]</span>
-<span class="c1">#     dst = e[1]</span>
-    
-<span class="c1">#     node_gender = df_sampled[df_sampled[&#39;COMBINED.NAME&#39;]==src][&#39;Gender&#39;].values[0]</span>
-<span class="c1">#     if node_gender == &#39;F&#39;: g.add_node(src, src, title=src, color=&#39;orange&#39;)</span>
-<span class="c1">#     else: g.add_node(src, src, title=src, color=&#39;steelblue&#39;)</span>
-        
-<span class="c1">#     g.add_node(dst, dst, title=dst, color=&#39;green&#39;, value=1)</span>
-<span class="c1">#     g.add_edge(src, dst)</span>
-
-<span class="c1"># var_options = &quot;&quot;&quot;var_options = {</span>
-<span class="c1">#                 &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 12}},</span>
-<span class="c1">#                 &quot;interaction&quot;: {&quot;hover&quot;: &quot;True&quot;}}</span>
-<span class="c1">#               &quot;&quot;&quot;</span>
-
-<span class="c1"># g.set_options(var_options)</span>
-<span class="c1"># g.show(&quot;circusoz_1990.html&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id5">
-<h3>1995-2000<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/gh-pages/circusoz_1995.html">Click here for 1995 network graph</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # for network graphs</span>
-<span class="c1"># import networkx as nx</span>
-<span class="c1"># from pyvis import network as net</span>
-
-<span class="c1"># g = net.Network(notebook=True, </span>
-<span class="c1">#                 height=&#39;900px&#39;,</span>
-<span class="c1">#                 width=&quot;100%&quot;,</span>
-<span class="c1">#                 cdn_resources = &#39;remote&#39;, </span>
-<span class="c1">#                 select_menu=True)</span>
-   
-<span class="c1"># nw_df = df[(df.Year &gt;= 1995) &amp; (df.Year &lt; 2000)]</span>
-
-<span class="c1"># np.random.seed(1)</span>
-<span class="c1"># # venue_sample = np.random.choice(df[&#39;COMBINED.NAME&#39;].unique(), size=30)</span>
-<span class="c1"># venue_sample = nw_df[&#39;COMBINED.NAME&#39;].unique()</span>
-
-<span class="c1"># df_sampled = nw_df[[&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;]][nw_df[&#39;COMBINED.NAME&#39;].isin(venue_sample)]\</span>
-<span class="c1"># .value_counts().reset_index()</span>
-
-<span class="c1"># df_sampled = pd.merge(df_sampled, </span>
-<span class="c1">#          nw_df[[&#39;COMBINED.NAME&#39;,&#39;Gender&#39;]], </span>
-<span class="c1">#          on=&#39;COMBINED.NAME&#39;,how=&#39;left&#39;)\</span>
-<span class="c1"># .drop_duplicates()</span>
-
-<span class="c1"># df_sampled.columns = [&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;,</span>
-<span class="c1">#                       &#39;Frequency&#39;,&#39;Gender&#39;]</span>
-
-<span class="c1"># for e in zip(df_sampled[&#39;COMBINED.NAME&#39;], df_sampled[&#39;Role.Category.Concatinate&#39;]):</span>
-<span class="c1">#     src = e[0]</span>
-<span class="c1">#     dst = e[1]</span>
-    
-<span class="c1">#     node_gender = df_sampled[df_sampled[&#39;COMBINED.NAME&#39;]==src][&#39;Gender&#39;].values[0]</span>
-<span class="c1">#     if node_gender == &#39;F&#39;: g.add_node(src, src, title=src, color=&#39;orange&#39;)</span>
-<span class="c1">#     else: g.add_node(src, src, title=src, color=&#39;steelblue&#39;)</span>
-        
-<span class="c1">#     g.add_node(dst, dst, title=dst, color=&#39;green&#39;, value=1)</span>
-<span class="c1">#     g.add_edge(src, dst)</span>
-
-<span class="c1"># var_options = &quot;&quot;&quot;var_options = {</span>
-<span class="c1">#                 &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 12}},</span>
-<span class="c1">#                 &quot;interaction&quot;: {&quot;hover&quot;: &quot;True&quot;}}</span>
-<span class="c1">#               &quot;&quot;&quot;</span>
-
-<span class="c1"># g.set_options(var_options)</span>
-<span class="c1"># g.show(&quot;circusoz_1995.html&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id6">
-<h3>2000 -2005<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/gh-pages/circusoz_2000.html">Click here for 2000 network graph</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # for network graphs</span>
-<span class="c1"># import networkx as nx</span>
-<span class="c1"># from pyvis import network as net</span>
-
-<span class="c1"># g = net.Network(notebook=True, </span>
-<span class="c1">#                 height=&#39;900px&#39;,</span>
-<span class="c1">#                 width=&quot;100%&quot;,</span>
-<span class="c1">#                 cdn_resources = &#39;remote&#39;, </span>
-<span class="c1">#                 select_menu=True)</span>
-   
-<span class="c1"># nw_df = df[(df.Year &gt;= 2000) &amp; (df.Year &lt; 2005)]</span>
-
-<span class="c1"># np.random.seed(1)</span>
-<span class="c1"># # venue_sample = np.random.choice(df[&#39;COMBINED.NAME&#39;].unique(), size=30)</span>
-<span class="c1"># venue_sample = nw_df[&#39;COMBINED.NAME&#39;].unique()</span>
-
-<span class="c1"># df_sampled = nw_df[[&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;]][nw_df[&#39;COMBINED.NAME&#39;].isin(venue_sample)]\</span>
-<span class="c1"># .value_counts().reset_index()</span>
-
-<span class="c1"># df_sampled = pd.merge(df_sampled, </span>
-<span class="c1">#          nw_df[[&#39;COMBINED.NAME&#39;,&#39;Gender&#39;]], </span>
-<span class="c1">#          on=&#39;COMBINED.NAME&#39;,how=&#39;left&#39;)\</span>
-<span class="c1"># .drop_duplicates()</span>
-
-<span class="c1"># df_sampled.columns = [&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;,</span>
-<span class="c1">#                       &#39;Frequency&#39;,&#39;Gender&#39;]</span>
-
-<span class="c1"># for e in zip(df_sampled[&#39;COMBINED.NAME&#39;], df_sampled[&#39;Role.Category.Concatinate&#39;]):</span>
-<span class="c1">#     src = e[0]</span>
-<span class="c1">#     dst = e[1]</span>
-    
-<span class="c1">#     node_gender = df_sampled[df_sampled[&#39;COMBINED.NAME&#39;]==src][&#39;Gender&#39;].values[0]</span>
-<span class="c1">#     if node_gender == &#39;F&#39;: g.add_node(src, src, title=src, color=&#39;orange&#39;)</span>
-<span class="c1">#     else: g.add_node(src, src, title=src, color=&#39;steelblue&#39;)</span>
-        
-<span class="c1">#     g.add_node(dst, dst, title=dst, color=&#39;green&#39;, value=1)</span>
-<span class="c1">#     g.add_edge(src, dst)</span>
-
-<span class="c1"># var_options = &quot;&quot;&quot;var_options = {</span>
-<span class="c1">#                 &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 12}},</span>
-<span class="c1">#                 &quot;interaction&quot;: {&quot;hover&quot;: &quot;True&quot;}}</span>
-<span class="c1">#               &quot;&quot;&quot;</span>
-
-<span class="c1"># g.set_options(var_options)</span>
-<span class="c1"># g.show(&quot;circusoz_2000.html&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id7">
-<h3>2005-2010<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/gh-pages/circusoz_2005.html">Click here for 2005 network graph</a></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # for network graphs</span>
-<span class="c1"># import networkx as nx</span>
-<span class="c1"># from pyvis import network as net</span>
-
-<span class="c1"># g = net.Network(notebook=True, </span>
-<span class="c1">#                 height=&#39;900px&#39;,</span>
-<span class="c1">#                 width=&quot;100%&quot;,</span>
-<span class="c1">#                 cdn_resources = &#39;remote&#39;, </span>
-<span class="c1">#                 select_menu=True)</span>
-   
-<span class="c1"># nw_df = df[(df.Year &gt;= 2005) &amp; (df.Year &lt; 2010)]</span>
-
-<span class="c1"># np.random.seed(1)</span>
-<span class="c1"># # venue_sample = np.random.choice(df[&#39;COMBINED.NAME&#39;].unique(), size=30)</span>
-<span class="c1"># venue_sample = nw_df[&#39;COMBINED.NAME&#39;].unique()</span>
-
-<span class="c1"># df_sampled = nw_df[[&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;]][nw_df[&#39;COMBINED.NAME&#39;].isin(venue_sample)]\</span>
-<span class="c1"># .value_counts().reset_index()</span>
-
-<span class="c1"># df_sampled = pd.merge(df_sampled, </span>
-<span class="c1">#          nw_df[[&#39;COMBINED.NAME&#39;,&#39;Gender&#39;]], </span>
-<span class="c1">#          on=&#39;COMBINED.NAME&#39;,how=&#39;left&#39;)\</span>
-<span class="c1"># .drop_duplicates()</span>
-
-<span class="c1"># df_sampled.columns = [&#39;COMBINED.NAME&#39;,&#39;Role.Category.Concatinate&#39;,</span>
-<span class="c1">#                       &#39;Frequency&#39;,&#39;Gender&#39;]</span>
-
-<span class="c1"># for e in zip(df_sampled[&#39;COMBINED.NAME&#39;], df_sampled[&#39;Role.Category.Concatinate&#39;]):</span>
-<span class="c1">#     src = e[0]</span>
-<span class="c1">#     dst = e[1]</span>
-    
-<span class="c1">#     node_gender = df_sampled[df_sampled[&#39;COMBINED.NAME&#39;]==src][&#39;Gender&#39;].values[0]</span>
-<span class="c1">#     if node_gender == &#39;F&#39;: g.add_node(src, src, title=src, color=&#39;orange&#39;)</span>
-<span class="c1">#     else: g.add_node(src, src, title=src, color=&#39;steelblue&#39;)</span>
-        
-<span class="c1">#     g.add_node(dst, dst, title=dst, color=&#39;green&#39;, value=1)</span>
-<span class="c1">#     g.add_edge(src, dst)</span>
-
-<span class="c1"># var_options = &quot;&quot;&quot;var_options = {</span>
-<span class="c1">#                 &quot;nodes&quot;: {&quot;font&quot;: {&quot;size&quot;: 12}},</span>
-<span class="c1">#                 &quot;interaction&quot;: {&quot;hover&quot;: &quot;True&quot;}}</span>
-<span class="c1">#               &quot;&quot;&quot;</span>
-
-<span class="c1"># g.set_options(var_options)</span>
-<span class="c1"># g.show(&quot;circusoz_2005.html&quot;)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="section" id="network-graphs-and-association-rules">
+<h2>Network graphs and association rules<a class="headerlink" href="#network-graphs-and-association-rules" title="Permalink to this headline">¶</a></h2>
+<iframe height="1100" width="800" frameborder="no" src="https://acd-engine.shinyapps.io/CircusOzApp/"> </iframe></div>
 </div>
 
     <script type="text/x-thebe-config">
