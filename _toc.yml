@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Data infrastructure and integration
+    chapters:
+      - file: ivy_placeholder
+  - caption: Data analysis
+    chapters:
+      - file: RmdTest
+      - file: Archies
+      - file: TLC Workshop
+      - file: DAQA Workshop
+      - file: CircusOzEDA
+
