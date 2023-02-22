@@ -640,14 +640,93 @@
 </div>
 <div class="section" id="lifespan-distribution">
 <h2>Lifespan distribution<a class="headerlink" href="#lifespan-distribution" title="Permalink to this headline">¶</a></h2>
-<p>As we have birth and death records for a subset of the data, we can assess the average lifespan according to DAAO records. On average, artists live to approx. 80 years old. However there are some cases where we have artists not surpassing the age of 30.</p>
+<p>As we have birth and death records for a subset of the data, we can assess the average lifespan according to DAAO records. On average, artists live to approx. 80 years old. However there are some cases where we have artists not surpassing the age of 40.</p>
 <p>We also compare lifespan of <code class="docutils literal notranslate"><span class="pre">Male</span></code> and <code class="docutils literal notranslate"><span class="pre">Female</span></code> records in the following layered histogram. As expected, female artists live longer than male artists.</p>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">df_copy</span><span class="p">[</span><span class="s1">&#39;artist_birth.date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df_copy</span><span class="p">[</span><span class="s1">&#39;artist_birth.date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1925</span><span class="p">,</span> <span class="n">df_copy</span><span class="p">[</span><span class="s1">&#39;artist_birth.date&#39;</span><span class="p">])</span>
+<span class="n">df_copy</span><span class="p">[</span><span class="s1">&#39;artist_birth.date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df_copy</span><span class="p">[</span><span class="s1">&#39;artist_birth.date&#39;</span><span class="p">])</span>
+
+<span class="n">data_diff</span> <span class="o">=</span> <span class="n">df_copy</span><span class="p">[</span><span class="n">df_copy</span><span class="p">[</span><span class="s1">&#39;artist_death.date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">data_diff</span><span class="p">[</span><span class="s1">&#39;year_of_diff_daao&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">data_diff</span><span class="p">[</span><span class="s1">&#39;artist_death.date&#39;</span><span class="p">])</span> <span class="o">-</span> <span class="n">data_diff</span><span class="p">[</span><span class="s1">&#39;artist_birth.date&#39;</span><span class="p">]</span>
+<span class="n">data_diff</span> <span class="o">=</span> <span class="n">data_diff</span><span class="p">[</span><span class="n">data_diff</span><span class="p">[</span><span class="s1">&#39;year_of_diff_daao&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Phillippa Cullen - 25 years</span>
+<span class="c1"># Edith	Wall - 108 years</span>
+
+<span class="c1"># set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s1">&#39;notebook&#39;</span><span class="p">)</span>
+
+<span class="c1"># create histogram of year_of_diff_daao with y-axis normalized to density</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">data_diff</span><span class="p">[</span><span class="s1">&#39;year_of_diff_daao&#39;</span><span class="p">],</span> <span class="n">hist</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">bins</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span>
+                <span class="n">hist_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;edgecolor&#39;</span><span class="p">:</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.85</span><span class="p">,</span> <span class="s1">&#39;linewidth&#39;</span><span class="p">:</span><span class="mf">1.5</span><span class="p">},</span>
+                <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;linewidth&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;#CC0000&#39;</span><span class="p">,</span> <span class="s1">&#39;alpha&#39;</span><span class="p">:</span><span class="mf">0.825</span><span class="p">})</span>
+
+<span class="c1"># change x-axis ticks to be 30,60,90</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># add y-axis gridlines but make background to plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.0345</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lifespan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Image(filename=&#39;images/DAAO500_4.png&#39;)</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
 <img alt="_images/RmdTest_9_0.png" src="_images/RmdTest_9_0.png" />
 </div>
 </div>
-<div class="cell tag_remove-input docutils container">
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set figure size</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="s1">&#39;notebook&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data_diff</span><span class="p">[</span><span class="n">data_diff</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">][</span><span class="s1">&#39;year_of_diff_daao&#39;</span><span class="p">],</span> 
+<span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Females&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data_diff</span><span class="p">[</span><span class="n">data_diff</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;female&#39;</span><span class="p">][</span><span class="s1">&#39;year_of_diff_daao&#39;</span><span class="p">],</span> 
+<span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data_diff</span><span class="p">[</span><span class="n">data_diff</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">][</span><span class="s1">&#39;year_of_diff_daao&#39;</span><span class="p">],</span>
+<span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Males&#39;</span><span class="p">)</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">data_diff</span><span class="p">[</span><span class="n">data_diff</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;male&#39;</span><span class="p">][</span><span class="s1">&#39;year_of_diff_daao&#39;</span><span class="p">],</span>
+<span class="n">shade</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># change x-axis ticks to be 30,60,90</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># add y-axis gridlines but make background to plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_axisbelow</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lifespan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.0345</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Image(filename=&#39;images/DAAO500_5.png&#39;)</span>
+</pre></div>
+</div>
+</div>
 <div class="cell_output docutils container">
 <img alt="_images/RmdTest_10_0.png" src="_images/RmdTest_10_0.png" />
 </div>
@@ -1377,10 +1456,10 @@
     <span class="n">actors_first</span> <span class="o">=</span> <span class="n">relevant_females_df</span><span class="p">[</span><span class="n">relevant_females_df</span><span class="p">[</span><span class="s1">&#39;ActorDirectorYrDiff&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
 
     <span class="k">if</span> <span class="n">printstuff</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">How many started as directors? </span><span class="si">{</span><span class="n">directors_first</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Out of these </span><span class="si">{</span><span class="n">females_actors_directors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, how many started their careers as directors? </span><span class="si">{</span><span class="n">directors_first</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
               <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">directors_first</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">relevant_females_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">%)&#39;</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;How many started as actors and progressed into directors? </span><span class="si">{</span><span class="n">actors_first</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Out of these </span><span class="si">{</span><span class="n">females_actors_directors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">, how many started their careers as actors and progressed into directors? </span><span class="si">{</span><span class="n">actors_first</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
               <span class="sa">f</span><span class="s1">&#39;(</span><span class="si">{</span><span class="nb">round</span><span class="p">((</span><span class="n">actors_first</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">relevant_females_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">%)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
     <span class="n">actors_first_clean</span> <span class="o">=</span> <span class="n">actors_first</span><span class="p">[</span><span class="n">actors_first</span><span class="p">[</span><span class="s1">&#39;ActorDirectorYrDiff&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">80</span><span class="p">]</span>
@@ -1461,8 +1540,8 @@ How many Females are listed as directors? 2357 (2.94%)
 How many Females are listed as actors &amp; directors? 1455 (1.82%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>How many started as directors? 324 (22.27%)
-How many started as actors and progressed into directors? 1131 (77.73%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Out of these 1455, how many started their careers as directors? 324 (22.27%)
+Out of these 1455, how many started their careers as actors and progressed into directors? 1131 (77.73%)
 
 How many Males? 92589
 How many Males are listed as actors? 46977 (50.74%)
@@ -1470,11 +1549,22 @@ How many Males are listed as directors? 4267 (4.61%)
 How many Males are listed as actors &amp; directors? 2782 (3.0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>How many started as directors? 636 (22.86%)
-How many started as actors and progressed into directors? 2146 (77.14%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Out of these 2782, how many started their careers as directors? 636 (22.86%)
+Out of these 2782, how many started their careers as actors and progressed into directors? 2146 (77.14%)
 </pre></div>
 </div>
 <img alt="_images/RmdTest_75_3.png" src="_images/RmdTest_75_3.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/DAAO_new5.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/RmdTest_76_0.png" src="_images/RmdTest_76_0.png" />
 </div>
 </div>
 <p>We visualised these actor-turned-director records over time (aggregated into 25-year bins). Each point in the graph marks the median number of years it took for an actor to make their directorial debut (orange for female averages and blue for male averages). We also annotate the male-female median difference in years for each 25-year period.</p>
@@ -1499,6 +1589,8 @@ How many started as actors and progressed into directors? 2146 (77.14%)
                                 <span class="n">on</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">avg_progression_time</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">,</span><span class="s1">&#39;Males&#39;</span><span class="p">,</span><span class="s1">&#39;Females&#39;</span><span class="p">]</span>
 
+<span class="n">avg_progression_time</span> <span class="o">=</span> <span class="n">avg_progression_time</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
 <span class="c1"># gender frequency over decade</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
@@ -1515,7 +1607,7 @@ How many started as actors and progressed into directors? 2146 (77.14%)
                  <span class="n">avg_progression_time</span><span class="p">[</span><span class="s1">&#39;Females&#39;</span><span class="p">],</span>
                  <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">.05</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1872.5</span><span class="p">,</span> <span class="mf">13.4</span><span class="p">,</span> <span class="s1">&#39;+5 yrs&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="c1"># plt.text(1872.5, 13.4, &#39;+5 yrs&#39;, ha=&#39;left&#39;, va=&#39;center&#39;,size=14, alpha = 0.8)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1897.5</span><span class="p">,</span> <span class="mf">13.15</span><span class="p">,</span> <span class="s1">&#39;+3.5 yrs&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1922.5</span><span class="p">,</span> <span class="mf">11.9</span><span class="p">,</span> <span class="s1">&#39;+4 yrs&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1947.5</span><span class="p">,</span> <span class="mf">10.7</span><span class="p">,</span> <span class="s1">&#39;+2 yrs&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
@@ -1523,10 +1615,10 @@ How many started as actors and progressed into directors? 2146 (77.14%)
 <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1995.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;0 yrs&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1875</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1875</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1875</span><span class="p">,</span><span class="mi">2010</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1875</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> 
-           <span class="p">[</span><span class="s1">&#39;1875-1900&#39;</span><span class="p">,</span> <span class="s1">&#39;1900-1925&#39;</span><span class="p">,</span> <span class="s1">&#39;1925-1950&#39;</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span><span class="mi">2010</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1900</span><span class="p">,</span> <span class="mi">2010</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> 
+           <span class="p">[</span><span class="s1">&#39;1900-1925&#39;</span><span class="p">,</span> <span class="s1">&#39;1925-1950&#39;</span><span class="p">,</span>
             <span class="s1">&#39;1950-1975&#39;</span><span class="p">,</span> <span class="s1">&#39;1975-2000&#39;</span><span class="p">,</span> <span class="s1">&#39;2000-Present&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">18</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
@@ -1539,7 +1631,7 @@ How many started as actors and progressed into directors? 2146 (77.14%)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/RmdTest_77_0.png" src="_images/RmdTest_77_0.png" />
+<img alt="_images/RmdTest_78_0.png" src="_images/RmdTest_78_0.png" />
 </div>
 </div>
 <blockquote class="epigraph">
@@ -1550,11 +1642,6 @@ How many started as actors and progressed into directors? 2146 (77.14%)
 <div class="section" id="exhibitions-spatial-analysis">
 <h2>Exhibitions, Spatial Analysis<a class="headerlink" href="#exhibitions-spatial-analysis" title="Permalink to this headline">¶</a></h2>
 <p>A majority of the DAAO exhibition data consists of geocodes allowing us to visualise the location of exhibitions on a map. We illustrate four snapshots of DAAO exhibitions over time (1930, 1960, 1990 and 2020).</p>
-<div class="cell tag_remove-input docutils container">
-<div class="cell_output docutils container">
-<img alt="_images/RmdTest_80_0.png" src="_images/RmdTest_80_0.png" />
-</div>
-</div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/RmdTest_81_0.png" src="_images/RmdTest_81_0.png" />
@@ -1568,6 +1655,11 @@ How many started as actors and progressed into directors? 2146 (77.14%)
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/RmdTest_83_0.png" src="_images/RmdTest_83_0.png" />
+</div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/RmdTest_84_0.png" src="_images/RmdTest_84_0.png" />
 </div>
 </div>
 <p>We have also developed a live application which can be used to dynamically compare DAAO events with other cultural datasets with <a class="reference external" href="https://jmunoz.shinyapps.io/ACDE_Map/">interactive map</a>.</p>

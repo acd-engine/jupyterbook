@@ -1,0 +1,61 @@
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+tt = unique_participants.assign(Roles=unique_participants['Role.Category.Concatinate']\
+    .str.split(' ')).explode('Roles').reset_index(drop=True).copy()
+
+nonreturners = (tt['left_noreturn'] == 1)
+oneyearparticipants = (tt['left_noreturn'] == 1) &\
+                      (tt['previous_year'] == 1) &\
+                      (tt['previous_years'] == 0)
+
+# make figure larger
+plt.figure(figsize=(12,8))
+
+sns.swarmplot(data=tt[oneyearparticipants],
+x="Year", y="Roles", hue="Gender", dodge=False, size=14, alpha=0.8,
+palette=['tab:green', 'tab:orange', 'tab:blue', 'tab:red'])
+
+# add gridlines
+plt.grid(axis='y', alpha=0.5)
+plt.ylim(7.5, -1)
+
+plt.title('Participants with one-year careers with Circus Oz', fontsize=16)
+
+plt.legend(fontsize=14, loc='lower right', ncol=1, title='Gender')\
+    .get_title()\
+    .set_fontsize('14')
+
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn [11], line 12[0m
+[1;32m      9[0m [38;5;66;03m# make figure larger[39;00m
+[1;32m     10[0m plt[38;5;241m.[39mfigure(figsize[38;5;241m=[39m([38;5;241m12[39m,[38;5;241m8[39m))
+[0;32m---> 12[0m [43msns[49m[38;5;241m.[39mswarmplot(data[38;5;241m=[39mtt[oneyearparticipants],
+[1;32m     13[0m x[38;5;241m=[39m[38;5;124m"[39m[38;5;124mYear[39m[38;5;124m"[39m, y[38;5;241m=[39m[38;5;124m"[39m[38;5;124mRoles[39m[38;5;124m"[39m, hue[38;5;241m=[39m[38;5;124m"[39m[38;5;124mGender[39m[38;5;124m"[39m, dodge[38;5;241m=[39m[38;5;28;01mFalse[39;00m, size[38;5;241m=[39m[38;5;241m14[39m, alpha[38;5;241m=[39m[38;5;241m0.8[39m,
+[1;32m     14[0m palette[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mtab:green[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mtab:orange[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mtab:blue[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mtab:red[39m[38;5;124m'[39m])
+[1;32m     16[0m [38;5;66;03m# add gridlines[39;00m
+[1;32m     17[0m plt[38;5;241m.[39mgrid(axis[38;5;241m=[39m[38;5;124m'[39m[38;5;124my[39m[38;5;124m'[39m, alpha[38;5;241m=[39m[38;5;241m0.5[39m)
+
+[0;31mNameError[0m: name 'sns' is not defined
+NameError: name 'sns' is not defined
+
