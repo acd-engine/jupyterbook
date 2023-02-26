@@ -1261,7 +1261,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/rb/mjsh2q916fl5sgghntjck66h0000gn/T/ipykernel_39271/2270394203.py:6: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/rb/mjsh2q916fl5sgghntjck66h0000gn/T/ipykernel_61536/2270394203.py:6: FutureWarning: iteritems is deprecated and will be removed in a future version. Use .items instead.
   for idx,row in archies.sort_values(&#39;YEAR&#39;)[&#39;WINNER&#39;].iteritems():
 </pre></div>
 </div>
@@ -1270,7 +1270,17 @@
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sns.set_theme(style=&quot;white&quot;, rc={&quot;axes.facecolor&quot;: (0, 0, 0, 0), &#39;axes.linewidth&#39;:2})  </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def upper_rugplot(data, height=.05, ax=None, **kwargs):</span>
+<span class="c1">#     from matplotlib.collections import LineCollection</span>
+<span class="c1">#     ax = ax or plt.gca()</span>
+<span class="c1">#     kwargs.setdefault(&quot;linewidth&quot;, 1)</span>
+<span class="c1">#     segs = np.stack((np.c_[data, data],</span>
+<span class="c1">#                      np.c_[np.ones_like(data), np.ones_like(data)-height]),</span>
+<span class="c1">#                     axis=-1)</span>
+<span class="c1">#     lc = LineCollection(segs, transform=ax.get_xaxis_transform(), **kwargs)</span>
+<span class="c1">#     ax.add_collection(lc)</span>
+
+<span class="c1"># sns.set_theme(style=&quot;white&quot;, rc={&quot;axes.facecolor&quot;: (0, 0, 0, 0), &#39;axes.linewidth&#39;:2})  </span>
 <span class="c1"># palette = sns.color_palette(&quot;Paired&quot;, 8)    </span>
 <span class="c1"># archies_density = archies[archies[&#39;count&#39;] &lt; 9].copy()  </span>
 <span class="c1"># archies_density[&#39;count_verbose&#39;] = np.where(archies_density[&#39;count&#39;] == 1, &#39;1st win&#39;, np.nan)  </span>

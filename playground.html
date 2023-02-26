@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt;</title>
+    <title>IMDB data</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -245,14 +245,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -260,19 +252,11 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>IMDB data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -436,6 +420,226 @@
 </div>
 <img alt="_images/playground_2_1.png" src="_images/playground_2_1.png" />
 <img alt="_images/playground_2_2.png" src="_images/playground_2_2.png" />
+</div>
+</div>
+<div class="section" id="imdb-data">
+<h1>IMDB data<a class="headerlink" href="#imdb-data" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># read data file with .tsv extension</span>
+<span class="n">imdb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/name.basics.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># fix UnicodeDecodeError: &#39;utf-8&#39; codec can&#39;t decode byte 0xe9 in position 1: invalid continuation byte</span>
+<span class="n">acde_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/dataviz_position_task_dataset.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;latin-1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imdb_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;nconst&#39;, &#39;primaryName&#39;, &#39;birthYear&#39;, &#39;deathYear&#39;, &#39;primaryProfession&#39;,
+       &#39;knownForTitles&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Chris Edwards&#39;</span>
+
+<span class="c1"># get the first name</span>
+<span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># get the last name</span>
+<span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Chris Edwards&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">],</span> <span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;same_name&#39;</span><span class="p">]):</span>
+    <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">20</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span> <span class="o">==</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">try</span><span class="p">:</span> 
+            <span class="n">this_person</span> <span class="o">=</span> <span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">this_person</span> <span class="o">=</span> <span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+        
+        <span class="n">acde_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;number_matches&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">this_person</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        
+    <span class="k">elif</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Tori de Mestre&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Ian de Gruchy&#39;</span><span class="p">):</span>
+            <span class="n">this_person</span> <span class="o">=</span> <span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]),</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Del Kathryn Barton&#39;</span><span class="p">):</span>
+            <span class="n">this_person</span> <span class="o">=</span> <span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])))</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+    <span class="k">elif</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="s1">&#39;Freddy Jangala Patrick&#39;</span><span class="p">):</span>
+            <span class="n">this_person</span> <span class="o">=</span> <span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="o">&amp;</span> \
+            <span class="p">(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># write to csv</span>
+<span class="n">acde_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/ausstage_march_symp.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(401, 26)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imdb scraping steps</span>
+
+<span class="c1"># 1. get name and corresponding movies and search for movie by id</span>
+<span class="c1"># example: https://www.imdb.com/title/tt0203009</span>
+
+<span class="c1"># 2. get metadata such as details, awards, </span>
+<span class="c1"># rating: title.ratings.tsv.gz</span>
+<span class="c1"># genre: title.basics.tsv.gz</span>
+<span class="c1"># region: title.akas.tsv.gz</span>
+<span class="c1"># language: title.akas.tsv.gz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_df</span><span class="p">[</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;same_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Freddy Jangala Patrick&#39;</span><span class="p">]</span>
+<span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Chris Edwards-Haines&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>same_name</th>
+      <th>display_name_ausstage</th>
+      <th>first_name_ausstage</th>
+      <th>first_name_daao</th>
+      <th>middle_name_ausstage</th>
+      <th>last_name_ausstage</th>
+      <th>last_name_daao</th>
+      <th>gender_ausstage</th>
+      <th>gender_daao</th>
+      <th>year_of_birth_ausstage</th>
+      <th>...</th>
+      <th>nationality_ausstage</th>
+      <th>other_names_ausstage</th>
+      <th>other_names_daao</th>
+      <th>all_names_daao</th>
+      <th>all_names_indiv_ausstage</th>
+      <th>all_names_unf_ausstage</th>
+      <th>ori_id_ausstage</th>
+      <th>ori_id_daao</th>
+      <th>ori_id_unf_ausstage</th>
+      <th>number_matches</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>241</th>
+      <td>Freddy Jangala Patrick</td>
+      <td>Freddy Jangala Patrick</td>
+      <td>Freddy</td>
+      <td>Freddy Jangala</td>
+      <td>NaN</td>
+      <td>Jangala Patrick</td>
+      <td>Patrick</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>[]</td>
+      <td>[('', 'Kumunjayi')]</td>
+      <td>['Kumunjayi', 'Freddy Jangala Patrick']</td>
+      <td>['Freddy Jangala Patrick']</td>
+      <td>['Freddy Jangala Patrick']</td>
+      <td>524797</td>
+      <td>4da19e7fb538b73d930155e2</td>
+      <td>147007</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 26 columns</p>
+</div></div></div>
 </div>
 </div>
 
