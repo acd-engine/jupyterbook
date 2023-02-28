@@ -485,6 +485,22 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">],</span> <span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;same_name&#39;</span><span class="p">]):</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+    
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">],</span> <span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;same_name&#39;</span><span class="p">]):</span>
@@ -522,6 +538,29 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+20
+40
+60
+80
+100
+120
+140
+160
+180
+200
+220
+240
+380
+400
+420
+440
+460
+480
+700
+720
+740
+760
+780
 </pre></div>
 </div>
 </div>
@@ -548,24 +587,183 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imdb scraping steps</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imdb_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="c1"># 1. get name and corresponding movies and search for movie by id</span>
-<span class="c1"># example: https://www.imdb.com/title/tt0203009</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="c1"># 2. get metadata such as details, awards, </span>
-<span class="c1"># rating: title.ratings.tsv.gz</span>
-<span class="c1"># genre: title.basics.tsv.gz</span>
-<span class="c1"># region: title.akas.tsv.gz</span>
-<span class="c1"># language: title.akas.tsv.gz</span>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nconst</th>
+      <th>primaryName</th>
+      <th>birthYear</th>
+      <th>deathYear</th>
+      <th>primaryProfession</th>
+      <th>knownForTitles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>nm0000001</td>
+      <td>Fred Astaire</td>
+      <td>1899</td>
+      <td>1987</td>
+      <td>soundtrack,actor,miscellaneous</td>
+      <td>tt0045537,tt0072308,tt0053137,tt0050419</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>nm0000002</td>
+      <td>Lauren Bacall</td>
+      <td>1924</td>
+      <td>2014</td>
+      <td>actress,soundtrack</td>
+      <td>tt0071877,tt0037382,tt0038355,tt0117057</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>nm0000003</td>
+      <td>Brigitte Bardot</td>
+      <td>1934</td>
+      <td>\N</td>
+      <td>actress,soundtrack,music_department</td>
+      <td>tt0057345,tt0049189,tt0054452,tt0056404</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>nm0000004</td>
+      <td>John Belushi</td>
+      <td>1949</td>
+      <td>1982</td>
+      <td>actor,soundtrack,writer</td>
+      <td>tt0077975,tt0080455,tt0078723,tt0072562</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>nm0000005</td>
+      <td>Ingmar Bergman</td>
+      <td>1918</td>
+      <td>2007</td>
+      <td>writer,director,actor</td>
+      <td>tt0050986,tt0050976,tt0083922,tt0060827</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>12319802</th>
+      <td>nm9993714</td>
+      <td>Romeo del Rosario</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>animation_department,art_department</td>
+      <td>tt2455546,tt11657662,tt14069590</td>
+    </tr>
+    <tr>
+      <th>12319803</th>
+      <td>nm9993716</td>
+      <td>Essias Loberg</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>NaN</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>12319804</th>
+      <td>nm9993717</td>
+      <td>Harikrishnan Rajan</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>cinematographer</td>
+      <td>tt8736744</td>
+    </tr>
+    <tr>
+      <th>12319805</th>
+      <td>nm9993718</td>
+      <td>Aayush Nair</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>cinematographer</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>12319806</th>
+      <td>nm9993719</td>
+      <td>Andre Hill</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>NaN</td>
+      <td>\N</td>
+    </tr>
+  </tbody>
+</table>
+<p>12319807 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exact_matches</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="k">if</span> <span class="n">idx</span> <span class="o">%</span> <span class="mi">25</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">this_person</span> <span class="o">=</span> <span class="n">imdb_df</span><span class="p">[</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">x2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">this_person</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+        <span class="n">this_person</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span> 
+        <span class="n">exact_matches</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">exact_matches</span><span class="p">,</span> <span class="n">this_person</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># acde_df.loc[acde_df[&#39;display_name_ausstage&#39;] == x, &#39;exact_matches&#39;] = this_person.shape[0]</span>
+    <span class="c1"># acde_df.loc[acde_df[&#39;display_name_ausstage&#39;] == x, &#39;exact_matches_nos&#39;] = &#39;,&#39;.join(this_person[&#39;nconst&#39;].unique())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+25
+50
+75
+100
+125
+150
+175
+200
+225
+250
+275
+300
+325
+350
+375
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_df</span><span class="p">[</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;same_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Freddy Jangala Patrick&#39;</span><span class="p">]</span>
-<span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Chris Edwards-Haines&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">acde_df</span><span class="p">,</span> <span class="n">exact_matches</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -599,7 +797,2692 @@
       <th>gender_daao</th>
       <th>year_of_birth_ausstage</th>
       <th>...</th>
+      <th>all_names_unf_ausstage</th>
+      <th>ori_id_ausstage</th>
+      <th>ori_id_daao</th>
+      <th>ori_id_unf_ausstage</th>
+      <th>nconst</th>
+      <th>primaryName</th>
+      <th>birthYear</th>
+      <th>deathYear</th>
+      <th>primaryProfession</th>
+      <th>knownForTitles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Les Tanner</td>
+      <td>Les Tanner</td>
+      <td>Les</td>
+      <td>Les</td>
+      <td>NaN</td>
+      <td>Tanner</td>
+      <td>Tanner</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Les Tanner', 'Pseud: Michael King']</td>
+      <td>243158</td>
+      <td>4da1a7a1b538b73d9301a435</td>
+      <td>16319</td>
+      <td>nm4275620</td>
+      <td>Les Tanner</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>art_department,miscellaneous</td>
+      <td>tt1822376</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Max Dupain</td>
+      <td>Max Dupain</td>
+      <td>Max</td>
+      <td>Max</td>
+      <td>NaN</td>
+      <td>Dupain</td>
+      <td>Dupain</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1911.0</td>
+      <td>...</td>
+      <td>['Max Dupain']</td>
+      <td>436343</td>
+      <td>4e9ea85ad707ff2d7b000005</td>
+      <td>57570</td>
+      <td>nm1865019</td>
+      <td>Max Dupain</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>camera_department</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Maria Kozic</td>
+      <td>Maria Kozic</td>
+      <td>Maria</td>
+      <td>Maria</td>
+      <td>NaN</td>
+      <td>Kozic</td>
+      <td>Kozic</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Maria Kozic']</td>
+      <td>255225</td>
+      <td>4da19a03b538b73d9300ff9a</td>
+      <td>34444</td>
+      <td>nm0468857</td>
+      <td>Maria Kozic</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>actress,soundtrack,art_director</td>
+      <td>tt0271157,tt4978482,tt0445039,tt0106450</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Destiny Deacon</td>
+      <td>Destiny Deacon</td>
+      <td>Destiny</td>
+      <td>Destiny</td>
+      <td>NaN</td>
+      <td>Deacon</td>
+      <td>Deacon</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>[' Destiny Deacon  ', 'Destiny Deacon']</td>
+      <td>462023</td>
+      <td>4da1e203b538b73d93029d94</td>
+      <td>93089</td>
+      <td>nm9716539</td>
+      <td>Destiny Deacon</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>director,actress,writer</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Rosemary Laing</td>
+      <td>Rosemary Laing</td>
+      <td>Rosemary</td>
+      <td>Rosemary</td>
+      <td>NaN</td>
+      <td>Laing</td>
+      <td>Laing</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Rosemary Laing']</td>
+      <td>513847</td>
+      <td>4da19a25b538b73d930101b5</td>
+      <td>138309</td>
+      <td>nm8787163</td>
+      <td>Rosemary Laing</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>NaN</td>
+      <td>tt1782248,tt7225594</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>Albie Thoms</td>
+      <td>Albie Thoms</td>
+      <td>Albie</td>
+      <td>Albie</td>
+      <td>NaN</td>
+      <td>Thoms</td>
+      <td>Thoms</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Geoffrey Thoms; Albie', 'Albie Thoms']</td>
+      <td>418125</td>
+      <td>4e52127dd707ff1dc7008bac</td>
+      <td>51566</td>
+      <td>nm0860864</td>
+      <td>Albie Thoms</td>
+      <td>1941</td>
+      <td>2012</td>
+      <td>director,producer,editor</td>
+      <td>tt1798114,tt0079693,tt0867597,tt1765904</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>Robert Bolton</td>
+      <td>Robert Bolton</td>
+      <td>Robert</td>
+      <td>Robert</td>
+      <td>NaN</td>
+      <td>Bolton</td>
+      <td>Bolton</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Robert Bolton']</td>
+      <td>228792</td>
+      <td>55d54980d707ff3b53000000</td>
+      <td>9034</td>
+      <td>nm6625703</td>
+      <td>Robert Bolton</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>actor,writer,composer</td>
+      <td>tt3875448,tt3746662,tt15010528,tt3857940</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>Russell Drysdale</td>
+      <td>Russell Drysdale</td>
+      <td>Russell</td>
+      <td>Russell</td>
+      <td>NaN</td>
+      <td>Drysdale</td>
+      <td>Drysdale</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1912.0</td>
+      <td>...</td>
+      <td>['Russell Drysdale']</td>
+      <td>436394</td>
+      <td>4da196ebb538b73d930099a1</td>
+      <td>59583</td>
+      <td>nm4217771</td>
+      <td>Russell Drysdale</td>
+      <td>1912</td>
+      <td>1981</td>
+      <td>writer,art_department</td>
+      <td>tt14392544,tt1793275,tt2337189,tt6547248</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>Daniel Askill</td>
+      <td>Daniel Askill</td>
+      <td>Daniel</td>
+      <td>Daniel</td>
+      <td>NaN</td>
+      <td>Askill</td>
+      <td>Askill</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Daniel Askill']</td>
+      <td>440151</td>
+      <td>4df8511772edc271750000a3</td>
+      <td>1713</td>
+      <td>nm1747324</td>
+      <td>Daniel Askill</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>director,writer,producer</td>
+      <td>tt0430755,tt10513980,tt11512720</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>Ruby Collins</td>
+      <td>Ruby Collins</td>
+      <td>Ruby</td>
+      <td>Ruby Nakamarra</td>
+      <td>NaN</td>
+      <td>Collins</td>
+      <td>Collins</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Ruby Collins']</td>
+      <td>504637</td>
+      <td>4da1964ab538b73d93007cb4</td>
+      <td>131201</td>
+      <td>nm4446907</td>
+      <td>Ruby Collins</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>actress</td>
+      <td>tt1754577</td>
+    </tr>
+  </tbody>
+</table>
+<p>109 rows × 31 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_merged</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">acde_df</span><span class="p">,</span> <span class="n">exact_matches</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;gender_daao&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;gender_ausstage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="c1"># write to csv</span>
+<span class="c1"># acde_imdb_merged.to_csv(&#39;data/ausstage_march_symp_exact.csv&#39;, index=False)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>109
+Male      68
+Female    41
+Name: gender_daao, dtype: int64 
+
+ Male       64
+Female     43
+Unknown     2
+Name: gender_ausstage, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Anomalies identified with gender records</span>
+
+<span class="c1"># remove Pat Oliphant - appears to be two different people</span>
+<span class="n">acde_imdb_merged</span> <span class="o">=</span> <span class="n">acde_imdb_merged</span><span class="p">[</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Pat Oliphant&#39;</span><span class="p">]</span>
+
+<span class="c1"># update Toni Maticevski - same person but listed as female in AusStage?</span>
+<span class="n">acde_imdb_merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Toni Maticevski&#39;</span><span class="p">,</span><span class="s1">&#39;gender_ausstage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Male&#39;</span>
+
+<span class="c1"># update Brook Andrew - same person but listed as female in AusStage?</span>
+<span class="n">acde_imdb_merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Brook Andrew&#39;</span><span class="p">,</span><span class="s1">&#39;gender_ausstage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Male&#39;</span>
+
+<span class="c1"># update Bonita Ely - listed as Unknown in AusStage</span>
+<span class="n">acde_imdb_merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Bonita Ely&#39;</span><span class="p">,</span><span class="s1">&#39;gender_ausstage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Female&#39;</span>
+
+<span class="c1"># update J. Wright - listed as Unknown in AusStage</span>
+<span class="n">acde_imdb_merged</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;J. Wright&#39;</span><span class="p">,</span><span class="s1">&#39;gender_ausstage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Male&#39;</span>
+
+<span class="c1"># we identified some mismatches - these are not the same person</span>
+<span class="n">nonmatches_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Raymond Arnold&#39;</span><span class="p">,</span><span class="s1">&#39;Janet Dawson&#39;</span><span class="p">,</span><span class="s1">&#39;Syd Miller&#39;</span><span class="p">,</span><span class="s1">&#39;Eileen Cook&#39;</span><span class="p">,</span> <span class="s1">&#39;Lauren Berkowitz&#39;</span><span class="p">]</span>
+<span class="n">acde_imdb_merged</span> <span class="o">=</span> <span class="n">acde_imdb_merged</span><span class="p">[</span><span class="o">~</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span>\
+                                              <span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">nonmatches_names</span><span class="p">)]</span>
+
+<span class="c1"># we omit rows with no record knownForTitles data</span>
+<span class="n">acde_imdb_merged</span> <span class="o">=</span> <span class="n">acde_imdb_merged</span><span class="p">[</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;knownForTitles&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">N&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;gender_daao&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;gender_ausstage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="n">acde_imdb_merged</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Male      58
+Female    29
+Name: gender_daao, dtype: int64 
+
+ Male      58
+Female    29
+Name: gender_ausstage, dtype: int64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(87, 31)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;knownForTitles&#39;</span><span class="p">]</span>
+
+<span class="n">acde_imdb_expanded</span> <span class="o">=</span> <span class="n">acde_imdb_merged</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">titleId</span><span class="o">=</span><span class="n">acde_imdb_merged</span><span class="p">[</span><span class="s1">&#39;knownForTitles&#39;</span><span class="p">]</span>\
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s1">&#39;titleId&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># keep only rows with more than 2 occurrences</span>
+<span class="n">acde_imdb_expanded</span><span class="p">[</span><span class="n">acde_imdb_expanded</span><span class="p">[</span><span class="s1">&#39;titleId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">acde_imdb_expanded</span><span class="p">[</span><span class="s1">&#39;titleId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="n">acde_imdb_expanded</span><span class="p">[</span><span class="s1">&#39;titleId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">)]</span>
+<span class="c1"># acde_imdb_expanded.display_name_ausstage.value_counts().reset_index()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>same_name</th>
+      <th>display_name_ausstage</th>
+      <th>first_name_ausstage</th>
+      <th>first_name_daao</th>
+      <th>middle_name_ausstage</th>
+      <th>last_name_ausstage</th>
+      <th>last_name_daao</th>
+      <th>gender_ausstage</th>
+      <th>gender_daao</th>
+      <th>year_of_birth_ausstage</th>
+      <th>...</th>
+      <th>ori_id_ausstage</th>
+      <th>ori_id_daao</th>
+      <th>ori_id_unf_ausstage</th>
+      <th>nconst</th>
+      <th>primaryName</th>
+      <th>birthYear</th>
+      <th>deathYear</th>
+      <th>primaryProfession</th>
+      <th>knownForTitles</th>
+      <th>titleId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>13</th>
+      <td>Bronwyn Bancroft</td>
+      <td>Bronwyn Bancroft</td>
+      <td>Bronwyn</td>
+      <td>Bronwyn</td>
+      <td>NaN</td>
+      <td>Bancroft</td>
+      <td>Bancroft</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>243712</td>
+      <td>4da19531b538b73d930025ac</td>
+      <td>39879</td>
+      <td>nm11338369</td>
+      <td>Bronwyn Bancroft</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>NaN</td>
+      <td>tt0143055</td>
+      <td>tt0143055</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Jeffrey Smart</td>
+      <td>Jeffrey Smart</td>
+      <td>Jeffrey</td>
+      <td>Jeffrey</td>
+      <td>NaN</td>
+      <td>Smart</td>
+      <td>Smart</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>228779</td>
+      <td>4da1bd98b538b73d93024016</td>
+      <td>9021</td>
+      <td>nm7045275</td>
+      <td>Jeffrey Smart</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>NaN</td>
+      <td>tt4343716,tt5233498</td>
+      <td>tt4343716</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Desmonde Downing</td>
+      <td>Desmonde Downing</td>
+      <td>Desmonde</td>
+      <td>Desmonde</td>
+      <td>NaN</td>
+      <td>Downing</td>
+      <td>Downing</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>1920.0</td>
+      <td>...</td>
+      <td>228546</td>
+      <td>4da196d2b538b73d93009468</td>
+      <td>10641</td>
+      <td>nm1257013</td>
+      <td>Desmonde Downing</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>production_designer,art_department</td>
+      <td>tt0069862,tt0047189,tt0159850,tt0377159</td>
+      <td>tt0069862</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>Arthur Boyd</td>
+      <td>Arthur Boyd</td>
+      <td>Arthur</td>
+      <td>Arthur</td>
+      <td>NaN</td>
+      <td>Boyd</td>
+      <td>Boyd</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>245462</td>
+      <td>4da1957eb538b73d930042a8</td>
+      <td>37053</td>
+      <td>nm4110324</td>
+      <td>Arthur Boyd</td>
+      <td>1920</td>
+      <td>1999</td>
+      <td>producer</td>
+      <td>tt0077082,tt0244268,tt6547248,tt1737097</td>
+      <td>tt6547248</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>Cul Cullen</td>
+      <td>Cul Cullen</td>
+      <td>Cul</td>
+      <td>Fred</td>
+      <td>NaN</td>
+      <td>Cullen</td>
+      <td>Cullen</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>488908</td>
+      <td>4da19684b538b73d93008745</td>
+      <td>116970</td>
+      <td>nm0191454</td>
+      <td>Cul Cullen</td>
+      <td>1934</td>
+      <td>1982</td>
+      <td>actor,writer</td>
+      <td>tt0196279,tt0084296,tt0067408,tt0129685</td>
+      <td>tt0129685</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>Albert Tucker</td>
+      <td>Albert Tucker</td>
+      <td>Albert</td>
+      <td>Albert</td>
+      <td>NaN</td>
+      <td>Tucker</td>
+      <td>Tucker</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>227289</td>
+      <td>4da1a9cab538b73d9301b508</td>
+      <td>9579</td>
+      <td>nm1387750</td>
+      <td>Albert Tucker</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>art_department</td>
+      <td>tt1792630,tt4343716</td>
+      <td>tt4343716</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Quentin Hole</td>
+      <td>Quentin Hole</td>
+      <td>Quentin</td>
+      <td>Quentin</td>
+      <td>NaN</td>
+      <td>Hole</td>
+      <td>Hole</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>229830</td>
+      <td>4da1fecbb538b73d9302c54e</td>
+      <td>11948</td>
+      <td>nm0390419</td>
+      <td>Quentin Hole</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>production_designer,art_department,art_director</td>
+      <td>tt0425716,tt0077999,tt0069862,tt0086676</td>
+      <td>tt0069862</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>Betty Dyson</td>
+      <td>Betty Dyson</td>
+      <td>Betty</td>
+      <td>Betty</td>
+      <td>NaN</td>
+      <td>Dyson</td>
+      <td>Dyson</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>228914</td>
+      <td>4da196f9b538b73d93009d8a</td>
+      <td>10390</td>
+      <td>nm0246018</td>
+      <td>Betty Dyson</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>actress</td>
+      <td>tt0068114,tt0386011,tt0129685,tt0083792</td>
+      <td>tt0129685</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>Norman Hetherington</td>
+      <td>Norman Hetherington</td>
+      <td>Norman</td>
+      <td>Norman</td>
+      <td>NaN</td>
+      <td>Hetherington</td>
+      <td>Hetherington</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1921.0</td>
+      <td>...</td>
+      <td>444889</td>
+      <td>4da19883b538b73d9300d8cb</td>
+      <td>82680</td>
+      <td>nm1665194</td>
+      <td>Norman Hetherington</td>
+      <td>1921</td>
+      <td>2010</td>
+      <td>actor,miscellaneous</td>
+      <td>tt0060025,tt0285751,tt0407361,tt0143055</td>
+      <td>tt0407361</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>Norman Hetherington</td>
+      <td>Norman Hetherington</td>
+      <td>Norman</td>
+      <td>Norman</td>
+      <td>NaN</td>
+      <td>Hetherington</td>
+      <td>Hetherington</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1921.0</td>
+      <td>...</td>
+      <td>444889</td>
+      <td>4da19883b538b73d9300d8cb</td>
+      <td>82680</td>
+      <td>nm1665194</td>
+      <td>Norman Hetherington</td>
+      <td>1921</td>
+      <td>2010</td>
+      <td>actor,miscellaneous</td>
+      <td>tt0060025,tt0285751,tt0407361,tt0143055</td>
+      <td>tt0143055</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>Harry Reade</td>
+      <td>Harry Reade</td>
+      <td>Harry</td>
+      <td>Harry</td>
+      <td>NaN</td>
+      <td>Reade</td>
+      <td>Reade</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1927.0</td>
+      <td>...</td>
+      <td>246016</td>
+      <td>4da1a092b538b73d93016d15</td>
+      <td>35381</td>
+      <td>nm4292456</td>
+      <td>Harry Reade</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>animation_department,director</td>
+      <td>tt16915420,tt1829645,tt1829656,tt0407361</td>
+      <td>tt0407361</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>Russell Drysdale</td>
+      <td>Russell Drysdale</td>
+      <td>Russell</td>
+      <td>Russell</td>
+      <td>NaN</td>
+      <td>Drysdale</td>
+      <td>Drysdale</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1912.0</td>
+      <td>...</td>
+      <td>436394</td>
+      <td>4da196ebb538b73d930099a1</td>
+      <td>59583</td>
+      <td>nm4217771</td>
+      <td>Russell Drysdale</td>
+      <td>1912</td>
+      <td>1981</td>
+      <td>writer,art_department</td>
+      <td>tt14392544,tt1793275,tt2337189,tt6547248</td>
+      <td>tt6547248</td>
+    </tr>
+  </tbody>
+</table>
+<p>12 rows × 32 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_expanded</span><span class="o">.</span><span class="n">display_name_ausstage</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">31</span><span class="p">)</span>
+<span class="n">acde_imdb_expanded</span><span class="o">.</span><span class="n">display_name_ausstage</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">acde_imdb_expanded</span><span class="o">.</span><span class="n">display_name_ausstage</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_expanded</span><span class="p">[</span><span class="n">acde_imdb_expanded</span><span class="o">.</span><span class="n">display_name_ausstage</span> <span class="o">==</span> <span class="s1">&#39;Rolf Harris&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>same_name</th>
+      <th>display_name_ausstage</th>
+      <th>first_name_ausstage</th>
+      <th>first_name_daao</th>
+      <th>middle_name_ausstage</th>
+      <th>last_name_ausstage</th>
+      <th>last_name_daao</th>
+      <th>gender_ausstage</th>
+      <th>gender_daao</th>
+      <th>year_of_birth_ausstage</th>
+      <th>...</th>
+      <th>ori_id_ausstage</th>
+      <th>ori_id_daao</th>
+      <th>ori_id_unf_ausstage</th>
+      <th>nconst</th>
+      <th>primaryName</th>
+      <th>birthYear</th>
+      <th>deathYear</th>
+      <th>primaryProfession</th>
+      <th>knownForTitles</th>
+      <th>titleId</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>26</th>
+      <td>Rolf Harris</td>
+      <td>Rolf Harris</td>
+      <td>Rolf</td>
+      <td>Rolf</td>
+      <td>NaN</td>
+      <td>Harris</td>
+      <td>Harris</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>441506</td>
+      <td>4da1984cb538b73d9300d23d</td>
+      <td>80072</td>
+      <td>nm0365271</td>
+      <td>Rolf Harris</td>
+      <td>1930</td>
+      <td>\N</td>
+      <td>soundtrack,actor,music_department</td>
+      <td>tt1965057,tt0455824,tt2004432,tt3680410</td>
+      <td>tt1965057</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Rolf Harris</td>
+      <td>Rolf Harris</td>
+      <td>Rolf</td>
+      <td>Rolf</td>
+      <td>NaN</td>
+      <td>Harris</td>
+      <td>Harris</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>441506</td>
+      <td>4da1984cb538b73d9300d23d</td>
+      <td>80072</td>
+      <td>nm0365271</td>
+      <td>Rolf Harris</td>
+      <td>1930</td>
+      <td>\N</td>
+      <td>soundtrack,actor,music_department</td>
+      <td>tt1965057,tt0455824,tt2004432,tt3680410</td>
+      <td>tt0455824</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Rolf Harris</td>
+      <td>Rolf Harris</td>
+      <td>Rolf</td>
+      <td>Rolf</td>
+      <td>NaN</td>
+      <td>Harris</td>
+      <td>Harris</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>441506</td>
+      <td>4da1984cb538b73d9300d23d</td>
+      <td>80072</td>
+      <td>nm0365271</td>
+      <td>Rolf Harris</td>
+      <td>1930</td>
+      <td>\N</td>
+      <td>soundtrack,actor,music_department</td>
+      <td>tt1965057,tt0455824,tt2004432,tt3680410</td>
+      <td>tt2004432</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Rolf Harris</td>
+      <td>Rolf Harris</td>
+      <td>Rolf</td>
+      <td>Rolf</td>
+      <td>NaN</td>
+      <td>Harris</td>
+      <td>Harris</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>441506</td>
+      <td>4da1984cb538b73d9300d23d</td>
+      <td>80072</td>
+      <td>nm0365271</td>
+      <td>Rolf Harris</td>
+      <td>1930</td>
+      <td>\N</td>
+      <td>soundtrack,actor,music_department</td>
+      <td>tt1965057,tt0455824,tt2004432,tt3680410</td>
+      <td>tt3680410</td>
+    </tr>
+  </tbody>
+</table>
+<p>4 rows × 32 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data file with .tsv extension</span>
+<span class="n">imdb_titleakas_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/title.akas.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/rb/mjsh2q916fl5sgghntjck66h0000gn/T/ipykernel_68372/147457272.py:2: DtypeWarning: Columns (7) have mixed types. Specify dtype option on import or set low_memory=False.
+  imdb_titleakas_df = pd.read_csv(&#39;data/title.akas.tsv&#39;, sep=&#39;\t&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data file with .tsv extension</span>
+<span class="n">imdb_titlebasics_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/title.basics.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/rb/mjsh2q916fl5sgghntjck66h0000gn/T/ipykernel_68372/2545004822.py:2: DtypeWarning: Columns (4) have mixed types. Specify dtype option on import or set low_memory=False.
+  imdb_titlebasics_df = pd.read_csv(&#39;data/title.basics.tsv&#39;, sep=&#39;\t&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">acde_imdb_expanded</span><span class="p">,</span> <span class="n">imdb_titleakas_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;titleId&#39;</span><span class="p">)</span>
+<span class="n">acde_imdb_withtitles</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>same_name</th>
+      <th>display_name_ausstage</th>
+      <th>first_name_ausstage</th>
+      <th>first_name_daao</th>
+      <th>middle_name_ausstage</th>
+      <th>last_name_ausstage</th>
+      <th>last_name_daao</th>
+      <th>gender_ausstage</th>
+      <th>gender_daao</th>
+      <th>year_of_birth_ausstage</th>
+      <th>...</th>
+      <th>primaryProfession</th>
+      <th>knownForTitles</th>
+      <th>titleId</th>
+      <th>ordering</th>
+      <th>title</th>
+      <th>region</th>
+      <th>language</th>
+      <th>types</th>
+      <th>attributes</th>
+      <th>isOriginalTitle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Les Tanner</td>
+      <td>Les Tanner</td>
+      <td>Les</td>
+      <td>Les</td>
+      <td>NaN</td>
+      <td>Tanner</td>
+      <td>Tanner</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department,miscellaneous</td>
+      <td>tt1822376</td>
+      <td>tt1822376</td>
+      <td>1</td>
+      <td>Words for Freedom</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>original</td>
+      <td>\N</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Les Tanner</td>
+      <td>Les Tanner</td>
+      <td>Les</td>
+      <td>Les</td>
+      <td>NaN</td>
+      <td>Tanner</td>
+      <td>Tanner</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department,miscellaneous</td>
+      <td>tt1822376</td>
+      <td>tt1822376</td>
+      <td>2</td>
+      <td>Words for Freedom</td>
+      <td>AU</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Maria Kozic</td>
+      <td>Maria Kozic</td>
+      <td>Maria</td>
+      <td>Maria</td>
+      <td>NaN</td>
+      <td>Kozic</td>
+      <td>Kozic</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>actress,soundtrack,art_director</td>
+      <td>tt0271157,tt4978482,tt0445039,tt0106450</td>
+      <td>tt0271157</td>
+      <td>1</td>
+      <td>Salt, Saliva, Sperm and Sweat</td>
+      <td>AU</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Maria Kozic</td>
+      <td>Maria Kozic</td>
+      <td>Maria</td>
+      <td>Maria</td>
+      <td>NaN</td>
+      <td>Kozic</td>
+      <td>Kozic</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>actress,soundtrack,art_director</td>
+      <td>tt0271157,tt4978482,tt0445039,tt0106450</td>
+      <td>tt0271157</td>
+      <td>2</td>
+      <td>Salt, Saliva, Sperm and Sweat</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>original</td>
+      <td>\N</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Maria Kozic</td>
+      <td>Maria Kozic</td>
+      <td>Maria</td>
+      <td>Maria</td>
+      <td>NaN</td>
+      <td>Kozic</td>
+      <td>Kozic</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>actress,soundtrack,art_director</td>
+      <td>tt0271157,tt4978482,tt0445039,tt0106450</td>
+      <td>tt4978482</td>
+      <td>1</td>
+      <td>Under a Stone</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>original</td>
+      <td>\N</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 39 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">acde_imdb_withtitles</span><span class="p">,</span> <span class="n">imdb_titlebasics_df</span><span class="p">,</span> 
+                                <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;titleId&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;tconst&#39;</span><span class="p">)</span>
+<span class="n">acde_imdb_withtitles2</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># nonmatches_names = [&#39;Raymond Arnold&#39;,&#39;Janet Dawson&#39;,&#39;Syd Miller&#39;,&#39;Eileen Cook&#39;, &#39;Lauren Berkowitz&#39;]</span>
+<span class="c1"># acde_imdb_withtitles2 = acde_imdb_withtitles2[~acde_imdb_withtitles2[&#39;display_name_ausstage&#39;]\</span>
+<span class="c1">#                                               .isin(nonmatches_names)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1153, 48)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># acde_imdb_withtitles2[&#39;runtimeMinutes&#39;] = acde_imdb_withtitles2[&#39;runtimeMinutes&#39;].apply(lambda x: x if x != &#39;\\N&#39; else -1)</span>
+<span class="c1"># acde_imdb_withtitles2[&#39;runtimeMinutes&#39;] = acde_imdb_withtitles2[&#39;runtimeMinutes&#39;].astype(int)</span>
+<span class="n">movie_cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="s1">&#39;titleType&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;movie&#39;</span><span class="p">)</span>
+<span class="n">au_cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;AU&#39;</span><span class="p">)</span>
+<span class="n">au_movies</span> <span class="o">=</span> <span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="n">movie_cond</span> <span class="o">&amp;</span> <span class="n">au_cond</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="n">non_au_movies</span> <span class="o">=</span> <span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="n">movie_cond</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">au_cond</span><span class="p">][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">au_movies</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_au_movies</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>72 351
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles2</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;title&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">display_name_ausstage</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Alan Oldfield       56
+Rolf Harris         41
+Reg Mombassa        29
+Desmonde Downing    25
+Sam Jinks           25
+                    ..
+Harry Wedge          1
+Anne Zahalka         1
+Simon Kneebone       1
+Leigh Hobbs          1
+Ruby Collins         1
+Name: display_name_ausstage, Length: 87, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="n">acde_imdb_withtitles2</span><span class="o">.</span><span class="n">same_name</span> <span class="o">==</span> <span class="s1">&#39;George Gittoes&#39;</span><span class="p">][</span><span class="s1">&#39;tconst&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles2</span><span class="p">[(</span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">international_movies</span><span class="p">))</span> <span class="o">&amp;</span>\
+                      <span class="p">(</span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;US&#39;</span><span class="p">]))]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>232</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>same_name</th>
+      <td>George Gittoes</td>
+    </tr>
+    <tr>
+      <th>display_name_ausstage</th>
+      <td>George Gittoes</td>
+    </tr>
+    <tr>
+      <th>first_name_ausstage</th>
+      <td>George</td>
+    </tr>
+    <tr>
+      <th>first_name_daao</th>
+      <td>George</td>
+    </tr>
+    <tr>
+      <th>middle_name_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>last_name_ausstage</th>
+      <td>Gittoes</td>
+    </tr>
+    <tr>
+      <th>last_name_daao</th>
+      <td>Gittoes</td>
+    </tr>
+    <tr>
+      <th>gender_ausstage</th>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>gender_daao</th>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_daao</th>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>year_of_death_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>year_of_death_daao</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>roles_ausstage</th>
+      <td>['Designer', 'Speaker']</td>
+    </tr>
+    <tr>
+      <th>roles_daao</th>
+      <td>[('artist', 'Painter'), ('artist', 'Performanc...</td>
+    </tr>
+    <tr>
+      <th>artist_birth_place_daao</th>
+      <td>Sydney, NSW</td>
+    </tr>
+    <tr>
       <th>nationality_ausstage</th>
+      <td>Australian</td>
+    </tr>
+    <tr>
+      <th>other_names_ausstage</th>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>other_names_daao</th>
+      <td>[('George Noel', 'Gittoes')]</td>
+    </tr>
+    <tr>
+      <th>all_names_daao</th>
+      <td>['George Gittoes', 'George Noel Gittoes']</td>
+    </tr>
+    <tr>
+      <th>all_names_indiv_ausstage</th>
+      <td>['George Gittoes']</td>
+    </tr>
+    <tr>
+      <th>all_names_unf_ausstage</th>
+      <td>['George Gittoes']</td>
+    </tr>
+    <tr>
+      <th>ori_id_ausstage</th>
+      <td>234780</td>
+    </tr>
+    <tr>
+      <th>ori_id_daao</th>
+      <td>4da1a91db538b73d9301af15</td>
+    </tr>
+    <tr>
+      <th>ori_id_unf_ausstage</th>
+      <td>21690</td>
+    </tr>
+    <tr>
+      <th>nconst</th>
+      <td>nm1982407</td>
+    </tr>
+    <tr>
+      <th>primaryName</th>
+      <td>George Gittoes</td>
+    </tr>
+    <tr>
+      <th>birthYear</th>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>deathYear</th>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>primaryProfession</th>
+      <td>director,cinematographer,producer</td>
+    </tr>
+    <tr>
+      <th>knownForTitles</th>
+      <td>tt10514370,tt0795448,tt0470161,tt0361596</td>
+    </tr>
+    <tr>
+      <th>titleId</th>
+      <td>tt0361596</td>
+    </tr>
+    <tr>
+      <th>ordering</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td>Fahrenheit 911</td>
+    </tr>
+    <tr>
+      <th>region</th>
+      <td>US</td>
+    </tr>
+    <tr>
+      <th>language</th>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>types</th>
+      <td>working</td>
+    </tr>
+    <tr>
+      <th>attributes</th>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>isOriginalTitle</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>tconst</th>
+      <td>tt0361596</td>
+    </tr>
+    <tr>
+      <th>titleType</th>
+      <td>movie</td>
+    </tr>
+    <tr>
+      <th>primaryTitle</th>
+      <td>Fahrenheit 9/11</td>
+    </tr>
+    <tr>
+      <th>originalTitle</th>
+      <td>Fahrenheit 9/11</td>
+    </tr>
+    <tr>
+      <th>isAdult</th>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>startYear</th>
+      <td>2004</td>
+    </tr>
+    <tr>
+      <th>endYear</th>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>runtimeMinutes</th>
+      <td>122</td>
+    </tr>
+    <tr>
+      <th>genres</th>
+      <td>Documentary,Drama,War</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Running on Empty Dreams&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>55</th>
+      <th>56</th>
+      <th>57</th>
+      <th>58</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>same_name</th>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+    </tr>
+    <tr>
+      <th>display_name_ausstage</th>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+    </tr>
+    <tr>
+      <th>first_name_ausstage</th>
+      <td>Raymond</td>
+      <td>Raymond</td>
+      <td>Raymond</td>
+      <td>Raymond</td>
+    </tr>
+    <tr>
+      <th>first_name_daao</th>
+      <td>Raymond</td>
+      <td>Raymond</td>
+      <td>Raymond</td>
+      <td>Raymond</td>
+    </tr>
+    <tr>
+      <th>middle_name_ausstage</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>last_name_ausstage</th>
+      <td>Arnold</td>
+      <td>Arnold</td>
+      <td>Arnold</td>
+      <td>Arnold</td>
+    </tr>
+    <tr>
+      <th>last_name_daao</th>
+      <td>Arnold</td>
+      <td>Arnold</td>
+      <td>Arnold</td>
+      <td>Arnold</td>
+    </tr>
+    <tr>
+      <th>gender_ausstage</th>
+      <td>Male</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>gender_daao</th>
+      <td>Male</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_ausstage</th>
+      <td>1950.0</td>
+      <td>1950.0</td>
+      <td>1950.0</td>
+      <td>1950.0</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_daao</th>
+      <td>1950</td>
+      <td>1950</td>
+      <td>1950</td>
+      <td>1950</td>
+    </tr>
+    <tr>
+      <th>year_of_death_ausstage</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>year_of_death_daao</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>roles_ausstage</th>
+      <td>['']</td>
+      <td>['']</td>
+      <td>['']</td>
+      <td>['']</td>
+    </tr>
+    <tr>
+      <th>roles_daao</th>
+      <td>[('artist', 'Printmaker')]</td>
+      <td>[('artist', 'Printmaker')]</td>
+      <td>[('artist', 'Printmaker')]</td>
+      <td>[('artist', 'Printmaker')]</td>
+    </tr>
+    <tr>
+      <th>artist_birth_place_daao</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>nationality_ausstage</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>other_names_ausstage</th>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>other_names_daao</th>
+      <td>[('Ray', 'Arnold')]</td>
+      <td>[('Ray', 'Arnold')]</td>
+      <td>[('Ray', 'Arnold')]</td>
+      <td>[('Ray', 'Arnold')]</td>
+    </tr>
+    <tr>
+      <th>all_names_daao</th>
+      <td>['Ray Arnold', 'Raymond Arnold']</td>
+      <td>['Ray Arnold', 'Raymond Arnold']</td>
+      <td>['Ray Arnold', 'Raymond Arnold']</td>
+      <td>['Ray Arnold', 'Raymond Arnold']</td>
+    </tr>
+    <tr>
+      <th>all_names_indiv_ausstage</th>
+      <td>['Raymond Arnold']</td>
+      <td>['Raymond Arnold']</td>
+      <td>['Raymond Arnold']</td>
+      <td>['Raymond Arnold']</td>
+    </tr>
+    <tr>
+      <th>all_names_unf_ausstage</th>
+      <td>['Raymond Arnold']</td>
+      <td>['Raymond Arnold']</td>
+      <td>['Raymond Arnold']</td>
+      <td>['Raymond Arnold']</td>
+    </tr>
+    <tr>
+      <th>ori_id_ausstage</th>
+      <td>458211</td>
+      <td>458211</td>
+      <td>458211</td>
+      <td>458211</td>
+    </tr>
+    <tr>
+      <th>ori_id_daao</th>
+      <td>4da1951bb538b73d93001ae7</td>
+      <td>4da1951bb538b73d93001ae7</td>
+      <td>4da1951bb538b73d93001ae7</td>
+      <td>4da1951bb538b73d93001ae7</td>
+    </tr>
+    <tr>
+      <th>ori_id_unf_ausstage</th>
+      <td>90211</td>
+      <td>90211</td>
+      <td>90211</td>
+      <td>90211</td>
+    </tr>
+    <tr>
+      <th>nconst</th>
+      <td>nm6864152</td>
+      <td>nm6864152</td>
+      <td>nm6864152</td>
+      <td>nm6864152</td>
+    </tr>
+    <tr>
+      <th>primaryName</th>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+      <td>Raymond Arnold</td>
+    </tr>
+    <tr>
+      <th>birthYear</th>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>deathYear</th>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>primaryProfession</th>
+      <td>actor</td>
+      <td>actor</td>
+      <td>actor</td>
+      <td>actor</td>
+    </tr>
+    <tr>
+      <th>knownForTitles</th>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+    </tr>
+    <tr>
+      <th>titleId</th>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+    </tr>
+    <tr>
+      <th>ordering</th>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+    </tr>
+    <tr>
+      <th>region</th>
+      <td>GB</td>
+      <td>\N</td>
+      <td>IN</td>
+      <td>US</td>
+    </tr>
+    <tr>
+      <th>language</th>
+      <td>\N</td>
+      <td>\N</td>
+      <td>en</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>types</th>
+      <td>imdbDisplay</td>
+      <td>original</td>
+      <td>imdbDisplay</td>
+      <td>imdbDisplay</td>
+    </tr>
+    <tr>
+      <th>attributes</th>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>isOriginalTitle</th>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>tconst</th>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+      <td>tt1090679</td>
+    </tr>
+    <tr>
+      <th>titleType</th>
+      <td>movie</td>
+      <td>movie</td>
+      <td>movie</td>
+      <td>movie</td>
+    </tr>
+    <tr>
+      <th>primaryTitle</th>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+    </tr>
+    <tr>
+      <th>originalTitle</th>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+      <td>Running on Empty Dreams</td>
+    </tr>
+    <tr>
+      <th>isAdult</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>startYear</th>
+      <td>2009</td>
+      <td>2009</td>
+      <td>2009</td>
+      <td>2009</td>
+    </tr>
+    <tr>
+      <th>endYear</th>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>runtimeMinutes</th>
+      <td>120</td>
+      <td>120</td>
+      <td>120</td>
+      <td>120</td>
+    </tr>
+    <tr>
+      <th>genres</th>
+      <td>Drama,Romance</td>
+      <td>Drama,Romance</td>
+      <td>Drama,Romance</td>
+      <td>Drama,Romance</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get list difference of two lists</span>
+<span class="n">international_movies</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">non_au_movies</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">au_movies</span><span class="p">))</span>
+<span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">international_movies</span><span class="p">)][</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>\N      29
+US      24
+GB      24
+BR      22
+RU      20
+GR      19
+FR      14
+JP      13
+ES      13
+CA      13
+PL      13
+FI      12
+DE      11
+IT      11
+HU      11
+PT      11
+BG      10
+TR       9
+RO       6
+SE       6
+AR       6
+XWG      5
+BE       5
+XWW      5
+UA       4
+SUHH     4
+MX       4
+DK       4
+RS       4
+NO       3
+IR       2
+KR       2
+AT       2
+HR       2
+CO       2
+TW       2
+LV       2
+CZ       2
+SI       1
+HK       1
+VN       1
+NL       1
+EE       1
+LT       1
+PE       1
+ZA       1
+SK       1
+SG       1
+XYU      1
+UY       1
+Name: region, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles2</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles</span><span class="p">[(</span><span class="n">acde_imdb_withtitles</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">N&#39;</span><span class="p">)][</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Twelve                     14
+Blaze                          12
+Mirka                           7
+Australia                       6
+Wolf Creek 2                    5
+                               ..
+Дългият Джон Силвър             1
+Long John Silver                1
+Les pirates des mers du Sud     1
+De schat van de zeerover        1
+De roep van het leven           1
+Name: title, Length: 118, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles</span><span class="p">[(</span><span class="n">acde_imdb_withtitles</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;The Twelve&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>same_name</th>
+      <th>display_name_ausstage</th>
+      <th>first_name_ausstage</th>
+      <th>first_name_daao</th>
+      <th>middle_name_ausstage</th>
+      <th>last_name_ausstage</th>
+      <th>last_name_daao</th>
+      <th>gender_ausstage</th>
+      <th>gender_daao</th>
+      <th>year_of_birth_ausstage</th>
+      <th>...</th>
+      <th>primaryProfession</th>
+      <th>knownForTitles</th>
+      <th>titleId</th>
+      <th>ordering</th>
+      <th>title</th>
+      <th>region</th>
+      <th>language</th>
+      <th>types</th>
+      <th>attributes</th>
+      <th>isOriginalTitle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>407</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>10</td>
+      <td>The Twelve</td>
+      <td>CA</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>408</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>11</td>
+      <td>The Twelve</td>
+      <td>TW</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>409</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>12</td>
+      <td>The Twelve</td>
+      <td>AE</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>410</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>13</td>
+      <td>The Twelve</td>
+      <td>ES</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>411</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>14</td>
+      <td>The Twelve</td>
+      <td>HK</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>412</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>15</td>
+      <td>The Twelve</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>original</td>
+      <td>\N</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>413</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>16</td>
+      <td>The Twelve</td>
+      <td>AU</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>414</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>17</td>
+      <td>The Twelve</td>
+      <td>NL</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>415</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>18</td>
+      <td>The Twelve</td>
+      <td>GB</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>416</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>19</td>
+      <td>The Twelve</td>
+      <td>PL</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>417</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>1</td>
+      <td>The Twelve</td>
+      <td>TR</td>
+      <td>tr</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>418</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>20</td>
+      <td>The Twelve</td>
+      <td>SG</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>419</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>21</td>
+      <td>The Twelve</td>
+      <td>KR</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>420</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>22</td>
+      <td>The Twelve</td>
+      <td>CA</td>
+      <td>fr</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>421</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>23</td>
+      <td>The Twelve</td>
+      <td>ID</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>422</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>24</td>
+      <td>The Twelve</td>
+      <td>SE</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>423</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>25</td>
+      <td>The Twelve</td>
+      <td>ZA</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>424</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>26</td>
+      <td>The Twelve</td>
+      <td>IN</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>425</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>27</td>
+      <td>The Twelve</td>
+      <td>IL</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>426</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>28</td>
+      <td>The Twelve</td>
+      <td>IT</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>427</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>29</td>
+      <td>The Twelve</td>
+      <td>MX</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>428</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>2</td>
+      <td>The Twelve</td>
+      <td>IN</td>
+      <td>hi</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>429</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>30</td>
+      <td>The Twelve</td>
+      <td>FR</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>430</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>3</td>
+      <td>The Twelve</td>
+      <td>DE</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>431</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>4</td>
+      <td>The Twelve</td>
+      <td>JP</td>
+      <td>ja</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>432</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>5</td>
+      <td>The Twelve</td>
+      <td>PH</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>6</td>
+      <td>The Twelve</td>
+      <td>EC</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>7</td>
+      <td>The Twelve</td>
+      <td>US</td>
+      <td>\N</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>435</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>8</td>
+      <td>The Twelve</td>
+      <td>TH</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>436</th>
+      <td>Anne Zahalka</td>
+      <td>Anne Zahalka</td>
+      <td>Anne</td>
+      <td>Anne</td>
+      <td>NaN</td>
+      <td>Zahalka</td>
+      <td>Zahalka</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>art_department</td>
+      <td>tt13589004</td>
+      <td>tt13589004</td>
+      <td>9</td>
+      <td>The Twelve</td>
+      <td>EG</td>
+      <td>en</td>
+      <td>imdbDisplay</td>
+      <td>\N</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>30 rows × 39 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles</span><span class="p">[(</span><span class="n">acde_imdb_withtitles</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">N&#39;</span><span class="p">)][</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AU     208
+GB     101
+US      86
+CA      38
+DE      33
+      ... 
+XAS      1
+EC       1
+SI       1
+SK       1
+UY       1
+Name: region, Length: 64, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Some notes from research</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># imdb scraping steps</span>
+
+<span class="c1"># 1. get name and corresponding movies and search for movie by id</span>
+<span class="c1"># example: https://www.imdb.com/title/tt0203009</span>
+
+<span class="c1"># 2. get metadata such as details, awards, </span>
+<span class="c1"># rating: title.ratings.tsv.gz</span>
+<span class="c1"># genre: title.basics.tsv.gz</span>
+<span class="c1"># region: title.akas.tsv.gz</span>
+<span class="c1"># language: title.akas.tsv.gz</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">acde_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/ausstage_march_symp_exact.csv&#39;</span><span class="p">)</span>
+<span class="n">acde_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>same_name</th>
+      <th>display_name_ausstage</th>
+      <th>first_name_ausstage</th>
+      <th>first_name_daao</th>
+      <th>middle_name_ausstage</th>
+      <th>last_name_ausstage</th>
+      <th>last_name_daao</th>
+      <th>gender_ausstage</th>
+      <th>gender_daao</th>
+      <th>year_of_birth_ausstage</th>
+      <th>...</th>
       <th>other_names_ausstage</th>
       <th>other_names_daao</th>
       <th>all_names_daao</th>
@@ -608,38 +3491,583 @@
       <th>ori_id_ausstage</th>
       <th>ori_id_daao</th>
       <th>ori_id_unf_ausstage</th>
-      <th>number_matches</th>
+      <th>exact_matches</th>
+      <th>exact_matches_nos</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>241</th>
-      <td>Freddy Jangala Patrick</td>
-      <td>Freddy Jangala Patrick</td>
-      <td>Freddy</td>
-      <td>Freddy Jangala</td>
+      <th>0</th>
+      <td>Les Tanner</td>
+      <td>Les Tanner</td>
+      <td>Les</td>
+      <td>Les</td>
       <td>NaN</td>
-      <td>Jangala Patrick</td>
-      <td>Patrick</td>
+      <td>Tanner</td>
+      <td>Tanner</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
+      <td>['Pseud: Michael King']</td>
+      <td>[('Leslie Mervyn', 'Tanner')]</td>
+      <td>['Les Tanner', 'Leslie Mervyn Tanner']</td>
+      <td>['Les Tanner', 'Pseud: Michael King']</td>
+      <td>['Les Tanner', 'Pseud: Michael King']</td>
+      <td>243158</td>
+      <td>4da1a7a1b538b73d9301a435</td>
+      <td>16319</td>
+      <td>1.0</td>
+      <td>nm4275620</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Max Dupain</td>
+      <td>Max Dupain</td>
+      <td>Max</td>
+      <td>Max</td>
       <td>NaN</td>
+      <td>Dupain</td>
+      <td>Dupain</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1911.0</td>
+      <td>...</td>
       <td>[]</td>
-      <td>[('', 'Kumunjayi')]</td>
-      <td>['Kumunjayi', 'Freddy Jangala Patrick']</td>
-      <td>['Freddy Jangala Patrick']</td>
-      <td>['Freddy Jangala Patrick']</td>
-      <td>524797</td>
-      <td>4da19e7fb538b73d930155e2</td>
-      <td>147007</td>
+      <td>[('Maxwell Spencer', 'Dupain')]</td>
+      <td>['Maxwell Spencer Dupain', 'Max Dupain']</td>
+      <td>['Max Dupain']</td>
+      <td>['Max Dupain']</td>
+      <td>436343</td>
+      <td>4e9ea85ad707ff2d7b000005</td>
+      <td>57570</td>
+      <td>1.0</td>
+      <td>nm1865019</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Maria Kozic</td>
+      <td>Maria Kozic</td>
+      <td>Maria</td>
+      <td>Maria</td>
       <td>NaN</td>
+      <td>Kozic</td>
+      <td>Kozic</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>['Maria Kozic']</td>
+      <td>['Maria Kozic']</td>
+      <td>['Maria Kozic']</td>
+      <td>255225</td>
+      <td>4da19a03b538b73d9300ff9a</td>
+      <td>34444</td>
+      <td>1.0</td>
+      <td>nm0468857</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Rosemary Laing</td>
+      <td>Rosemary Laing</td>
+      <td>Rosemary</td>
+      <td>Rosemary</td>
+      <td>NaN</td>
+      <td>Laing</td>
+      <td>Laing</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>['Rosemary Laing']</td>
+      <td>['Rosemary Laing']</td>
+      <td>['Rosemary Laing']</td>
+      <td>513847</td>
+      <td>4da19a25b538b73d930101b5</td>
+      <td>138309</td>
+      <td>1.0</td>
+      <td>nm8787163</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Janet Dawson</td>
+      <td>Janet Dawson</td>
+      <td>Janet</td>
+      <td>Janet</td>
+      <td>NaN</td>
+      <td>Dawson</td>
+      <td>Dawson</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Janet Dawson Boddy']</td>
+      <td>[]</td>
+      <td>['Janet Dawson']</td>
+      <td>['Janet Dawson', 'Janet Dawson Boddy']</td>
+      <td>['Janet Dawson', 'Janet Dawson Boddy']</td>
+      <td>225849</td>
+      <td>4da196beb538b73d9300905c</td>
+      <td>7971</td>
+      <td>1.0</td>
+      <td>nm6441621</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>Albie Thoms</td>
+      <td>Albie Thoms</td>
+      <td>Albie</td>
+      <td>Albie</td>
+      <td>NaN</td>
+      <td>Thoms</td>
+      <td>Thoms</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>['Geoffrey Thoms; Albie']</td>
+      <td>[]</td>
+      <td>['Albie Thoms']</td>
+      <td>['Geoffrey Thoms; Albie', 'Albie Thoms']</td>
+      <td>['Geoffrey Thoms; Albie', 'Albie Thoms']</td>
+      <td>418125</td>
+      <td>4e52127dd707ff1dc7008bac</td>
+      <td>51566</td>
+      <td>1.0</td>
+      <td>nm0860864</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>Robert Bolton</td>
+      <td>Robert Bolton</td>
+      <td>Robert</td>
+      <td>Robert</td>
+      <td>NaN</td>
+      <td>Bolton</td>
+      <td>Bolton</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>['Robert Bolton']</td>
+      <td>['Robert Bolton']</td>
+      <td>['Robert Bolton']</td>
+      <td>228792</td>
+      <td>55d54980d707ff3b53000000</td>
+      <td>9034</td>
+      <td>1.0</td>
+      <td>nm6625703</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>Russell Drysdale</td>
+      <td>Russell Drysdale</td>
+      <td>Russell</td>
+      <td>Russell</td>
+      <td>NaN</td>
+      <td>Drysdale</td>
+      <td>Drysdale</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>1912.0</td>
+      <td>...</td>
+      <td>[]</td>
+      <td>[('George Russell', 'Drysdale'), ('Tas', 'Drys...</td>
+      <td>['Russell Drysdale', 'George Russell Drysdale'...</td>
+      <td>['Russell Drysdale']</td>
+      <td>['Russell Drysdale']</td>
+      <td>436394</td>
+      <td>4da196ebb538b73d930099a1</td>
+      <td>59583</td>
+      <td>1.0</td>
+      <td>nm4217771</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>Daniel Askill</td>
+      <td>Daniel Askill</td>
+      <td>Daniel</td>
+      <td>Daniel</td>
+      <td>NaN</td>
+      <td>Askill</td>
+      <td>Askill</td>
+      <td>Male</td>
+      <td>Male</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>['Daniel Askill']</td>
+      <td>['Daniel Askill']</td>
+      <td>['Daniel Askill']</td>
+      <td>440151</td>
+      <td>4df8511772edc271750000a3</td>
+      <td>1713</td>
+      <td>1.0</td>
+      <td>nm1747324</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>Ruby Collins</td>
+      <td>Ruby Collins</td>
+      <td>Ruby</td>
+      <td>Ruby Nakamarra</td>
+      <td>NaN</td>
+      <td>Collins</td>
+      <td>Collins</td>
+      <td>Female</td>
+      <td>Female</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>[]</td>
+      <td>[('Ruby', 'Collins')]</td>
+      <td>['Ruby Nakamarra Collins', 'Ruby Collins']</td>
+      <td>['Ruby Collins']</td>
+      <td>['Ruby Collins']</td>
+      <td>504637</td>
+      <td>4da1964ab538b73d93007cb4</td>
+      <td>131201</td>
+      <td>1.0</td>
+      <td>nm4446907</td>
     </tr>
   </tbody>
 </table>
-<p>1 rows × 26 columns</p>
+<p>105 rows × 27 columns</p>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data file with .tsv extension</span>
+<span class="n">imdb_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/name.basics.tsv&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">dr</span> <span class="o">=</span> <span class="n">imdb_df</span><span class="p">[(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Dan&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">imdb_df</span><span class="p">[</span><span class="s1">&#39;primaryName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Russell&#39;</span><span class="p">,</span><span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>nconst</th>
+      <th>primaryName</th>
+      <th>birthYear</th>
+      <th>deathYear</th>
+      <th>primaryProfession</th>
+      <th>knownForTitles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>707933</th>
+      <td>nm0751089</td>
+      <td>Dan Russell</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>actor,miscellaneous,casting_director</td>
+      <td>tt0330788,tt0395947,tt2364322,tt1942683</td>
+    </tr>
+    <tr>
+      <th>707934</th>
+      <td>nm0751090</td>
+      <td>Dan Russell</td>
+      <td>1875</td>
+      <td>1925</td>
+      <td>actor,director,writer</td>
+      <td>tt0206602,tt0324346,tt0322519,tt0207079</td>
+    </tr>
+    <tr>
+      <th>707935</th>
+      <td>nm0751091</td>
+      <td>Dan Russell</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>transportation_department</td>
+      <td>tt0120176</td>
+    </tr>
+    <tr>
+      <th>707936</th>
+      <td>nm0751092</td>
+      <td>Danielle Russell</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>make_up_department,producer,director</td>
+      <td>tt0155776,tt0106175,tt0482461,tt2338454</td>
+    </tr>
+    <tr>
+      <th>1011020</th>
+      <td>nm10095233</td>
+      <td>Daniell Russell Thompson</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>NaN</td>
+      <td>\N</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>11789202</th>
+      <td>nm9364088</td>
+      <td>Dan Russell</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>NaN</td>
+      <td>tt5964700</td>
+    </tr>
+    <tr>
+      <th>11837835</th>
+      <td>nm9424643</td>
+      <td>Dan Russell</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>actor</td>
+      <td>tt4278346</td>
+    </tr>
+    <tr>
+      <th>12204140</th>
+      <td>nm9858992</td>
+      <td>Daniel Russell</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>special_effects</td>
+      <td>tt7949196,tt9103772,tt7615052</td>
+    </tr>
+    <tr>
+      <th>12243411</th>
+      <td>nm9904381</td>
+      <td>Daniel Russell</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>producer</td>
+      <td>tt8550904</td>
+    </tr>
+    <tr>
+      <th>12243575</th>
+      <td>nm9904583</td>
+      <td>Russell L Daniels</td>
+      <td>\N</td>
+      <td>\N</td>
+      <td>actor</td>
+      <td>tt11646832</td>
+    </tr>
+  </tbody>
+</table>
+<p>96 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_df</span><span class="p">[</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;number_matches&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;number_matches&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>306</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>same_name</th>
+      <td>Dan Russell</td>
+    </tr>
+    <tr>
+      <th>display_name_ausstage</th>
+      <td>Dan</td>
+    </tr>
+    <tr>
+      <th>first_name_ausstage</th>
+      <td>Dan</td>
+    </tr>
+    <tr>
+      <th>first_name_daao</th>
+      <td>Dan</td>
+    </tr>
+    <tr>
+      <th>middle_name_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>last_name_ausstage</th>
+      <td>Russell</td>
+    </tr>
+    <tr>
+      <th>last_name_daao</th>
+      <td>Russell</td>
+    </tr>
+    <tr>
+      <th>gender_ausstage</th>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>gender_daao</th>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_daao</th>
+      <td>1906</td>
+    </tr>
+    <tr>
+      <th>year_of_death_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>year_of_death_daao</th>
+      <td>1999.0</td>
+    </tr>
+    <tr>
+      <th>roles_ausstage</th>
+      <td>['Designer']</td>
+    </tr>
+    <tr>
+      <th>roles_daao</th>
+      <td>[('artist', 'Cartoonist / Illustrator')]</td>
+    </tr>
+    <tr>
+      <th>artist_birth_place_daao</th>
+      <td>Milsons Point, NSW</td>
+    </tr>
+    <tr>
+      <th>nationality_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>other_names_ausstage</th>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>other_names_daao</th>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>all_names_daao</th>
+      <td>['Dan Russell']</td>
+    </tr>
+    <tr>
+      <th>all_names_indiv_ausstage</th>
+      <td>['Dan', 'Dan Russell']</td>
+    </tr>
+    <tr>
+      <th>all_names_unf_ausstage</th>
+      <td>['Dan', 'Dan Russell']</td>
+    </tr>
+    <tr>
+      <th>ori_id_ausstage</th>
+      <td>482369</td>
+    </tr>
+    <tr>
+      <th>ori_id_daao</th>
+      <td>4da1a1cab538b73d93017c45</td>
+    </tr>
+    <tr>
+      <th>ori_id_unf_ausstage</th>
+      <td>110926</td>
+    </tr>
+    <tr>
+      <th>number_matches</th>
+      <td>162026.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;number_matches&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count       388.000000
+mean        445.242268
+std        8225.233545
+min           0.000000
+25%           0.000000
+50%           2.000000
+75%          11.000000
+max      162026.000000
+Name: number_matches, dtype: float64
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 
