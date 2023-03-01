@@ -245,6 +245,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   IMDB data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-data">
+   New data
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -257,6 +275,24 @@
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   IMDB data
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#new-data">
+   New data
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -727,6 +763,8 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exact_matches</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
+<span class="c1"># acde_df = df.copy() - ivy&#39;s version</span>
+
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">acde_df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
     <span class="k">if</span> <span class="n">idx</span> <span class="o">%</span> <span class="mi">25</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
     <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;  &#39;</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
@@ -816,16 +854,16 @@
       <td>Les Tanner</td>
       <td>Les</td>
       <td>Les</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Tanner</td>
       <td>Tanner</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>['Les Tanner', 'Pseud: Michael King']</td>
-      <td>243158</td>
-      <td>4da1a7a1b538b73d9301a435</td>
+      <td>[Les Tanner, Pseud: Michael King]</td>
+      <td>{'original_id': '243158', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>16319</td>
       <td>nm4275620</td>
       <td>Les Tanner</td>
@@ -840,16 +878,16 @@
       <td>Max Dupain</td>
       <td>Max</td>
       <td>Max</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Dupain</td>
       <td>Dupain</td>
       <td>Male</td>
       <td>Male</td>
       <td>1911.0</td>
       <td>...</td>
-      <td>['Max Dupain']</td>
-      <td>436343</td>
-      <td>4e9ea85ad707ff2d7b000005</td>
+      <td>[Max Dupain]</td>
+      <td>{'original_id': '436343', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>57570</td>
       <td>nm1865019</td>
       <td>Max Dupain</td>
@@ -864,16 +902,16 @@
       <td>Maria Kozic</td>
       <td>Maria</td>
       <td>Maria</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Kozic</td>
       <td>Kozic</td>
       <td>Female</td>
       <td>Female</td>
       <td>NaN</td>
       <td>...</td>
-      <td>['Maria Kozic']</td>
-      <td>255225</td>
-      <td>4da19a03b538b73d9300ff9a</td>
+      <td>[Maria Kozic]</td>
+      <td>{'original_id': '255225', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>34444</td>
       <td>nm0468857</td>
       <td>Maria Kozic</td>
@@ -888,16 +926,16 @@
       <td>Destiny Deacon</td>
       <td>Destiny</td>
       <td>Destiny</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Deacon</td>
       <td>Deacon</td>
       <td>Female</td>
       <td>Female</td>
       <td>NaN</td>
       <td>...</td>
-      <td>[' Destiny Deacon  ', 'Destiny Deacon']</td>
-      <td>462023</td>
-      <td>4da1e203b538b73d93029d94</td>
+      <td>[ Destiny Deacon  , Destiny Deacon]</td>
+      <td>{'original_id': '462023', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>93089</td>
       <td>nm9716539</td>
       <td>Destiny Deacon</td>
@@ -912,16 +950,16 @@
       <td>Rosemary Laing</td>
       <td>Rosemary</td>
       <td>Rosemary</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Laing</td>
       <td>Laing</td>
       <td>Female</td>
       <td>Female</td>
       <td>NaN</td>
       <td>...</td>
-      <td>['Rosemary Laing']</td>
-      <td>513847</td>
-      <td>4da19a25b538b73d930101b5</td>
+      <td>[Rosemary Laing]</td>
+      <td>{'original_id': '513847', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>138309</td>
       <td>nm8787163</td>
       <td>Rosemary Laing</td>
@@ -960,16 +998,16 @@
       <td>Albie Thoms</td>
       <td>Albie</td>
       <td>Albie</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Thoms</td>
       <td>Thoms</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>['Geoffrey Thoms; Albie', 'Albie Thoms']</td>
-      <td>418125</td>
-      <td>4e52127dd707ff1dc7008bac</td>
+      <td>[Geoffrey Thoms; Albie, Albie Thoms]</td>
+      <td>{'original_id': '418125', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>51566</td>
       <td>nm0860864</td>
       <td>Albie Thoms</td>
@@ -984,16 +1022,16 @@
       <td>Robert Bolton</td>
       <td>Robert</td>
       <td>Robert</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Bolton</td>
       <td>Bolton</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>['Robert Bolton']</td>
-      <td>228792</td>
-      <td>55d54980d707ff3b53000000</td>
+      <td>[Robert Bolton]</td>
+      <td>{'original_id': '228792', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>9034</td>
       <td>nm6625703</td>
       <td>Robert Bolton</td>
@@ -1008,16 +1046,16 @@
       <td>Russell Drysdale</td>
       <td>Russell</td>
       <td>Russell</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Drysdale</td>
       <td>Drysdale</td>
       <td>Male</td>
       <td>Male</td>
       <td>1912.0</td>
       <td>...</td>
-      <td>['Russell Drysdale']</td>
-      <td>436394</td>
-      <td>4da196ebb538b73d930099a1</td>
+      <td>[Russell Drysdale]</td>
+      <td>{'original_id': '436394', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>59583</td>
       <td>nm4217771</td>
       <td>Russell Drysdale</td>
@@ -1032,16 +1070,16 @@
       <td>Daniel Askill</td>
       <td>Daniel</td>
       <td>Daniel</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Askill</td>
       <td>Askill</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>['Daniel Askill']</td>
-      <td>440151</td>
-      <td>4df8511772edc271750000a3</td>
+      <td>[Daniel Askill]</td>
+      <td>{'original_id': '440151', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>1713</td>
       <td>nm1747324</td>
       <td>Daniel Askill</td>
@@ -1056,16 +1094,16 @@
       <td>Ruby Collins</td>
       <td>Ruby</td>
       <td>Ruby Nakamarra</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Collins</td>
       <td>Collins</td>
       <td>Female</td>
       <td>Female</td>
       <td>NaN</td>
       <td>...</td>
-      <td>['Ruby Collins']</td>
-      <td>504637</td>
-      <td>4da1964ab538b73d93007cb4</td>
+      <td>[Ruby Collins]</td>
+      <td>{'original_id': '504637', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>131201</td>
       <td>nm4446907</td>
       <td>Ruby Collins</td>
@@ -1213,15 +1251,15 @@ Name: gender_ausstage, dtype: int64
       <td>Bronwyn Bancroft</td>
       <td>Bronwyn</td>
       <td>Bronwyn</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Bancroft</td>
       <td>Bancroft</td>
       <td>Female</td>
       <td>Female</td>
       <td>NaN</td>
       <td>...</td>
-      <td>243712</td>
-      <td>4da19531b538b73d930025ac</td>
+      <td>{'original_id': '243712', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>39879</td>
       <td>nm11338369</td>
       <td>Bronwyn Bancroft</td>
@@ -1237,15 +1275,15 @@ Name: gender_ausstage, dtype: int64
       <td>Jeffrey Smart</td>
       <td>Jeffrey</td>
       <td>Jeffrey</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Smart</td>
       <td>Smart</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>228779</td>
-      <td>4da1bd98b538b73d93024016</td>
+      <td>{'original_id': '228779', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>9021</td>
       <td>nm7045275</td>
       <td>Jeffrey Smart</td>
@@ -1261,15 +1299,15 @@ Name: gender_ausstage, dtype: int64
       <td>Desmonde Downing</td>
       <td>Desmonde</td>
       <td>Desmonde</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Downing</td>
       <td>Downing</td>
       <td>Female</td>
       <td>Female</td>
       <td>1920.0</td>
       <td>...</td>
-      <td>228546</td>
-      <td>4da196d2b538b73d93009468</td>
+      <td>{'original_id': '228546', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>10641</td>
       <td>nm1257013</td>
       <td>Desmonde Downing</td>
@@ -1285,15 +1323,15 @@ Name: gender_ausstage, dtype: int64
       <td>Arthur Boyd</td>
       <td>Arthur</td>
       <td>Arthur</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Boyd</td>
       <td>Boyd</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>245462</td>
-      <td>4da1957eb538b73d930042a8</td>
+      <td>{'original_id': '245462', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>37053</td>
       <td>nm4110324</td>
       <td>Arthur Boyd</td>
@@ -1309,15 +1347,15 @@ Name: gender_ausstage, dtype: int64
       <td>Cul Cullen</td>
       <td>Cul</td>
       <td>Fred</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Cullen</td>
       <td>Cullen</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>488908</td>
-      <td>4da19684b538b73d93008745</td>
+      <td>{'original_id': '488908', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>116970</td>
       <td>nm0191454</td>
       <td>Cul Cullen</td>
@@ -1333,15 +1371,15 @@ Name: gender_ausstage, dtype: int64
       <td>Albert Tucker</td>
       <td>Albert</td>
       <td>Albert</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Tucker</td>
       <td>Tucker</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>227289</td>
-      <td>4da1a9cab538b73d9301b508</td>
+      <td>{'original_id': '227289', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>9579</td>
       <td>nm1387750</td>
       <td>Albert Tucker</td>
@@ -1357,15 +1395,15 @@ Name: gender_ausstage, dtype: int64
       <td>Quentin Hole</td>
       <td>Quentin</td>
       <td>Quentin</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Hole</td>
       <td>Hole</td>
       <td>Male</td>
       <td>Male</td>
       <td>NaN</td>
       <td>...</td>
-      <td>229830</td>
-      <td>4da1fecbb538b73d9302c54e</td>
+      <td>{'original_id': '229830', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>11948</td>
       <td>nm0390419</td>
       <td>Quentin Hole</td>
@@ -1381,15 +1419,15 @@ Name: gender_ausstage, dtype: int64
       <td>Betty Dyson</td>
       <td>Betty</td>
       <td>Betty</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Dyson</td>
       <td>Dyson</td>
       <td>Female</td>
       <td>Female</td>
       <td>NaN</td>
       <td>...</td>
-      <td>228914</td>
-      <td>4da196f9b538b73d93009d8a</td>
+      <td>{'original_id': '228914', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>10390</td>
       <td>nm0246018</td>
       <td>Betty Dyson</td>
@@ -1405,15 +1443,15 @@ Name: gender_ausstage, dtype: int64
       <td>Norman Hetherington</td>
       <td>Norman</td>
       <td>Norman</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Hetherington</td>
       <td>Hetherington</td>
       <td>Male</td>
       <td>Male</td>
       <td>1921.0</td>
       <td>...</td>
-      <td>444889</td>
-      <td>4da19883b538b73d9300d8cb</td>
+      <td>{'original_id': '444889', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>82680</td>
       <td>nm1665194</td>
       <td>Norman Hetherington</td>
@@ -1429,15 +1467,15 @@ Name: gender_ausstage, dtype: int64
       <td>Norman Hetherington</td>
       <td>Norman</td>
       <td>Norman</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Hetherington</td>
       <td>Hetherington</td>
       <td>Male</td>
       <td>Male</td>
       <td>1921.0</td>
       <td>...</td>
-      <td>444889</td>
-      <td>4da19883b538b73d9300d8cb</td>
+      <td>{'original_id': '444889', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>82680</td>
       <td>nm1665194</td>
       <td>Norman Hetherington</td>
@@ -1453,15 +1491,15 @@ Name: gender_ausstage, dtype: int64
       <td>Harry Reade</td>
       <td>Harry</td>
       <td>Harry</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Reade</td>
       <td>Reade</td>
       <td>Male</td>
       <td>Male</td>
       <td>1927.0</td>
       <td>...</td>
-      <td>246016</td>
-      <td>4da1a092b538b73d93016d15</td>
+      <td>{'original_id': '246016', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>35381</td>
       <td>nm4292456</td>
       <td>Harry Reade</td>
@@ -1477,15 +1515,15 @@ Name: gender_ausstage, dtype: int64
       <td>Russell Drysdale</td>
       <td>Russell</td>
       <td>Russell</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Drysdale</td>
       <td>Drysdale</td>
       <td>Male</td>
       <td>Male</td>
       <td>1912.0</td>
       <td>...</td>
-      <td>436394</td>
-      <td>4da196ebb538b73d930099a1</td>
+      <td>{'original_id': '436394', 'original_id_unf_als...</td>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
       <td>59583</td>
       <td>nm4217771</td>
       <td>Russell Drysdale</td>
@@ -1748,7 +1786,7 @@ Name: gender_ausstage, dtype: int64
       <td>Les Tanner</td>
       <td>Les</td>
       <td>Les</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Tanner</td>
       <td>Tanner</td>
       <td>Male</td>
@@ -1772,7 +1810,7 @@ Name: gender_ausstage, dtype: int64
       <td>Les Tanner</td>
       <td>Les</td>
       <td>Les</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Tanner</td>
       <td>Tanner</td>
       <td>Male</td>
@@ -1796,7 +1834,7 @@ Name: gender_ausstage, dtype: int64
       <td>Maria Kozic</td>
       <td>Maria</td>
       <td>Maria</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Kozic</td>
       <td>Kozic</td>
       <td>Female</td>
@@ -1820,7 +1858,7 @@ Name: gender_ausstage, dtype: int64
       <td>Maria Kozic</td>
       <td>Maria</td>
       <td>Maria</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Kozic</td>
       <td>Kozic</td>
       <td>Female</td>
@@ -1844,7 +1882,7 @@ Name: gender_ausstage, dtype: int64
       <td>Maria Kozic</td>
       <td>Maria</td>
       <td>Maria</td>
-      <td>NaN</td>
+      <td>None</td>
       <td>Kozic</td>
       <td>Kozic</td>
       <td>Female</td>
@@ -1922,6 +1960,50 @@ Simon Kneebone       1
 Leigh Hobbs          1
 Ruby Collins         1
 Name: display_name_ausstage, Length: 87, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;same_name&#39;, &#39;display_name_ausstage&#39;, &#39;first_name_ausstage&#39;,
+       &#39;first_name_daao&#39;, &#39;middle_name_ausstage&#39;, &#39;last_name_ausstage&#39;,
+       &#39;last_name_daao&#39;, &#39;gender_ausstage&#39;, &#39;gender_daao&#39;,
+       &#39;year_of_birth_ausstage&#39;, &#39;year_of_birth_daao&#39;,
+       &#39;year_of_death_ausstage&#39;, &#39;year_of_death_daao&#39;, &#39;roles_ausstage&#39;,
+       &#39;roles_daao&#39;, &#39;artist_birth_place_daao&#39;, &#39;nationality_ausstage&#39;,
+       &#39;other_names_ausstage&#39;, &#39;other_names_daao&#39;, &#39;all_names_daao&#39;,
+       &#39;all_names_indiv_ausstage&#39;, &#39;all_names_unf_ausstage&#39;, &#39;ori_id_ausstage&#39;,
+       &#39;ori_id_daao&#39;, &#39;ori_id_unf_ausstage&#39;, &#39;nconst&#39;, &#39;primaryName&#39;,
+       &#39;birthYear&#39;, &#39;deathYear&#39;, &#39;primaryProfession&#39;, &#39;knownForTitles&#39;,
+       &#39;titleId&#39;, &#39;ordering&#39;, &#39;title&#39;, &#39;region&#39;, &#39;language&#39;, &#39;types&#39;,
+       &#39;attributes&#39;, &#39;isOriginalTitle&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_imdb_withtitles</span><span class="p">[</span><span class="n">acde_imdb_withtitles</span><span class="o">.</span><span class="n">gender_daao</span><span class="o">==</span><span class="s1">&#39;Female&#39;</span><span class="p">]</span>\
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;year_of_birth_daao&#39;</span><span class="p">)[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Florence Taylor&#39;, &#39;Gwen Sherwood&#39;, &#39;Thelma Thomas&#39;, &#39;Betty Dyson&#39;,
+       &#39;Mary Durack&#39;, &#39;Marjorie Fisher&#39;, &#39;Margaret Senior&#39;,
+       &#39;Desmonde Downing&#39;, &#39;Mirka Mora&#39;, &#39; Betty  Churcher &#39;,
+       &#39;Vivienne Binns&#39;, &#39;Penny Murphy&#39;, &#39;Prue Acton&#39;, &#39;Lee Whitmore&#39;,
+       &#39;Ruby Collins&#39;, &#39;Jenny Kee&#39;, &#39;Rosemary Valadon&#39;, &#39;Silvia Jahnsons&#39;,
+       &#39;Toni Robertson&#39;, &#39;Deborah Vaughan&#39;, &#39;Maria Kozic&#39;, &#39;Anne Zahalka&#39;,
+       &#39;Bronwyn Bancroft&#39;, &#39;Rosemary Laing&#39;, &#39;Gail Mabo&#39;, &#39;Helen Britton&#39;,
+       &#39;Del Kathryn Barton&#39;, &#39;Zanny Begg&#39;, &#39;Mandy Ord&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -4065,6 +4147,1364 @@ min           0.000000
 75%          11.000000
 max      162026.000000
 Name: number_matches, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="new-data">
+<h1>New data<a class="headerlink" href="#new-data" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import json file</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/DAAO_AusStage_NameMatching_Details_202302281120.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;George Gittoes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>73</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>same_name</th>
+      <td>George Gittoes</td>
+    </tr>
+    <tr>
+      <th>display_name_ausstage</th>
+      <td>George Gittoes</td>
+    </tr>
+    <tr>
+      <th>first_name_ausstage</th>
+      <td>George</td>
+    </tr>
+    <tr>
+      <th>first_name_daao</th>
+      <td>George</td>
+    </tr>
+    <tr>
+      <th>middle_name_ausstage</th>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>last_name_ausstage</th>
+      <td>Gittoes</td>
+    </tr>
+    <tr>
+      <th>last_name_daao</th>
+      <td>Gittoes</td>
+    </tr>
+    <tr>
+      <th>gender_ausstage</th>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>gender_daao</th>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>year_of_birth_daao</th>
+      <td>1949</td>
+    </tr>
+    <tr>
+      <th>year_of_death_ausstage</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>year_of_death_daao</th>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>roles_ausstage</th>
+      <td>[Designer, Speaker]</td>
+    </tr>
+    <tr>
+      <th>roles_daao</th>
+      <td>[[artist, Painter], [artist, Performance Artis...</td>
+    </tr>
+    <tr>
+      <th>artist_birth_place_daao</th>
+      <td>Sydney, NSW</td>
+    </tr>
+    <tr>
+      <th>nationality_ausstage</th>
+      <td>Australian</td>
+    </tr>
+    <tr>
+      <th>other_names_ausstage</th>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>other_names_daao</th>
+      <td>[[George Noel, Gittoes]]</td>
+    </tr>
+    <tr>
+      <th>all_names_daao</th>
+      <td>[George Gittoes, George Noel Gittoes]</td>
+    </tr>
+    <tr>
+      <th>all_names_indiv_ausstage</th>
+      <td>[George Gittoes]</td>
+    </tr>
+    <tr>
+      <th>all_names_unf_ausstage</th>
+      <td>[George Gittoes]</td>
+    </tr>
+    <tr>
+      <th>ori_id_ausstage</th>
+      <td>{'original_id': '234780', 'original_id_unf_als...</td>
+    </tr>
+    <tr>
+      <th>ori_id_daao</th>
+      <td>{'birth': {'note': '', 'coverage': {'date': '1...</td>
+    </tr>
+    <tr>
+      <th>ori_id_unf_ausstage</th>
+      <td>21690</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span>
+        <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;display_name_ausstage&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;George Gittoes&#39;</span><span class="p">][</span><span class="s1">&#39;ori_id_ausstage&#39;</span><span class="p">]</span>
+        <span class="p">)[</span><span class="s1">&#39;related_events&#39;</span><span class="p">]</span>
+    <span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ori_event_id</th>
+      <th>original_id</th>
+      <th>event_name</th>
+      <th>event_description</th>
+      <th>coverage_first_date</th>
+      <th>coverage_last_date</th>
+      <th>coverage_venue_name</th>
+      <th>event_type_primary</th>
+      <th>event_type_secondary</th>
+      <th>event_status</th>
+      <th>...</th>
+      <th>part_of_a_tour</th>
+      <th>world_premier</th>
+      <th>review</th>
+      <th>umbrella.$numberDouble</th>
+      <th>text_nationality.$numberDouble</th>
+      <th>production_nationality.$numberDouble</th>
+      <th>further_information.$numberDouble</th>
+      <th>primary_content_indicator.$numberDouble</th>
+      <th>primary_content_indicator_desc.$numberDouble</th>
+      <th>description_source.$numberDouble</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>144849</td>
+      <td>32994</td>
+      <td>Contemporary Music &amp; Media Forum</td>
+      <td>A programme of talks, screenings and music ove...</td>
+      <td>19841201</td>
+      <td>19841202</td>
+      <td>The Performance Space (1983-2007)</td>
+      <td>Other</td>
+      <td>(94, "Forum")</td>
+      <td>Professional</td>
+      <td>...</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 24 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node1_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">234780</span><span class="p">][</span><span class="s1">&#39;node2_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 16277, 142457, 144849])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node1_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">253</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node2_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">16277</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>node1_name</th>
+      <th>node1_value</th>
+      <th>node2_name</th>
+      <th>node2_value</th>
+      <th>relation</th>
+      <th>link_type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1189609</th>
+      <td>ORGANISATIONID</td>
+      <td>253.0</td>
+      <td>EVENTID</td>
+      <td>16277</td>
+      <td>NaN</td>
+      <td>org_evt</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_bio</span><span class="p">[</span><span class="n">df_bio</span><span class="p">[</span><span class="s1">&#39;original_id&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">253</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>original_id</th>
+      <th>original_id_unf_alsokwn</th>
+      <th>prefix</th>
+      <th>suffix</th>
+      <th>display_name</th>
+      <th>first_name</th>
+      <th>middle_name</th>
+      <th>last_name</th>
+      <th>other_names</th>
+      <th>gender</th>
+      <th>...</th>
+      <th>postcode</th>
+      <th>email</th>
+      <th>notes</th>
+      <th>genderid</th>
+      <th>countryid</th>
+      <th>countryname</th>
+      <th>place_of_birth_id</th>
+      <th>place_of_death_id</th>
+      <th>entered_by_user</th>
+      <th>updated_by_user</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1239</th>
+      <td>253</td>
+      <td>742</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Elizabeth Goater</td>
+      <td>Elizabeth</td>
+      <td>NaN</td>
+      <td>Goater</td>
+      <td>NaN</td>
+      <td>Female</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 54 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df_bio = pd.read_csv(&#39;data/AusStage_biography_level_202209211051.csv&#39;)</span>
+<span class="c1"># df2 = pd.read_csv(&#39;data/AusStage_network_level_202205122052.csv&#39;)</span>
+
+<span class="n">df_bio</span><span class="p">[</span><span class="n">df_bio</span><span class="p">[</span><span class="s1">&#39;original_id&#39;</span><span class="p">]</span>\
+       <span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node2_value&#39;</span><span class="p">]</span>\
+                 <span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df2</span><span class="p">[(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node1_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">234780</span><span class="p">)</span> <span class="o">&amp;</span>\
+                           <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node1_name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;CONTRIBUTORID&#39;</span><span class="p">)][</span><span class="s1">&#39;node2_value&#39;</span><span class="p">]</span>\
+                       <span class="o">.</span><span class="n">unique</span><span class="p">())][</span><span class="s1">&#39;node1_value&#39;</span><span class="p">]</span>\
+                        <span class="o">.</span><span class="n">unique</span><span class="p">())][[</span><span class="s1">&#39;display_name&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>display_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>100</th>
+      <td>Graeme Murphy AM</td>
+    </tr>
+    <tr>
+      <th>370</th>
+      <td>Robert Nelson</td>
+    </tr>
+    <tr>
+      <th>849</th>
+      <td>David Chesworth</td>
+    </tr>
+    <tr>
+      <th>1239</th>
+      <td>Elizabeth Goater</td>
+    </tr>
+    <tr>
+      <th>1942</th>
+      <td>Joe Gladwin</td>
+    </tr>
+    <tr>
+      <th>2688</th>
+      <td>Janet Vernon AM</td>
+    </tr>
+    <tr>
+      <th>2692</th>
+      <td>Nina Veretennikova</td>
+    </tr>
+    <tr>
+      <th>3068</th>
+      <td>Carl Vine</td>
+    </tr>
+    <tr>
+      <th>4211</th>
+      <td>Tom Richards</td>
+    </tr>
+    <tr>
+      <th>6814</th>
+      <td>Louis Andriessen</td>
+    </tr>
+    <tr>
+      <th>7048</th>
+      <td>Kristian Fredrikson</td>
+    </tr>
+    <tr>
+      <th>11113</th>
+      <td>Ross Philip</td>
+    </tr>
+    <tr>
+      <th>13278</th>
+      <td>Ross Barnett</td>
+    </tr>
+    <tr>
+      <th>16212</th>
+      <td>Martin Wesley-Smith</td>
+    </tr>
+    <tr>
+      <th>21407</th>
+      <td>Bill Pengelly</td>
+    </tr>
+    <tr>
+      <th>22101</th>
+      <td>Dennis Hennig</td>
+    </tr>
+    <tr>
+      <th>22308</th>
+      <td>George Gittoes</td>
+    </tr>
+    <tr>
+      <th>22309</th>
+      <td>Gabrielle Dalton</td>
+    </tr>
+    <tr>
+      <th>27165</th>
+      <td>Susan Barling</td>
+    </tr>
+    <tr>
+      <th>28649</th>
+      <td>Francoise Philipbert</td>
+    </tr>
+    <tr>
+      <th>32084</th>
+      <td>Robert Olup</td>
+    </tr>
+    <tr>
+      <th>33733</th>
+      <td>Ramli Ibrahim</td>
+    </tr>
+    <tr>
+      <th>39271</th>
+      <td>Jennifer Barry</td>
+    </tr>
+    <tr>
+      <th>40746</th>
+      <td>Robert Ashley</td>
+    </tr>
+    <tr>
+      <th>42673</th>
+      <td>John Gillies</td>
+    </tr>
+    <tr>
+      <th>124190</th>
+      <td>Nam June Paik</td>
+    </tr>
+    <tr>
+      <th>136103</th>
+      <td>Carl Morrow</td>
+    </tr>
+    <tr>
+      <th>147003</th>
+      <td>Margaret Dixon-McIver</td>
+    </tr>
+    <tr>
+      <th>147004</th>
+      <td>Hassan Sheta</td>
+    </tr>
+    <tr>
+      <th>150086</th>
+      <td>Ian Fredericks</td>
+    </tr>
+    <tr>
+      <th>150087</th>
+      <td>Steven Jones</td>
+    </tr>
+    <tr>
+      <th>150088</th>
+      <td>Anne Carter</td>
+    </tr>
+    <tr>
+      <th>150089</th>
+      <td>Alexander Proyas</td>
+    </tr>
+    <tr>
+      <th>150090</th>
+      <td>Salik Silverstein</td>
+    </tr>
+    <tr>
+      <th>150091</th>
+      <td>Steven Frost</td>
+    </tr>
+    <tr>
+      <th>150092</th>
+      <td>Eric Gidney</td>
+    </tr>
+    <tr>
+      <th>150093</th>
+      <td>Wendy Spencer</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/AusStage_network_level_202205122052.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/rb/mjsh2q916fl5sgghntjck66h0000gn/T/ipykernel_68372/3492385025.py:1: DtypeWarning: Columns (4) have mixed types. Specify dtype option on import or set low_memory=False.
+  df2 = pd.read_csv(&#39;data/AusStage_network_level_202205122052.csv&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;node1_name&#39;, &#39;node1_value&#39;, &#39;node2_name&#39;, &#39;node2_value&#39;, &#39;relation&#39;,
+       &#39;link_type&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node2_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;node1_value&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">234780</span><span class="p">][</span><span class="s1">&#39;node2_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())][</span><span class="s1">&#39;node1_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7.99000e+02, 8.00200e+03, 2.34780e+05, 2.34781e+05, 1.05200e+03,
+       2.55200e+03, 2.32466e+05, 3.80700e+03, 2.55600e+03, 2.30024e+05,
+       5.12601e+05, 4.75570e+05, 4.01107e+05, 2.42068e+05, 2.54625e+05,
+       5.00635e+05, 2.38126e+05, 5.12602e+05, 2.60023e+05, 4.40191e+05,
+       2.14087e+05, 2.49803e+05, 4.88436e+05, 5.15850e+05, 5.15851e+05,
+       1.36700e+03, 5.15852e+05, 5.15853e+05, 5.15854e+05, 5.15855e+05,
+       2.50052e+05, 2.42756e+05, 5.15856e+05, 5.15857e+05, 7.07100e+04,
+       1.62028e+05, 8.95900e+03, 2.53000e+02, 5.12700e+03, 1.11500e+04,
+       1.53000e+02])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a bar chart with the values 26, 34 and 100</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">26</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">148</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">])</span>
+
+<span class="c1"># add data labels on top of bars</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="mi">26</span><span class="p">,</span><span class="mi">34</span><span class="p">,</span><span class="mi">148</span><span class="p">]):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">v</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+<span class="c1"># change x-axis labels to &#39;A&#39;, &#39;B&#39; and &#39;C&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;DAAO&#39;</span><span class="p">,</span><span class="s1">&#39;AusStage&#39;</span><span class="p">,</span><span class="s1">&#39;IMDB&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Number of recorded relations across</span><span class="se">\n</span><span class="s1">DAAO, AusStage and IMDB&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># increase y-axis limit to 200</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">175</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/playground_54_0.png" src="_images/playground_54_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import numpy as np</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+
+<span class="c1"># # create 10 circles with different radii</span>
+<span class="c1"># r = np.random.randint(5,15, size=18)</span>
+
+<span class="c1"># class C():</span>
+<span class="c1">#     def __init__(self,r):</span>
+<span class="c1">#         self.N = len(r)</span>
+<span class="c1">#         self.x = np.ones((self.N,3))</span>
+<span class="c1">#         self.x[:,2] = r</span>
+<span class="c1">#         maxstep = 2*self.x[:,2].max()</span>
+<span class="c1">#         length = np.ceil(np.sqrt(self.N))</span>
+<span class="c1">#         grid = np.arange(0,length*maxstep,maxstep)</span>
+<span class="c1">#         gx,gy = np.meshgrid(grid,grid)</span>
+<span class="c1">#         self.x[:,0] = gx.flatten()[:self.N]</span>
+<span class="c1">#         self.x[:,1] = gy.flatten()[:self.N]</span>
+<span class="c1">#         self.x[:,:2] = self.x[:,:2] - np.mean(self.x[:,:2], axis=0)</span>
+
+<span class="c1">#         self.step = self.x[:,2].min()</span>
+<span class="c1">#         self.p = lambda x,y: np.sum((x**2+y**2)**2)</span>
+<span class="c1">#         self.E = self.energy()</span>
+<span class="c1">#         self.iter = 1.</span>
+
+<span class="c1">#     def minimize(self):</span>
+<span class="c1">#         while self.iter &lt; 1000*self.N:</span>
+<span class="c1">#             for i in range(self.N):</span>
+<span class="c1">#                 rand = np.random.randn(2)*self.step/self.iter</span>
+<span class="c1">#                 self.x[i,:2] += rand</span>
+<span class="c1">#                 e = self.energy()</span>
+<span class="c1">#                 if (e &lt; self.E and self.isvalid(i)):</span>
+<span class="c1">#                     self.E = e</span>
+<span class="c1">#                     self.iter = 1.</span>
+<span class="c1">#                 else:</span>
+<span class="c1">#                     self.x[i,:2] -= rand</span>
+<span class="c1">#                     self.iter += 1.</span>
+
+<span class="c1">#     def energy(self):</span>
+<span class="c1">#         return self.p(self.x[:,0], self.x[:,1])</span>
+
+<span class="c1">#     def distance(self,x1,x2):</span>
+<span class="c1">#         return np.sqrt((x1[0]-x2[0])**2+(x1[1]-x2[1])**2)-x1[2]-x2[2]</span>
+
+<span class="c1">#     def isvalid(self, i):</span>
+<span class="c1">#         for j in range(self.N):</span>
+<span class="c1">#             if i!=j: </span>
+<span class="c1">#                 if self.distance(self.x[i,:], self.x[j,:]) &lt; 0:</span>
+<span class="c1">#                     return False</span>
+<span class="c1">#         return True</span>
+
+<span class="c1">#     def plot(self, ax):</span>
+<span class="c1">#         for i in range(self.N):</span>
+<span class="c1">#             circ = plt.Circle(self.x[i,:2],self.x[i,2], color=&#39;tab:green&#39;)</span>
+<span class="c1">#             ax.add_patch(circ)</span>
+
+<span class="c1"># c = C(r)</span>
+
+<span class="c1"># fig, ax = plt.subplots(subplot_kw=dict(aspect=&quot;equal&quot;))</span>
+<span class="c1"># ax.axis(&quot;off&quot;)</span>
+
+<span class="c1"># c.minimize()</span>
+
+<span class="c1"># c.plot(ax)</span>
+<span class="c1"># ax.relim()</span>
+<span class="c1"># ax.autoscale_view()</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/playground_55_0.png" src="_images/playground_55_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read csv</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">george_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/george_events.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # find rows with multiple roles in same year</span>
+<span class="c1"># multipleroles_oneyear = data[[&#39;COMBINED.NAME&#39;,&#39;Year&#39;,&#39;Roles&#39;]]\</span>
+<span class="c1">#                         .groupby([&#39;COMBINED.NAME&#39;,&#39;Year&#39;])\</span>
+<span class="c1">#                         .filter(lambda x: len(x) &gt; 1)</span>
+<span class="c1">#                         #[[&#39;COMBINED.NAME&#39;,&#39;Year&#39;]]\</span>
+<span class="c1">#                         #.drop_duplicates()</span>
+
+<span class="c1"># # make sure y-axis follows order of roles</span>
+<span class="c1"># original_order = list(data.sort_values([&#39;Year&#39;])[&#39;COMBINED.NAME&#39;].unique())</span>
+<span class="c1"># data[&#39;COMBINED.NAME&#39;] = pd.Categorical(data[&#39;COMBINED.NAME&#39;], categories=original_order, ordered=True)</span>
+
+<span class="c1"># data2 = data[~data.index.isin(multipleroles_oneyear.index)].copy()</span>
+<span class="c1"># multipleroles_oneyear = multipleroles_oneyear.reset_index().drop(&#39;index&#39;, axis=1)</span>
+
+<span class="c1"># color_dict = {&#39;Crew&#39;:&#39;tab:red&#39;, &#39;Administration&#39;:&#39;tab:purple&#39;, &#39;Subsidiary&#39;:&#39;tab:pink&#39;,</span>
+<span class="c1"># &#39;Performer&#39;:&#39;tab:blue&#39;,&#39;KeyCreative&#39;:&#39;tab:green&#39;, &#39;Musician&#39;:&#39;tab:orange&#39;, &#39;Unknown&#39;:&#39;tab:gray&#39;}</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span><span class="mi">14</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">george_df</span><span class="p">,</span>
+<span class="n">x</span><span class="o">=</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Event&#39;</span><span class="p">,</span> 
+<span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Dataset&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">])</span>
+
+<span class="c1"># # Sue Broadway</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Sue Broadway&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1995) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=0+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Sue Broadway&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1995) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=0-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Alan Robertson</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Alan Robertson&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1984) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=5+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Alan Robertson&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1984) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Performer&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=5-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Geoff Toll</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Geoff Toll&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1993) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=9+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Geoff Toll&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1993) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Performer&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=9-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Jane Mullett</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Jane Mullett&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2001) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=10+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Jane Mullett&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2001) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Subsidiary&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=10-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Gina Gascoigne</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Gina Gascoigne&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1982) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=11+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Gina Gascoigne&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1982) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Crew&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=11-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Shirley Billing</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Shirley Billing&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1985) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Performer&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=14+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Shirley Billing&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1985) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Musician&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=14-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Shirley Billing&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1996) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Performer&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=14+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Shirley Billing&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1996) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=14-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Shirley Billing&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2000) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=14+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Shirley Billing&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2000) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=14-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Stephen Burton</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Stephen Burton&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1993) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=16+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Stephen Burton&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1993) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Subsidiary&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=16-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Stephen Burton&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1996) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=16+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Stephen Burton&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1996) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Crew&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=16-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # David Murray</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;David Murray&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2007) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=17+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;David Murray&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2007) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Crew&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=17-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Michael Baxter</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Michael Baxter&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2004) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=18+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Michael Baxter&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2004) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=18-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Anni Davey</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Anni Davey&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1994) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=21+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Anni Davey&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1994) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Subsidiary&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=21-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Anni Davey&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1998) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=21, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Anni Davey&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2005) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=21+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Anni Davey&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 2005) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Subsidiary&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=21-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Carmel Duffy</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Carmel Duffy&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1988) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=22+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Carmel Duffy&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1988) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Crew&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=22-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # David Joseph</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;David Joseph&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1990) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Performer&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=24+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;David Joseph&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1990) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Musician&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=24-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Derek Ives</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Derek Ives&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1990) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Performer&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=25+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Derek Ives&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1990) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Musician&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=25-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Nicci Wilks</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Nicci Wilks&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1998) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Administration&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=27+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Nicci Wilks&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1998) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Crew&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=27-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # Carl Polke</span>
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Carl Polke&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1993) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Performer&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=29+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Carl Polke&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1993) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Musician&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=29-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Carl Polke&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1998) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;KeyCreative&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=29+.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># sns.scatterplot(data=multipleroles_oneyear[(multipleroles_oneyear[&#39;COMBINED.NAME&#39;] == &#39;Carl Polke&#39;) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Year&#39;] == 1998) &amp;\</span>
+<span class="c1">#                                            (multipleroles_oneyear[&#39;Roles&#39;] == &#39;Crew&#39;)],legend=False,</span>
+<span class="c1">#                 x=&#39;Year&#39;, y=29-.15, hue=&#39;Roles&#39;, ax=ax, s=500, alpha=0.7, palette=color_dict)</span>
+
+<span class="c1"># # make x-axis labels different colors</span>
+<span class="c1"># for label in ax.get_yticklabels():</span>
+<span class="c1">#     gender_label = data[data[&#39;COMBINED.NAME&#39;] == label.get_text()][&#39;Gender&#39;].values[0]</span>
+<span class="c1">#     if gender_label == &#39;M&#39;: label.set_color(&#39;#1f77b4&#39;)</span>
+<span class="c1">#     elif gender_label == &#39;F&#39;: label.set_color(&#39;#ff7f0e&#39;)</span>
+<span class="c1">#     else: label.set_color(&#39;#d62728&#39;)</span>
+        
+<span class="c1"># # add a horizontal line  between the start and end of each person&#39;s career</span>
+<span class="c1"># for p in data[&#39;COMBINED.NAME&#39;].unique():</span>
+<span class="c1">#     for q in data[data[&#39;COMBINED.NAME&#39;]==p].sort_values(&#39;Year&#39;)[&#39;Roles&#39;].unique():</span>
+<span class="c1">#         start = data[(data[&#39;COMBINED.NAME&#39;]==p) &amp; (data[&#39;Roles&#39;]==q)][&#39;Year&#39;].min()</span>
+<span class="c1">#         end = data[(data[&#39;COMBINED.NAME&#39;]==p) &amp; (data[&#39;Roles&#39;]==q)][&#39;Year&#39;].max()</span>
+
+<span class="c1">#         if start != end:</span>
+<span class="c1">#             plt.plot([start+.4, end-.4], [p, p], color=color_dict[q], alpha=0.15, linewidth=5, zorder=0)</span>
+
+<span class="c1"># # add short vertical line aat the midpoint of each person&#39;s career</span>
+<span class="c1"># for p in data.sort_values(&#39;Year&#39;)[&#39;COMBINED.NAME&#39;].unique():</span>
+<span class="c1">#     # if p == &#39;Tim Coldwell&#39;: continue</span>
+<span class="c1">#     non_yrs = set(range(unique_participants[unique_participants[&#39;COMBINED.NAME&#39;] == p][&#39;Year&#39;].min(),</span>
+<span class="c1">#     unique_participants[unique_participants[&#39;COMBINED.NAME&#39;] == p][&#39;Year&#39;].max()))\</span>
+<span class="c1">#             .difference(set(unique_participants[(unique_participants[&#39;COMBINED.NAME&#39;] == p) &amp;\</span>
+<span class="c1">#             (unique_participants[&#39;Year&#39;] &gt;= unique_participants[unique_participants[&#39;COMBINED.NAME&#39;] == p][&#39;Year&#39;].min()) &amp;\</span>
+<span class="c1">#             (unique_participants[&#39;Year&#39;] &lt; 2010)][&#39;Year&#39;].unique()))</span>
+<span class="c1">#     if len(non_yrs) &gt; 0:</span>
+<span class="c1">#         # print(p, len(non_yrs))</span>
+<span class="c1">#         for q in non_yrs:</span>
+<span class="c1">#             plt.plot([q], [p], color=&#39;black&#39;, alpha=0.5, marker=&#39;|&#39;, markersize=15)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="c1"># for i in range(6): plt.gca().get_legend().legendHandles[i]._sizes = [200]</span>
+
+<span class="c1"># make y-axis labels larger</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># add y-axis grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># add a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Participants with more than 15 years associated with Circus Oz&#39;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># # add annotation top right of plot to denote the vertical lines</span>
+<span class="c1"># plt.annotate(&#39;| = annual break&#39;, xy=(2006.5, -.5), fontsize=12, alpha=0.5)</span>
+
+<span class="c1"># increase y-axis limits to make room for the title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">30.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.25</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/playground_57_0.png" src="_images/playground_57_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span><span class="p">[</span><span class="n">g1</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;AusStage&#39;</span><span class="p">][</span><span class="s1">&#39;Event&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Poppy, Lyric Theatre (1997-2011), Pyrmont, NSW&#39;,
+       &#39;Poppy, Opera Theatre (Sydney Opera House), Sydney, NSW&#39;,
+       &#39;Contemporary Music &amp; Media Forum, The Performance Space (1983-2007), Redfern, NSW&#39;,
+       &#39;Poppy, Regent Theatre, Sydney, NSW&#39;,
+       &quot;George Gittoes, [George Gittoes&#39; puppetry and mime] , University of New England, Stage on Screen Collection&quot;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g2</span> <span class="o">=</span> <span class="n">george_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">g2</span><span class="p">[</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g2</span><span class="p">[</span><span class="s1">&#39;End&#39;</span><span class="p">]</span>
+<span class="n">g1</span> <span class="o">=</span> <span class="n">george_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">18</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">g1</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Dataset&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">]),</span>
+<span class="n">x</span><span class="o">=</span><span class="s1">&#39;Dataset&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Start&#39;</span><span class="p">,</span> 
+<span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Dataset&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">750</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="c1"># for i in range(6): plt.gca().get_legend().legendHandles[i]._sizes = [200]</span>
+
+<span class="c1"># make y-axis labels larger</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># add y-axis grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># add a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;George Gittoes&#39; career over time&quot;</span> <span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># add data labels</span>
+<span class="c1"># ax.annotate(&#39;Date of birth&#39;, (1.35, 1949), fontsize=12, alpha=0.5)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">george_df</span><span class="p">[</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;AusStage&#39;</span><span class="p">][</span><span class="s1">&#39;Type&#39;</span><span class="p">]):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">)][</span><span class="s1">&#39;Start&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">george_df</span><span class="p">[</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">][</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Start</span> <span class="o">==</span> <span class="n">y</span><span class="p">)][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.15</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">george_df</span><span class="p">[</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;IMDB&#39;</span><span class="p">][</span><span class="s1">&#39;Type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;IMDB&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;IMDB&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;IMDB&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Start</span> <span class="o">==</span> <span class="n">y</span><span class="p">)][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mf">2.15</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span> <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.65</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+
+<span class="c1"># change the order of the y-axis</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="c1"># add more space between the x-axis ticks</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># # add annotation top right of plot to denote the vertical lines</span>
+<span class="c1"># plt.annotate(&#39;| = annual break&#39;, xy=(2006.5, -.5), fontsize=12, alpha=0.5)</span>
+
+<span class="c1"># increase y-axis limits to make room for the title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/rb/mjsh2q916fl5sgghntjck66h0000gn/T/ipykernel_68372/1258664821.py:3: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  g1 = george_df.append(g2)
+</pre></div>
+</div>
+<img alt="_images/playground_59_1.png" src="_images/playground_59_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">george_df</span><span class="p">[</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">][</span><span class="s1">&#39;Type&#39;</span><span class="p">]):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Start</span> <span class="o">==</span> <span class="n">y</span><span class="p">)][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Birth date 1949 1949
+Residence 1949 1949
+Residence 1966 1966
+Residence 1972 1972
+Residence 2008 2008
+Residence 2009 2009
+Residence 1949 1949
+Residence 1966 1966
+Residence 1972 1972
+Residence 2008 2008
+Residence 2009 2009
+Residence 1949 1949
+Residence 1966 1966
+Residence 1972 1972
+Residence 2008 2008
+Residence 2009 2009
+Residence 1949 1949
+Residence 1966 1966
+Residence 1972 1972
+Residence 2008 2008
+Residence 2009 2009
+Residence 1949 1949
+Residence 1966 1966
+Residence 1972 1972
+Residence 2008 2008
+Residence 2009 2009
+Training 1968 1968
+Training 1970 1970
+Training 1968 1968
+Training 1970 1970
+Training 1968 1968
+Training 1970 1970
+Recognition 2008 2008
+Recognition 2001 2001
+Recognition 1997 1997
+Recognition 1992 1992
+Recognition 1995 1995
+Recognition 1993 1993
+Recognition 2008 2008
+Recognition 2001 2001
+Recognition 1997 1997
+Recognition 1992 1992
+Recognition 1995 1995
+Recognition 1993 1993
+Recognition 2008 2008
+Recognition 2001 2001
+Recognition 1997 1997
+Recognition 1992 1992
+Recognition 1995 1995
+Recognition 1993 1993
+Recognition 2008 2008
+Recognition 2001 2001
+Recognition 1997 1997
+Recognition 1992 1992
+Recognition 1995 1995
+Recognition 1993 1993
+Recognition 2008 2008
+Recognition 2001 2001
+Recognition 1997 1997
+Recognition 1992 1992
+Recognition 1995 1995
+Recognition 1993 1993
+Recognition 2008 2008
+Recognition 2001 2001
+Recognition 1997 1997
+Recognition 1992 1992
+Recognition 1995 1995
+Recognition 1993 1993
+Recognition 2008 2008
+Recognition 2001 2001
+Recognition 1997 1997
+Recognition 1992 1992
+Recognition 1995 1995
+Recognition 1993 1993
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Exhibitions 1995 1995
+Exhibitions 1992 1992
+Exhibitions 1990 1990
+Exhibitions 1989 1989
+Exhibitions 1987 1987
+Exhibitions 1979 1979
+Exhibitions 1963 1963
+Work 2009 2009
+Work 2006 2006
+Work 1995 1995
+Work 1991 1991
+Work 1971 1971
+Work 2009 2009
+Work 2006 2006
+Work 1995 1995
+Work 1991 1991
+Work 1971 1971
+Work 2009 2009
+Work 2006 2006
+Work 1995 1995
+Work 1991 1991
+Work 1971 1971
+Work 2009 2009
+Work 2006 2006
+Work 1995 1995
+Work 1991 1991
+Work 1971 1971
+Work 2009 2009
+Work 2006 2006
+Work 1995 1995
+Work 1991 1991
+Work 1971 1971
+Work 2009 2009
+Work 2006 2006
+Work 1995 1995
+Work 1991 1991
+Work 1971 1971
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;Birth date&#39;</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1949
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">george_df</span><span class="p">[</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">][</span><span class="s1">&#39;Type&#39;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Birth date
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py:3800,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3799</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3800</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3801</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandas/_libs/index.pyx:138,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandas/_libs/index.pyx:165,</span> in <span class="ni">pandas._libs.index.IndexEngine.get_loc</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:2263,</span> in <span class="ni">pandas._libs.hashtable.Int64HashTable.get_item</span><span class="nt">()</span>
+
+<span class="nn">File pandas/_libs/hashtable_class_helper.pxi:2273,</span> in <span class="ni">pandas._libs.hashtable.Int64HashTable.get_item</span><span class="nt">()</span>
+
+<span class="ne">KeyError</span>: 0
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">563</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">george_df</span><span class="p">[</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">][</span><span class="s1">&#39;Type&#39;</span><span class="p">]):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">george_df</span><span class="p">[(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">==</span> <span class="s1">&#39;DAAO&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">george_df</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">x</span><span class="p">))][</span><span class="s1">&#39;Start&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandas/core/series.py:982,</span> in <span class="ni">Series.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">981</span> <span class="k">elif</span> <span class="n">key_is_scalar</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">982</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_value</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">984</span> <span class="k">if</span> <span class="n">is_hashable</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">985</span>     <span class="c1"># Otherwise index.get_value will raise InvalidIndexError</span>
+<span class="g g-Whitespace">    </span><span class="mi">986</span>     <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">987</span>         <span class="c1"># For labels that don&#39;t resolve as scalars like tuples and frozensets</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandas/core/series.py:1092,</span> in <span class="ni">Series._get_value</span><span class="nt">(self, label, takeable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1089</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_values</span><span class="p">[</span><span class="n">label</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1091</span> <span class="c1"># Similar to Index.get_value, but we do not fall back to positional</span>
+<span class="ne">-&gt; </span><span class="mi">1092</span> <span class="n">loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1093</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">_get_values_for_loc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+
+<span class="nn">File /Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages/pandas/core/indexes/base.py:3802,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key, method, tolerance)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3800</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3801</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">3802</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">err</span>
+<span class="g g-Whitespace">   </span><span class="mi">3803</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3804</span>     <span class="c1"># If we have a listlike key, _check_indexing_error will raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3805</span>     <span class="c1">#  InvalidIndexError. Otherwise we fall through and re-raise</span>
+<span class="g g-Whitespace">   </span><span class="mi">3806</span>     <span class="c1">#  the TypeError.</span>
+<span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_check_indexing_error</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: 0
 </pre></div>
 </div>
 </div>
