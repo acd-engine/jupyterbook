@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Sources</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
+<script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){ dataLayer.push(arguments); }
+                    gtag('js', new Date());
+                    gtag('config', 'G-R8Q003ZY5N');
+                </script>
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/ACDElogo.png" class="logo" alt="logo">
+      
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   About
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data infrastructure and integration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_1_intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ivy_2_0_architecture.html">
+   Australian Cultural Data Engine Architecture
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ivy_2_1_overview_acdea.html">
+     Overview of the Australian Cultural Data Engine Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ivy_2_2_construction_overflow.html">
+     Construction Workflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ivy_2_3_data_report.html">
+     Data Report
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ivy_2_4_special_considerations.html">
+     Special Considerations for Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_3_1_ausstage.html">
+   The Australian Live Performance Database
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_3_2_awr.html">
+   The Australian Women’s Register
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_3_3_circusoz.html">
+   The Circus Oz Living Archive collection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_3_4_daao.html">
+   Design &amp; Art Australia Online
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_3_5_daqa.html">
+   Digital Archive of Queensland Architecture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_3_6_summerhayes.html">
+   Summerhayes Family Collection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_4_integrated_data.html">
+   Integrated Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_5_future_works.html">
+   Future Works
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
+   Repository Directory Structure
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ivy_7_more_interesting_works.html">
+   More Interesting Works and Cultural Data Sources
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Data analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="RmdTest.html">
+   DAAO Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Archies.html">
+   Archibald Prize
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TLC%20Workshop.html">
+   TLC Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAQA%20Workshop.html">
+   DAQA Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CircusOzEDA.html">
+   Circus Oz Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AusStage.html">
+   AusStage symposium
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAAO_Venues.html">
+   DAAO venues and organisations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/ivy_3_0_data_sources2.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_3_0_data_sources2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Data Sources</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="section" id="data-sources">
+<h1>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<hr class="docutils" />
+<p>So far, there are 6 cultural data sources authorized and provided by <a class="reference external" href="https://www.acd-engine.org/partners">the ACDE partners</a>, distibuted in 4 different domains.</p>
+<ul>
+<li><p><strong>Performing Art</strong>
+<br><br></p>
+<p>Data about any art form that involves live performances, such as theater, dance, music, opera, and circus. Performing arts can be further divided into subcategories based on the specific art form, such as classical music, contemporary dance, or musical theater.
+<br><br></p>
+<p>Data Sources: <a class="reference external" href="https://www.ausstage.edu.au/pages/browse/">The Australian Live Performance Database (AusSatge)</a>, <a class="reference external" href="https://circusozlivingarchive.com/">Circus Oz Living Archive (CircuzOZ)</a>
+<br><br></p>
+</li>
+<li><p><strong>Visual Art</strong>
+<br><br></p>
+<p>This domain includes any art form that is primarily visual, such as painting, sculpture, photography, printmaking, and installation art. Visual arts can also be further divided into subcategories based on the medium, style, or period of the artwork.
+<br><br></p>
+<p>Data Sources: <a class="reference external" href="https://www.daao.org.au/">Design and Arts Australia Online (DAAO)</a>
+<br><br></p>
+</li>
+<li><p><strong>Architecture</strong>
+<br><br></p>
+<p>This domain is specific to the art and science of designing buildings and other physical structures. It includes information about architectural styles, building materials, construction methods, and the history of architecture.
+<br><br></p>
+<p>Data Sources: <a class="reference external" href="https://qldarch.net/">Digital Archive of Queensland Architecture (DAQA)</a>, <a class="reference external" href="https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&amp;collectionId=81190473680001951">Summerhayes Family Collection (SFC)</a>
+<br><br></p>
+</li>
+<li><p><strong>Politics</strong>
+<br><br></p>
+<p>This category encompasses any cultural data related to political events, movements, or figures.
+<br><br></p>
+<p>Data Sources: <a class="reference external" href="https://www.womenaustralia.info/">Australian Women’s Register (AWR)</a>
+<br><br></p>
+</li>
+</ul>
+<p>The table below summarizes the data fetching information of each data source.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data Source</p></th>
+<th class="head"><p>Orientation</p></th>
+<th class="head"><p>Format/Fetching Method</p></th>
+<th class="head"><p>Fetching Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AWR</p></td>
+<td><p>Person</p></td>
+<td><p>Web Scraping</p></td>
+<td><p>TBC</p></td>
+</tr>
+<tr class="row-odd"><td><p>AusStage</p></td>
+<td><p>Event</p></td>
+<td><p>Database Dump (MySQL)</p></td>
+<td><p>2022-03</p></td>
+</tr>
+<tr class="row-even"><td><p>CircuzOz</p></td>
+<td><p>Event</p></td>
+<td><p>static file (xlsx)</p></td>
+<td><p>2022-12</p></td>
+</tr>
+<tr class="row-odd"><td><p>DAAO</p></td>
+<td><p>Person</p></td>
+<td><p>Database Dump (MongoDB)</p></td>
+<td><p>2021-08</p></td>
+</tr>
+<tr class="row-even"><td><p>DAQA</p></td>
+<td><p>Person</p></td>
+<td><p>Web Scraping (storing in MongoDB)</p></td>
+<td><p>2023-04</p></td>
+</tr>
+<tr class="row-odd"><td><p>SFC</p></td>
+<td><p>Resource</p></td>
+<td><p>static file (xml)</p></td>
+<td><p>2022-11</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following sections will provide a general introduction, specific data processing workflow, integration data report for each data source.</p>
+<p>Please note that, in the integration data report section, the number of loaded records in the ACDE database may not match the number of records in the original database due to the following reasons:</p>
+<ol class="simple">
+<li><p>Only the records that have completed relationship records, where both the subject and object exist in the original database, will be loaded into the ACDE database. Records that have relevant relationship records but are missing the corresponding subject or object records will be excluded from the ACDE database for consistency reasons.</p></li>
+<li><p>Some additional relationships that were newly constructed during the transformation procedure may not be inserted into the original database and therefore will not be included in the ACDE database.</p></li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Justin Munoz<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

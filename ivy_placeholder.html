@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coming soon…</title>
+    <title>Australian Cultural Data Engine - Data Processing</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -111,9 +111,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   <em>
-    Coming soon…
-   </em>
+   Australian Cultural Data Engine - Data Processing
   </a>
  </li>
 </ul>
@@ -154,7 +152,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="DAAO_TLC.html">
+  <a class="reference internal" href="DAAO_Venues.html">
    DAAO venues and organisations
   </a>
  </li>
@@ -240,6 +238,349 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#australian-cultural-data-engine-architecture">
+   Australian Cultural Data Engine Architecture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-overview-acdea-overview-of-the-australian-cultural-data-engine-architecture-a">
+     <a name="overview-acdea">
+      Overview of the Australian Cultural Data Engine Architecture
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-constr-workflow-construction-workflow-a">
+     <a name="constr-workflow">
+      Construction Workflow
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#overview-of-construction-workflow">
+       Overview of Construction Workflow
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-extraction">
+       Data Extraction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-exploration">
+       Data Exploration
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-transformation">
+       Data Transformation
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-expansion">
+         Data Expansion
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-cleansing">
+         Data Cleansing
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-loading">
+       Data Loading
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#experiments-show-cases">
+       Experiments &amp; Show Cases
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-data-report-data-report-a">
+     <a name="data-report">
+      Data Report
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-spec-consid-da-special-considerations-for-data-analysis-a">
+     <a name="spec-consid-da">
+      Special Considerations for Data Analysis
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-data-src-acde-data-sources-of-australia-cultural-data-engine-a">
+   <a name="data-src-acde">
+    Data Sources of Australia Cultural Data Engine
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-data-src-summary-summary-a">
+     <a name="data-src-summary">
+      Summary
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-ausstage-the-australian-live-performance-database-a">
+     <a name="ausstage">
+      The Australian Live Performance Database
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-processing">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-extraction-exploration">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-transformation-loading">
+         Data Transformation &amp; Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#integration-data-report">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#references">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-circuzoz-the-circus-oz-living-archive-collection-a">
+     <a name="circuzoz">
+      The Circus Oz Living Archive collection
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id4">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id5">
+         Data Transformation &amp; Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-awr-the-australian-women-s-register-a">
+     <a name="awr">
+      The Australian Women’s Register
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-daao-design-art-australia-online-a">
+     <a name="daao">
+      Design &amp; Art Australia Online
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id10">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id11">
+         Data Transformation
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id12">
+         Data Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id14">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-daqa-digital-archive-of-queensland-architecture-a">
+     <a name="daqa">
+      Digital Archive of Queensland Architecture
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id15">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id16">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id17">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id18">
+         Data Transformation &amp; Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id19">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id20">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-sfc-summerhayes-family-collection-a">
+   <a name="sfc">
+    Summerhayes Family Collection
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Data Processing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     References
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-integrated-data-integrated-data-a">
+   <a name="integrated-data">
+    Integrated Data
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-future-works-future-works-a">
+   <a name="future-works">
+    Future Works
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-repo-dir-stru-repository-directory-structure-a">
+   <a name="repo-dir-stru">
+    Repository Directory Structure
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-inter-works-more-interesting-works-a">
+   <a name="inter-works">
+    More Interesting Works
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-inter-data-sr-more-interesting-culture-data-sources-a">
+   <a name="inter-data-sr">
+    More Interesting Culture Data Sources
+   </a>
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -247,19 +588,1135 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Coming soon…</h1>
+                <h1>Australian Cultural Data Engine - Data Processing</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#australian-cultural-data-engine-architecture">
+   Australian Cultural Data Engine Architecture
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-overview-acdea-overview-of-the-australian-cultural-data-engine-architecture-a">
+     <a name="overview-acdea">
+      Overview of the Australian Cultural Data Engine Architecture
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-constr-workflow-construction-workflow-a">
+     <a name="constr-workflow">
+      Construction Workflow
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#overview-of-construction-workflow">
+       Overview of Construction Workflow
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-extraction">
+       Data Extraction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-exploration">
+       Data Exploration
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-transformation">
+       Data Transformation
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-expansion">
+         Data Expansion
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-cleansing">
+         Data Cleansing
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-loading">
+       Data Loading
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#experiments-show-cases">
+       Experiments &amp; Show Cases
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-data-report-data-report-a">
+     <a name="data-report">
+      Data Report
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-spec-consid-da-special-considerations-for-data-analysis-a">
+     <a name="spec-consid-da">
+      Special Considerations for Data Analysis
+     </a>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-data-src-acde-data-sources-of-australia-cultural-data-engine-a">
+   <a name="data-src-acde">
+    Data Sources of Australia Cultural Data Engine
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-data-src-summary-summary-a">
+     <a name="data-src-summary">
+      Summary
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-ausstage-the-australian-live-performance-database-a">
+     <a name="ausstage">
+      The Australian Live Performance Database
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-processing">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-extraction-exploration">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#data-transformation-loading">
+         Data Transformation &amp; Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#integration-data-report">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#references">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-circuzoz-the-circus-oz-living-archive-collection-a">
+     <a name="circuzoz">
+      The Circus Oz Living Archive collection
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id4">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id5">
+         Data Transformation &amp; Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-awr-the-australian-women-s-register-a">
+     <a name="awr">
+      The Australian Women’s Register
+     </a>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-daao-design-art-australia-online-a">
+     <a name="daao">
+      Design &amp; Art Australia Online
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id10">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id11">
+         Data Transformation
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id12">
+         Data Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id14">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-name-daqa-digital-archive-of-queensland-architecture-a">
+     <a name="daqa">
+      Digital Archive of Queensland Architecture
+     </a>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id15">
+       Introduction
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id16">
+       Data Processing
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id17">
+         Data Extraction &amp; Exploration
+        </a>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#id18">
+         Data Transformation &amp; Loading
+        </a>
+       </li>
+      </ul>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id19">
+       Integration Data Report
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id20">
+       References
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-sfc-summerhayes-family-collection-a">
+   <a name="sfc">
+    Summerhayes Family Collection
+   </a>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     Introduction
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     Data Processing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     References
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-integrated-data-integrated-data-a">
+   <a name="integrated-data">
+    Integrated Data
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-future-works-future-works-a">
+   <a name="future-works">
+    Future Works
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-repo-dir-stru-repository-directory-structure-a">
+   <a name="repo-dir-stru">
+    Repository Directory Structure
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-inter-works-more-interesting-works-a">
+   <a name="inter-works">
+    More Interesting Works
+   </a>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-name-inter-data-sr-more-interesting-culture-data-sources-a">
+   <a name="inter-data-sr">
+    More Interesting Culture Data Sources
+   </a>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="section" id="coming-soon">
-<h1><em>Coming soon…</em><a class="headerlink" href="#coming-soon" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="australian-cultural-data-engine-data-processing">
+<h1>Australian Cultural Data Engine - Data Processing<a class="headerlink" href="#australian-cultural-data-engine-data-processing" title="Permalink to this headline">¶</a></h1>
+<p>This repository contains all the necessary scripts, Jupyter notebooks, and documentations needed to explore and process the data sources for the Australian Cultural Data Engine. This repository serves as a comprehensive resource for anyone interested in the data processing of this project, providing a clear overview of the various steps involved in the Australian Cultural Data Engine construction, as well as the methodologies and tools used to carry out these tasks.</p>
+<blockquote>
+<div><p>The Australian Cultural Data Engine is a multidisciplinary project based at the University of Melbourne that harnesses leading <a class="reference external" href="https://www.acd-engine.org/partners">cultural databases</a> to analyse cultural production, artistic networks, and the socio-economic implications of arts and cultural data.</p>
+</div></blockquote>
+<p>The goal of the Australian Cultural Data Engine (aka ACDE) is to increase the accessibility and scope of cultural data in Australia. Additionally, it seeks to examine and address any biases, exclusions, or cultural assumptions that may exist within the data, with the aim of utilizing high-quality data to provide rich, multilevel analysis and to tell more compelling stories.</p>
+<p>In order to achieve the goals stated eariler, it is necessary to have a complete, accurate, and consistnet view of data. The data from various cultural databases need to be combined and hoarmonized for the critical cultural analysis and quantitative analysis. Therefore, the data processing procedures in the ACD-Engine become critical components of this project. This section will provide an overview of the crucial steps taken in the ACDE data processing, which include developing a unified data model, establishing the Australian Cultural Data Engine Architecture, as well as designing and implementing the ETL (Extraction, Transformation, Loading) process. Additionally, the future work of data processing will be discussed, as well as other interesting projects found during the implementation of this progress.</p>
+<p>For the sake of brevity and clarity, here are a list of abbreviations will be used in the following sections.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Abbreviation</p></th>
+<th class="head"><p>Full Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ACDE</p></td>
+<td><p><a class="reference external" href="https://www.acd-engine.org/">The Australian Cultural Data Engine</a></p></td>
+<td><p>The Australian Cultural Data Engine is a multidisciplinary project based at the University of Melbourne that harnesses leading <a class="reference external" href="https://www.acd-engine.org/partners">cultural databases</a> to analyse cultural production, artistic networks, and the socio-economic implications of arts and cultural data.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ACDEA</p></td>
+<td><p>The Australian Cultural Data Engine Architecture</p></td>
+<td><p>ThThe Australian Cultural Data Engine Architecture is the unified data model of the Australian Cultural Data Engine.</p></td>
+</tr>
+<tr class="row-even"><td><p>AusStage</p></td>
+<td><p><a class="reference external" href="https://www.ausstage.edu.au/pages/browse/">The Australian Live Performance Database</a></p></td>
+<td><p>The Australian Live Performance Database provides an accessible online resource for researching live performance in Australia.</p></td>
+</tr>
+<tr class="row-odd"><td><p>AWR</p></td>
+<td><p><a class="reference external" href="https://www.womenaustralia.info/">The Australian Women’s Register</a></p></td>
+<td><p>The Australian Women’s Register is Australia’s premier online archival resource discovering, promoting and preserving the diverse stories of Australian women, past and present.</p></td>
+</tr>
+<tr class="row-even"><td><p>CircuzOZ</p></td>
+<td><p><a class="reference external" href="https://circusozlivingarchive.com/">The Circus OZ Living Archive Collection</a></p></td>
+<td><p>Built in collaboration with the world’s oldest contemporary circus company, the Circus Oz Living Archive combines performer interviews and performance videos with audience engagement to create an interactive, immersive environment for experiencing the magic of circus over and over again.</p></td>
+</tr>
+<tr class="row-odd"><td><p>DAAO</p></td>
+<td><p><a class="reference external" href="https://www.daao.org.au/">Design &amp; Art Australia Online</a></p></td>
+<td><p>Design &amp; Art Australia Online is an open source freely accessible scholarly e-Research tool that presents biographical data about Australian artists, designers, craftspeople and curators.</p></td>
+</tr>
+<tr class="row-even"><td><p>DAQA</p></td>
+<td><p><a class="reference external" href="https://qldarch.net/">Digital Archive of Queensland Architecture</a></p></td>
+<td><p>This digital archive of Queensland architecture comprises thousands of audiovisual and textual files that allow you to explore relationships between people, projects and firms.</p></td>
+</tr>
+<tr class="row-odd"><td><p>SFC</p></td>
+<td><p><a class="reference external" href="https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&amp;collectionId=81190473680001951">Summerhayes Family Collection</a></p></td>
+<td><p>The Summerhayes Family Collection represents the work of three generations of the Summerhayes family, Edwin, Reginald and Geoffrey, whose combined practice of architecture in Western Australia extended through the 20th century.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="australian-cultural-data-engine-architecture">
+<h2>Australian Cultural Data Engine Architecture<a class="headerlink" href="#australian-cultural-data-engine-architecture" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>To construct a comprehensive and consistent view of data from various cultural databases, the development of a unified data model is crucial. The unified data model is named as the Australian Cultural Data Engine Architecture, or ACDEA for short. The ACDEA serves as the foundation effectively for integrating and harmonizing data from multiple data sources. By constructing the ACDEA, insights can be gained into the vaiuos data models that underpin the different cultural databases, thereby helping to clarify the number of entites in each data sources. as well as doing comparison analysis on the definition of entity unit concept in each data source.</p>
+<p>It should be noted that the ACDEA is currently only a prototype for integrating existing data sources. As discussions around improving data integration performance and clarifying professional domain definitions continue, and as more data sources are accumulated, the ACDEA may be modified accordingly.</p>
+<p>The following sections will begin with a brief overview of the ACDEA, followed by a description of the general procedure of the ACDEA construction workflow.</p>
+</div>
+<div class="section" id="a-name-overview-acdea-overview-of-the-australian-cultural-data-engine-architecture-a">
+<h3><a name="overview-acdea">Overview of the Australian Cultural Data Engine Architecture</a><a class="headerlink" href="#a-name-overview-acdea-overview-of-the-australian-cultural-data-engine-architecture-a" title="Permalink to this headline">¶</a></h3>
+<p>To construct a unified data model for the Australian Cultural Data Engine, a set of 8 entities were identified from the overlapping entities of all the data models of the current data sources. These entities are collectively referred to as “levels” within the Australian Cultural Data Engine Architecture. The 8 levels include <strong>person</strong>, <strong>organization</strong>, event, <strong>work</strong>, <strong>recognition</strong>, <strong>place</strong>, <strong>resource</strong>, and <strong>relationship</strong>. These entities were selected based on their relevance to cultural data, and their ability to provide a comprehensive view of the data from the various cultural databases.</p>
+<p>The conceptual level diagram below presents the Australian Cultural Data Engine Architecture:</p>
+<p><img alt="Australian Cultural Data Engine Architecture" src="images/ACD-E_Architecture_General.png" /></p>
+<p>Each level within the ACDEA serves a unique and important purpose in the overall model. Additionally, each level contains three essential types of data:</p>
+<ul class="simple">
+<li><p>The metadata of the record, including the original (database) ID, URL, associated level name, timestamps, and other important details. This metadata is crucial in maintaining the integrity and traceability of the data.</p></li>
+<li><p>The specific content details of the record.</p></li>
+<li><p>The one-dimentional related records of the particular record refer to its direct connections to other records within the same level. This feature provides easier access to the one-dimensional relationship network of a particular record, while all relationship records can be found in the relationship level.</p></li>
+</ul>
+<p>The content detail summary of each level are described as follows:</p>
+<ul class="simple">
+<li><p><strong>Person Level</strong>: representing individuals who are relevant to the cultural data.</p>
+<ul>
+<li><p>Names: all types of names of the person, including display name, primary name and alternative names.</p></li>
+<li><p>Summary: the biography summary of the person</p></li>
+<li><p>Gender</p></li>
+<li><p>Birth: the date and place of birth</p></li>
+<li><p>Death: the date and place of death</p></li>
+<li><p>Long Term Roles: the roles that the individual has held for an extended period of time.</p></li>
+<li><p>Career: the features about career.</p></li>
+<li><p>Residences: the time and place of the person has resided.</p></li>
+<li><p>Languages</p></li>
+<li><p>National Library Archive ID: The ID assigned by the National Library of Australia for the same individual.</p></li>
+</ul>
+</li>
+<li><p><strong>Organization Level</strong>: representing organizations that are relevant to the cultural data.</p>
+<ul>
+<li><p>Names: all types of names of the organization, including display name, primary name and alternative names.</p></li>
+<li><p>Description: the brief description of the organization.</p></li>
+<li><p>Types: the types of the organizations.</p></li>
+<li><p>Long Term Roles: : the roles that the organization has held for an extended period of time.</p></li>
+<li><p>Operation: the features about operation of the organization.</p></li>
+<li><p>Locations: the places where the organization has been located.</p></li>
+</ul>
+</li>
+<li><p><strong>Event Level</strong>: representing cultural events.</p>
+<ul>
+<li><p>Title</p></li>
+<li><p>Description: the brief description of the event.</p></li>
+<li><p>Types: the types of the events.</p></li>
+<li><p>Time &amp; Place: the specific date and location where the event took place.</p></li>
+</ul>
+</li>
+<li><p><strong>Work Level</strong>: representing cultural works such as books, architecture, performance , art, and etc.</p>
+<ul>
+<li><p>Titles: all types of titles of the work, including primary title and alternative titles.</p></li>
+<li><p>Summary: the summary of the work.</p></li>
+<li><p>Time &amp; Place: the specific date and location where the work was created.</p></li>
+</ul>
+</li>
+<li><p><strong>Recognition Level</strong>: representing awards or recognition received by individuals or organizations.</p>
+<ul>
+<li><p>Title</p></li>
+<li><p>Summary: the summary of the recognition.</p></li>
+<li><p>Types: the types of the recognition.</p></li>
+<li><p>Time &amp; Place: the specific date and location where the recognition was granted.</p></li>
+</ul>
+</li>
+<li><p><strong>Place Level</strong>: representing the locations that are geographic locations or facilities where the cultural events take place.</p>
+<ul>
+<li><p>Names: all types of names of the location, including primary names and alternative names.</p></li>
+<li><p>Address: the standardized physical address of the location, including country, state, suburb, street and postcode.</p></li>
+<li><p>Geo-Coordinates: the geographic coordinates (latitude and longitude) of the locations.</p></li>
+<li><p>Start &amp; End Date (Optional): the start and demolished date of a location, which is the optional information in tracking the changes of a location whose type is “venue” over time.</p></li>
+</ul>
+</li>
+<li><p><strong>Resource Level</strong>: represents resources that are relevant to the cultural data, such as books, images, paintings and audio files. The content details of this level refer to the metadata schema used in the National Library of Australia.</p>
+<ul>
+<li><p>Titles: all types of titles of the resource, including primary title and alternative titles.</p></li>
+<li><p>Description</p></li>
+<li><p>Type</p></li>
+<li><p>Authoring: the author or creator information of the resource.</p></li>
+<li><p>Source: the source of the resource.</p></li>
+<li><p>Date: the associated dates of the resource, such as created date, published date, etc.</p></li>
+<li><p>Acquisition: the method or process used to acquire the resource.</p></li>
+<li><p>Right: the rights associated with the resource, such as copyright or licensing information.</p></li>
+<li><p>Format: the format information of the resource.</p></li>
+<li><p>Identifier: the identifiers associated with the resource.</p></li>
+</ul>
+</li>
+<li><p><strong>Relationship Level</strong>: representing the relationships between the various entities within the cultural data. It plays a crucial role in establishing connections and dependencies between the other levels.</p>
+<ul>
+<li><p>Subject: the entity that initiates the relationship.</p></li>
+<li><p>Object: the entity that is being related to by the subject.</p></li>
+<li><p>Predicate: describing the type of relationship that exists between the subject and the object.</p></li>
+<li><p>Time: the time period during which the relationship between the subject and the object existed.</p></li>
+</ul>
+</li>
+</ul>
+<p>The following illustration shows an overview of the attributes in ACDEA.</p>
+<p><img alt="Australian Cultural Data Engine Architecture" src="images/ACD-E_Architecture_Details.png" /></p>
+<p>To obtain more detailed information about the specific attributes within each level, please refer to <span class="xref myst">the ACDEA data dictionary</span>.</p>
+</div>
+<div class="section" id="a-name-constr-workflow-construction-workflow-a">
+<h3><a name="constr-workflow">Construction Workflow</a><a class="headerlink" href="#a-name-constr-workflow-construction-workflow-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="overview-of-construction-workflow">
+<h4>Overview of Construction Workflow<a class="headerlink" href="#overview-of-construction-workflow" title="Permalink to this headline">¶</a></h4>
+<p>The construction of the Australian Cultural Data Engine Architecture (ACDEA) follows a general methodology that integrates a unified data model from all the existing data models of the data sources. This is a bottom-up approach that ensures that all the relevant data is included and organized into a coherent and integrated database.</p>
+<p>Importantly, to achieve this methodology, the construction of ACDEA follows the principles below:</p>
+<ul class="simple">
+<li><p><strong>Refer to the Most Comprehensive Existing Data Models</strong>: ACDEA aims to include all relevant attributes from various cultural data sources into the unified enities (levels) . Therefore, the most comprehensive entity sturcture were referred to and analyzed to ensure that ACDEA includes the most relevant and useful attributes of specific entity from all sources. For instance, to construct its own “person” level, ACDEA refers to the “person” data model from DAAO, which is a person-oriented data collection.</p></li>
+<li><p><strong>Keep Differences &amp; Unify Common</strong>: The construction of ACDEA required reconciling differences between the data models of different sources, which is a significant challenge. To maintain the completeness of the original data sources and integrate the similarities of data attributes, ACDEA follows the principle of keeping differences between the data models that are significant and add value to the data, while unifying common elements to ensure consistency and usability. This approach helps to capture the unique characteristics of each data source and ensure that ACDEA includes all relevant information.</p></li>
+<li><p><strong>Fuzzy Mapping</strong>: This involves mapping data attributes from different sources to a common attribute in the unified data model, even if they are not an exact match. For instance, ithe DAAO has an attribute called “other_occupations” and the AusStage has an attribute called “(contributing) functions”, these attributes can be mapped to a common attribute in ACDEA called “career.” This allows ACDEA to capture as much information as possible while still maintaining consistency and usability.</p></li>
+</ul>
+<p>Although the construction process varies across different data sources, there is a general construction workflow that has been established for integrating the data sources into ACDEA.</p>
+<p><img alt="ACD-Engine Architecture Construction Workflow" src="images/ACD-Engine+Architecture_Construction_Workflow.png" /></p>
+</div>
+<div class="section" id="data-extraction">
+<h4>Data Extraction<a class="headerlink" href="#data-extraction" title="Permalink to this headline">¶</a></h4>
+<p>The first step in constructing ACDEA involves extracting or scraping data from various data sources. This process may involve using web scraping tools to collect data from websites or using database dumps to access data.</p>
+</div>
+<div class="section" id="data-exploration">
+<h4>Data Exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">¶</a></h4>
+<p>Once the data is collected, the next step is to explore it in order to understand its structure, contents and biases. This may involve <strong>creating a data dictionary</strong> that describes the attributes and values for each data source, as well as <strong>a data mapping plan</strong> that outlines how the data from different sources can be combined into ACDEA.</p>
+</div>
+<div class="section" id="data-transformation">
+<h4>Data Transformation<a class="headerlink" href="#data-transformation" title="Permalink to this headline">¶</a></h4>
+<p>This stage focuses on preparing the data for integration into the ACDEA. It involves expanding the data by adding missing attributes or levels, as well as cleansing the data by identifying and correcting errors or inconsistencies.</p>
+<div class="section" id="data-expansion">
+<h5>Data Expansion<a class="headerlink" href="#data-expansion" title="Permalink to this headline">¶</a></h5>
+<p>This step involves expanding the data to include additional attributes or levels that are necessary for the integration process. This may involve supplementing missing attributes, projecting similar attributes to the target attributes in ACDEA or expanding the data model to include additional levels or entities. For example, the “sturcture” entity in DAQA is projected to “place” level as well as “work” level in ACDEA.</p>
+</div>
+<div class="section" id="data-cleansing">
+<h5>Data Cleansing<a class="headerlink" href="#data-cleansing" title="Permalink to this headline">¶</a></h5>
+<p>In this step, the data is cleaned and standardized to ensure that it is consistent and accurate. This may involve removing redundanct texts, and standardizing time and place formats and values.</p>
+</div>
+</div>
+<div class="section" id="data-loading">
+<h4>Data Loading<a class="headerlink" href="#data-loading" title="Permalink to this headline">¶</a></h4>
+<p>Once the data is transformed and cleansed, it is loaded into a MongoDB database where it can be accessed and queried for analysis.</p>
+</div>
+<div class="section" id="experiments-show-cases">
+<h4>Experiments &amp; Show Cases<a class="headerlink" href="#experiments-show-cases" title="Permalink to this headline">¶</a></h4>
+<p>This part is mainly for stages for downstream data analysis for showing cases and future works. Please note that it will not be included in this chapter. The following are the brief introduction of post-data-processing works:</p>
+<ul class="simple">
+<li><p>Experiments for the Better Integration: This involves experimenting with different integration methods to improve the accuracy and completeness of the data model. So far, ACDE focuses on integrating records referring to same entities into one single records, as well as compress the numbers of unique terms in the categorical attributes.</p></li>
+<li><p>Data Extraction (Round2) &amp; Data Analysis (Show Cases): By extracting full static datasets or extracting fine samples for data analysis, ACDE is creating different show cases on how to utilize the integrated data in ACDE.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="a-name-data-report-data-report-a">
+<h3><a name='data-report'>Data Report</a><a class="headerlink" href="#a-name-data-report-data-report-a" title="Permalink to this headline">¶</a></h3>
+<p>Finally, the integrated data are loaded into 7 collections of <code class="docutils literal notranslate"><span class="pre">acd-engine</span></code> MongoDB database. The following charts, which was generated by the jupyter notebook <span class="xref myst">ACDE_Exploration.ipynb</span>, show the numbers of records by data source and relation class in each data source respectively.</p>
+<p><img alt="" src="C:%5CProjectCollections%5CPrograms%5CAustralia_Cultural_Data_Engine%5Cimages%5CACDE_collection_summary.png" /></p>
+<p><img alt="" src="C:%5CProjectCollections%5CPrograms%5CAustralia_Cultural_Data_Engine%5Cimages%5CACDE_relation_class_summary.png" /></p>
+</div>
+<div class="section" id="a-name-spec-consid-da-special-considerations-for-data-analysis-a">
+<h3><a name='spec-consid-da'>Special Considerations for Data Analysis</a><a class="headerlink" href="#a-name-spec-consid-da-special-considerations-for-data-analysis-a" title="Permalink to this headline">¶</a></h3>
+<p>As ACDEA is a prototype for integrating existing data sources and it is still in a stage that need further cleansing, there are some special considerations to be aware of when conducting data analysis.</p>
+<ol>
+<li><p><strong>Ambiguous Concepts</strong>: When working with ACDEA, it is important to keep in mind that some of the concepts may have different interpretations across cultural data in different domains.</p>
+<p>For example, the entity “project” in DAQA may have a different definition from “work” in DAAO, despite being integrated into the same level “Work”. Similary, AusStage’s “event” may be defined differently from the general “event” concept which is more like “production” in performing art.</p>
+<p>Hence, it is important to understand the specific concept being used in each data source. And further data manipulation could be required to construct the exact entities you want to analyze.</p>
+</li>
+<li><p><strong>Duplicated Records</strong>: Another important consideration when working with ACDEA is dealing with duplicated records. Due to the nature of integrating data from multiple sources, it is possible for some records to appear in multiple places. As de-duplication progress is still under experimentation at this stage, it is crucial to identify and handle duplicated records appropriately to avoid skewing analysis results.</p></li>
+<li><p><strong>Empty Values</strong>: When working with current datasets, it is important to note that some records may contain missing or empty values for certain attributes. These empty expressions could be represented as <code class="docutils literal notranslate"><span class="pre">null</span></code>, “”, “None”, “null”, or other variations. This could be due to incomplete or inconsistent data in the original data sources, or due to errors during the integration process.</p>
+<p>To avoid skewing the analysis results, it is important to identify and handle these missing values appropriately. Depending on the analysis being conducted, empty values may need to be <strong>imputed</strong> or <strong>removed</strong>. Additionally, it is important to carefully consider <strong>the impact of missing data on the validity of the results</strong> and to acknowledge any limitations or uncertainties caused by missing values.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="a-name-data-src-acde-data-sources-of-australia-cultural-data-engine-a">
+<h2><a name='data-src-acde'>Data Sources of Australia Cultural Data Engine</a><a class="headerlink" href="#a-name-data-src-acde-data-sources-of-australia-cultural-data-engine-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-name-data-src-summary-summary-a">
+<h3><a name='data-src-summary'>Summary</a><a class="headerlink" href="#a-name-data-src-summary-summary-a" title="Permalink to this headline">¶</a></h3>
+<p>So far, there are 6 cultural data sources authorized and provided by <a class="reference external" href="https://www.acd-engine.org/partners">the ACDE partners</a>, distibuted in 4 different domains.</p>
+<ul>
+<li><p>Performing Art</p>
+<p>Data about any art form that involves live performances, such as theater, dance, music, opera, and circus. Performing arts can be further divided into subcategories based on the specific art form, such as classical music, contemporary dance, or musical theater.</p>
+<p>Data Sources: <a class="reference external" href="https://www.ausstage.edu.au/pages/browse/">The Australian Live Performance Database (AusSatge)</a>, <a class="reference external" href="https://circusozlivingarchive.com/">Circus Oz Living Archive (CircuzOZ)</a></p>
+</li>
+<li><p>Visual Art</p>
+<p>This domain includes any art form that is primarily visual, such as painting, sculpture, photography, printmaking, and installation art. Visual arts can also be further divided into subcategories based on the medium, style, or period of the artwork.</p>
+<p>Data Sources: <a class="reference external" href="https://www.daao.org.au/">Design and Arts Australia Online (DAAO)</a></p>
+</li>
+<li><p>Architecture</p>
+<p>This domain is specific to the art and science of designing buildings and other physical structures. It includes information about architectural styles, building materials, construction methods, and the history of architecture.</p>
+<p>Data Sources: <a class="reference external" href="https://qldarch.net/">Digital Archive of Queensland Architecture (DAQA)</a>, <a class="reference external" href="https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&amp;collectionId=81190473680001951">Summerhayes Family Collection (SFC)</a></p>
+</li>
+<li><p>Politics</p>
+<p>This category encompasses any cultural data related to political events, movements, or figures.</p>
+<p>Data Sources: <a class="reference external" href="https://www.womenaustralia.info/">Australian Women’s Register (AWR)</a></p>
+</li>
+</ul>
+<p>The table below summarizes the data fetching information of each data source.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Data Source</p></th>
+<th class="head"><p>Orientation</p></th>
+<th class="head"><p>Format/Fetching Method</p></th>
+<th class="head"><p>Fetching Date</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AWR</p></td>
+<td><p>Person</p></td>
+<td><p>Web Scraping</p></td>
+<td><p>TBC</p></td>
+</tr>
+<tr class="row-odd"><td><p>AusStage</p></td>
+<td><p>Event</p></td>
+<td><p>Database Dump (MySQL)</p></td>
+<td><p>2022-03</p></td>
+</tr>
+<tr class="row-even"><td><p>CircuzOz</p></td>
+<td><p>Event</p></td>
+<td><p>static file (xlsx)</p></td>
+<td><p>2022-12</p></td>
+</tr>
+<tr class="row-odd"><td><p>DAAO</p></td>
+<td><p>Person</p></td>
+<td><p>Database Dump (MongoDB)</p></td>
+<td><p>2021-08</p></td>
+</tr>
+<tr class="row-even"><td><p>DAQA</p></td>
+<td><p>Person</p></td>
+<td><p>Web Scraping (storing in MongoDB)</p></td>
+<td><p>2023-04</p></td>
+</tr>
+<tr class="row-odd"><td><p>SFC</p></td>
+<td><p>Resource</p></td>
+<td><p>static file (xml)</p></td>
+<td><p>2022-11</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following sections will provide a general introduction, specific data processing workflow, integration data report for each data source.</p>
+<p>Please note that, in the integration data report section, the number of loaded records in the ACDE database may not match the number of records in the original database due to the following reasons:</p>
+<ol class="simple">
+<li><p>Only the records that have completed relationship records, where both the subject and object exist in the original database, will be loaded into the ACDE database. Records that have relevant relationship records but are missing the corresponding subject or object records will be excluded from the ACDE database for consistency reasons.</p></li>
+<li><p>Some additional relationships that were newly constructed during the transformation procedure may not be inserted into the original database and therefore will not be included in the ACDE database.</p></li>
+</ol>
+</div>
+<div class="section" id="a-name-ausstage-the-australian-live-performance-database-a">
+<h3><a name='ausstage'>The Australian Live Performance Database</a><a class="headerlink" href="#a-name-ausstage-the-australian-live-performance-database-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>AusStage provides an accessible online resource for researching live performance in Australia. Development is led by a <a class="reference external" href="https://www.ausstage.edu.au/pages/learn/about/partners-and-staff.html">consortium</a> of universities, government agencies, industry organisations and collecting institutions with funding from the Australian Research Council and other sources.</p>
+<p>……</p>
+<p>AusStage is committed to collecting and sharing information about Australian live performance as an ongoing, open-access and collaborative endeavour. ……</p>
+<p>By sharing knowledge through AusStage researchers and consumers can learn more about Australian performance than ever before.</p>
+</div></blockquote>
+<p>The following sections will describe the data processing procedure that integrates AusStage data into ACDE and the data sumary of AusStage.</p>
+</div>
+<div class="section" id="data-processing">
+<h4>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="data-extraction-exploration">
+<h5>Data Extraction &amp; Exploration<a class="headerlink" href="#data-extraction-exploration" title="Permalink to this headline">¶</a></h5>
+<p>The AusStage data was provided in the format of MySQL database dump. It can be downloaded from an API as a compressed file. As the MySQL database was using the storage engine MyISAM, there were no foreign keys could be found in the original database dump. However, the schema of AusStage can be roughly inferred based on the actual display of official website, physical database, expert suggestions as well as <a class="reference external" href="https://www.ausstage.edu.au/opencms/export/system/modules/au.edu.flinders.ausstage.learn/pages/learn/contribute/manuals/AusStage_Data_Entry_Manual_2021.pdf">previsous documentation</a>. The AusStage Schema is shown as following:</p>
+<p><img alt="" src="C:%5CProjectCollections%5CPrograms%5CAustralia_Cultural_Data_Engine%5Cimages%5CAusStage_Schema.png" /></p>
+<p>For more detailed of downloading and restoring AusStage database, please check <span class="xref myst">AusStage_DBUpdate.ipynb</span>.</p>
+<p>It is noted that for the <a class="reference external" href="https://www.ausstage.edu.au/pages/learn/data-sharing">public data sharing</a>, there is a SPARQL end point that could provide most of the data when ACDE tried to fetch the AusStage data. However, as ACDE require the birth information of contributors for comparison and further research, database dump extraction was chosen to be the final data delivery method to fetch data.</p>
+<p>“Regarding public data sharing, there is a SPARQL endpoint available on the AusStage website that could provide most of the data required by ACDE. However, as birth information of contributors is needed for comparison and further research, a database dump extraction was chosen as the final data delivery method to fetch data.</p>
+<p>During the exploration of the AusStage database, a significant concern was identified that needs to be taken into account when establishing the transforming and loading pipeline. It was found that there might be some ambiguity and incorrectness in the definition of an event in AusStage. The unit definition of an event in AusStage, “a distinct happening defined by title, date, and venue,” might be different from the contributing unit definition in the common sense of performing data analysis.  This usually don’t make inconsistency in data integration, however, it might cause confusion and inconvenience in downstream data analysis.</p>
+<p>For instance, an actress may have contributed to 30 performances in the whole season of Les Miserables, which means in the AusStage perspective, she has contributed to 30 events. However, in most theatre concepts, this actress only contributed to one event, or more precisely, one production. Additionally, some “concert” events are found to have the same name as the contributors.</p>
+<p>For more examples of AusStage event ambiguation, please look into the jupyter notebook <span class="xref myst">AusStage_EventExploration.ipynb</span>. A work-around solution will be described below to adjust this circumstance.</p>
+</div>
+<div class="section" id="data-transformation-loading">
+<h5>Data Transformation &amp; Loading<a class="headerlink" href="#data-transformation-loading" title="Permalink to this headline">¶</a></h5>
+<p>To address the issue of event ambiguity in the AusStage database, we created a new attribute called “unf_id” (unified ID) to assign the same ID to records that refer to the same individual or entity but are distributed across different records due to various reasons. This includes records for contributors, organizations, venues, and events. Specifically, event records with the same titles that occurred in the same year were grouped together as the same “real event,” or “production” in common theater terminology, unless they had same names as the organizations involved.</p>
+<p>For more detailed of creating unified table for data loading, please check “<strong>Create Table(s) (for unification)</strong>” section in <span class="xref myst">AusStage_DBUpdate.ipynb</span> and the corresponding SQL scripts.</p>
+<p>Furthermore, to facilitate table joining during data loading, we created several views and renamed attribute names to match those used in ACDEA.</p>
+<p>For more detailed of creating views for data loading, please check “<strong>Create Views</strong>” section in <span class="xref myst">AusStage_DBUpdate.ipynb</span> and the corresponding SQL scripts.</p>
+<p>With these additional attributes and views, it is now possible to map the corresponding entities and attributes of AusStage to the levels and attributes in ACDEA. The related records of the corresponding original records are also aggregated from the relationship level and updated into the related attribute of the original records.</p>
+<p>On entity level, the AusStage entity projection is listed as follows:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>AusStage Entity (Collection)</p></th>
+<th class="head"><p>ACDEA Level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>contributor</p></td>
+<td><p>person</p></td>
+</tr>
+<tr class="row-odd"><td><p>work</p></td>
+<td><p>work</p></td>
+</tr>
+<tr class="row-even"><td><p>event</p></td>
+<td><p>event</p></td>
+</tr>
+<tr class="row-odd"><td><p>—-</p></td>
+<td><p>recognition</p></td>
+</tr>
+<tr class="row-even"><td><p>venue</p></td>
+<td><p>place</p></td>
+</tr>
+<tr class="row-odd"><td><p>organisation</p></td>
+<td><p>organization</p></td>
+</tr>
+<tr class="row-even"><td><p>item, datasource</p></td>
+<td><p>resource</p></td>
+</tr>
+<tr class="row-odd"><td><p>all xxxxx<strong>link</strong> tables, etc</p></td>
+<td><p>relationship</p></td>
+</tr>
+</tbody>
+</table>
+<p>On attribute level, please find the attribute mapping details in the notes of <span class="xref myst">AusStage data dictionary</span>.</p>
+<p>For more details of data loading of AusStage, please check jupyter notebook <span class="xref myst">AusStage_Loading.ipynb</span>.</p>
+</div>
+</div>
+<div class="section" id="integration-data-report">
+<h4>Integration Data Report<a class="headerlink" href="#integration-data-report" title="Permalink to this headline">¶</a></h4>
+<p>The following chart, which was generated by the jupyter notebook <span class="xref myst">AusStage_IntegrationSummary.ipynb</span>, illustrates the number of AusStage records before and after integration.</p>
+<p><img alt="" src="C:%5CProjectCollections%5CPrograms%5CAustralia_Cultural_Data_Engine%5Cimages%5CAusStage_integration_summary.png" /></p>
+</div>
+<div class="section" id="references">
+<h4>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.ausstage.edu.au/opencms/export/system/modules/au.edu.flinders.ausstage.learn/pages/learn/contribute/manuals/AusStage_Data_Entry_Manual_2021.pdf">AusStage Data Entry Manual Version 6.0</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="a-name-circuzoz-the-circus-oz-living-archive-collection-a">
+<h3><a name='circuzoz'>The Circus Oz Living Archive collection</a><a class="headerlink" href="#a-name-circuzoz-the-circus-oz-living-archive-collection-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>Introduction<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>Built in collaboration with the world’s oldest contemporary circus company, the Circus Oz Living Archive combines performer interviews and performance videos with audience engagement to create an interactive, immersive environment for experiencing the magic of circus over and over again.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h4>Data Processing<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h5>Data Extraction &amp; Exploration<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h5>
+<p>The CircusOZ data are manually collected from three data sources, and it is provided in the xlsx format. As all the data are merged in one spreedsheet, it need to be denormalized 3 separated entities, namely <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">event</span></code>, and <code class="docutils literal notranslate"><span class="pre">venue</span></code> and transformed into SQLite database for the convenience of understanding the data.</p>
+<p>For the details of constructing the CircusOZ database, please check the jupyter notebook <span class="xref myst">circusoz_DBConstruction.ipynb</span>.</p>
+<p>The following diagram shows the schema of CircusOZ data:</p>
+<p><img alt="" src="images/CircusOZ_Schema.png" /></p>
+</div>
+<div class="section" id="id5">
+<h5>Data Transformation &amp; Loading<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h5>
+<p>Due to the manual collection process of CircusOZ data, it is inevitable that some records may contain typos and duplicate attributes. Therefore, the main goal of the transformation process is to perform deduplication while retaining the unique attributes from the three source data collection.</p>
+<p>On entity level, the CircusOZ entity projection is listed as follows:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>CircusOZ Entity (Collection)</p></th>
+<th class="head"><p>ACDEA Level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>person</p></td>
+<td><p>person</p></td>
+</tr>
+<tr class="row-odd"><td><p>—-</p></td>
+<td><p>work</p></td>
+</tr>
+<tr class="row-even"><td><p>event</p></td>
+<td><p>event</p></td>
+</tr>
+<tr class="row-odd"><td><p>—-</p></td>
+<td><p>recognition</p></td>
+</tr>
+<tr class="row-even"><td><p>venue</p></td>
+<td><p>place</p></td>
+</tr>
+<tr class="row-odd"><td><p>—-</p></td>
+<td><p>organization</p></td>
+</tr>
+<tr class="row-even"><td><p>—-</p></td>
+<td><p>resource</p></td>
+</tr>
+<tr class="row-odd"><td><p>foreign keys among person, venue and event</p></td>
+<td><p>relationship</p></td>
+</tr>
+</tbody>
+</table>
+<p>On attribute level, please find the attribute mapping details in the notes of <span class="xref myst">CircusOZ_data dictionary</span>.</p>
+<p>For the details of trasforming and loading the CircusOZ data into ACDE database, please check the jupyter notebook <span class="xref myst">circusoz_Loading.ipynb</span>.</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h4>Integration Data Report<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>The following chart, which was generated by the jupyter notebook <span class="xref myst">circusoz_IntegrationSummary.ipynb</span>, illustrates the number of CircusOZ records before and after integration.</p>
+<p><img alt="" src="images/CircusOZ_integration_summary.png" /></p>
+</div>
+<div class="section" id="id7">
+<h4>References<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://alpine-test.hpc.unimelb.edu.au/">CircusOZ Living Archive</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="a-name-awr-the-australian-women-s-register-a">
+<h3><a name='awr'>The Australian Women’s Register</a><a class="headerlink" href="#a-name-awr-the-australian-women-s-register-a" title="Permalink to this headline">¶</a></h3>
+<p>TBC</p>
+</div>
+<div class="section" id="a-name-daao-design-art-australia-online-a">
+<h3><a name='daao'>Design &amp; Art Australia Online</a><a class="headerlink" href="#a-name-daao-design-art-australia-online-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h4>Introduction<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>Design and Art Australia Online (DAAO) is a collaborative e-Research tool built upon the foundations of the Dictionary of Australian Artists Online. DAAO is an open source freely accessible scholarly e-Research tool that links biographical data about Australian artists, designers, craftspeople and curators with information about artworks, event histories and collection details.</p>
+</div></blockquote>
+<p>The following sections will describe the data processing procedure that integrates DAAO data into ACDE and the data sumary of DAAO.</p>
+</div>
+<div class="section" id="id9">
+<h4>Data Processing<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id10">
+<h5>Data Extraction &amp; Exploration<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h5>
+<p>The DAAO data was provided in the format of MongoDB database dump. The dump was restored, and 20 collections were found in the DAAO database, which including:</p>
+<ol class="simple">
+<li><p>Main collections for the main objects and their relationships: xactivity, xparty, xwork, xpredicate, relation</p></li>
+<li><p>The corresponding version-controlling collections for main collections: xactivity_counters, xactivity_revisions, xparty_counters, xparty_revisions, xwork_counters, xwork_revisions</p></li>
+<li><p>Dependency collections for detailed information and the convenience of display : asset, controlledvocab, culturalheritage, externalresource, predicate, place, indigenousdreaming, stubperson, stubpersongroup</p></li>
+</ol>
+<p>For more details of restoring DAAO database, please check <span class="xref myst">DAAO_DBRestore.ipynb</span>.</p>
+<p>Since DAAO is an archive of data that is updated cumulatively, there is no up-to-date confirmed data model or data dictionary to refer to. However, a conceptual data model can be roughly inferred based on the actual display of official website, physical database, expert suggestions as well as <a class="reference external" href="https://blogs.unsw.edu.au/daao/blog/2015/03/schema-and-data-model-refinements/">previsous documentation</a>. The conceptual data model is shown as following:</p>
+<p><img alt="" src="images/DAAO_Conceptual_Data_Model.png" /></p>
+<p>The schema of DAAO can also be confirmed as following:</p>
+<p><img alt="" src="images/DAAO_Schema.png" /></p>
+<p>During the exploration of the DAAO database, some concerns have been identified that should be taken into account when establishing the transforming and loading pipeline.</p>
+<p>Firstly, it should be noted that not all records in the main entity collections are shown on the official website. Through comparing the data between the website and the raw database, it became apparent that some boolean fields like <code class="docutils literal notranslate"><span class="pre">is_locked</span></code>, <code class="docutils literal notranslate"><span class="pre">is_primary</span></code>, <code class="docutils literal notranslate"><span class="pre">is_shadow</span></code>, <code class="docutils literal notranslate"><span class="pre">is_featured</span></code> and <code class="docutils literal notranslate"><span class="pre">is_deleted</span></code> need to be filtered out in order to select only reliable records.</p>
+<p>Secondly, the consistency of relationship records needs to be considered. The data in the <code class="docutils literal notranslate"><span class="pre">relation</span></code> collection doesn’t include all relationships displayed on the official website. It appears that this collection may not have been updated after the last structural renovation of the website. Therefore, the collection of relationships needs to be reconstructed based on up-to-date relations.</p>
+<p>Lastly, the place information is somewhat confusing. Although there are only four effective fields in the place collection, namely name, address, country, and centroid, the values in name, address, and country are often mixed up. As such, it is important to implement a place information normalization process that utilizes all available effective information to generate a standardized place record. This is particularly important for downstream analysis that requires spatial visualization.</p>
+</div>
+<div class="section" id="id11">
+<h5>Data Transformation<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h5>
+<p><img alt="" src="images/DAAO_ETL_Workflow.png" /></p>
+<p>Regarding the complexity of the DAAO data structure and the concerns found during DAAO data exploration, a three-step approach is proposed for DAAO data transformation.</p>
+<p>The first step is normalizing the place records. The purpose of this step is to standardize the geo-elements of place records that are not consistently formatted, and to normalize the expression of name and address of specific places.</p>
+<p>To achieve this, two methods are implemented to infer the standardized elements of place information such as <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">city</span></code>, <code class="docutils literal notranslate"><span class="pre">suburb</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">postcode</span></code>.</p>
+<p>The first method is <strong>reverse geocoding</strong>, which involves using the latitude and longitude coordinates, as well as existing name and address in the DAAO database to find potential standardized address elements and place names. The reverse geocoding process generates two types of standardized location element candidate sets, which are merged to create a new place element candidate set. During this process, standardized location element candidate sets are selected from the reverse geocoding results.</p>
+<p>The second method is <strong>rule-based recognition</strong>. This method involves cleaning all place elements, such as address, name, and country, by correcting typos and expanding place name abbreviations. Then, potential places in the cleaned place elements are identified to create the second set of potential standardized place element candidates.</p>
+<p>Once the two sets of candidates are ready, the extracted-candidates and geo-candidates are merged to create a final set of standardized place element candidates for the place records. The final place elements are confirmed by comparing each level of place element candidate from top (country) to down (suburb), excluding the inconsistent candidates and keeping the most frequent candidates. Any redundant place element still present is removed by comparing whether the element is matching with all the other place elements.</p>
+<p>Finally, the cleaned location components can be updated to the <code class="docutils literal notranslate"><span class="pre">place</span></code> collection. This normalization process standardizes the geo-elements and place name expressions of the place records, making it easier to work with the data and reducing potential errors caused by inconsistent or incomplete data.</p>
+<p>For more details of updating place information of DAAO, please check jupyter notebook <span class="xref myst">DAAO_PlaceUpdate.ipynb</span>.</p>
+<p>The second step is aggregating all the relationship records into a new collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>. There are <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes existing in the records of main object collections (<code class="docutils literal notranslate"><span class="pre">xparty</span></code>, <code class="docutils literal notranslate"><span class="pre">xactivity</span></code>, and <code class="docutils literal notranslate"><span class="pre">xwork</span></code>), which shows the relationships among the main objects. However, in ACDE, relationships with <code class="docutils literal notranslate"><span class="pre">resource</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code>  that are not explicitly assigned as <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes in DAAO records are also crucial. Therefore, the attributes showing relationships with <code class="docutils literal notranslate"><span class="pre">resource</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code> hidden should be firstly found and inserted into new collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>. For instance, <code class="docutils literal notranslate"><span class="pre">see_alsos</span></code>, <code class="docutils literal notranslate"><span class="pre">references</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, <code class="docutils literal notranslate"><span class="pre">portrait_images</span></code> are the attributes that connect <code class="docutils literal notranslate"><span class="pre">resource</span></code> with other entities, while the place of  <code class="docutils literal notranslate"><span class="pre">birth</span></code> and <code class="docutils literal notranslate"><span class="pre">death</span></code> are the attributes showing relationships between <code class="docutils literal notranslate"><span class="pre">person</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code>. And after the implicit relationship extraction, the explicity relationships under <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes of each main object can inserted into the collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>.</p>
+<p>For more details of reconstructing relationship collection of DAAO, please check jupyter notebook <span class="xref myst">DAAO_RelationUpdate.ipynb</span>.
+The third step is standardizing the format of date attributes. In all collections with date attributes, namely <code class="docutils literal notranslate"><span class="pre">xparty</span></code>, <code class="docutils literal notranslate"><span class="pre">xactivity</span></code>, <code class="docutils literal notranslate"><span class="pre">xwork</span></code>, <code class="docutils literal notranslate"><span class="pre">externalresource</span></code>, all the relevant date attributes are updated as the format of json documents having <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>. The original data of the collections are backed up into the collections named <code class="docutils literal notranslate"><span class="pre">{collection_name}_ori</span></code>.</p>
+<p>For more details of cleansing date fields in DAAO, please check jupyter notebook <span class="xref myst">DAAO CleanDates.ipynb</span>.</p>
+</div>
+<div class="section" id="id12">
+<h5>Data Loading<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h5>
+<p>After making extensive preparations during the transformation process, it is now possible to map the corresponding entities/attributes of DAAO to the levels/attributes in ACDEA. Finally, related records were aggregated from the relationship level and updated into the related attribute of the original records.</p>
+<p>On entity level, the DAAO entity projection is listed as follows:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>DAAO Entity (Collection)</p></th>
+<th class="head"><p>ACDEA Level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>xparty.person</p></td>
+<td><p>person</p></td>
+</tr>
+<tr class="row-odd"><td><p>xwork.work</p></td>
+<td><p>work</p></td>
+</tr>
+<tr class="row-even"><td><p>xactivity.Event</p></td>
+<td><p>event</p></td>
+</tr>
+<tr class="row-odd"><td><p>xactivity.Recognition</p></td>
+<td><p>recognition</p></td>
+</tr>
+<tr class="row-even"><td><p>place</p></td>
+<td><p>place</p></td>
+</tr>
+<tr class="row-odd"><td><p>xparty.PersonGroup</p></td>
+<td><p>organization</p></td>
+</tr>
+<tr class="row-even"><td><p>external resource, asset</p></td>
+<td><p>resource</p></td>
+</tr>
+<tr class="row-odd"><td><p>relationship</p></td>
+<td><p>relationship</p></td>
+</tr>
+</tbody>
+</table>
+<p>On attribute level, please find the attribute mapping details in the notes of <span class="xref myst">DAAO data dictionary</span>.</p>
+<p>For more details of data loading of DAAO, please check jupyter notebook <span class="xref myst">DAAO_Loading.ipynb</span>.</p>
+</div>
+</div>
+<div class="section" id="id13">
+<h4>Integration Data Report<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p>The following chart, which was generated by the jupyter notebook <span class="xref myst">DAAO_IntegrationSummary.ipynb</span>, illustrates the number of DAAO records before and after integration.</p>
+<p><img alt="" src="images/DAAO_integration_summary.png" /></p>
+</div>
+<div class="section" id="id14">
+<h4>References<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><a class="reference external" href="https://blogs.unsw.edu.au/daao/blog/2015/03/schema-and-data-model-refinements/">Schema and Data Model Refinements</a></p></li>
+</ul>
+<p><img alt="Schema and Data Model Refinements" src="https://blogs.unsw.edu.au/daao/files/2015/03/DAAO-Data-Model-Proposed-Revisions-February-20151.jpg" /></p>
+</div>
+</div>
+<div class="section" id="a-name-daqa-digital-archive-of-queensland-architecture-a">
+<h3><a name='daqa'>Digital Archive of Queensland Architecture</a><a class="headerlink" href="#a-name-daqa-digital-archive-of-queensland-architecture-a" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h4>Introduction<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>“<a class="reference external" href="https://qldarch.net/">This digital archive of Queensland architecture</a> offers a wealth of information on the region’s design history. The archive was originally constructed as part of the Hot Modernism project and focused on the period 1945-1975. We are now expanding to include earlier and later periods. The database comprises thousands of audiovisual and textual files that allow you to explore relationships between people, projects and firms.”</p>
+</div></blockquote>
+<p>The following sections will describe the data processing procedure that integrates DAQA data into ACDE and the data sumary of DAQA.</p>
+</div>
+<div class="section" id="id16">
+<h4>Data Processing<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id17">
+<h5>Data Extraction &amp; Exploration<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h5>
+<p>The DAQA data needs to be scraped from its original website, which poses a challenge for developing a data model that can be easily integrated into ACDEA while being as similar as possible to the original DAAO data schema. Efforts will be made to carefully design a data model that can capture all relevant information from the scraped data and effectively integrate it into ACDEA without losing its original structure and meaning.</p>
+<p>Upon exploring the <code class="docutils literal notranslate"><span class="pre">Browsing</span></code> tab on the original DAQA website, it was discovered that there are at least five key entities existing in DAQA: “ARCHITECT”, “FIRM”, “PROJECT”, “ARTICLE”, and “INTERVIEW”.</p>
+<p>After parsing the DAQA website, several implicit APIs were found to be useful in web scraping.</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/search?q={query_terms}&amp;pc={page_count}&amp;p={page_no}</span></code>: When <code class="docutils literal notranslate"><span class="pre">query_terms</span></code> is <code class="docutils literal notranslate"><span class="pre">*</span></code>, the general records under all the document ids existing in DAQA can be retrieved.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/{query_category}/{doc_id}</span></code>: This API can be used to retrieve the detailed record under the specific document id within the specific query category. The value of <code class="docutils literal notranslate"><span class="pre">query_category</span></code> can be <code class="docutils literal notranslate"><span class="pre">media</span></code> or <code class="docutils literal notranslate"><span class="pre">archobj</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/media/download/{doc_id}</span></code>: This API can be used to retrieve the resource under the specific document id within the <code class="docutils literal notranslate"><span class="pre">media</span></code> category.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/{query_type}</span></code>: This API can be used to retrieve all detailed records under the specific query type, where the <code class="docutils literal notranslate"><span class="pre">query_type</span></code> values are the names listed in the Browsing tab on the original website.</p></li>
+</ol>
+<p>By analyzing the all the general records using <code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/search?q=*</span></code>, the DAQA records are classified into 2 categories: “media” and “archobj”. In the <code class="docutils literal notranslate"><span class="pre">media</span></code> category, there are 10 types of records including <code class="docutils literal notranslate"><span class="pre">Photograph</span></code>, <code class="docutils literal notranslate"><span class="pre">LineDrawing</span></code>, <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Article</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Transcript</span></code>, <code class="docutils literal notranslate"><span class="pre">Portrait</span></code>, <code class="docutils literal notranslate"><span class="pre">Youtube</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code>, <code class="docutils literal notranslate"><span class="pre">Spredsheet</span></code>, while there are 13 types of records including <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">firm</span></code>,<code class="docutils literal notranslate"><span class="pre">article</span></code>,<code class="docutils literal notranslate"><span class="pre">interview</span></code>, <code class="docutils literal notranslate"><span class="pre">publication</span></code>, <code class="docutils literal notranslate"><span class="pre">topic</span></code>,<code class="docutils literal notranslate"> <span class="pre">education</span></code>, <code class="docutils literal notranslate"><span class="pre">award</span></code>, <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, <code class="docutils literal notranslate"><span class="pre">organisation</span></code>, <code class="docutils literal notranslate"><span class="pre">government</span></code> in <code class="docutils literal notranslate"><span class="pre">archobj</span></code> category. The hierachy of DAQA records are illustrated as following:</p>
+<p>The following charts, which was generated by the jupyter notebook <span class="xref myst">DAQA_HierachySummary.ipynb</span>, illustrates the hierachy of the hierachy of DAQA records.</p>
+<p><img alt="" src="C:%5CProjectCollections%5CPrograms%5CAustralia_Cultural_Data_Engine%5Cimages%5CDAQA_Hierachy_Summary.png" /></p>
+<p>To facilitate loading DAQA data into ACDE, a scraping pipeline has been established. The process involves the following steps:</p>
+<p><img alt="DAQA Web Scraping Workflow" src="images/DAQA_Web_Scraping.png" /></p>
+<ol class="simple">
+<li><p>Setting up a MongoDB database called <code class="docutils literal notranslate"><span class="pre">daqa_scraped</span></code>.</p></li>
+<li><p>All Records Scraping: Scraping all general records by calling the API <code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/search?q=*</span></code>, and storing them in the <code class="docutils literal notranslate"><span class="pre">all_objects</span></code> collection.</p></li>
+<li><p>Key Objects Scraping: Scraping all detailed records, including their relationship records, for the five key objects explicitly listed on the original website. These records are stored in their respective collections in the database. Specially, the geographical coordinates of <code class="docutils literal notranslate"><span class="pre">project</span></code> records are reverse-geocoded to obtain standardized geographic information for the project.</p></li>
+<li><p>Records Supplement: Supplementing records of all other objects not listed on the original website and extracting implicit records from the scraped data.</p>
+<ol class="simple">
+<li><p>Inserting all other archival objects that are not listed on the original website, but exist in the <code class="docutils literal notranslate"><span class="pre">all_objects</span></code> collection, into their respective collections in the database.</p></li>
+<li><p>Inserting all the media records into the <code class="docutils literal notranslate"><span class="pre">media</span></code> collection.</p></li>
+<li><p>Converting some fields of the records into corresponding relationship records and inserting them into the <code class="docutils literal notranslate"><span class="pre">relationship</span></code> collection.</p></li>
+<li><p>Adding unpublished records that couldn’t be found in the <code class="docutils literal notranslate"><span class="pre">all_objects</span></code> collection but exist in relationship records.</p></li>
+<li><p>Adding a tracking attribute called <code class="docutils literal notranslate"><span class="pre">ori_dbid</span></code> into the subject and object of relationship records in the <code class="docutils literal notranslate"><span class="pre">relationship</span></code> collection.</p></li>
+</ol>
+</li>
+<li><p>Date Format Cleansing: Cleansing date formats and converting all date attributes into a standard JSON format consisting of fields for year, month, and day.</p></li>
+<li><p>New Fields Update: Updating new fields supplemented by experts at the University of Queensland.</p></li>
+</ol>
+<p>Finally, the conceptual data model of scrapped DAQA data is shown as follows:</p>
+<p><img alt="DAQA Conceptual Data Model" src="images/DAQA_Conceptual_Data_Model.png" /></p>
+<p>The schema of DAQA is shown as follows:</p>
+<p><img alt="DAQA Schema" src="images/DAQA_Schema.png" /></p>
+<p>This pipeline ensures that all relevant records are scraped and loaded into the database in an organized and structured manner, ready for integration into ACDE. For more details of web scraping of DAQA, please check jupyter notebook <span class="xref myst">DAQA_Scraping.ipynb</span>.</p>
+</div>
+<div class="section" id="id18">
+<h5>Data Transformation &amp; Loading<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h5>
+<p>As many preparations have been made in the scraping process, the transformation and loading of DAQA data are more straightforward by mapping corresponding entities/attributes to the levels/attributes in ACDEA. The related records of the corresponding original records are aggregated from the relationship level and updated into the related attribute of the original records.</p>
+<p>On entity level, the DAQA entity projection is listed as follows:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>DAQA Entity (Collection)</p></th>
+<th class="head"><p>ACDEA Level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>person</p></td>
+<td><p>person</p></td>
+</tr>
+<tr class="row-odd"><td><p>structure</p></td>
+<td><p>work</p></td>
+</tr>
+<tr class="row-even"><td><p>event</p></td>
+<td><p>event</p></td>
+</tr>
+<tr class="row-odd"><td><p>award</p></td>
+<td><p>recognition</p></td>
+</tr>
+<tr class="row-even"><td><p>place, structure</p></td>
+<td><p>place</p></td>
+</tr>
+<tr class="row-odd"><td><p>government, organisation, firm</p></td>
+<td><p>organization</p></td>
+</tr>
+<tr class="row-even"><td><p>publication, article, interview, media</p></td>
+<td><p>resource</p></td>
+</tr>
+<tr class="row-odd"><td><p>relationship</p></td>
+<td><p>relationship</p></td>
+</tr>
+</tbody>
+</table>
+<p>On attribute level, please find the details in the notes of <span class="xref myst">DAQA data dictionary</span>.</p>
+<p>For more details of data transforming and loading of DAQA, please check jupyter notebook <span class="xref myst">DAQA_Loading.ipynb</span>.</p>
+</div>
+</div>
+<div class="section" id="id19">
+<h4>Integration Data Report<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<p>The following chart, which was generated by the jupyter notebook <span class="xref myst">DAQA_IntegrationSummary.ipynb</span>, illustrates the number of DAQA records before and after integration.</p>
+<p><img alt="" src="C:%5CProjectCollections%5CPrograms%5CAustralia_Cultural_Data_Engine%5Cimages%5CDAQA_integration_summary.png" /></p>
+</div>
+<div class="section" id="id20">
+<h4>References<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<ol class="simple">
+<li><p><a class="reference external" href="https://www.academia.edu/38956628/The_Digital_Archive_of_Queensland_Architecture">The Digital Archive of Queensland Architecture | Deborah van der Plaat - Academia.edu</a></p></li>
+<li><p><a class="reference external" href="http://ica2012.ica.org/files/pdf/Full%20papers%20upload/ica12Final00326.pdf">A Web 3.0 approach to building an online digital archive of architectural practice in post-war Queensland</a></p></li>
+<li><p><a class="reference external" href="https://github.com/uq-eresearch/qldarch-frontend">GitHub - uq-eresearch/qldarch-frontend</a></p></li>
+<li><p><a class="reference external" href="https://github.com/uq-eresearch/qldarch.backend">GitHub - uq-eresearch/qldarch.backend: Digital Archive of Queensland Architecture</a></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="a-name-sfc-summerhayes-family-collection-a">
+<h2><a name='sfc'>Summerhayes Family Collection</a><a class="headerlink" href="#a-name-sfc-summerhayes-family-collection-a" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id21">
+<h3>Introduction<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>This collection represents the work of three generations of the Summerhayes family who practiced architecture in Western Australia.</p>
+</div></blockquote>
+<p>The following sections will describe the data processing procedure that integrates SFA data into ACDE and the data sumary of SFA.</p>
+</div>
+<div class="section" id="id22">
+<h3>Data Processing<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>The SFC data is provided in XML format using MARC standards, which are standards for the representation and communication of bibliographic and related information in machine-readable form. The SFC data has a clear structure as it is extracted from a professional library archive. However, there are still many efforts that need to be taken to parse the XML file according to the archive’s structure description.</p>
+<p>The following diagram shows the sturcture of Summerhayes Family Collection.</p>
+<p><img alt="TBC" src="images/SFA_Structure.png" /></p>
+<p>For more details of parsing SFC data and loading it into ACDEA, please check jupyter notebook <span class="xref myst">SFC_Loading.ipynb</span>. The details of SFC attributes projection from MARC to ACDEA can also be found in the notes of <span class="xref myst">SFC data dictionary</span>.</p>
+<p>It is important to note that ACDEA does not assign any sub-level for the resource level, and due to the challenges in re-linking the original SFC records into a hierarchical structure, all the SFC records are loaded solely into the resource level of ACDEA. No new relationship records were constructed during this stage. The original hierarchy information is preserved and stored in the <code class="docutils literal notranslate"><span class="pre">_class_ori</span></code> field.</p>
+<p>Finally, 241 SFC resource records were loaded into the resource level of ACDEA.</p>
+</div>
+<div class="section" id="id23">
+<h3>References<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&amp;collectionId=81190473680001951">Summerhayes Family Collection</a></p></li>
+<li><p>[MARC Standards](<a class="reference external" href="https://www.loc.gov/marc/">https://www.loc.gov/marc/</a><a class="reference external" href="https://www.loc.gov/marc/">MARC STANDARDS (Network Development and MARC Standards Office, Library of Congress)</a>)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="a-name-integrated-data-integrated-data-a">
+<h2><a name=integrated-data>Integrated Data</a><a class="headerlink" href="#a-name-integrated-data-integrated-data-a" title="Permalink to this headline">¶</a></h2>
+<p>As the result of the data integration, four formats of data have been generated for downstream data analysis purposes.</p>
+<p>For more details of static files export for ACDE, please check the jupyter notebook <span class="xref myst">ACDE_Export.ipynb</span>.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Format</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Download Url</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Database Dump</p></td>
+<td><p>A MongoDB database <code class="docutils literal notranslate"><span class="pre">acd_engine</span></code> that consists of 7 collections, including <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">organization</span></code>, <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, <code class="docutils literal notranslate"><span class="pre">recognition</span></code>, <code class="docutils literal notranslate"><span class="pre">relationship</span></code>, <code class="docutils literal notranslate"><span class="pre">resource</span></code>, <code class="docutils literal notranslate"><span class="pre">work</span></code>.<br/>This type of data is intended primarily for development purposes.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>CSV</p></td>
+<td><p>Each CSV file corresponds to a specific level in ACDEA and contains data organized according to the attributes of that level. The columns of the CSV file represent the first-level attributes of the corresponding level.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>XLSX</p></td>
+<td><p>Each XLSX file corresponds to a <strong>10% sample</strong> of the specific level in ACDEA.<br/>Similar to the CSV files, the columns of each XLSX file represent the first-level attributes of the corresponding level.<br/>This type of data is intended for exploratory purposes.</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>JSONL</p></td>
+<td><p>JSONL is a format that stores data records as individual JSON objects separated by a newline character. <br/>Each JSONL file corresponds to a specific level in ACDEA, and the data is structured as a list of dictionaries, where each dictionary represents a data record.</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="a-name-future-works-future-works-a">
+<h2><a name='future-works'>Future Works</a><a class="headerlink" href="#a-name-future-works-future-works-a" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p><strong>Improving Accessibility, Efficiency, and Scalability:</strong> One of the key focus areas for future works is to improve the accessibility, efficiency, and scalability of ACDEA.</p>
+<p><strong>Accessibility:</strong> To improve the accessibility of ACDEA, we plan to develop APIs and a more user-friendly interface that can provide researchers with streamingly updated data. This will enable researchers to access the data they need more easily and quickly.</p>
+<p><strong>Efficiency:</strong> In the next stage, we plan to improve the overall performance of the ETL (extract, transform, load) process for ACDEA. This will involve migrating the data processing progress to a more powerful server, implementing multithreading, and using MPI (message passing interface) to increase the efficiency of data transfer.</p>
+<p><strong>Scalability:</strong> In order to enhance the scalability of ACDEA, careful consideration will be given to the dynamic nature of the data sources and the study of ontology. Special attention will be devoted to improving the fault tolerance of the system, ensuring its resilience against failures and errors.</p>
+<p>It is worth noting that the resource level plays a crucial role in ACDEA, as it inherits the complex structure of the library archive. Therefore, careful consideration will be given to determining whether the resource level should retain the same level of information and structure as found in the original library archive. This decision will require thoughtful design in order to create a more scalable ACDEA that can seamlessly adapt to changes in the format and structure of the data sources.</p>
+</li>
+<li><p><strong>Experimental Integration (Record Unification)</strong></p>
+<p>While the cultural data has benn integrated in the structural level, there is still room for finer integration in the unit record level to better utilize the ACDE data, which is called “Record Unification”. It is common to find many duplicated records in different extents exsist in the integrated data. For instance, records under the same organization name might have different information that can be integrated into a single record. Another typical circumstance is records with different person names but referring to the same person, which are common within the same data source and across data sources. And it should not be ignored that some data sources might cite the data originated from the other data sources. For instance, CircuzOz cite the circuz performance data from AusStage.</p>
+<p>Given the complexity of the situation, one of the significant focus of the future works would be conducting experiments to confirm the methodology of defining, detecting, and integrating the duplicated records.</p>
+</li>
+<li><p><strong>Identify more implicity data</strong></p>
+<p>Implicit data refers to the data that is not explicitly mentioned or labeled but can be inferred from the existing data. For example, the gender, date of birth and relationships with other people of a person may not be explicitly mentioned in the attributes, but can be inferred from the biography of the person and other contextual information. Therefore, in the future works, efforts will be made to identify more implicit data and integrate them into the ACDE data.</p>
+</li>
+<li><p><strong>Integrate with more data sources</strong></p>
+<p>ACDE currently integrates cultural data from six data sources. However, there are still many other sources of cultural data that have not yet been integrated into ACDE. For example, some interesting data sources that we have discovered are listed in <a class="reference external" href="https://chat.openai.com/c/1573acdc-bfdd-4c4d-a7ec-8039de8df1c3?__cf_chl_rt_tk=7Xs0hpEM7Wf9kjzDSR_319eEU9rAAUNHeYnYWUlNdVk-1681633648-0-gaNycGzNGqU#inter-data-sr">More Interesting Data Sources</a>. In future work, efforts will be made to integrate with more data sources and develop a more scalable data integration life cycle that can adjust to data from different data models. This will not only enrich the cultural data in ACDE but also provide researchers with a more comprehensive and diverse cultural insight for their analysis.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="a-name-repo-dir-stru-repository-directory-structure-a">
+<h2><a name='repo-dir-stru'>Repository Directory Structure</a><a class="headerlink" href="#a-name-repo-dir-stru-repository-directory-structure-a" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="a-name-inter-works-more-interesting-works-a">
+<h2><a name='inter-works'>More Interesting Works</a><a class="headerlink" href="#a-name-inter-works-more-interesting-works-a" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the ACDE project, we found many other interesting digital humanities projects related to cultural data integration and analysis. These projects could inspire further work in this field and help humanities researchers utilize integrated data in new and innovative ways. Here are a few examples:</p>
+<ol>
+<li><p><a class="reference external" href="https://circuit.unimelb.edu.au/">Map Theatres in Australia</a></p>
+<p>This project is a digital platform that maps the history of Australian theatre from the early colonial period to the present day. It features a searchable database of historical information and multimedia resources, including photographs, playbills, and recordings of performances.</p>
+</li>
+<li><p><a class="reference external" href="https://huni.net.au/">HuNI: Humanities Networked Infrastructure</a></p>
+<p>HuNI is a national research infrastructure project that provides a platform for integrating and sharing cultural data from a wide range of sources, including museums, archives, and libraries. It allows researchers to discover new connections between different types of cultural data and to explore complex research questions across multiple disciplines.</p>
+</li>
+<li><p><a class="reference external" href="https://dxlab.sl.nsw.gov.au/experiments/">Experiments | DX Lab - State Library of NSW</a></p>
+<p>The DX Lab at the State Library of NSW is a hub for digital experimentation and innovation in the cultural sector. Their website features a collection of projects and prototypes that use emerging technologies to explore new ways of engaging with cultural collections.</p>
+</li>
+<li><p><a class="reference external" href="http://infografias.elmercurio.com/20180623-VA-vincentvangogh/">Análisis | Vincent van Gogh</a></p>
+<p>This interactive data visualization by El Mercurio newspaper explores the life and work of Vincent van Gogh through a series of infographics and interactive tools. It provides a new way of understanding the artist’s creative process and the social and cultural context in which he lived and worked.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="a-name-inter-data-sr-more-interesting-culture-data-sources-a">
+<h2><a name='inter-data-sr'>More Interesting Culture Data Sources</a><a class="headerlink" href="#a-name-inter-data-sr-more-interesting-culture-data-sources-a" title="Permalink to this headline">¶</a></h2>
+<p>In addition to current data sources, we found many other interesting Australian/International cultural data collections that could be integrated into ACDEA. These data collections could boost the existing integrated data as well as  inspire further work in this field. Here are a few examples:</p>
+<ol>
+<li><p><a class="reference external" href="https://www.artgallery.nsw.gov.au/art/prizes/">Archibald, Wynne and Sulman Prizes | Art Gallery of NSW</a></p>
+<p>This is a collection of art prize data from the Art Gallery of NSW. It contains information about the artists, artworks and judges of the prizes. This data collection could add more value to “recognition” level in ACDEA.</p>
+</li>
+<li><p><a class="reference external" href="https://www.aasd.com.au/">Australian and New Zealand Art Sales Digest</a></p>
+<p>This is a database of sales of Australian and New Zealand art. It includes information about the artwork, artist, sale date, price and sale location. This data collection could strenthen the structure for “work” level in ACDEA.</p>
+</li>
+<li><p><a class="reference external" href="https://www.printsandprintmaking.gov.au/">Australian Prints + Printmaking</a></p>
+<p>This is an online database of Australian prints and printmaking, maintained by the National Gallery of Australia. It contains information about artists, prints, printmaking techniques, and print collections in Australian museums and galleries. This data collection could add more value to “work”, “resource” and “place” level in ACDEA which enrich the data related to visual art domain in ACDE.</p>
+</li>
+<li><p><a class="reference external" href="https://www.imdb.com/">IMDB</a></p>
+<p>This is a well-known database of information about movies, television shows, and other productions. It includes information about the cast and crew, production companies, release dates, and ratings. This data collection could enrich the data related to modern film art domain in ACDE.</p>
+</li>
+<li><p><a class="reference external" href="https://www.mileslewis.net/research-database/index.html">Miles Lewis’ Research DataBases</a></p>
+<p>Miles Lewis’ Research Databases: This is a collection of research databases compiled by Professor Miles Lewis, a prominent Australian architectural historian. The databases cover topics such as Australian architectural heritage, post-war modernism, and Australian war memorials. This data collection could boost the data in Architecture domain in ACDE.</p>
+</li>
+</ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
