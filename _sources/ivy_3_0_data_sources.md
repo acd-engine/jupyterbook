@@ -1,6 +1,6 @@
 ## Data Sources
 
-So far, there are 6 cultural data sources authorized and provided by [the ACDE partners](https://www.acd-engine.org/partners), distibuted in 4 different domains.
+So far, there are five cultural data sources authorised and provided by [the ACDE partners](https://www.acd-engine.org/partners), distibuted in three different domains.
 
  - **Performing Arts**
 
@@ -22,12 +22,6 @@ So far, there are 6 cultural data sources authorized and provided by [the ACDE p
     <br><br>
     Data Sources: [Digital Archive of Queensland Architecture (DAQA)](https://qldarch.net/), [Summerhayes Family Collection (SFC)](https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&collectionId=81190473680001951)
     <br><br>
-
-- **Politics**
-
-  This category encompasses any cultural data related to political events, movements, or figures. 
-  <br><br>
-  Data Sources: [Australian Women's Register (AWR)](https://www.womenaustralia.info/)
 
 #### Summary
 
@@ -52,7 +46,6 @@ The table below summarizes the data fetching information of each data source.
 
 | Data Source | Orientation | Format/Fetching Method            | Fetching Date |
 | ----------- | ----------- | --------------------------------- | ------------- |
-| AWR         | Person      | Web Scraping                      | TBC           |
 | AusStage    | Event       | Database Dump (MySQL)             | 2022-03       |
 | CircuzOz    | Event       | static file (xlsx)                | 2022-12       |
 | DAAO        | Person      | Database Dump (MongoDB)           | 2021-08       |

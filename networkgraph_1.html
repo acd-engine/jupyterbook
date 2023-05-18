@@ -1,0 +1,406 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/css/tom-select.min.css" integrity="sha512-43fHB3GLgZfz8QXl1RPQ8O66oIgv3po9cJ5erMt1c4QISq9dYb195T3vr5ImnJPXuVroKcGBPXBFKETW8jrPNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/tom-select/2.0.0-rc.4/js/tom-select.complete.js" integrity="sha512-jeF9CfnvzDiw9G9xiksVjxR2lib44Gnovvkv+3CgCG6NXCD4gqlA5nDAVW5WjpA+i+/zKsUWV5xNEbW1X/HH0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 500px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+                <div id="select-menu" class="card-header">
+                    <div class="row no-gutters">
+                        <div class="col-10 pb-2">
+                            <select
+                            class="form-select"
+                            aria-label="Default select example"
+                            onchange="selectNode([value]);"
+                            id="select-node"
+                            placeholder="Select node..."
+                            >
+                                <option selected>Select a Node by ID</option>
+                                
+                                    <option value="Atkinson and Conrad (1918-1927)">Atkinson and Conrad (1918-1927)</option>
+                                
+                                    <option value="Atkinson, Powell & Conrad (1927-1931)">Atkinson, Powell & Conrad (1927-1931)</option>
+                                
+                                    <option value="Arnold Henry Conrad Architect">Arnold Henry Conrad Architect</option>
+                                
+                                    <option value="C.W. Chambers Architect and Consulting Engineer">C.W. Chambers Architect and Consulting Engineer</option>
+                                
+                                    <option value="Chambers and Powell">Chambers and Powell</option>
+                                
+                                    <option value="McCredie Bros & Chambers">McCredie Bros & Chambers</option>
+                                
+                                    <option value="Lange Powell">Lange Powell</option>
+                                
+                                    <option value="Lange L Powell & Geo Rae Architects">Lange L Powell & Geo Rae Architects</option>
+                                
+                                    <option value="Powell & Hutton Architects">Powell & Hutton Architects</option>
+                                
+                                    <option value="Lange Powell Architect">Lange Powell Architect</option>
+                                
+                                    <option value="Lund, Hutton, Newell, Black & Paulsen">Lund, Hutton, Newell, Black & Paulsen</option>
+                                
+                                    <option value="Lund Hutton Newell Paulsen Pty Ltd">Lund Hutton Newell Paulsen Pty Ltd</option>
+                                
+                                    <option value="Lund, Hutton, Ryan, Morton">Lund, Hutton, Ryan, Morton</option>
+                                
+                                    <option value="Ian Black and Company (Cairns)">Ian Black and Company (Cairns)</option>
+                                
+                                    <option value="Conrad Gargett & Partners (1972-1995)">Conrad Gargett & Partners (1972-1995)</option>
+                                
+                                    <option value="Conrad & Gargett">Conrad & Gargett</option>
+                                
+                                    <option value="Chambers & Ford">Chambers & Ford</option>
+                                
+                                    <option value="Chambers & Hutton">Chambers & Hutton</option>
+                                
+                                    <option value="Ford, Hutton & Newell">Ford, Hutton & Newell</option>
+                                
+                                    <option value="H.W. Atkinson & Chas. McLay">H.W. Atkinson & Chas. McLay</option>
+                                
+                                    <option value="H.W. Atkinson & A.H. Conrad (1918-1927)">H.W. Atkinson & A.H. Conrad (1918-1927)</option>
+                                
+                                    <option value="H.W Atkinson & A.H Conrad (1931-1939)">H.W Atkinson & A.H Conrad (1931-1939)</option>
+                                
+                                    <option value="A.H Conrad & T.B.F Gargett">A.H Conrad & T.B.F Gargett</option>
+                                
+                                    <option value="Lund, Hutton & Newell">Lund, Hutton & Newell</option>
+                                
+                                    <option value="(Lange L.) Powell, Dods & Thorpe (PDT)">(Lange L.) Powell, Dods & Thorpe (PDT)</option>
+                                
+                                    <option value="Conrad Gargett & Partners (1965-1972)">Conrad Gargett & Partners (1965-1972)</option>
+                                
+                            </select>
+                        </div>
+                        <div class="col-2 pb-2">
+                            <button type="button" class="btn btn-primary btn-block" onclick="neighbourhoodHighlight({nodes: []});">Reset Selection</button>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+                  new TomSelect("#select-node",{
+                      create: false,
+                      sortField: {
+                          field: "text",
+                          direction: "asc"
+                      }
+                  });
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "blue", "id": "Atkinson and Conrad (1918-1927)", "label": "Atkinson and Conrad (1918-1927)", "shape": "dot", "title": "Atkinson and Conrad (1918-1927) \nStart: None \nEnd: None"}, {"color": "blue", "id": "Atkinson, Powell \u0026 Conrad (1927-1931)", "label": "Atkinson, Powell \u0026 Conrad (1927-1931)", "shape": "dot", "title": "Atkinson, Powell \u0026 Conrad (1927-1931) \nStart: None \nEnd: None"}, {"color": "blue", "id": "Arnold Henry Conrad Architect", "label": "Arnold Henry Conrad Architect", "shape": "dot", "title": "Arnold Henry Conrad Architect \nStart: 1917 \nEnd: 1917.0"}, {"color": "blue", "id": "C.W. Chambers Architect and Consulting Engineer", "label": "C.W. Chambers Architect and Consulting Engineer", "shape": "dot", "title": "C.W. Chambers Architect and Consulting Engineer \nStart: 1893 \nEnd: 1910.0"}, {"color": "blue", "id": "Chambers and Powell", "label": "Chambers and Powell", "shape": "dot", "title": "Chambers and Powell \nStart: 1911 \nEnd: 1920.0"}, {"color": "blue", "id": "McCredie Bros \u0026 Chambers", "label": "McCredie Bros \u0026 Chambers", "shape": "dot", "title": "McCredie Bros \u0026 Chambers \nStart: 1899 \nEnd: 1892.0"}, {"color": "blue", "id": "Lange Powell", "label": "Lange Powell", "shape": "dot", "title": "Lange Powell \nStart: 1924 \nEnd: 1927.0"}, {"color": "blue", "id": "Lange L Powell \u0026 Geo Rae Architects", "label": "Lange L Powell \u0026 Geo Rae Architects", "shape": "dot", "title": "Lange L Powell \u0026 Geo Rae Architects \nStart: 1931 \nEnd: 1933.0"}, {"color": "blue", "id": "Powell \u0026 Hutton Architects", "label": "Powell \u0026 Hutton Architects", "shape": "dot", "title": "Powell \u0026 Hutton Architects \nStart: 1922 \nEnd: 1924.0"}, {"color": "blue", "id": "Lange Powell Architect", "label": "Lange Powell Architect", "shape": "dot", "title": "Lange Powell Architect \nStart: 1924 \nEnd: 1927.0"}, {"color": "blue", "id": "Lund, Hutton, Newell, Black \u0026 Paulsen", "label": "Lund, Hutton, Newell, Black \u0026 Paulsen", "shape": "dot", "title": "Lund, Hutton, Newell, Black \u0026 Paulsen \nStart: 1960 \nEnd: 1964.0"}, {"color": "blue", "id": "Lund Hutton Newell Paulsen Pty Ltd", "label": "Lund Hutton Newell Paulsen Pty Ltd", "shape": "dot", "title": "Lund Hutton Newell Paulsen Pty Ltd \nStart: 1965 \nEnd: nan"}, {"color": "blue", "id": "Lund, Hutton, Ryan, Morton", "label": "Lund, Hutton, Ryan, Morton", "shape": "dot", "title": "Lund, Hutton, Ryan, Morton \nStart: None \nEnd: None"}, {"color": "blue", "id": "Ian Black and Company (Cairns)", "label": "Ian Black and Company (Cairns)", "shape": "dot", "title": "Ian Black and Company (Cairns) \nStart: None \nEnd: None"}, {"color": "blue", "id": "Conrad Gargett \u0026 Partners (1972-1995)", "label": "Conrad Gargett \u0026 Partners (1972-1995)", "shape": "dot", "title": "Conrad Gargett \u0026 Partners (1972-1995) \nStart: None \nEnd: None"}, {"color": "blue", "id": "Conrad \u0026 Gargett", "label": "Conrad \u0026 Gargett", "shape": "dot", "title": "Conrad \u0026 Gargett \nStart: 1995 \nEnd: nan"}, {"color": "blue", "id": "Chambers \u0026 Ford", "label": "Chambers \u0026 Ford", "shape": "dot", "title": "Chambers \u0026 Ford \nStart: 1920 \nEnd: 1935.0"}, {"color": "blue", "id": "Chambers \u0026 Hutton", "label": "Chambers \u0026 Hutton", "shape": "dot", "title": "Chambers \u0026 Hutton \nStart: 1931 \nEnd: 1940.0"}, {"color": "blue", "id": "Ford, Hutton \u0026 Newell", "label": "Ford, Hutton \u0026 Newell", "shape": "dot", "title": "Ford, Hutton \u0026 Newell \nStart: 1952 \nEnd: 1958.0"}, {"color": "blue", "id": "H.W. Atkinson \u0026 Chas. McLay", "label": "H.W. Atkinson \u0026 Chas. McLay", "shape": "dot", "title": "H.W. Atkinson \u0026 Chas. McLay \nStart: 1907 \nEnd: 1918.0"}, {"color": "blue", "id": "H.W. Atkinson \u0026 A.H. Conrad (1918-1927)", "label": "H.W. Atkinson \u0026 A.H. Conrad (1918-1927)", "shape": "dot", "title": "H.W. Atkinson \u0026 A.H. Conrad (1918-1927) \nStart: None \nEnd: None"}, {"color": "blue", "id": "H.W Atkinson \u0026 A.H Conrad (1931-1939)", "label": "H.W Atkinson \u0026 A.H Conrad (1931-1939)", "shape": "dot", "title": "H.W Atkinson \u0026 A.H Conrad (1931-1939) \nStart: None \nEnd: None"}, {"color": "blue", "id": "A.H Conrad \u0026 T.B.F Gargett", "label": "A.H Conrad \u0026 T.B.F Gargett", "shape": "dot", "title": "A.H Conrad \u0026 T.B.F Gargett \nStart: 1939 \nEnd: 1965.0"}, {"color": "blue", "id": "Lund, Hutton \u0026 Newell", "label": "Lund, Hutton \u0026 Newell", "shape": "dot", "title": "Lund, Hutton \u0026 Newell \nStart: 1959 \nEnd: 1959.0"}, {"color": "blue", "id": "(Lange L.) Powell, Dods \u0026 Thorpe (PDT)", "label": "(Lange L.) Powell, Dods \u0026 Thorpe (PDT)", "shape": "dot", "title": "(Lange L.) Powell, Dods \u0026 Thorpe (PDT) \nStart: None \nEnd: None"}, {"color": "blue", "id": "Conrad Gargett \u0026 Partners (1965-1972)", "label": "Conrad Gargett \u0026 Partners (1965-1972)", "shape": "dot", "title": "Conrad Gargett \u0026 Partners (1965-1972) \nStart: None \nEnd: None"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "Atkinson and Conrad (1918-1927)", "title": "succeededby", "to": "Atkinson, Powell \u0026 Conrad (1927-1931)"}, {"arrows": "to", "color": "red", "from": "Arnold Henry Conrad Architect", "title": "succeededby", "to": "Atkinson and Conrad (1918-1927)"}, {"arrows": "to", "color": "red", "from": "C.W. Chambers Architect and Consulting Engineer", "title": "succeededby", "to": "Chambers and Powell"}, {"arrows": "to", "color": "red", "from": "McCredie Bros \u0026 Chambers", "title": "succeededby", "to": "C.W. Chambers Architect and Consulting Engineer"}, {"arrows": "to", "color": "red", "from": "Lange L Powell \u0026 Geo Rae Architects", "title": "succeededby", "to": "Lange Powell"}, {"arrows": "to", "color": "red", "from": "Atkinson, Powell \u0026 Conrad (1927-1931)", "title": "succeededby", "to": "Lange L Powell \u0026 Geo Rae Architects"}, {"arrows": "to", "color": "red", "from": "Powell \u0026 Hutton Architects", "title": "succeededby", "to": "Atkinson, Powell \u0026 Conrad (1927-1931)"}, {"arrows": "to", "color": "red", "from": "Chambers and Powell", "title": "succeededby", "to": "Powell \u0026 Hutton Architects"}, {"arrows": "to", "color": "red", "from": "Powell \u0026 Hutton Architects", "title": "succeededby", "to": "Lange Powell Architect"}, {"arrows": "to", "color": "red", "from": "Lund, Hutton, Newell, Black \u0026 Paulsen", "title": "succeededby", "to": "Lund Hutton Newell Paulsen Pty Ltd"}, {"arrows": "to", "color": "red", "from": "Lund Hutton Newell Paulsen Pty Ltd", "title": "succeededby", "to": "Lund, Hutton, Ryan, Morton"}, {"arrows": "to", "color": "red", "from": "Lund, Hutton, Newell, Black \u0026 Paulsen", "title": "succeededby", "to": "Ian Black and Company (Cairns)"}, {"arrows": "to", "color": "red", "from": "Conrad Gargett \u0026 Partners (1972-1995)", "title": "succeededby", "to": "Conrad \u0026 Gargett"}, {"arrows": "to", "color": "red", "from": "Chambers and Powell", "title": "succeededby", "to": "Chambers \u0026 Ford"}, {"arrows": "to", "color": "red", "from": "Chambers \u0026 Ford", "title": "succeededby", "to": "Chambers \u0026 Hutton"}, {"arrows": "to", "color": "red", "from": "Chambers \u0026 Ford", "title": "succeededby", "to": "Ford, Hutton \u0026 Newell"}, {"arrows": "to", "color": "red", "from": "H.W. Atkinson \u0026 Chas. McLay", "title": "succeededby", "to": "H.W. Atkinson \u0026 A.H. Conrad (1918-1927)"}, {"arrows": "to", "color": "red", "from": "H.W Atkinson \u0026 A.H Conrad (1931-1939)", "title": "succeededby", "to": "A.H Conrad \u0026 T.B.F Gargett"}, {"arrows": "to", "color": "red", "from": "Atkinson, Powell \u0026 Conrad (1927-1931)", "title": "succeededby", "to": "H.W Atkinson \u0026 A.H Conrad (1931-1939)"}, {"arrows": "to", "color": "red", "from": "H.W. Atkinson \u0026 A.H. Conrad (1918-1927)", "title": "succeededby", "to": "Atkinson, Powell \u0026 Conrad (1927-1931)"}, {"arrows": "to", "color": "red", "from": "Lange Powell Architect", "title": "succeededby", "to": "Atkinson, Powell \u0026 Conrad (1927-1931)"}, {"arrows": "to", "color": "red", "from": "Ford, Hutton \u0026 Newell", "title": "succeededby", "to": "Lund, Hutton \u0026 Newell"}, {"arrows": "to", "color": "red", "from": "Lund, Hutton \u0026 Newell", "title": "succeededby", "to": "Lund, Hutton, Newell, Black \u0026 Paulsen"}, {"arrows": "to", "color": "red", "from": "Lange Powell", "title": "succeededby", "to": "(Lange L.) Powell, Dods \u0026 Thorpe (PDT)"}, {"arrows": "to", "color": "red", "from": "Conrad Gargett \u0026 Partners (1965-1972)", "title": "succeededby", "to": "Conrad Gargett \u0026 Partners (1972-1995)"}, {"arrows": "to", "color": "red", "from": "A.H Conrad \u0026 T.B.F Gargett", "title": "succeededby", "to": "Conrad Gargett \u0026 Partners (1965-1972)"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 12}}, "interaction": {"hover": "True"}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+                    network.on("selectNode", neighbourhoodHighlight);
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

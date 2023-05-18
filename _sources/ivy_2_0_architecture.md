@@ -2,7 +2,7 @@
 
 ### Introduction
 ---
-To construct a comprehensive and consistent view of data from various cultural databases, the development of a unified data model is crucial. The unified data model is named as the Australian Cultural Data Engine Architecture, or ACDEA for short. The ACDEA serves as the foundation effectively for integrating and harmonizing data from multiple data sources. By constructing the ACDEA, insights can be gained into the vaiuos data models that underpin the different cultural databases, thereby helping to clarify the number of entites in each data sources. as well as doing comparison analysis on the definition of entity unit concept in each data source.
+To construct a comprehensive and consistent view of data from various cultural databases, the development of a unified data model is crucial. A unified data model specifically designed for the ACDE, known as Australian Cultural Data Engine Architecture (ACDEA) was developed to serve as the fundamental framework for seamlessly integrating and harmonising data from multiple data sources. By constructing ACDEA, valuable insights can be derived regarding the data models that underpin the different cultural databases, thereby facilitating a clearer understanding of the entities present in each data source. Ultimately, the unification process establishes aggregate definitions to structure conceptually diverse entities across all data sources.
 
 It should be noted that the ACDEA is currently only a prototype for integrating existing data sources. As discussions around improving data integration performance and clarifying professional domain definitions continue, and as more data sources are accumulated, the ACDEA may be modified accordingly.
 

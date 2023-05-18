@@ -53,8 +53,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Australian Cultural Data Engine Architecture" href="ivy_2_0_architecture.html" />
-    <link rel="prev" title="About" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,112 +104,6 @@
 </ul>
 <p class="caption">
  <span class="caption-text">
-  Data infrastructure and integration
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ivy_2_0_architecture.html">
-   Australian Cultural Data Engine Architecture
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_2_1_overview_acdea.html">
-     Overview of the Australian Cultural Data Engine Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_2_2_construction_overflow.html">
-     Construction Workflow
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_2_3_data_report.html">
-     Data Report
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_2_4_special_considerations.html">
-     Special Considerations for Data Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ivy_3_0_data_sources.html">
-   Data Sources
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_3_1_ausstage.html">
-     The Australian Live Performance Database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_3_2_awr.html">
-     The Australian Women’s Register
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_3_3_circusoz.html">
-     The Circus Oz Living Archive collection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_3_4_daao.html">
-     Design &amp; Art Australia Online
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_3_5_daqa.html">
-     Digital Archive of Queensland Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ivy_3_6_summerhayes.html">
-     Summerhayes Family Collection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ivy_4_integrated_data.html">
-   Integrated Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ivy_5_future_works.html">
-   Future Works
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ivy_7_more_interesting_works.html">
-   More Interesting Works and Cultural Data Sources
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
   Data analysis
  </span>
 </p>
@@ -234,6 +126,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="DAQA%20Workshop.html">
    DAQA Workshop
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DAQA%20Analysis.html">
+   DAQA Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -392,8 +289,9 @@
 <blockquote>
 <div><p>The Australian Cultural Data Engine is a multidisciplinary project based at the University of Melbourne that harnesses leading <a class="reference external" href="https://www.acd-engine.org/partners">cultural databases</a> to analyse cultural production, artistic networks, and the socio-economic implications of arts and cultural data.</p>
 </div></blockquote>
-<p>The goal of the Australian Cultural Data Engine (aka ACDE) is to increase the accessibility and scope of cultural data in Australia. Additionally, it seeks to examine and address any biases, exclusions, or cultural assumptions that may exist within the data, with the aim of utilizing high-quality data to provide rich, multilevel analysis and to tell more compelling stories.</p>
-<p>In order to achieve the goals stated eariler, it is necessary to have a complete, accurate, and consistnet view of data. The data from various cultural databases need to be combined and hoarmonized for the critical cultural analysis and quantitative analysis. Therefore, the data processing procedures in the ACD-Engine become critical components of this project. This section will provide an overview of the crucial steps taken in the ACDE data processing, which include developing a unified data model, establishing the Australian Cultural Data Engine Architecture, as well as designing and implementing the ETL (Extraction, Transformation, Loading) process. Additionally, the future work of data processing will be discussed, as well as other interesting projects found during the implementation of this progress.</p>
+<p>The goal of the Australian Cultural Data Engine (ACDE) is to increase the accessibility and scope of cultural data in Australia. Additionally, it seeks to examine and address any biases, exclusions, or cultural assumptions that may exist within the data, with the aim of utilising high-quality data to provide rich, multilevel analysis and to tell more compelling stories.</p>
+<p>In order to achieve the goals stated eariler, it is necessary to have a complete, accurate, and consistent view of the data. The data from various cultural databases need to be combined and harmonised for critical cultural analysis and quantitative analysis. Therefore, the data processing procedures in the ACDE become critical components of this project.</p>
+<p>This section will provide an overview of the crucial steps taken in the ACDE data processing, which include developing a unified data model, establishing the Australian Cultural Data Engine Architecture (ACDEA), as well as designing and implementing the ETL (Extraction, Transformation, Loading) process. Additionally, the future work of data processing will be discussed, as well as other interesting projects found during the implementation of this process.</p>
 <p>For the sake of brevity and clarity, here are a list of abbreviations will be used in the following sections.</p>
 <style>
   /* CSS for zebra-striped table */
@@ -425,29 +323,25 @@
 </tr>
 <tr class="row-odd"><td><p>ACDEA</p></td>
 <td><p><a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_2_architecture.html">The Australian Cultural Data Engine Architecture</a></p></td>
-<td><p>ThThe Australian Cultural Data Engine Architecture is the unified data model of the Australian Cultural Data Engine.</p></td>
+<td><p>The Australian Cultural Data Engine Architecture is the unified data model of the Australian Cultural Data Engine.</p></td>
 </tr>
 <tr class="row-even"><td><p>AusStage</p></td>
 <td><p><a class="reference external" href="https://www.ausstage.edu.au/pages/browse/">The Australian Live Performance Database</a></p></td>
 <td><p>The Australian Live Performance Database provides an accessible online resource for researching live performance in Australia.</p></td>
 </tr>
-<tr class="row-odd"><td><p>AWR</p></td>
-<td><p><a class="reference external" href="https://www.womenaustralia.info/">The Australian Women’s Register</a></p></td>
-<td><p>The Australian Women’s Register is Australia’s premier online archival resource discovering, promoting and preserving the diverse stories of Australian women, past and present.</p></td>
-</tr>
-<tr class="row-even"><td><p>CircuzOZ</p></td>
-<td><p><a class="reference external" href="https://circusozlivingarchive.com/">The Circus OZ Living Archive Collection</a></p></td>
+<tr class="row-odd"><td><p>CircuzOz</p></td>
+<td><p><a class="reference external" href="https://circusozlivingarchive.com/">The Circus Oz Living Archive Collection</a></p></td>
 <td><p>Built in collaboration with the world’s oldest contemporary circus company, the Circus Oz Living Archive combines performer interviews and performance videos with audience engagement to create an interactive, immersive environment for experiencing the magic of circus over and over again.</p></td>
 </tr>
-<tr class="row-odd"><td><p>DAAO</p></td>
+<tr class="row-even"><td><p>DAAO</p></td>
 <td><p><a class="reference external" href="https://www.daao.org.au/">Design &amp; Art Australia Online</a></p></td>
 <td><p>Design &amp; Art Australia Online is an open source freely accessible scholarly e-Research tool that presents biographical data about Australian artists, designers, craftspeople and curators.</p></td>
 </tr>
-<tr class="row-even"><td><p>DAQA</p></td>
+<tr class="row-odd"><td><p>DAQA</p></td>
 <td><p><a class="reference external" href="https://qldarch.net/">Digital Archive of Queensland Architecture</a></p></td>
 <td><p>This digital archive of Queensland architecture comprises thousands of audiovisual and textual files that allow you to explore relationships between people, projects and firms.</p></td>
 </tr>
-<tr class="row-odd"><td><p>SFC</p></td>
+<tr class="row-even"><td><p>SFC</p></td>
 <td><p><a class="reference external" href="https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&amp;collectionId=81190473680001951">Summerhayes Family Collection</a></p></td>
 <td><p>The Summerhayes Family Collection represents the work of three generations of the Summerhayes family, Edwin, Reginald and Geoffrey, whose combined practice of architecture in Western Australia extended through the 20th century.</p></td>
 </tr>
@@ -470,11 +364,10 @@
 </li>
 <li><p><a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_0_data_sources.html">Data Sources</a></p>
 <p>2.1 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_1_ausstage.html">Australian Live Performance Database</a></p>
-<p>2.2 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_2_awr.html">The Australian Women’s Register</a></p>
-<p>2.3 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_3_circusoz.html">The Circus Oz Living Archive collection</a></p>
-<p>2.4 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_4_daao.html">Design &amp; Art Australia Online</a></p>
-<p>2.5 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_5_daqa.html">Digital Archive of Queennsland Architecture</a></p>
-<p>2.6 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_6_summerhayes.html">Summerhayes Family Collection</a></p>
+<p>2.2 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_3_circusoz.html">The Circus Oz Living Archive collection</a></p>
+<p>2.3 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_4_daao.html">Design &amp; Art Australia Online</a></p>
+<p>2.4 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_5_daqa.html">Digital Archive of Queennsland Architecture</a></p>
+<p>2.5 <a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_3_6_summerhayes.html">Summerhayes Family Collection</a></p>
 </li>
 <li><p><a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_4_integrated_data.html">Integrated Data</a></p></li>
 <li><p><a class="reference external" href="https://acd-engine.github.io/jupyterbook/ivy_5_future_works.html">Future Works</a></p></li>
@@ -508,21 +401,7 @@
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">About</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="ivy_2_0_architecture.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Australian Cultural Data Engine Architecture</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             
         </div>

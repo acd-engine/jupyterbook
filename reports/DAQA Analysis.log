@@ -17,100 +17,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# load data
-daqa_persons_with_related_works = daqa_persons[daqa_persons['related_works'].notnull()].copy()
-
-related_works_raw = pd.DataFrame()
-for index, row in daqa_persons_with_related_works.iterrows():
-    related_works_raw = related_works_raw.append(pd.json_normalize(ast.literal_eval(row['related_works'])))
-
-# get all person ids with related works
-related_works_raw = related_works_raw[['relation_class','subject.ori_id','object.ori_id']].drop_duplicates()
-
-Person_RelatedWork_cond = (related_works_raw['relation_class']=='Person_RelatedWork')
-Work_RelatedPerson_cond = (related_works_raw['relation_class']=='Work_RelatedPerson')
-
-person_ids_related_works = related_works_raw[Person_RelatedWork_cond]['subject.ori_id']\
-    .value_counts().reset_index().rename(columns={'index': 'id', 'subject.ori_id': 'count'})\
-    .append(related_works_raw[Work_RelatedPerson_cond]['object.ori_id']\
-            .value_counts().reset_index().rename(columns={'index': 'id', 'object.ori_id': 'count'}))
-
-person_ids_related_works = person_ids_related_works.groupby('id').sum().reset_index()
-
-person_ids_related_works['count_cat'] = np.where((person_ids_related_works['count'] < 2), person_ids_related_works['count'],
-                                np.where((person_ids_related_works['count'] <= 3),'2-3',
-                                np.where((person_ids_related_works['count'] <= 10),'4-10',
-                                np.where((person_ids_related_works['count'] <= 50),'11-50','+50'))))
-
-
-# plot horizontal bar chart
-ax = person_ids_related_works['count_cat'].value_counts().reindex(['1','2-3','4-10','11-50','+50']).sort_values()\
-    .plot(kind='barh', figsize=(10,5), title='Number of (unique) Related Works per Person')
-
-# add bar labels with proportions
-for p in ax.patches:
-    ax.annotate(f'{p.get_width()} ({p.get_width()/len(person_ids_related_works):.2%})', (p.get_width()+1.05, p.get_y()+0.15), size=12)
-
-# increase x-axis
-ax.set_xlim(0, 110)
-
-plt.show()
-
-print('\nQ: Who has 50 or more related works?')
-person_ids_with_over50works = person_ids_related_works[person_ids_related_works['count_cat']=='+50']['id'].values.tolist()
-
-top_six = pd.merge(daqa_persons[daqa_persons['ori_id'].isin(person_ids_with_over50works)][['ori_id','display_name']].rename(columns={'ori_id': 'id'}),
-         person_ids_related_works[person_ids_related_works['id'].isin(person_ids_with_over50works)], on='id')
-
-# get person records with 50 or more related works
-display(top_six[['display_name','count']].sort_values(by='count', ascending=False))
-
-print('\n###################### PARETO PRINCIPLE ######################')
-
-#check for pareto principle
-samples = pd.DataFrame({"Number of projects": person_ids_related_works['count'].sort_values(ascending=False).values})
-
-# Add cumulative percentage column
-samples["cum_percentage"] = round(samples["Number of projects"].cumsum()/df["Number of projects"].sum()*100,2)
-
-# Set figure and axis
-fig, ax = plt.subplots(figsize=(10,5))
-
-# Plot bars (i.e. frequencies)
-ax.bar(df.index, df["Number of projects"])
-ax.set_title('Pareto-like distribution')
-ax.set_xlabel("Architects (ordered by related work frequency)")
-ax.set_ylabel("Frequency")
-
-# Second y axis (i.e. cumulative percentage)
-ax2 = ax.twinx()
-ax2.plot(df.index, df["cum_percentage"], color="red")
-ax2.axhline(77, color="orange", linestyle="dashed", alpha=1)
-ax2.yaxis.set_major_formatter(PercentFormatter())
-
-# add more ticks to y axis
-ax2.set_yticks([0,25,50,75,100])
-ax2.set_ylabel("Cumulative Percentage")
-
-# color regions on the x-axis
-ax.axvspan(0, 70, alpha=0.05, color='orange')
-
-# add an annotation for the 80% line
-ax2.annotate('25% of architects (70)', xy=(0, 100), xytext=(5, 100))
-ax2.annotate('77% of completed projects (1628)', xy=(0, 100), xytext=(195, 79))
-
-plt.show()
+- 5 Firms with the longest timespan with the same name.
+- 5 Firms with the longest timespan with successive names/known predecessor firms.
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn [13], line 55[0m
-[1;32m     52[0m samples [38;5;241m=[39m pd[38;5;241m.[39mDataFrame({[38;5;124m"[39m[38;5;124mNumber of projects[39m[38;5;124m"[39m: person_ids_related_works[[38;5;124m'[39m[38;5;124mcount[39m[38;5;124m'[39m][38;5;241m.[39msort_values(ascending[38;5;241m=[39m[38;5;28;01mFalse[39;00m)[38;5;241m.[39mvalues})
-[1;32m     54[0m [38;5;66;03m# Add cumulative percentage column[39;00m
-[0;32m---> 55[0m samples[[38;5;124m"[39m[38;5;124mcum_percentage[39m[38;5;124m"[39m] [38;5;241m=[39m [38;5;28mround[39m(samples[[38;5;124m"[39m[38;5;124mNumber of projects[39m[38;5;124m"[39m][38;5;241m.[39mcumsum()[38;5;241m/[39m[43mdf[49m[[38;5;124m"[39m[38;5;124mNumber of projects[39m[38;5;124m"[39m][38;5;241m.[39msum()[38;5;241m*[39m[38;5;241m100[39m,[38;5;241m2[39m)
-[1;32m     57[0m [38;5;66;03m# Set figure and axis[39;00m
-[1;32m     58[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots(figsize[38;5;241m=[39m([38;5;241m10[39m,[38;5;241m5[39m))
+[0;36m  Cell [0;32mIn [4], line 1[0;36m[0m
+[0;31m    - 5 Firms with the longest timespan with the same name.[0m
+[0m        ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
-[0;31mNameError[0m: name 'df' is not defined
-NameError: name 'df' is not defined
+SyntaxError: invalid syntax (1238720287.py, line 1)
 
