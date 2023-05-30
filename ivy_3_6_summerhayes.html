@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_3_6_summerhayes.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_3_6_summerhayes.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -405,17 +405,17 @@
 <blockquote>
 <div><p>This collection represents the work of three generations of the Summerhayes family who practiced architecture in Western Australia.</p>
 </div></blockquote>
-<p>The following sections will describe the data processing procedure that integrates SFA data into ACDE and the data sumary of SFA.</p>
+<p>The following sections will describe the data processing procedure that integrates SFC data into the ACDE and the data sumary of SFC.</p>
 </div>
 <div class="section" id="data-processing">
 <h2>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>The SFC data is provided in XML format using MARC standards, which are standards for the representation and communication of bibliographic and related information in machine-readable form. The SFC data has a clear structure as it is extracted from a professional library archive. However, there are still many efforts that need to be taken to parse the XML file according to the archive’s structure description.</p>
-<p>The following diagram shows the sturcture of Summerhayes Family Collection.
+<p>The SFC data is provided in an XML format using MARC standards, which are used for the representation and communication of bibliographic and related information in a machine-readable format. The SFC data has a clear structure as it is extracted from a professional library archive. However, there are still many efforts that need to be taken to parse the XML file according to the archive’s structure description.</p>
+<p>The following diagram shows the structure of Summerhayes Family Collection.
 <br>
 <br></p>
 <p><img alt="TBC" src="_images/SFA_Structure.png" /></p>
-<p>For more details of parsing SFC data and loading it into ACDEA, please check jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/SFC_Loading.ipynb">SFC_Loading.ipynb</a>. The details of SFC attributes projection from MARC to ACDEA can also be found in the notes of <strong>SFC data dictionary</strong>. The data dictionary can be downloaded below.</p>
+<p>For more details in parsing SFC data and loading it into the ACDEA, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/SFC_Loading.ipynb">SFC_Loading.ipynb</a>. The details of SFC attributes projection from MARC to ACDEA can also be found in the notes of the <strong>SFC data dictionary</strong>. The data dictionary can be downloaded below.</p>
 <!DOCTYPE html>
 <html>
 <head>
@@ -424,7 +424,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -432,11 +432,7 @@
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-<p>/* Darker background on mouse-over */
-.btn:hover {
-background-color: RoyalBlue;
-}
-</style></p>
+</style>
 </head>
 <body>
 <div style="text-align: center;">
@@ -463,8 +459,8 @@ background-color: RoyalBlue;
   });
 </script>
 <br>
-<p>It is important to note that ACDEA does not assign any sub-level for the resource level, and due to the challenges in re-linking the original SFC records into a hierarchical structure, all the SFC records are loaded solely into the resource level of ACDEA. No new relationship records were constructed during this stage. The original hierarchy information is preserved and stored in the <code class="docutils literal notranslate"><span class="pre">_class_ori</span></code> field.</p>
-<p>Finally, 241 SFC resource records were loaded into the resource level of ACDEA.</p>
+<p>It is important to note that the ACDEA does not assign any sub-level for the resource level, and due to the challenges in re-linking the original SFC records into a hierarchical structure, all the SFC records are loaded solely into the resource level of ACDEA. No new relationship records were constructed during this stage. The original hierarchy information is preserved and stored in the <code class="docutils literal notranslate"><span class="pre">_class_ori</span></code> field.</p>
+<p>Ultimately, 241 SFC resource records were loaded into the resource level of ACDEA.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
@@ -473,7 +469,11 @@ background-color: RoyalBlue;
 <li><p><a class="reference external" href="https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&amp;collectionId=81190473680001951">Summerhayes Family Collection</a></p></li>
 <li><p>[MARC Standards](<a class="reference external" href="https://www.loc.gov/marc/">https://www.loc.gov/marc/</a><a class="reference external" href="https://www.loc.gov/marc/">MARC STANDARDS (Network Development and MARC Standards Office, Library of Congress)</a>)</p></li>
 </ul>
-</div>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -522,9 +522,8 @@ background-color: RoyalBlue;
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

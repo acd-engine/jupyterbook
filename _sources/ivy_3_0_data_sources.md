@@ -1,12 +1,12 @@
 ## Data Sources
 
-So far, there are five cultural data sources authorised and provided by [the ACDE partners](https://www.acd-engine.org/partners), distibuted in three different domains.
+So far, there are five cultural data sources authorised and provided by the [ACDE partners](https://www.acd-engine.org/partners), distributed in three different domains.
 
  - **Performing Arts**
 
-    Data about any art form that involves live performances, such as theater, dance, music, opera, and circus. Performing arts can be further divided into subcategories based on the specific art form, such as classical music, contemporary dance, or musical theater. 
+    Data about any art form that involves live performances, such as theatre, dance, music, opera, and circus. Performing arts can be further divided into subcategories based on the specific art form, such as classical music, contemporary dance, or musical theatre. 
     <br><br>
-    Data Sources: [The Australian Live Performance Database (AusSatge)](https://www.ausstage.edu.au/pages/browse/), [Circus Oz Living Archive (CircuzOZ)](https://circusozlivingarchive.com/)
+    Data Sources: [The Australian Live Performance Database (AusStage)](https://www.ausstage.edu.au/pages/browse/), [Circus Oz Living Archive (CircuzOz)](https://circusozlivingarchive.com/)
     <br><br>
 
  - **Visual Arts**
@@ -25,7 +25,7 @@ So far, there are five cultural data sources authorised and provided by [the ACD
 
 #### Summary
 
-The table below summarizes the data fetching information of each data source.
+The table below summarises the information realting to the data fetching method of each data source.
 
 <style>
   /* CSS for zebra-striped table */
@@ -47,16 +47,22 @@ The table below summarizes the data fetching information of each data source.
 | Data Source | Orientation | Format/Fetching Method            | Fetching Date |
 | ----------- | ----------- | --------------------------------- | ------------- |
 | AusStage    | Event       | Database Dump (MySQL)             | 2022-03       |
-| CircuzOz    | Event       | static file (xlsx)                | 2022-12       |
+| CircuzOz    | Event       | Static file (xlsx)                | 2022-12       |
 | DAAO        | Person      | Database Dump (MongoDB)           | 2021-08       |
 | DAQA        | Person      | Web Scraping (storing in MongoDB) | 2023-04       |
-| SFC         | Resource    | static file (xml)                 | 2022-11       |
+| SFC         | Resource    | Static file (xml)                 | 2022-11       |
 <br>
 
-The following sections will provide a general introduction, specific data processing workflow, integration data report for each data source.
+The following sections will provide a general introduction, specific data processing workflow and integration data report for each data source.
 
-Please note that, in the integration data report section, the number of loaded records in the ACDE database may not match the number of records in the original database due to the following reasons:
+Please note that in the integration data report section, the number of loaded records in the ACDE database may not match the number of records in the original database due to the following reasons:
 
 1. Only the records that have completed relationship records, where both the subject and object exist in the original database, will be loaded into the ACDE database. Records that have relevant relationship records but are missing the corresponding subject or object records will be excluded from the ACDE database for consistency reasons.
 
 2. Some additional relationships that were newly constructed during the transformation procedure may not be inserted into the original database and therefore will not be included in the ACDE database.
+
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style>

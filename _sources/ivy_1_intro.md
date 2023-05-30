@@ -1,4 +1,5 @@
 ## Introduction
+
 > The Australian Cultural Data Engine is a multidisciplinary project based at the University of Melbourne that harnesses leading [cultural databases](https://www.acd-engine.org/partners) to analyse cultural production, artistic networks, and the socio-economic implications of arts and cultural data. 
 
 The goal of the Australian Cultural Data Engine (ACDE) is to increase the accessibility and scope of cultural data in Australia. Additionally, it seeks to examine and address any biases, exclusions, or cultural assumptions that may exist within the data, with the aim of utilising high-quality data to provide rich, multilevel analysis and to tell more compelling stories.
@@ -69,6 +70,10 @@ This repository contains all the necessary scripts, Jupyter notebooks, and docum
 
 4. [Future Works](https://acd-engine.github.io/jupyterbook/ivy_5_future_works.html)
 
-5. [Repository Directory](https://acd-engine.github.io/jupyterbook/ivy_6_repository_directory_structure.html)
+5. [More Interesting Works and Culture Data Sources](https://acd-engine.github.io/jupyterbook/ivy_7_more_interesting_works.html)
 
-6. [More Interesting Works and Culture Data Sources](https://acd-engine.github.io/jupyterbook/ivy_7_more_interesting_works.html)
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style>

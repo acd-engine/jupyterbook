@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_3_4_daao.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_3_4_daao.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -449,47 +449,47 @@
 <blockquote>
 <div><p>Design and Art Australia Online (DAAO) is a collaborative e-Research tool built upon the foundations of the Dictionary of Australian Artists Online. DAAO is an open source freely accessible scholarly e-Research tool that links biographical data about Australian artists, designers, craftspeople and curators with information about artworks, event histories and collection details.</p>
 </div></blockquote>
-<p>The following sections will describe the data processing procedure that integrates DAAO data into ACDE and the data sumary of DAAO.</p>
+<p>The following sections will describe the data processing procedure that integrates DAAO data into the ACDE and the data sumary of DAAO.</p>
 </div>
 <div class="section" id="data-processing">
 <h2>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <div class="section" id="data-extraction-exploration">
 <h3>Data Extraction &amp; Exploration<a class="headerlink" href="#data-extraction-exploration" title="Permalink to this headline">¶</a></h3>
-<p>The DAAO data was provided in the format of MongoDB database dump. The dump was restored, and 20 collections were found in the DAAO database, which including:</p>
+<p>The DAAO data was provided in the format of a MongoDB database dump. The dump was restored, and 20 collections were found in the DAAO database, which include:</p>
 <ol class="simple">
-<li><p>Main collections for the main objects and their relationships: xactivity, xparty, xwork, xpredicate, relation</p></li>
+<li><p>Main collections for the primary objects and their relationships: xactivity, xparty, xwork, xpredicate, relation</p></li>
 <li><p>The corresponding version-controlling collections for main collections: xactivity_counters, xactivity_revisions, xparty_counters, xparty_revisions, xwork_counters, xwork_revisions</p></li>
-<li><p>Dependency collections for detailed information and the convenience of display : asset, controlledvocab, culturalheritage, externalresource, predicate, place, indigenousdreaming, stubperson, stubpersongroup</p></li>
+<li><p>Dependency collections for detailed information and the convenience of display: asset, controlledvocab, culturalheritage, externalresource, predicate, place, indigenousdreaming, stubperson, stubpersongroup</p></li>
 </ol>
-<p>For more details of restoring DAAO database, please check <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_DBRestore.ipynb">DAAO_DBRestore.ipynb</a>.</p>
-<p>Since DAAO is an archive of data that is updated cumulatively, there is no up-to-date confirmed data model or data dictionary to refer to. However, a conceptual data model can be roughly inferred based on the actual display of official website, physical database, expert suggestions as well as <a class="reference external" href="https://blogs.unsw.edu.au/daao/blog/2015/03/schema-and-data-model-refinements/">previsous documentation</a>. The conceptual data model is shown as following:</p>
+<p>For more details in restoring the DAAO database, please refer to <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_DBRestore.ipynb">DAAO_DBRestore.ipynb</a>.</p>
+<p>Since DAAO is an archive of data that is updated cumulatively, there is no up-to-date confirmed data model or data dictionary to refer to. However, a conceptual data model can be roughly inferred based on the actual display of the official website, the physical database, expert suggestions and <a class="reference external" href="https://blogs.unsw.edu.au/daao/blog/2015/03/schema-and-data-model-refinements/">previous documentation</a>. The conceptual data model is as follows:</p>
 <p><img alt="" src="_images/DAAO_Conceptual_Data_Model.png" />
 <br></p>
-<p>The schema of DAAO can also be confirmed as following:</p>
+<p>The schema of DAAO can also be confirmed as follows:</p>
 <p><img alt="" src="_images/DAAO_Schema.png" />
 <br></p>
 <p>During the exploration of the DAAO database, some concerns have been identified that should be taken into account when establishing the transforming and loading pipeline.</p>
-<p>Firstly, it should be noted that not all records in the main entity collections are shown on the official website. Through comparing the data between the website and the raw database, it became apparent that some boolean fields like <code class="docutils literal notranslate"><span class="pre">is_locked</span></code>, <code class="docutils literal notranslate"><span class="pre">is_primary</span></code>, <code class="docutils literal notranslate"><span class="pre">is_shadow</span></code>, <code class="docutils literal notranslate"><span class="pre">is_featured</span></code> and <code class="docutils literal notranslate"><span class="pre">is_deleted</span></code> need to be filtered out in order to select only reliable records.</p>
-<p>Secondly, the consistency of relationship records needs to be considered. The data in the <code class="docutils literal notranslate"><span class="pre">relation</span></code> collection doesn’t include all relationships displayed on the official website. It appears that this collection may not have been updated after the last structural renovation of the website. Therefore, the collection of relationships needs to be reconstructed based on up-to-date relations.</p>
-<p>Lastly, the place information is somewhat confusing. Although there are only four effective fields in the place collection, namely name, address, country, and centroid, the values in name, address, and country are often mixed up. As such, it is important to implement a place information normalization process that utilizes all available effective information to generate a standardized place record. This is particularly important for downstream analysis that requires spatial visualization.</p>
+<p>Firstly, it should be noted that not all records in the main entity collections are shown on the official website. Through comparing the data between the website and the raw database, it became apparent that some boolean fields like <code class="docutils literal notranslate"><span class="pre">is_locked</span></code>, <code class="docutils literal notranslate"><span class="pre">is_primary</span></code>, <code class="docutils literal notranslate"><span class="pre">is_shadow</span></code>, <code class="docutils literal notranslate"><span class="pre">is_featured</span></code> and <code class="docutils literal notranslate"><span class="pre">is_deleted</span></code> needed to be filtered out in order to maintain reliable records.</p>
+<p>Secondly, the consistency of relationship records needs to be considered. The data in the <code class="docutils literal notranslate"><span class="pre">relation</span></code> collection does not include all relationships displayed on the official website. It appears that this collection may not have been updated after the last structural renovation of the website. Therefore, the collection of relationships needs to be reconstructed based on up-to-date relations.</p>
+<p>Lastly, the <code class="docutils literal notranslate"><span class="pre">place</span></code> information is somewhat confusing. Although there are only four effective fields in the <code class="docutils literal notranslate"><span class="pre">place</span></code> collection, namely name, address, country, and centroid, the values in name, address, and country are often mixed up. As such, it is important to implement a <code class="docutils literal notranslate"><span class="pre">place</span></code> information normalisation process that utilises all available information to generate a standardised place record. This is particularly important for downstream analysis that requires spatial visualisation.</p>
 </div>
 <div class="section" id="data-transformation">
 <h3>Data Transformation<a class="headerlink" href="#data-transformation" title="Permalink to this headline">¶</a></h3>
 <p><img alt="" src="_images/DAAO_ETL_Workflow.png" />
 <br></p>
 <p>Regarding the complexity of the DAAO data structure and the concerns found during DAAO data exploration, a three-step approach is proposed for DAAO data transformation.</p>
-<p>The first step is normalizing the place records. The purpose of this step is to standardize the geo-elements of place records that are not consistently formatted, and to normalize the expression of name and address of specific places.</p>
-<p>To achieve this, two methods are implemented to infer the standardized elements of place information such as <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">city</span></code>, <code class="docutils literal notranslate"><span class="pre">suburb</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">postcode</span></code>.</p>
-<p>The first method is <strong>reverse geocoding</strong>, which involves using the latitude and longitude coordinates, as well as existing name and address in the DAAO database to find potential standardized address elements and place names. The reverse geocoding process generates two types of standardized location element candidate sets, which are merged to create a new place element candidate set. During this process, standardized location element candidate sets are selected from the reverse geocoding results.</p>
-<p>The second method is <strong>rule-based recognition</strong>. This method involves cleaning all place elements, such as address, name, and country, by correcting typos and expanding place name abbreviations. Then, potential places in the cleaned place elements are identified to create the second set of potential standardized place element candidates.</p>
-<p>Once the two sets of candidates are ready, the extracted-candidates and geo-candidates are merged to create a final set of standardized place element candidates for the place records. The final place elements are confirmed by comparing each level of place element candidate from top (country) to down (suburb), excluding the inconsistent candidates and keeping the most frequent candidates. Any redundant place element still present is removed by comparing whether the element is matching with all the other place elements.</p>
-<p>Finally, the cleaned location components can be updated to the <code class="docutils literal notranslate"><span class="pre">place</span></code> collection. This normalization process standardizes the geo-elements and place name expressions of the place records, making it easier to work with the data and reducing potential errors caused by inconsistent or incomplete data.</p>
-<p>For more details of updating place information of DAAO, please check jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_PlaceUpdate.ipynb">DAAO_PlaceUpdate.ipynb</a>.</p>
-<p>The second step is aggregating all the relationship records into a new collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>. There are <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes existing in the records of main object collections (<code class="docutils literal notranslate"><span class="pre">xparty</span></code>, <code class="docutils literal notranslate"><span class="pre">xactivity</span></code>, and <code class="docutils literal notranslate"><span class="pre">xwork</span></code>), which shows the relationships among the main objects. However, in ACDE, relationships with <code class="docutils literal notranslate"><span class="pre">resource</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code>  that are not explicitly assigned as <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes in DAAO records are also crucial. Therefore, the attributes showing relationships with <code class="docutils literal notranslate"><span class="pre">resource</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code> hidden should be firstly found and inserted into new collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>. For instance, <code class="docutils literal notranslate"><span class="pre">see_alsos</span></code>, <code class="docutils literal notranslate"><span class="pre">references</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, <code class="docutils literal notranslate"><span class="pre">portrait_images</span></code> are the attributes that connect <code class="docutils literal notranslate"><span class="pre">resource</span></code> with other entities, while the place of  <code class="docutils literal notranslate"><span class="pre">birth</span></code> and <code class="docutils literal notranslate"><span class="pre">death</span></code> are the attributes showing relationships between <code class="docutils literal notranslate"><span class="pre">person</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code>. And after the implicit relationship extraction, the explicity relationships under <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes of each main object can inserted into the collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>.</p>
-<p>For more details of reconstructing relationship collection of DAAO, please check jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_RelationUpdate.ipynb">DAAO_RelationUpdate.ipynb</a>.
-The third step is standardizing the format of date attributes. In all collections with date attributes, namely <code class="docutils literal notranslate"><span class="pre">xparty</span></code>, <code class="docutils literal notranslate"><span class="pre">xactivity</span></code>, <code class="docutils literal notranslate"><span class="pre">xwork</span></code>, <code class="docutils literal notranslate"><span class="pre">externalresource</span></code>, all the relevant date attributes are updated as the format of json documents having <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>. The original data of the collections are backed up into the collections named <code class="docutils literal notranslate"><span class="pre">{collection_name}_ori</span></code>.</p>
-<p>For more details of cleansing date fields in DAAO, please check jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_CleanDates.ipynb">DAAO CleanDates.ipynb</a>.</p>
+<p>The first step is normalising the place records. The purpose of this step is to standardise the geo-elements of place records that are not consistently formatted, and to normalise the expression of name and address of specific places.</p>
+<p>To achieve this, two methods are implemented to infer the standardised elements of place information such as <code class="docutils literal notranslate"><span class="pre">country</span></code>, <code class="docutils literal notranslate"><span class="pre">state</span></code>, <code class="docutils literal notranslate"><span class="pre">city</span></code>, <code class="docutils literal notranslate"><span class="pre">suburb</span></code>, and optionally <code class="docutils literal notranslate"><span class="pre">postcode</span></code>.</p>
+<p>The first method is <strong>reverse geocoding</strong>, which involves using the latitude and longitude coordinates, as well as existing name and address in the DAAO database to find potential standardised address elements and place names. The reverse geocoding process generates two types of standardized location element candidate sets, which are merged to create a new place element candidate set. During this process, standardised location element candidate sets are selected from the reverse geocoding results.</p>
+<p>The second method is <strong>rule-based recognition</strong>. This method involves cleaning all place elements, such as address, name, and country, by correcting typographical errors and expanding place name abbreviations. From here, potential places in the cleaned place elements are identified to create the second set of potential standardised place element candidates.</p>
+<p>Once the two sets of candidates are ready, the extracted-candidates and geo-candidates are merged to create a final set of standardised place element candidates for the place records. The final place elements are confirmed by comparing each level of place element candidate from top (country) to bottom (suburb), excluding the inconsistent candidates and keeping the most frequent candidates. Any redundant place elements still present are removed by comparing whether the element is matching with all the other place elements.</p>
+<p>Finally, the cleaned location components can be updated to the <code class="docutils literal notranslate"><span class="pre">place</span></code> collection. This normalisation process standardises the geo-elements and place name expressions of the place records, making it easier to work with the data and reducing potential errors caused by inconsistent or incomplete data.</p>
+<p>For more details in updating place information of DAAO, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_PlaceUpdate.ipynb">DAAO_PlaceUpdate.ipynb</a>.</p>
+<p>The second step is aggregating all the relationship records into a new collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>. There are <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes existing in the records of main object collections (<code class="docutils literal notranslate"><span class="pre">xparty</span></code>, <code class="docutils literal notranslate"><span class="pre">xactivity</span></code>, and <code class="docutils literal notranslate"><span class="pre">xwork</span></code>), which shows the relationships among the primary objects. However, in ACDE, relationships with <code class="docutils literal notranslate"><span class="pre">resource</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code>  that are not explicitly assigned as <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes in DAAO records are also crucial. Therefore, the attributes showing relationships with <code class="docutils literal notranslate"><span class="pre">resource</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code> should be firstly identified and inserted into the new collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>. For instance, <code class="docutils literal notranslate"><span class="pre">see_alsos</span></code>, <code class="docutils literal notranslate"><span class="pre">references</span></code>, <code class="docutils literal notranslate"><span class="pre">images</span></code>, and <code class="docutils literal notranslate"><span class="pre">portrait_images</span></code> are the attributes that connect <code class="docutils literal notranslate"><span class="pre">resource</span></code> with other entities, while the place of  <code class="docutils literal notranslate"><span class="pre">birth</span></code> and <code class="docutils literal notranslate"><span class="pre">death</span></code> are the attributes showing relationships between <code class="docutils literal notranslate"><span class="pre">person</span></code> and <code class="docutils literal notranslate"><span class="pre">place</span></code>. Following this implicit relationship extraction, the explicity relationships under <code class="docutils literal notranslate"><span class="pre">related_xxx</span></code> attributes of each main object can be inserted into the collection <code class="docutils literal notranslate"><span class="pre">relationship</span></code>.</p>
+<p>For more details in reconstructing relationship collection of DAAO, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_RelationUpdate.ipynb">DAAO_RelationUpdate.ipynb</a>.</p>
+<p>The third step is standardising the format of date attributes. In all collections with date attributes, namely <code class="docutils literal notranslate"><span class="pre">xparty</span></code>, <code class="docutils literal notranslate"><span class="pre">xactivity</span></code>, <code class="docutils literal notranslate"><span class="pre">xwork</span></code>, and <code class="docutils literal notranslate"><span class="pre">externalresource</span></code>, all the relevant date attributes are updated in the format of json documents having <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, and <code class="docutils literal notranslate"><span class="pre">day</span></code>. The original data of the collections are backed up into the collections named <code class="docutils literal notranslate"><span class="pre">{collection_name}_ori</span></code>.</p>
+<p>For more details in cleansing date fields in DAAO, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_CleanDates.ipynb">DAAO CleanDates.ipynb</a>.</p>
 </div>
 <div class="section" id="data-loading">
 <h3>Data Loading<a class="headerlink" href="#data-loading" title="Permalink to this headline">¶</a></h3>
@@ -534,7 +534,7 @@ The third step is standardizing the format of date attributes. In all collection
 <td><p>place</p></td>
 </tr>
 <tr class="row-odd"><td><p>xparty.PersonGroup</p></td>
-<td><p>organization</p></td>
+<td><p>organisation</p></td>
 </tr>
 <tr class="row-even"><td><p>external resource, asset</p></td>
 <td><p>resource</p></td>
@@ -554,7 +554,7 @@ The third step is standardizing the format of date attributes. In all collection
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -562,11 +562,7 @@ The third step is standardizing the format of date attributes. In all collection
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-<p>/* Darker background on mouse-over */
-.btn:hover {
-background-color: RoyalBlue;
-}
-</style></p>
+</style>
 </head>
 <body>
 <div style="text-align: center;">
@@ -593,7 +589,7 @@ background-color: RoyalBlue;
   });
 </script>
 <br>
-<p>For more details of data loading of DAAO, please check jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_Loading.ipynb">DAAO_Loading.ipynb</a>.</p>
+<p>For more details in data loading of DAAO, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAAO_Loading.ipynb">DAAO_Loading.ipynb</a>.</p>
 </div>
 </div>
 <div class="section" id="integration-data-report">
@@ -610,7 +606,11 @@ background-color: RoyalBlue;
 <br></p></li>
 </ul>
 <p><img alt="Schema and Data Model Refinements" src="https://blogs.unsw.edu.au/daao/files/2015/03/DAAO-Data-Model-Proposed-Revisions-February-20151.jpg" /></p>
-</div>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -659,9 +659,8 @@ background-color: RoyalBlue;
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

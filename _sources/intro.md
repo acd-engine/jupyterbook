@@ -27,7 +27,8 @@ Our thematic projects highlight the possibilities to be realised by the Engine w
 - [Environmental Politics and the Arts](https://www.acd-engine.org/projects/environmental-politics-and-the-arts)
 
 
-<!---
-```{tableofcontents}
-```
--->
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style>

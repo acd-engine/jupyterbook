@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_3_5_daqa.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_3_5_daqa.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -439,15 +439,15 @@
 <blockquote>
 <div><p><a class="reference external" href="https://qldarch.net/">This digital archive of Queensland architecture</a> offers a wealth of information on the region’s design history. The archive was originally constructed as part of the Hot Modernism project and focused on the period 1945-1975. We are now expanding to include earlier and later periods. The database comprises thousands of audiovisual and textual files that allow you to explore relationships between people, projects and firms.</p>
 </div></blockquote>
-<p>The following sections will describe the data processing procedure that integrates DAQA data into ACDE and the data sumary of DAQA.</p>
+<p>The following sections will describe the data processing procedure that integrates DAQA data into the ACDE and the data sumary of DAQA.</p>
 </div>
 <div class="section" id="data-processing">
 <h2>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <div class="section" id="data-extraction-exploration">
 <h3>Data Extraction &amp; Exploration<a class="headerlink" href="#data-extraction-exploration" title="Permalink to this headline">¶</a></h3>
-<p>The DAQA data needs to be scraped from its original website, which poses a challenge for developing a data model that can be easily integrated into ACDEA while being as similar as possible to the original DAAO data schema. Efforts will be made to carefully design a data model that can capture all relevant information from the scraped data and effectively integrate it into ACDEA without losing its original structure and meaning.</p>
-<p>Upon exploring the <code class="docutils literal notranslate"><span class="pre">Browsing</span></code> tab on the original DAQA website, it was discovered that there are at least five key entities existing in DAQA: “ARCHITECT”, “FIRM”, “PROJECT”, “ARTICLE”, and “INTERVIEW”.</p>
+<p>The DAQA data needs to be scraped from its original website, which poses a challenge for developing a data model that can be easily integrated into the ACDEA while being as similar as possible to the original DAAO data schema. Efforts will be made to carefully design a data model that can capture all relevant information from the scraped data and effectively integrate it into the ACDEA without losing its original structure and meaning.</p>
+<p>Upon exploring the <code class="docutils literal notranslate"><span class="pre">Browsing</span></code> tab on the original DAQA website, it was discovered that there are at least five key entities existing in DAQA: <strong>ARCHITECT</strong>, <strong>FIRM</strong>, <strong>PROJECT</strong>, <strong>ARTICLE</strong>, and <strong>INTERVIEW</strong>.</p>
 <p>After parsing the DAQA website, several implicit APIs were found to be useful in web scraping.</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/search?q={query_terms}&amp;pc={page_count}&amp;p={page_no}</span></code>: When <code class="docutils literal notranslate"><span class="pre">query_terms</span></code> is <code class="docutils literal notranslate"><span class="pre">*</span></code>, the general records under all the document ids existing in DAQA can be retrieved.</p></li>
@@ -455,18 +455,18 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/media/download/{doc_id}</span></code>: This API can be used to retrieve the resource under the specific document id within the <code class="docutils literal notranslate"><span class="pre">media</span></code> category.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/{query_type}</span></code>: This API can be used to retrieve all detailed records under the specific query type, where the <code class="docutils literal notranslate"><span class="pre">query_type</span></code> values are the names listed in the Browsing tab on the original website.</p></li>
 </ol>
-<p>By analyzing the all the general records using <code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/search?q=*</span></code>, the DAQA records are classified into 2 categories: “media” and “archobj”. In the <code class="docutils literal notranslate"><span class="pre">media</span></code> category, there are 10 types of records including <code class="docutils literal notranslate"><span class="pre">Photograph</span></code>, <code class="docutils literal notranslate"><span class="pre">LineDrawing</span></code>, <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Article</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Transcript</span></code>, <code class="docutils literal notranslate"><span class="pre">Portrait</span></code>, <code class="docutils literal notranslate"><span class="pre">Youtube</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code>, <code class="docutils literal notranslate"><span class="pre">Spredsheet</span></code>, while there are 13 types of records including <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">firm</span></code>,<code class="docutils literal notranslate"><span class="pre">article</span></code>,<code class="docutils literal notranslate"><span class="pre">interview</span></code>, <code class="docutils literal notranslate"><span class="pre">publication</span></code>, <code class="docutils literal notranslate"><span class="pre">topic</span></code>,<code class="docutils literal notranslate"> <span class="pre">education</span></code>, <code class="docutils literal notranslate"><span class="pre">award</span></code>, <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, <code class="docutils literal notranslate"><span class="pre">organisation</span></code>, <code class="docutils literal notranslate"><span class="pre">government</span></code> in <code class="docutils literal notranslate"><span class="pre">archobj</span></code> category. The hierachy of DAQA records are illustrated as following:</p>
-<p>The following charts, which was generated by the jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAQA_HierachySummary.ipynb">DAQA_HierachySummary.ipynb</a>, illustrates the hierachy of the hierachy of DAQA records.
+<p>By analysing all the general records using <code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/search?q=*</span></code>, the DAQA records are classified into two categories: <code class="docutils literal notranslate"><span class="pre">media</span></code> and <code class="docutils literal notranslate"><span class="pre">archobj</span></code>. In the <code class="docutils literal notranslate"><span class="pre">media</span></code> category, there are 10 types of records including <code class="docutils literal notranslate"><span class="pre">Photograph</span></code>, <code class="docutils literal notranslate"><span class="pre">LineDrawing</span></code>, <code class="docutils literal notranslate"><span class="pre">Image</span></code>, <code class="docutils literal notranslate"><span class="pre">Article</span></code>, <code class="docutils literal notranslate"><span class="pre">Audio</span></code>, <code class="docutils literal notranslate"><span class="pre">Transcript</span></code>, <code class="docutils literal notranslate"><span class="pre">Portrait</span></code>, <code class="docutils literal notranslate"><span class="pre">Youtube</span></code>, <code class="docutils literal notranslate"><span class="pre">Video</span></code>, <code class="docutils literal notranslate"><span class="pre">Spredsheet</span></code>, while there are 13 types of records including <code class="docutils literal notranslate"><span class="pre">structure</span></code>, <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">firm</span></code>,<code class="docutils literal notranslate"><span class="pre">article</span></code>,<code class="docutils literal notranslate"><span class="pre">interview</span></code>, <code class="docutils literal notranslate"><span class="pre">publication</span></code>, <code class="docutils literal notranslate"><span class="pre">topic</span></code>,<code class="docutils literal notranslate"> <span class="pre">education</span></code>, <code class="docutils literal notranslate"><span class="pre">award</span></code>, <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, <code class="docutils literal notranslate"><span class="pre">organisation</span></code>, <code class="docutils literal notranslate"><span class="pre">government</span></code> in the <code class="docutils literal notranslate"><span class="pre">archobj</span></code> category.</p>
+<p>The following charts, which were generated by the jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAQA_HierachySummary.ipynb">DAQA_HierachySummary.ipynb</a>, illustrates the hierachy of DAQA records.
 <br></p>
 <p><img alt="" src="_images/DAQA_Hierachy_Summary.png" />
 <br></p>
-<p>To facilitate loading DAQA data into ACDE, a scraping pipeline has been established. The process involves the following steps:</p>
+<p>To facilitate loading DAQA data into the ACDE, a scraping pipeline has been established. The process involves the following steps:</p>
 <p><img alt="DAQA Web Scraping Workflow" src="_images/DAQA_Web_Scraping.png" />
 <br></p>
 <ol class="simple">
 <li><p>Setting up a MongoDB database called <code class="docutils literal notranslate"><span class="pre">daqa_scraped</span></code>.</p></li>
 <li><p>All Records Scraping: Scraping all general records by calling the API <code class="docutils literal notranslate"><span class="pre">https://qldarch.net/ws/search?q=*</span></code>, and storing them in the <code class="docutils literal notranslate"><span class="pre">all_objects</span></code> collection.</p></li>
-<li><p>Key Objects Scraping: Scraping all detailed records, including their relationship records, for the five key objects explicitly listed on the original website. These records are stored in their respective collections in the database. Specially, the geographical coordinates of <code class="docutils literal notranslate"><span class="pre">project</span></code> records are reverse-geocoded to obtain standardized geographic information for the project.</p></li>
+<li><p>Key Objects Scraping: Scraping all detailed records, including their relationship records, for the five key objects explicitly listed on the original website. These records are stored in their respective collections in the database. In particular, the geographical coordinates of <code class="docutils literal notranslate"><span class="pre">project</span></code> records are reverse-geocoded to obtain standardised geographic information for the project.</p></li>
 <li><p>Records Supplement: Supplementing records of all other objects not listed on the original website and extracting implicit records from the scraped data.</p>
 <ol class="simple">
 <li><p>Inserting all other archival objects that are not listed on the original website, but exist in the <code class="docutils literal notranslate"><span class="pre">all_objects</span></code> collection, into their respective collections in the database.</p></li>
@@ -487,12 +487,12 @@
 <br></p>
 <p><img alt="DAQA Schema" src="_images/DAQA_Schema.png" />
 <br></p>
-<p>This pipeline ensures that all relevant records are scraped and loaded into the database in an organized and structured manner, ready for integration into ACDE. For more details of web scraping of DAQA, please check jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAQA_Scraping.ipynb">DAQA_Scraping.ipynb</a>.</p>
+<p>This pipeline ensures that all relevant records are scraped and loaded into the database in an organised and structured manner, ready for integration into the ACDE. For more details in web scraping of DAQA, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAQA_Scraping.ipynb">DAQA_Scraping.ipynb</a>.</p>
 </div>
 <div class="section" id="data-transformation-loading">
 <h3>Data Transformation &amp; Loading<a class="headerlink" href="#data-transformation-loading" title="Permalink to this headline">¶</a></h3>
 <p>As many preparations have been made in the scraping process, the transformation and loading of DAQA data are more straightforward by mapping corresponding entities/attributes to the levels/attributes in ACDEA. The related records of the corresponding original records are aggregated from the relationship level and updated into the related attribute of the original records.</p>
-<p>On entity level, the DAQA entity projection is listed as follows:</p>
+<p>On an entity level, the DAQA entity projection is listed as follows:</p>
 <style>
   /* CSS for zebra-striped table */
   table {
@@ -532,7 +532,7 @@
 <td><p>place</p></td>
 </tr>
 <tr class="row-odd"><td><p>government, organisation, firm</p></td>
-<td><p>organization</p></td>
+<td><p>organisation</p></td>
 </tr>
 <tr class="row-even"><td><p>publication, article, interview, media</p></td>
 <td><p>resource</p></td>
@@ -543,7 +543,7 @@
 </tbody>
 </table>
 <br>
-<p>On attribute level, please find the details in the notes of <strong>DAQA data dictionary</strong>. The data dictionary can be downloaded below.</p>
+<p>On an attribute level, please find the details in the notes of the <strong>DAQA data dictionary</strong>. The data dictionary can be downloaded below.</p>
 <!DOCTYPE html>
 <html>
 <head>
@@ -552,7 +552,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -560,11 +560,7 @@
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-<p>/* Darker background on mouse-over */
-.btn:hover {
-background-color: RoyalBlue;
-}
-</style></p>
+</style>
 </head>
 <body>
 <div style="text-align: center;">
@@ -591,7 +587,7 @@ background-color: RoyalBlue;
   });
 </script>
 <br>
-<p>For more details of data transforming and loading of DAQA, please check jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAQA_Loading.ipynb">DAQA_Loading.ipynb</a>.</p>
+<p>For more details in data transforming and loading of DAQA, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/DAQA_Loading.ipynb">DAQA_Loading.ipynb</a>.</p>
 </div>
 </div>
 <div class="section" id="integration-data-report">
@@ -610,7 +606,11 @@ background-color: RoyalBlue;
 <li><p><a class="reference external" href="https://github.com/uq-eresearch/qldarch-frontend">GitHub - uq-eresearch/qldarch-frontend</a></p></li>
 <li><p><a class="reference external" href="https://github.com/uq-eresearch/qldarch.backend">GitHub - uq-eresearch/qldarch.backend: Digital Archive of Queensland Architecture</a></p></li>
 </ol>
-</div>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -659,9 +659,8 @@ background-color: RoyalBlue;
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

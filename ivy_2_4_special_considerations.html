@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_2_4_special_considerations.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_2_4_special_considerations.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -353,23 +353,27 @@
                 
   <div class="section" id="special-considerations-for-data-analysis">
 <h1>Special Considerations for Data Analysis<a class="headerlink" href="#special-considerations-for-data-analysis" title="Permalink to this headline">¶</a></h1>
-<p>As ACDEA is a prototype for integrating existing data sources and it is still in a stage that need further cleansing, there are some special considerations to be aware of when conducting data analysis.</p>
+<p>As ACDEA is a prototype for integrating existing data sources and is still in a stage that requires further cleansing, there are some special considerations to be aware of when conducting data analysis.</p>
 <ol>
 <li><p><strong>Ambiguous Concepts</strong>: When working with ACDEA, it is important to keep in mind that some of the concepts may have different interpretations across cultural data in different domains.
 <br><br></p>
-<p>For example, the entity “project” in DAQA may have a different definition from “work” in DAAO, despite being integrated into the same level “Work”. Similary, AusStage’s “event” may be defined differently from the general “event” concept which is more like “production” in performing art.
+<p>For example, the entity <code class="docutils literal notranslate"><span class="pre">project</span></code> in DAQA may have a different definition from <code class="docutils literal notranslate"><span class="pre">work</span></code> in DAAO, despite being integrated into the same level <code class="docutils literal notranslate"><span class="pre">Work</span></code>. Similarly, AusStage’s <code class="docutils literal notranslate"><span class="pre">event</span></code>, which primarily corresponds to <code class="docutils literal notranslate"><span class="pre">production</span></code> in performing arts, may be defined differently from the general <code class="docutils literal notranslate"><span class="pre">event</span></code> concept seen across other data sources.
 <br><br></p>
-<p>Hence, it is important to understand the specific concept being used in each data source. And further data manipulation could be required to construct the exact entities you want to analyze.
+<p>Hence, it is important to understand the specific concept being used in each data source. Additional efforts in data manipulation might be necessary to construct the specific entities that one wishes to analyse.
 <br><br></p>
 </li>
-<li><p><strong>Duplicated Records</strong>: Another important consideration when working with ACDEA is dealing with duplicated records. Due to the nature of integrating data from multiple sources, it is possible for some records to appear in multiple places. As de-duplication progress is still under experimentation at this stage, it is crucial to identify and handle duplicated records appropriately to avoid skewing analysis results.
+<li><p><strong>Duplicated Records</strong>: Another important consideration when working with the ACDEA is dealing with duplicated records. Due to the nature of integrating data from multiple sources, it is possible for some records to appear in multiple places. As de-duplication progress is still under experimentation at this stage, it is crucial to identify and handle duplicated records appropriately to avoid skewing analysis results.
 <br><br></p></li>
-<li><p><strong>Empty Values</strong>: When working with current datasets, it is important to note that some records may contain missing or empty values for certain attributes. These empty expressions could be represented as <code class="docutils literal notranslate"><span class="pre">null</span></code>, “”, “None”, “null”, or other variations. This could be due to incomplete or inconsistent data in the original data sources, or due to errors during the integration process.
+<li><p><strong>Empty Values</strong>: When working with current datasets, it is important to note that some records may contain missing or empty values for certain attributes. These empty expressions could be represented as <code class="docutils literal notranslate"><span class="pre">null</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">None</span></code>, or other variations. This could be due to incomplete or inconsistent data in the original data sources, or due to errors during the integration process.
 <br><br></p>
 <p>To avoid skewing the analysis results, it is important to identify and handle these missing values appropriately. Depending on the analysis being conducted, empty values may need to be <strong>imputed</strong> or <strong>removed</strong>. Additionally, it is important to carefully consider <strong>the impact of missing data on the validity of the results</strong> and to acknowledge any limitations or uncertainties caused by missing values.</p>
 </li>
 </ol>
-</div>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 
     <script type="text/x-thebe-config">
     {
@@ -417,9 +421,8 @@
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

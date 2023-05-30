@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_3_0_data_sources.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_3_0_data_sources.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -379,12 +379,12 @@
                 
   <div class="section" id="data-sources">
 <h1>Data Sources<a class="headerlink" href="#data-sources" title="Permalink to this headline">¶</a></h1>
-<p>So far, there are five cultural data sources authorised and provided by <a class="reference external" href="https://www.acd-engine.org/partners">the ACDE partners</a>, distibuted in three different domains.</p>
+<p>So far, there are five cultural data sources authorised and provided by the <a class="reference external" href="https://www.acd-engine.org/partners">ACDE partners</a>, distributed in three different domains.</p>
 <ul>
 <li><p><strong>Performing Arts</strong></p>
-<p>Data about any art form that involves live performances, such as theater, dance, music, opera, and circus. Performing arts can be further divided into subcategories based on the specific art form, such as classical music, contemporary dance, or musical theater.
+<p>Data about any art form that involves live performances, such as theatre, dance, music, opera, and circus. Performing arts can be further divided into subcategories based on the specific art form, such as classical music, contemporary dance, or musical theatre.
 <br><br>
-Data Sources: <a class="reference external" href="https://www.ausstage.edu.au/pages/browse/">The Australian Live Performance Database (AusSatge)</a>, <a class="reference external" href="https://circusozlivingarchive.com/">Circus Oz Living Archive (CircuzOZ)</a>
+Data Sources: <a class="reference external" href="https://www.ausstage.edu.au/pages/browse/">The Australian Live Performance Database (AusStage)</a>, <a class="reference external" href="https://circusozlivingarchive.com/">Circus Oz Living Archive (CircuzOz)</a>
 <br><br></p>
 </li>
 <li><p><strong>Visual Arts</strong></p>
@@ -402,7 +402,7 @@ Data Sources: <a class="reference external" href="https://qldarch.net/">Digital 
 </ul>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>The table below summarizes the data fetching information of each data source.</p>
+<p>The table below summarises the information realting to the data fetching method of each data source.</p>
 <style>
   /* CSS for zebra-striped table */
   table {
@@ -435,7 +435,7 @@ Data Sources: <a class="reference external" href="https://qldarch.net/">Digital 
 </tr>
 <tr class="row-odd"><td><p>CircuzOz</p></td>
 <td><p>Event</p></td>
-<td><p>static file (xlsx)</p></td>
+<td><p>Static file (xlsx)</p></td>
 <td><p>2022-12</p></td>
 </tr>
 <tr class="row-even"><td><p>DAAO</p></td>
@@ -450,19 +450,23 @@ Data Sources: <a class="reference external" href="https://qldarch.net/">Digital 
 </tr>
 <tr class="row-even"><td><p>SFC</p></td>
 <td><p>Resource</p></td>
-<td><p>static file (xml)</p></td>
+<td><p>Static file (xml)</p></td>
 <td><p>2022-11</p></td>
 </tr>
 </tbody>
 </table>
 <br>
-<p>The following sections will provide a general introduction, specific data processing workflow, integration data report for each data source.</p>
-<p>Please note that, in the integration data report section, the number of loaded records in the ACDE database may not match the number of records in the original database due to the following reasons:</p>
+<p>The following sections will provide a general introduction, specific data processing workflow and integration data report for each data source.</p>
+<p>Please note that in the integration data report section, the number of loaded records in the ACDE database may not match the number of records in the original database due to the following reasons:</p>
 <ol class="simple">
 <li><p>Only the records that have completed relationship records, where both the subject and object exist in the original database, will be loaded into the ACDE database. Records that have relevant relationship records but are missing the corresponding subject or object records will be excluded from the ACDE database for consistency reasons.</p></li>
 <li><p>Some additional relationships that were newly constructed during the transformation procedure may not be inserted into the original database and therefore will not be included in the ACDE database.</p></li>
 </ol>
-</div>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -513,9 +517,8 @@ Data Sources: <a class="reference external" href="https://qldarch.net/">Digital 
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

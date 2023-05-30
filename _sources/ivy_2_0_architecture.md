@@ -7,3 +7,9 @@ To construct a comprehensive and consistent view of data from various cultural d
 It should be noted that the ACDEA is currently only a prototype for integrating existing data sources. As discussions around improving data integration performance and clarifying professional domain definitions continue, and as more data sources are accumulated, the ACDEA may be modified accordingly.
 
 The following sections will begin with a brief overview of the ACDEA, followed by a description of the general procedure of the ACDEA construction workflow.
+
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style>

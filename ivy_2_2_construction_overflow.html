@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_2_2_construction_overflow.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_2_2_construction_overflow.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -376,8 +376,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#experiments-show-cases">
-   Experiments &amp; Show Cases
+  <a class="reference internal nav-link" href="#downstream-tasks">
+   Downstream tasks
   </a>
  </li>
 </ul>
@@ -438,8 +438,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#experiments-show-cases">
-   Experiments &amp; Show Cases
+  <a class="reference internal nav-link" href="#downstream-tasks">
+   Downstream tasks
   </a>
  </li>
 </ul>
@@ -456,14 +456,14 @@
 <div class="section" id="overview-of-construction-workflow">
 <h2>Overview of Construction Workflow<a class="headerlink" href="#overview-of-construction-workflow" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>The construction of the Australian Cultural Data Engine Architecture (ACDEA) follows a general methodology that integrates a unified data model from all the existing data models of the data sources. This is a bottom-up approach that ensures that all the relevant data is included and organized into a coherent and integrated database.</p>
+<p>The construction of the Australian Cultural Data Engine Architecture (ACDEA) follows a general methodology that integrates a unified data model from all the existing data models of the data sources. This is a bottom-up approach that ensures that all the relevant data is included and organised into a coherent and integrated database.</p>
 <p>Importantly, to achieve this methodology, the construction of ACDEA follows the principles below:</p>
 <ul class="simple">
-<li><p><strong>Refer to the Most Comprehensive Existing Data Models</strong>: ACDEA aims to include all relevant attributes from various cultural data sources into the unified enities (levels) . Therefore, the most comprehensive entity sturcture were referred to and analyzed to ensure that ACDEA includes the most relevant and useful attributes of specific entity from all sources. For instance, to construct its own “person” level, ACDEA refers to the “person” data model from DAAO, which is a person-oriented data collection.
+<li><p><strong>Refer to the Most Comprehensive Existing Data Models</strong>: ACDEA aims to include all relevant attributes from various cultural data sources into the unified entities (levels). Therefore, the most comprehensive entity structure was referred to and analysed to ensure that ACDEA includes the most relevant and useful attributes of specific entity from all sources. For instance, to construct its own <code class="docutils literal notranslate"><span class="pre">person</span></code> level, ACDEA refers to the <code class="docutils literal notranslate"><span class="pre">person</span></code> data model from DAAO, which is a person-oriented data collection.
 <br><br></p></li>
 <li><p><strong>Keep Differences &amp; Unify Common</strong>: The construction of ACDEA required reconciling differences between the data models of different sources, which is a significant challenge. To maintain the completeness of the original data sources and integrate the similarities of data attributes, ACDEA follows the principle of keeping differences between the data models that are significant and add value to the data, while unifying common elements to ensure consistency and usability. This approach helps to capture the unique characteristics of each data source and ensure that ACDEA includes all relevant information.
 <br><br></p></li>
-<li><p><strong>Fuzzy Mapping</strong>: This involves mapping data attributes from different sources to a common attribute in the unified data model, even if they are not an exact match. For instance, ithe DAAO has an attribute called “other_occupations” and the AusStage has an attribute called “(contributing) functions”, these attributes can be mapped to a common attribute in ACDEA called “career.” This allows ACDEA to capture as much information as possible while still maintaining consistency and usability.</p></li>
+<li><p><strong>Fuzzy Mapping</strong>: This involves mapping data attributes from different sources to a common attribute in the unified data model, even if they are not an exact match. For instance, the DAAO has an attribute called <code class="docutils literal notranslate"><span class="pre">other_occupations</span></code> and the AusStage has an attribute called <code class="docutils literal notranslate"><span class="pre">(contributing)</span> <span class="pre">functions</span></code>, these attributes can be mapped to a common attribute in ACDEA called <code class="docutils literal notranslate"><span class="pre">career</span></code>. This allows ACDEA to capture as much information as possible while still maintaining consistency and usability.</p></li>
 </ul>
 <p>Although the construction process varies across different data sources, there is a general construction workflow that has been established for integrating the data sources into ACDEA.</p>
 <p><img alt="ACD-Engine Architecture Construction Workflow" src="_images/ACD-Engine+Architecture_Construction_Workflow.png" /></p>
@@ -476,7 +476,7 @@
 <div class="section" id="data-exploration">
 <h2>Data Exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>Once the data is collected, the next step is to explore it in order to understand its structure, contents and biases. This may involve <strong>creating a data dictionary</strong> that describes the attributes and values for each data source, as well as <strong>a data mapping plan</strong> that outlines how the data from different sources can be combined into ACDEA.</p>
+<p>Once the data is collected, the next step is to explore it in order to understand its structure, contents and biases. This may involve <strong>creating a data dictionary</strong> that describes the attributes and values for each data source, as well as a <strong>data mapping plan</strong> that outlines how the data from different sources can be combined into ACDEA.</p>
 </div>
 <div class="section" id="data-transformation">
 <h2>Data Transformation<a class="headerlink" href="#data-transformation" title="Permalink to this headline">¶</a></h2>
@@ -484,11 +484,11 @@
 <p>This stage focuses on preparing the data for integration into the ACDEA. It involves expanding the data by adding missing attributes or levels, as well as cleansing the data by identifying and correcting errors or inconsistencies.</p>
 <div class="section" id="data-expansion">
 <h3>Data Expansion<a class="headerlink" href="#data-expansion" title="Permalink to this headline">¶</a></h3>
-<p>This step involves expanding the data to include additional attributes or levels that are necessary for the integration process. This may involve supplementing missing attributes, projecting similar attributes to the target attributes in ACDEA or expanding the data model to include additional levels or entities. For example, the “sturcture” entity in DAQA is projected to “place” level as well as “work” level in ACDEA.</p>
+<p>This step involves expanding the data to include additional attributes or levels that are necessary for the integration process. This may involve supplementing missing attributes, projecting similar attributes to the target attributes in ACDEA or expanding the data model to include additional levels or entities. For example, the <code class="docutils literal notranslate"><span class="pre">structure</span></code> entity in DAQA is projected to <code class="docutils literal notranslate"><span class="pre">place</span></code> level as well as <code class="docutils literal notranslate"><span class="pre">work</span></code> level in ACDEA.</p>
 </div>
 <div class="section" id="data-cleansing">
 <h3>Data Cleansing<a class="headerlink" href="#data-cleansing" title="Permalink to this headline">¶</a></h3>
-<p>In this step, the data is cleaned and standardized to ensure that it is consistent and accurate. This may involve removing redundanct texts, and standardizing time and place formats and values.</p>
+<p>In this step, the data is cleaned and standardised to ensure that it is consistent and accurate. This may involve removing redundant texts, and standardising time and place formats and values.</p>
 </div>
 </div>
 <div class="section" id="data-loading">
@@ -496,15 +496,16 @@
 <hr class="docutils" />
 <p>Once the data is transformed and cleansed, it is loaded into a MongoDB database where it can be accessed and queried for analysis.</p>
 </div>
-<div class="section" id="experiments-show-cases">
-<h2>Experiments &amp; Show Cases<a class="headerlink" href="#experiments-show-cases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="downstream-tasks">
+<h2>Downstream tasks<a class="headerlink" href="#downstream-tasks" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>This part is mainly for stages for downstream data analysis for showing cases and future works. Please note that it will not be included in this chapter. The following are the brief introduction of post-data-processing works:</p>
-<ul class="simple">
-<li><p>Experiments for the Better Integration: This involves experimenting with different integration methods to improve the accuracy and completeness of the data model. So far, ACDE focuses on integrating records referring to same entities into one single records, as well as compress the numbers of unique terms in the categorical attributes.</p></li>
-<li><p>Data Extraction (Round2) &amp; Data Analysis (Show Cases): By extracting full static datasets or extracting fine samples for data analysis, ACDE is creating different show cases on how to utilize the integrated data in ACDE.</p></li>
-</ul>
-</div>
+<p>This final stage relates to ongoing downstream tasks such as data analysis and visualisation that can now be conducted given the unification process. Through the investigation of various case studies, the full potential value of the integrated data can be realised.</p>
+<p>Please note that the details of case studies and analytical works carried out by the ACDE can be found in the <a class="reference external" href="https://acd-engine.github.io/jupyterbook/data_analysis_intro.html">Data Analysis</a> chapter.</p>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -553,9 +554,8 @@
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

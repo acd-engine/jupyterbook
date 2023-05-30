@@ -4,45 +4,45 @@
 ---
 > AusStage provides an accessible online resource for researching live performance in Australia. Development is led by a [consortium](https://www.ausstage.edu.au/pages/learn/about/partners-and-staff.html) of universities, government agencies, industry organisations and collecting institutions with funding from the Australian Research Council and other sources.
 
-AusStage is committed to collecting and sharing information about Australian live performance as an ongoing, open-access and collaborative endeavour. By sharing knowledge through AusStage researchers and consumers can learn more about Australian performance than ever before.
+AusStage is committed to collecting and sharing information about Australian live performance as an ongoing, open-access and collaborative endeavour. By sharing knowledge through AusStage, researchers and consumers can learn more than ever before about Australian performance.
 
-The following sections will describe the data processing procedure that integrates AusStage data into ACDE and the data sumary of AusStage.
+The following sections will describe the data processing procedure that integrates AusStage data into the ACDE and the data sumary of AusStage.
 
 #### Data Processing
 ---
 ##### Data Extraction & Exploration
 
-The AusStage data was provided in the format of MySQL database dump. It can be downloaded from an API as a compressed file. As the MySQL database was using the storage engine MyISAM, there were no foreign keys could be found in the original database dump. However, the schema of AusStage can be roughly inferred based on the actual display of official website, physical database, expert suggestions as well as [previsous documentation](https://www.ausstage.edu.au/opencms/export/system/modules/au.edu.flinders.ausstage.learn/pages/learn/contribute/manuals/AusStage_Data_Entry_Manual_2021.pdf). The AusStage Schema is shown as following:
+The AusStage data was provided in the format of MySQL database dump. It can be downloaded from an API as a compressed file. As the MySQL database was using the storage engine MyISAM, no foreign keys could be found in the original database dump. However, the schema of AusStage can be roughly inferred based on the actual display of the official website, the physical database, expert suggestions and [previous documentation](https://www.ausstage.edu.au/opencms/export/system/modules/au.edu.flinders.ausstage.learn/pages/learn/contribute/manuals/AusStage_Data_Entry_Manual_2021.pdf). 
+
+The AusStage Schema is as follows:
 <br><br>
 
 ![AusStage Schema](./images/ivy_images/AusStage_Schema.png)
 <br><br>
 
-For more detailed of downloading and restoring AusStage database, please check [AusStage_DBUpdate.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_DBUpdate.ipynb).
+For more details in downloading and restoring the AusStage database, please see [AusStage_DBUpdate.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_DBUpdate.ipynb).
 
-It is noted that for the [public data sharing](https://www.ausstage.edu.au/pages/learn/data-sharing), there is a SPARQL end point that could provide most of the data when ACDE tried to fetch the AusStage data. However, as ACDE require the birth information of contributors for comparison and further research, database dump extraction was chosen to be the final data delivery method to fetch data. 
+Regarding [public data sharing](https://www.ausstage.edu.au/pages/learn/data-sharing), there is a SPARQL endpoint available on the AusStage website that could provide most of the data required by ACDE. However, as birth information of contributors is needed for comparison and further research, a database dump extraction was chosen as the final data delivery method to fetch data.  
 
-Regarding public data sharing, there is a SPARQL endpoint available on the AusStage website that could provide most of the data required by ACDE. However, as birth information of contributors is needed for comparison and further research, a database dump extraction was chosen as the final data delivery method to fetch data.  
+During the exploration of the AusStage database, a significant concern was identified that needs to be taken into account when establishing the transforming and loading pipeline. It was found that there might be some ambiguity and incorrectness in the definition of an `event` in AusStage. The unit definition of an `event` in AusStage, "a distinct happening defined by title, date, and venue," might be different from the contributing unit definition in the common sense of performing data analysis.  While this will not inject inconsistencies in the data integration process, it might however cause some confusion and inconvenience in downstream data analysis.
 
-During the exploration of the AusStage database, a significant concern was identified that needs to be taken into account when establishing the transforming and loading pipeline. It was found that there might be some ambiguity and incorrectness in the definition of an event in AusStage. The unit definition of an event in AusStage, "a distinct happening defined by title, date, and venue," might be different from the contributing unit definition in the common sense of performing data analysis.  This usually don't make inconsistency in data integration, however, it might cause confusion and inconvenience in downstream data analysis.
+For instance, an actress may have contributed to 30 performances in the whole season of Les Miserables, which means from an AusStage perspective, she has contributed to 30 events. However, in most theatre concepts, this actress only contributed to one event, or more precisely, one production. Additionally, some concert events are found to have the same name as the contributors.
 
-For instance, an actress may have contributed to 30 performances in the whole season of Les Miserables, which means in the AusStage perspective, she has contributed to 30 events. However, in most theatre concepts, this actress only contributed to one event, or more precisely, one production. Additionally, some "concert" events are found to have the same name as the contributors.
-
-For more examples of AusStage event ambiguation, please look into the jupyter notebook [AusStage_EventExploration.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_EventExploration.ipynb). A work-around solution will be described below to adjust this circumstance.
+For more examples of AusStage event ambiguation, please refer to this jupyter notebook [AusStage_EventExploration.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_EventExploration.ipynb). A workaround solution will be described below in accounting for this circumstance.
 
 ##### Data Transformation & Loading
 
-To address the issue of event ambiguity in the AusStage database, we created a new attribute called "unf_id" (unified ID) to assign the same ID to records that refer to the same individual or entity but are distributed across different records due to various reasons. This includes records for contributors, organizations, venues, and events. Specifically, event records with the same titles that occurred in the same year were grouped together as the same "real event," or "production" in common theater terminology, unless they had same names as the organizations involved.
+To address the issue of event ambiguity in the AusStage database, we created a new attribute called "unf_id" (unified ID) to assign the same ID to records that refer to the same individual or entity but are distributed across different records due to various reasons. This includes records for contributors, organisations, venues, and events. Specifically, event records with the same titles that occurred in the same year were grouped together as the same "real event," or "production" in common theatre terminology, unless they had same names as the organisations involved.
 
 For more detailed of creating unified table for data loading, please check "**Create Table(s) (for unification)**" section in [AusStage_DBUpdate.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_DBUpdate.ipynb) and the corresponding SQL scripts.
 
 Furthermore, to facilitate table joining during data loading, we created several views and renamed attribute names to match those used in ACDEA.
 
-For more detailed of creating views for data loading, please check "**Create Views**" section in [AusStage_DBUpdate.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_DBUpdate.ipynb) and the corresponding SQL scripts.
+For more details in creating views for data loading, please refer to the "**Create Views**" section in [AusStage_DBUpdate.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_DBUpdate.ipynb) and the corresponding SQL scripts.
 
-With these additional attributes and views, it is now possible to map the corresponding entities and attributes of AusStage to the levels and attributes in ACDEA. The related records of the corresponding original records are also aggregated from the relationship level and updated into the related attribute of the original records.
+With these additional attributes and views, it is now possible to map the corresponding entities and attributes of AusStage to the levels and attributes in the ACDEA. The related records of the corresponding original records are also aggregated from the relationship level and updated into the related attribute of the original records.
 
-On entity level, the AusStage entity projection is listed as follows:
+On an entity level, the AusStage entity projection is listed as follows:
 
 <style>
   /* CSS for zebra-striped table */
@@ -68,9 +68,9 @@ On entity level, the AusStage entity projection is listed as follows:
 | event                         | event        |
 | -                             | recognition  |
 | venue                         | place        |
-| organisation                  | organization |
+| organisation                  | organisation |
 | item, datasource              | resource     |
-| all xxxxx**link** tables, etc | relationship |
+| foreign keys across each entity | relationship |
 <br>
 
 On attribute level, please find the attribute mapping details in the notes of the AusStage data dictionary. The data dictionary can be downloaded below. 
@@ -83,18 +83,13 @@ On attribute level, please find the attribute mapping details in the notes of th
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 30px;
   cursor: pointer;
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
 }
 </style>
 
@@ -128,7 +123,7 @@ On attribute level, please find the attribute mapping details in the notes of th
 </script>
 <br>
 
-For more details of data loading of AusStage, please check jupyter notebook [AusStage_Loading.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_Loading.ipynb).
+For more details in data loading of AusStage, please refer to this jupyter notebook [AusStage_Loading.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_Loading.ipynb).
 
 #### Integration Data Report
 ---
@@ -140,3 +135,9 @@ The following chart, which was generated by the jupyter notebook [AusStage_Integ
 #### References
 ---
 * [AusStage Data Entry Manual Version 6.0](https://www.ausstage.edu.au/opencms/export/system/modules/au.edu.flinders.ausstage.learn/pages/learn/contribute/manuals/AusStage_Data_Entry_Manual_2021.pdf)
+
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style>

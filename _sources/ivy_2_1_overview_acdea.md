@@ -1,6 +1,6 @@
 ### Overview of the Australian Cultural Data Engine Architecture
 
-To construct a unified data model for the Australian Cultural Data Engine, a set of 8 entities were identified from the overlapping entities of all the data models of the current data sources. These entities are collectively referred to as "levels" within the Australian Cultural Data Engine Architecture. The 8 levels include **person**, **organization**, **event**, **work**, **recognition**, **place**, **resource**, and **relationship**. These entities were selected based on their relevance to cultural data, and their ability to provide a comprehensive view of the data from the various cultural databases.
+To construct a unified data model for the Australian Cultural Data Engine, a set of 8 entities were identified from the overlapping entities of all the data models of the current data sources. These entities are collectively referred to as "levels" within the Australian Cultural Data Engine Architecture. The 8 levels include `person`, `organisation`, `event`, `work`, `recognition`, `place`, `resource`, and `relationship`. These entities were selected based on their relevance to cultural data, and their ability to provide a comprehensive view of the data from the various cultural databases.
 
 The conceptual level diagram below presents the Australian Cultural Data Engine Architecture:
 
@@ -12,9 +12,9 @@ Each level within the ACDEA serves a unique and important purpose in the overall
 
 * The specific content details of the record.
 
-* The one-dimentional related records of the particular record refer to its direct connections to other records within the same level. This feature provides easier access to the one-dimensional relationship network of a particular record, while all relationship records can be found in the relationship level.
+* The one-dimensional related records of the particular record refer to its direct connections to other records within the same level. This feature provides easier access to the one-dimensional relationship network of a particular record, while all relationship records can be found in the relationship level.
 
-The content detail summary of each level are described as follows:
+The content detail summary of each level is described as follows:
 
 - **Person Level**: representing individuals who are relevant to the cultural data. 
   
@@ -39,19 +39,19 @@ The content detail summary of each level are described as follows:
   - National Library Archive ID: The ID assigned by the National Library of Australia for the same individual.
 <br><br>
 
-- **Organization Level**: representing organizations that are relevant to the cultural data.
+- **Organisation Level**: representing organisations that are relevant to the cultural data.
   
-  - Names: all types of names of the organization, including display name, primary name and alternative names.
+  - Names: all types of names of the organisation, including display name, primary name and alternative names.
   
-  - Description: the brief description of the organization.
+  - Description: the brief description of the organisation.
   
-  - Types: the types of the organizations.
+  - Types: the types of the organisation.
   
-  - Long Term Roles: : the roles that the organization has held for an extended period of time.
+  - Long Term Roles: the roles that the organisation has held for an extended period of time.
   
-  - Operation: the features about operation of the organization.
+  - Operation: the features about operation of the organisation.
   
-  - Locations: the places where the organization has been located.
+  - Locations: the places where the organisation has been located.
 <br><br>
 
 - **Event Level**: representing cultural events. 
@@ -65,7 +65,7 @@ The content detail summary of each level are described as follows:
   - Time & Place: the specific date and location where the event took place.
 <br><br>
 
-- **Work Level**: representing cultural works such as books, architecture, performance , art, and etc. 
+- **Work Level**: representing cultural works such as books, architecture, performance, art, etc. 
   
   - Titles: all types of titles of the work, including primary title and alternative titles.
   
@@ -74,7 +74,7 @@ The content detail summary of each level are described as follows:
   - Time & Place: the specific date and location where the work was created.
 <br><br>
 
-- **Recognition Level**: representing awards or recognition received by individuals or organizations. 
+- **Recognition Level**: representing awards or recognition received by individuals or organisations. 
   
   - Title
   
@@ -143,7 +143,7 @@ To obtain more detailed information about the specific attributes within each le
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -151,12 +151,8 @@ To obtain more detailed information about the specific attributes within each le
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
-}
 </style>
+
 
 </head>
 <body>
@@ -186,3 +182,9 @@ To obtain more detailed information about the specific attributes within each le
     xhr.send();
   });
 </script>
+
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style>

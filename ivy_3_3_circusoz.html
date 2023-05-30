@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_3_3_circusoz.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_3_3_circusoz.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -445,15 +445,15 @@
 <hr class="docutils" />
 <div class="section" id="data-extraction-exploration">
 <h3>Data Extraction &amp; Exploration<a class="headerlink" href="#data-extraction-exploration" title="Permalink to this headline">¶</a></h3>
-<p>The CircusOZ data are manually collected from three data sources, and it is provided in the xlsx format. As all the data are merged in one spreedsheet, it need to be denormalized 3 separated entities, namely <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">event</span></code>, and <code class="docutils literal notranslate"><span class="pre">venue</span></code> and transformed into SQLite database for the convenience of understanding the data.</p>
-<p>For the details of constructing the CircusOZ database, please check the jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/circusoz_DBConstruction.ipynb">circusoz_DBConstruction.ipynb</a>.</p>
-<p>The following diagram shows the schema of CircusOZ data:</p>
+<p>The CircusOz data are manually collected from three data sources, and is provided in an xlsx format. As all the data are merged into one spreadsheet, it requires denormalisation of three distinct entities, namely <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">event</span></code>, and <code class="docutils literal notranslate"><span class="pre">venue</span></code>, and transformed into a SQLite database for the convenience of understanding the data.</p>
+<p>For the details of constructing the CircusOz database, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/circusoz_DBConstruction.ipynb">circusoz_DBConstruction.ipynb</a>.</p>
+<p>The following diagram shows the schema of CircusOz data:</p>
 <p><img alt="" src="_images/CircusOZ_Schema.png" /></p>
 </div>
 <div class="section" id="data-transformation-loading">
 <h3>Data Transformation &amp; Loading<a class="headerlink" href="#data-transformation-loading" title="Permalink to this headline">¶</a></h3>
-<p>Due to the manual collection process of CircusOZ data, it is inevitable that some records may contain typos and duplicate attributes. Therefore, the main goal of the transformation process is to perform deduplication while retaining the unique attributes from the three source data collection.</p>
-<p>On entity level, the CircusOZ entity projection is listed as follows:</p>
+<p>Due to the manual collection process of CircusOz data, it is inevitable that some records may contain typographical errors and duplicate attributes. Therefore, the main goal of the transformation process is to perform deduplication while retaining the unique attributes from the three data sources.</p>
+<p>On an entity level, the CircusOz entity projection is listed as follows:</p>
 <style>
   /* CSS for zebra-striped table */
   table {
@@ -472,7 +472,7 @@
 </style>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="head"><p>CircusOZ Entity (Collection)</p></th>
+<tr class="row-odd"><th class="head"><p>CircusOz Entity (Collection)</p></th>
 <th class="head"><p>ACDEA Level</p></th>
 </tr>
 </thead>
@@ -493,18 +493,18 @@
 <td><p>place</p></td>
 </tr>
 <tr class="row-odd"><td><p>-</p></td>
-<td><p>organization</p></td>
+<td><p>organisation</p></td>
 </tr>
 <tr class="row-even"><td><p>-</p></td>
 <td><p>resource</p></td>
 </tr>
-<tr class="row-odd"><td><p>foreign keys among person, venue and event</p></td>
+<tr class="row-odd"><td><p>foreign keys across person, venue and event</p></td>
 <td><p>relationship</p></td>
 </tr>
 </tbody>
 </table>
 <br>
-<p>On attribute level, please find the attribute mapping details in the notes of <strong>CircusOz data dictionary</strong>. The data dictionary can be downloaded below.</p>
+<p>On an attribute level, please find the attribute mapping details in the notes of the <strong>CircusOz data dictionary</strong>. The data dictionary can be downloaded below.</p>
 <!DOCTYPE html>
 <html>
 <head>
@@ -513,7 +513,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 30px;
@@ -521,11 +521,7 @@
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-<p>/* Darker background on mouse-over */
-.btn:hover {
-background-color: RoyalBlue;
-}
-</style></p>
+</style>
 </head>
 <body>
 <div style="text-align: center;">
@@ -552,22 +548,26 @@ background-color: RoyalBlue;
   });
 </script>
 <br>
-<p>For the details of trasforming and loading the CircusOZ data into ACDE database, please check the jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/circusoz_Loading.ipynb">circusoz_Loading.ipynb</a>.</p>
+<p>For details in transforming and loading the CircusOz data into the ACDE database, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/circusoz_Loading.ipynb">circusoz_Loading.ipynb</a>.</p>
 </div>
 </div>
 <div class="section" id="integration-data-report">
 <h2>Integration Data Report<a class="headerlink" href="#integration-data-report" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>The following chart, which was generated by the jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/circusoz_IntegrationSummary.ipynb">circusoz_IntegrationSummary.ipynb</a>, illustrates the number of CircusOZ records before and after integration.</p>
+<p>The following chart, which was generated by the jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/circusoz_IntegrationSummary.ipynb">circusoz_IntegrationSummary.ipynb</a>, illustrates the number of CircusOz records before and after integration.</p>
 <p><img alt="" src="_images/CircusOZ_integration_summary.png" /></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <ul class="simple">
-<li><p><a class="reference external" href="https://alpine-test.hpc.unimelb.edu.au/">CircusOZ Living Archive</a></p></li>
+<li><p><a class="reference external" href="https://alpine-test.hpc.unimelb.edu.au/">CircusOz Living Archive</a></p></li>
 </ul>
-</div>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -616,9 +616,8 @@ background-color: RoyalBlue;
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

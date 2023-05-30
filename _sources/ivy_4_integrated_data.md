@@ -2,7 +2,7 @@
 
 As the result of the data integration, four formats of data have been generated for downstream data analysis purposes.
 
-For more details of static files export for ACDE, please check the jupyter notebook [ACDE_Export.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/ACDE_Export.ipynb).
+For more details of static files exported for ACDE, please refer to this jupyter notebook [ACDE_Export.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/ACDE_Export.ipynb).
 <br>
 
 <style>
@@ -24,10 +24,10 @@ For more details of static files export for ACDE, please check the jupyter noteb
 
 | Format          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Database Dump   | A MongoDB database `acd_engine` that consists of 7 collections, including `event`, `organization`, `person`, `place`, `recognition`, `relationship`, `resource`, `work`. This type of data is intended primarily for development purposes.                                                                                                                                                                                                                      |
-| CSV             | Each CSV file corresponds to a specific level in ACDEA and contains data organized according to the attributes of that level. The columns of the CSV file represent the first-level attributes of the corresponding level.                                                                                                                                                                                                                                           |
+| Database Dump   | A MongoDB database `acd_engine` that consists of 7 collections, including `event`, `organisation`, `person`, `place`, `recognition`, `relationship`, `resource`, `work`. This type of data is intended primarily for development purposes.                                                                                                                                                                                                                      |
+| CSV             | Each CSV file corresponds to a specific level in ACDEA and contains data organised according to the attributes of that level. The columns of the CSV file represent the first-level attributes of the corresponding level.                                                                                                                                                                                                                                           |
 | JSONL           | JSONL is a format that stores data records as individual JSON objects separated by a newline character. Each JSONL file corresponds to a specific level in ACDEA, and the data is structured as a list of dictionaries, where each dictionary represents a data record                                                                                                                                                                                                                                           |
-| XLSX            | Each XLSX file corresponds to a **10% sample** of the specific level in ACDEA. Similar to the CSV files, the columns of each XLSX file represent the first-level attributes of the corresponding level. This type of data is intended for exploratory purposes. You can download the sample files using the download buttons below.                                                                                                                                                |
+| XLSX            | Each XLSX file corresponds to a **10% sample** of the specific level in ACDEA. Similar to the CSV files, the columns of each XLSX file represent the first-level attributes of the corresponding level. This type of data is intended for exploratory purposes. <br><br> You can download the sample files using the download buttons below.                                                                                                                                                |
 
 <br>
 
@@ -39,7 +39,7 @@ For more details of static files export for ACDE, please check the jupyter noteb
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 15px;
@@ -47,12 +47,8 @@ For more details of static files export for ACDE, please check the jupyter noteb
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: RoyalBlue;
-}
 </style>
+
 
 </head>
 <body>
@@ -183,3 +179,9 @@ For more details of static files export for ACDE, please check the jupyter noteb
 
 </script>
 <br>
+
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style>

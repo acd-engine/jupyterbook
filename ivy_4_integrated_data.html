@@ -195,11 +195,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ivy_6_repository_directory_structure.html">
-   Repository Directory Structure
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="ivy_7_more_interesting_works.html">
    More Interesting Works and Cultural Data Sources
   </a>
@@ -211,6 +206,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_analysis_intro.html">
+   Introduction
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="RmdTest.html">
    DAAO Analysis
@@ -308,11 +308,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fivy_4_integrated_data.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2Fivy_4_integrated_data.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -354,7 +354,7 @@
   <div class="section" id="integrated-data">
 <h1>Integrated Data<a class="headerlink" href="#integrated-data" title="Permalink to this headline">¶</a></h1>
 <p>As the result of the data integration, four formats of data have been generated for downstream data analysis purposes.</p>
-<p>For more details of static files export for ACDE, please check the jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/ACDE_Export.ipynb">ACDE_Export.ipynb</a>.
+<p>For more details of static files exported for ACDE, please refer to this jupyter notebook <a class="reference external" href="https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/ACDE_Export.ipynb">ACDE_Export.ipynb</a>.
 <br></p>
 <style>
   /* CSS for zebra-striped table */
@@ -380,16 +380,16 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>Database Dump</p></td>
-<td><p>A MongoDB database <code class="docutils literal notranslate"><span class="pre">acd_engine</span></code> that consists of 7 collections, including <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">organization</span></code>, <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, <code class="docutils literal notranslate"><span class="pre">recognition</span></code>, <code class="docutils literal notranslate"><span class="pre">relationship</span></code>, <code class="docutils literal notranslate"><span class="pre">resource</span></code>, <code class="docutils literal notranslate"><span class="pre">work</span></code>. This type of data is intended primarily for development purposes.</p></td>
+<td><p>A MongoDB database <code class="docutils literal notranslate"><span class="pre">acd_engine</span></code> that consists of 7 collections, including <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">organisation</span></code>, <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, <code class="docutils literal notranslate"><span class="pre">recognition</span></code>, <code class="docutils literal notranslate"><span class="pre">relationship</span></code>, <code class="docutils literal notranslate"><span class="pre">resource</span></code>, <code class="docutils literal notranslate"><span class="pre">work</span></code>. This type of data is intended primarily for development purposes.</p></td>
 </tr>
 <tr class="row-odd"><td><p>CSV</p></td>
-<td><p>Each CSV file corresponds to a specific level in ACDEA and contains data organized according to the attributes of that level. The columns of the CSV file represent the first-level attributes of the corresponding level.</p></td>
+<td><p>Each CSV file corresponds to a specific level in ACDEA and contains data organised according to the attributes of that level. The columns of the CSV file represent the first-level attributes of the corresponding level.</p></td>
 </tr>
 <tr class="row-even"><td><p>JSONL</p></td>
 <td><p>JSONL is a format that stores data records as individual JSON objects separated by a newline character. Each JSONL file corresponds to a specific level in ACDEA, and the data is structured as a list of dictionaries, where each dictionary represents a data record</p></td>
 </tr>
 <tr class="row-odd"><td><p>XLSX</p></td>
-<td><p>Each XLSX file corresponds to a <strong>10% sample</strong> of the specific level in ACDEA. Similar to the CSV files, the columns of each XLSX file represent the first-level attributes of the corresponding level. This type of data is intended for exploratory purposes. You can download the sample files using the download buttons below.</p></td>
+<td><p>Each XLSX file corresponds to a <strong>10% sample</strong> of the specific level in ACDEA. Similar to the CSV files, the columns of each XLSX file represent the first-level attributes of the corresponding level. This type of data is intended for exploratory purposes. <br><br> You can download the sample files using the download buttons below.</p></td>
 </tr>
 </tbody>
 </table>
@@ -402,7 +402,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 .btn {
-  background-color: DodgerBlue;
+  background-color: #f39c52;
   border: none;
   color: white;
   padding: 12px 15px;
@@ -410,11 +410,7 @@
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-<p>/* Darker background on mouse-over */
-.btn:hover {
-background-color: RoyalBlue;
-}
-</style></p>
+</style>
 </head>
 <body>
 <div style="text-align: center;">
@@ -540,7 +536,12 @@ background-color: RoyalBlue;
   });
 
 </script>
-<br></div>
+<br>
+<style>
+  a {
+    color: #1ea5a6 !important;
+  }
+</style></div>
 
     <script type="text/x-thebe-config">
     {
@@ -588,9 +589,8 @@ background-color: RoyalBlue;
     <footer class="footer">
   <p>
     
-      By Justin Munoz<br/>
+      By Australian Cultural Data Engine<br/>
     
-        &copy; Copyright 2021.<br/>
   </p>
 </footer>
 </main>

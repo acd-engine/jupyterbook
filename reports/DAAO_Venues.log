@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
@@ -22,18 +11,37 @@ Traceback (most recent call last):
     return future.result()
   File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-['import pandas as pd', 'import numpy as np', 'import json', 'from collections import Counter', 'import plotly.express as px']
-...
-["print(f'- there are {dfs_expanded.shape[0]} events.')", "print(f'- there are {dfs_expanded[year_cond].shape[0]} events with dates.')", "print(f'- there are {dfs_expanded[locations_cond & year_cond].shape[0]} events with geocodes and dates.')", "print(f'- there are {dfs_expanded[locations_cond & year_cond & desc_cond].shape[0]} events with geocodes, dates and biographical information.')", "print(f'- there are {dfs_expanded[locations_cond & year_cond & desc_cond & period_cond].shape[0]} events with geocodes, dates and biographical information after filtering for events between 1900 and 2020.')"]
--------------------
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('QLD') | venues_checked['venue_name'].str.contains('Qld'), 'QLD', np.nan)
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('NT'), 'NT', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('ACT'), 'ACT', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('Sydney') | venues_checked['venue_name'].str.contains('NSW'), 'NSW', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains(' SA') | venues_checked['venue_name'].str.contains('South Australia'), 'SA', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('WA'), 'WA', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('VIC') | venues_checked['venue_name'].str.contains('Vic'),'VIC', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('Tas') | venues_checked['venue_name'].str.contains('TAS'),'TAS', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('USA'), 'USA', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('China'), 'China', venues_checked['State'])
+venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('Griffith'), 'QLD', venues_checked['State'])
+
+# create bar plot
+ax = venues_checked['State'].value_counts().plot(kind='bar', figsize=(10, 6), rot=0) # rotate x-labels
+for p in ax.patches: ax.annotate(str(round(p.get_height()/len(venues_checked), 2)), (p.get_x() + 0.05, p.get_height() * 1.0225))
+plt.show()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn [13], line 16[0m
+[1;32m     14[0m ax [38;5;241m=[39m venues_checked[[38;5;124m'[39m[38;5;124mState[39m[38;5;124m'[39m][38;5;241m.[39mvalue_counts()[38;5;241m.[39mplot(kind[38;5;241m=[39m[38;5;124m'[39m[38;5;124mbar[39m[38;5;124m'[39m, figsize[38;5;241m=[39m([38;5;241m10[39m, [38;5;241m6[39m), rot[38;5;241m=[39m[38;5;241m0[39m) [38;5;66;03m# rotate x-labels[39;00m
+[1;32m     15[0m [38;5;28;01mfor[39;00m p [38;5;129;01min[39;00m ax[38;5;241m.[39mpatches: ax[38;5;241m.[39mannotate([38;5;28mstr[39m([38;5;28mround[39m(p[38;5;241m.[39mget_height()[38;5;241m/[39m[38;5;28mlen[39m(venues_checked), [38;5;241m2[39m)), (p[38;5;241m.[39mget_x() [38;5;241m+[39m [38;5;241m0.05[39m, p[38;5;241m.[39mget_height() [38;5;241m*[39m [38;5;241m1.0225[39m))
+[0;32m---> 16[0m [43mplt[49m[38;5;241m.[39mshow()
+
+[0;31mNameError[0m: name 'plt' is not defined
+NameError: name 'plt' is not defined
 
