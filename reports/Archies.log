@@ -17,205 +17,49 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-def brightness( im_file ):
-    im = Image.open(im_file)
-    stat = Stat(im)
-    r,g,b = stat.mean
-    return math.sqrt(0.299*(r**2) + 0.587*(g**2) + 0.114*(b**2))
-
-onlyfiles = [f for f in listdir('./images/ArchibaldWinners') if isfile(join('./images/ArchibaldWinners', f))]
-
-# sort image files in decade dictionary
-images_df = pd.DataFrame(onlyfiles)
-images_df['year'] = images_df[0].apply(lambda x: int(x.split('_')[0]))
-images_df.loc[images_df[0] == '1990_SID78808M.jpg.641x900_q85.jpg','year'] = 1991
-images_df['decade'] = [ int(np.floor(int(year)/10) * 10) 
-                       for year in np.array(images_df["year"])]
-images_df['brightness'] = images_df[0].apply(lambda x: brightness('./images/ArchibaldWinners/' + x))
-
-# create figure
-fig = plt.figure(figsize=(14, 8))
-ax = plt.axes()
-
-peaks = images_df[images_df['year'].isin([1921,1930,1936,1942,1947,1956,
-                                          1965, 1966,1978,1989,
-                                          2001,2002,2006,2014,2015,2022])]
-
-ax.plot(images_df.sort_values('year')['year'],
-       images_df.sort_values('year')['brightness'])
-
-ax.plot(peaks.sort_values('year')['year'],
-        peaks.sort_values('year')['brightness'], "o", color='#1f77b4')
-
-# Draw image
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1936].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1926,136,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1942].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1935,163,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1956].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1948,165,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/'+ \
-                       images_df[images_df.year == 1966].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1961,165,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1989].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1982,199,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1978].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1970,195,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 2002].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1994,210,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 2014].iloc[0][0], format='jpg')
-axin = ax.inset_axes([2007,205,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1921].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1906,-30,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 2022].iloc[0][0], format='jpg')
-axin = ax.inset_axes([2021,40,15,65],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1930].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1922,-46.5,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1947].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1940,-35,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 1965].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1958,-30,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 2001].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1991,-20,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 2006].iloc[0][0], format='jpg')
-axin = ax.inset_axes([1999.5,-35,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-arr_image = plt.imread('./images/ArchibaldWinners/' + \
-                       images_df[images_df.year == 2015].iloc[0][0], format='jpg')
-axin = ax.inset_axes([2009.5,-35,15,55],transform=ax.transData)    # create new inset axes in data coordinates
-axin.imshow(arr_image)
-axin.axis('off')
-
-for tick in ax.xaxis.get_major_ticks(): tick.label1.set_fontsize(14)
-for tick in ax.yaxis.get_major_ticks(): tick.label1.set_fontsize(14)
-
-plt.title('Brightness over time, Archibald Winners', size=18)
-ax.set_ylim([-49.5, 280])
-ax.set_xlim([1905, 2035])
-plt.show()
-
-# from IPython.display import Image
-# Image(filename='images/Brightness_python.png')
+pd.crosstab(archies['Decade'],archies['Self'])
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mAttributeError[0m                            Traceback (most recent call last)
-Cell [0;32mIn [17], line 15[0m
-[1;32m     12[0m images_df[38;5;241m.[39mloc[images_df[[38;5;241m0[39m] [38;5;241m==[39m [38;5;124m'[39m[38;5;124m1990_SID78808M.jpg.641x900_q85.jpg[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124myear[39m[38;5;124m'[39m] [38;5;241m=[39m [38;5;241m1991[39m
-[1;32m     13[0m images_df[[38;5;124m'[39m[38;5;124mdecade[39m[38;5;124m'[39m] [38;5;241m=[39m [ [38;5;28mint[39m(np[38;5;241m.[39mfloor([38;5;28mint[39m(year)[38;5;241m/[39m[38;5;241m10[39m) [38;5;241m*[39m [38;5;241m10[39m) 
-[1;32m     14[0m                        [38;5;28;01mfor[39;00m year [38;5;129;01min[39;00m np[38;5;241m.[39marray(images_df[[38;5;124m"[39m[38;5;124myear[39m[38;5;124m"[39m])]
-[0;32m---> 15[0m images_df[[38;5;124m'[39m[38;5;124mbrightness[39m[38;5;124m'[39m] [38;5;241m=[39m [43mimages_df[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[38;5;241;43m.[39;49m[43mapply[49m[43m([49m[38;5;28;43;01mlambda[39;49;00m[43m [49m[43mx[49m[43m:[49m[43m [49m[43mbrightness[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m./images/ArchibaldWinners/[39;49m[38;5;124;43m'[39;49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[43mx[49m[43m)[49m[43m)[49m
-[1;32m     17[0m [38;5;66;03m# create figure[39;00m
-[1;32m     18[0m fig [38;5;241m=[39m plt[38;5;241m.[39mfigure(figsize[38;5;241m=[39m([38;5;241m14[39m, [38;5;241m8[39m))
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/indexes/base.py:3800[0m, in [0;36mIndex.get_loc[0;34m(self, key, method, tolerance)[0m
+[1;32m   3799[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 3800[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_engine[49m[38;5;241;43m.[39;49m[43mget_loc[49m[43m([49m[43mcasted_key[49m[43m)[49m
+[1;32m   3801[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
 
-File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/series.py:4774[0m, in [0;36mSeries.apply[0;34m(self, func, convert_dtype, args, **kwargs)[0m
-[1;32m   4664[0m [38;5;28;01mdef[39;00m [38;5;21mapply[39m(
-[1;32m   4665[0m     [38;5;28mself[39m,
-[1;32m   4666[0m     func: AggFuncType,
-[0;32m   (...)[0m
-[1;32m   4669[0m     [38;5;241m*[39m[38;5;241m*[39mkwargs,
-[1;32m   4670[0m ) [38;5;241m-[39m[38;5;241m>[39m DataFrame [38;5;241m|[39m Series:
-[1;32m   4671[0m     [38;5;124;03m"""[39;00m
-[1;32m   4672[0m [38;5;124;03m    Invoke function on values of Series.[39;00m
-[1;32m   4673[0m 
-[0;32m   (...)[0m
-[1;32m   4772[0m [38;5;124;03m    dtype: float64[39;00m
-[1;32m   4773[0m [38;5;124;03m    """[39;00m
-[0;32m-> 4774[0m     [38;5;28;01mreturn[39;00m [43mSeriesApply[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mfunc[49m[43m,[49m[43m [49m[43mconvert_dtype[49m[43m,[49m[43m [49m[43margs[49m[43m,[49m[43m [49m[43mkwargs[49m[43m)[49m[38;5;241;43m.[39;49m[43mapply[49m[43m([49m[43m)[49m
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/index.pyx:138[0m, in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
 
-File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/apply.py:1100[0m, in [0;36mSeriesApply.apply[0;34m(self)[0m
-[1;32m   1097[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mapply_str()
-[1;32m   1099[0m [38;5;66;03m# self.f is Callable[39;00m
-[0;32m-> 1100[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mapply_standard[49m[43m([49m[43m)[49m
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/index.pyx:165[0m, in [0;36mpandas._libs.index.IndexEngine.get_loc[0;34m()[0m
 
-File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/apply.py:1151[0m, in [0;36mSeriesApply.apply_standard[0;34m(self)[0m
-[1;32m   1149[0m     [38;5;28;01melse[39;00m:
-[1;32m   1150[0m         values [38;5;241m=[39m obj[38;5;241m.[39mastype([38;5;28mobject[39m)[38;5;241m.[39m_values
-[0;32m-> 1151[0m         mapped [38;5;241m=[39m [43mlib[49m[38;5;241;43m.[39;49m[43mmap_infer[49m[43m([49m
-[1;32m   1152[0m [43m            [49m[43mvalues[49m[43m,[49m
-[1;32m   1153[0m [43m            [49m[43mf[49m[43m,[49m
-[1;32m   1154[0m [43m            [49m[43mconvert[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mconvert_dtype[49m[43m,[49m
-[1;32m   1155[0m [43m        [49m[43m)[49m
-[1;32m   1157[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(mapped) [38;5;129;01mand[39;00m [38;5;28misinstance[39m(mapped[[38;5;241m0[39m], ABCSeries):
-[1;32m   1158[0m     [38;5;66;03m# GH#43986 Need to do list(mapped) in order to get treated as nested[39;00m
-[1;32m   1159[0m     [38;5;66;03m#  See also GH#25959 regarding EA support[39;00m
-[1;32m   1160[0m     [38;5;28;01mreturn[39;00m obj[38;5;241m.[39m_constructor_expanddim([38;5;28mlist[39m(mapped), index[38;5;241m=[39mobj[38;5;241m.[39mindex)
+File [0;32mpandas/_libs/hashtable_class_helper.pxi:5745[0m, in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
 
-File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/lib.pyx:2919[0m, in [0;36mpandas._libs.lib.map_infer[0;34m()[0m
+File [0;32mpandas/_libs/hashtable_class_helper.pxi:5753[0m, in [0;36mpandas._libs.hashtable.PyObjectHashTable.get_item[0;34m()[0m
 
-Cell [0;32mIn [17], line 15[0m, in [0;36m<lambda>[0;34m(x)[0m
-[1;32m     12[0m images_df[38;5;241m.[39mloc[images_df[[38;5;241m0[39m] [38;5;241m==[39m [38;5;124m'[39m[38;5;124m1990_SID78808M.jpg.641x900_q85.jpg[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124myear[39m[38;5;124m'[39m] [38;5;241m=[39m [38;5;241m1991[39m
-[1;32m     13[0m images_df[[38;5;124m'[39m[38;5;124mdecade[39m[38;5;124m'[39m] [38;5;241m=[39m [ [38;5;28mint[39m(np[38;5;241m.[39mfloor([38;5;28mint[39m(year)[38;5;241m/[39m[38;5;241m10[39m) [38;5;241m*[39m [38;5;241m10[39m) 
-[1;32m     14[0m                        [38;5;28;01mfor[39;00m year [38;5;129;01min[39;00m np[38;5;241m.[39marray(images_df[[38;5;124m"[39m[38;5;124myear[39m[38;5;124m"[39m])]
-[0;32m---> 15[0m images_df[[38;5;124m'[39m[38;5;124mbrightness[39m[38;5;124m'[39m] [38;5;241m=[39m images_df[[38;5;241m0[39m][38;5;241m.[39mapply([38;5;28;01mlambda[39;00m x: [43mbrightness[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43m./images/ArchibaldWinners/[39;49m[38;5;124;43m'[39;49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[43mx[49m[43m)[49m)
-[1;32m     17[0m [38;5;66;03m# create figure[39;00m
-[1;32m     18[0m fig [38;5;241m=[39m plt[38;5;241m.[39mfigure(figsize[38;5;241m=[39m([38;5;241m14[39m, [38;5;241m8[39m))
+[0;31mKeyError[0m: 'Self'
 
-Cell [0;32mIn [17], line 2[0m, in [0;36mbrightness[0;34m(im_file)[0m
-[1;32m      1[0m [38;5;28;01mdef[39;00m [38;5;21mbrightness[39m( im_file ):
-[0;32m----> 2[0m     im [38;5;241m=[39m [43mImage[49m[38;5;241;43m.[39;49m[43mopen[49m(im_file)
-[1;32m      3[0m     stat [38;5;241m=[39m Stat(im)
-[1;32m      4[0m     r,g,b [38;5;241m=[39m stat[38;5;241m.[39mmean
+The above exception was the direct cause of the following exception:
 
-[0;31mAttributeError[0m: type object 'Image' has no attribute 'open'
-AttributeError: type object 'Image' has no attribute 'open'
+[0;31mKeyError[0m                                  Traceback (most recent call last)
+Cell [0;32mIn [32], line 1[0m
+[0;32m----> 1[0m pd[38;5;241m.[39mcrosstab(archies[[38;5;124m'[39m[38;5;124mDecade[39m[38;5;124m'[39m],[43marchies[49m[43m[[49m[38;5;124;43m'[39;49m[38;5;124;43mSelf[39;49m[38;5;124;43m'[39;49m[43m][49m)
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/frame.py:3805[0m, in [0;36mDataFrame.__getitem__[0;34m(self, key)[0m
+[1;32m   3803[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mcolumns[38;5;241m.[39mnlevels [38;5;241m>[39m [38;5;241m1[39m:
+[1;32m   3804[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_getitem_multilevel(key)
+[0;32m-> 3805[0m indexer [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcolumns[49m[38;5;241;43m.[39;49m[43mget_loc[49m[43m([49m[43mkey[49m[43m)[49m
+[1;32m   3806[0m [38;5;28;01mif[39;00m is_integer(indexer):
+[1;32m   3807[0m     indexer [38;5;241m=[39m [indexer]
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/indexes/base.py:3802[0m, in [0;36mIndex.get_loc[0;34m(self, key, method, tolerance)[0m
+[1;32m   3800[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_engine[38;5;241m.[39mget_loc(casted_key)
+[1;32m   3801[0m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m err:
+[0;32m-> 3802[0m     [38;5;28;01mraise[39;00m [38;5;167;01mKeyError[39;00m(key) [38;5;28;01mfrom[39;00m [38;5;21;01merr[39;00m
+[1;32m   3803[0m [38;5;28;01mexcept[39;00m [38;5;167;01mTypeError[39;00m:
+[1;32m   3804[0m     [38;5;66;03m# If we have a listlike key, _check_indexing_error will raise[39;00m
+[1;32m   3805[0m     [38;5;66;03m#  InvalidIndexError. Otherwise we fall through and re-raise[39;00m
+[1;32m   3806[0m     [38;5;66;03m#  the TypeError.[39;00m
+[1;32m   3807[0m     [38;5;28mself[39m[38;5;241m.[39m_check_indexing_error(key)
+
+[0;31mKeyError[0m: 'Self'
+KeyError: 'Self'
 

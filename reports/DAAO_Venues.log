@@ -17,31 +17,145 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('QLD') | venues_checked['venue_name'].str.contains('Qld'), 'QLD', np.nan)
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('NT'), 'NT', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('ACT'), 'ACT', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('Sydney') | venues_checked['venue_name'].str.contains('NSW'), 'NSW', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains(' SA') | venues_checked['venue_name'].str.contains('South Australia'), 'SA', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('WA'), 'WA', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('VIC') | venues_checked['venue_name'].str.contains('Vic'),'VIC', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('Tas') | venues_checked['venue_name'].str.contains('TAS'),'TAS', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('USA'), 'USA', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('China'), 'China', venues_checked['State'])
-venues_checked['State'] = np.where(venues_checked['venue_name'].str.contains('Griffith'), 'QLD', venues_checked['State'])
+def temporal_dendos(startdt=1900, enddt=1920, cut_input=3, model=None):
+    df_period = clean_data_v2[(clean_data_v2['start_year'] >= startdt) & (clean_data_v2['start_year'] <= enddt)]
+    # df_period = clean_data_v2[(clean_data_v2['decade_start'] >= startdt) & (clean_data_v2['decade_start'] <= enddt)]
+    ### pre-process for NLP
+    # Load the documents and their corresponding categorical variables into a Pandas dataframe
+    df_period = pd.DataFrame({'text': df_period['slug2'], 'category': df_period['address_prompt']})
 
-# create bar plot
-ax = venues_checked['State'].value_counts().plot(kind='bar', figsize=(10, 6), rot=0) # rotate x-labels
-for p in ax.patches: ax.annotate(str(round(p.get_height()/len(venues_checked), 2)), (p.get_x() + 0.05, p.get_height() * 1.0225))
-plt.show()
+    # summarise text for each unique place name
+    df_period['text'] = df_period.groupby('category')['text'].transform(lambda x: ' '.join(x))
+
+    #add new column with count for each category
+    df_period['cat_count'] = df_period.groupby('category')['category'].transform('count')
+    df_period.drop_duplicates(inplace=True)
+
+    # Clean the text
+    stop_words = set(stopwords.words('english'))
+    df_period = df_period[df_period['text'].notnull()]
+    df_period['clean_text'] = df_period['text'].apply(clean_text)
+
+    if model is None:
+        # randomly sample 512 tokens from each row in df['clean_text']
+        # some strings are smalle than 512
+        df_period['clean_text_sampled'] = df_period['clean_text'].apply(lambda x: ' '.join(random.sample(x.split(' '), 275)) if len(x.split(' ')) >= 275 else x)
+        X_bert_period = df_period['clean_text_sampled'].apply(lambda x: pd.Series(bert_encode([str(x)])[0]))
+
+        # setting distance_threshold=0 ensures we compute the full tree.
+        model_bert_period = AgglomerativeClustering(distance_threshold=0, n_clusters=None)
+        model_bert_period = model_bert_period.fit(np.array(X_bert_period))
+
+        # save model as pickle
+        pickle.dump(model_bert_period, open(f'models2/model_bert_{startdt}_{enddt}.pkl', 'wb'))
+    else:
+        model_bert_period = pickle.load(open(f'models2/model_bert_{startdt}_{enddt}.pkl', 'rb'))
+
+    ### generate dendrogram
+    cut = cut_input
+    l_matrix = get_linkage_matrix(model_bert_period)
+    df_period['cluster'] = fcluster(l_matrix, cut, criterion='maxclust')
+    dendrogram(l_matrix, orientation='top', truncate_mode="lastp", p=cut, show_leaf_counts=True)
+
+    all_words = []
+
+    for i in df_period['cluster'].unique():
+        cluster_docs = df_period[df_period['cluster'] == i]
+        # print(i, get_most_common_word(cluster_docs['clean_text']))
+
+        annot = "\n".join(i[0] for idx,i in enumerate(get_most_common_word(cluster_docs['clean_text'])) if (idx < 3))
+        
+        plt.annotate(annot, xy=(i/df_period['cluster'].nunique()-0.1, 0.15), 
+                    xytext=(i/df_period['cluster'].nunique()-0.1, 0.15), 
+                    xycoords='axes fraction', fontsize=9, color='red')
+
+        [all_words.append(i[0]) for idx,i in enumerate(get_most_common_word(cluster_docs['clean_text']))]
+        
+    all_words_to_remove = find_duplicates(all_words, occurences=2)
+    all_words_to_remove.extend(['j','th','nd','exhibitionexhibited','http','www','isbn'])
+
+    for i in df_period['cluster'].unique():
+        cluster_docs = df_period[df_period['cluster'] == i]
+        # print(i, get_most_common_word(cluster_docs['clean_text']))
+        annot = "\n".join(i[0] for idx,i in enumerate(get_most_common_word(cluster_docs['clean_text'],
+                                                                        more_words=all_words_to_remove)) if (idx < 5))
+        
+        plt.annotate(annot, xy=(i/df_period['cluster'].nunique()-0.1, 0.025), 
+                    xytext=(i/df_period['cluster'].nunique()-0.1, 0.025), 
+                    xycoords='axes fraction', fontsize=9)
+        
+        annot2 = cluster_docs.sort_values('cat_count', ascending=False)['category'].values[0:3]
+        annot2 = '\n\n'.join(['\n'.join(wrap(line, 18)) for line in [i.split(',')[0] for i in annot2]])
+        # annot2 = '\n'.join(wrap(annot2, 18)) # breaks strings into new lines
+
+        plt.annotate(annot2, xy=(i/df_period['cluster'].nunique()-0.115, -0.24), 
+                    xytext=(i/df_period['cluster'].nunique()-0.115, -0.24), 
+                    xycoords='axes fraction', fontsize=9)
+
+    plt.title(f"Hierarchical Clustering Dendrogram - BERT - {startdt}-{enddt}")
+
+    # make figure bigger
+    fig = plt.gcf()
+    fig.set_size_inches(14, 10)
+    plt.show()
+
+    df_period_model_bert = df_period.merge(clean_data_v2[['venue_name','venue_category_major','venue_category_minor','still_exists','State']], 
+                            left_on='category', right_on='venue_name', how='left').drop_duplicates()
+    # display data
+    show(df_period_model_bert.drop(['venue_name','clean_text','text'],axis=1), scrollY="400px", scrollCollapse=True, scrollX=True,
+        paging=False, showIndex=False, column_filters="footer", dom="tpr")
+
+    print('\n')
+    return df_period
+
+# # use this configuration for first time runnning
+# # this will create a pickle for each time period
+# df_65_70 = temporal_dendos(1965, 1970, cut_input=5, model=None)
+# df_70_75 = temporal_dendos(1970, 1975, cut_input=5, model=None)
+# df_75_80 = temporal_dendos(1975, 1980, cut_input=5, model=None)
+# df_80_85 = temporal_dendos(1980, 1985, cut_input=5, model=None)
+# df_85_90 = temporal_dendos(1985, 1990, cut_input=5, model=None)
+# df_90_95 = temporal_dendos(1990, 1995, cut_input=5, model=None)
+# df_95_00 = temporal_dendos(1995, 2000, cut_input=5, model=None)
+# df_00_05 = temporal_dendos(2000, 2005, cut_input=5, model=None)
+# df_05_10 = temporal_dendos(2005, 2010, cut_input=5, model=None)
+
+# use this configuration for subsequent runs
+# this will load the pickle for each time period
+df_65_70 = temporal_dendos(1965, 1970, cut_input=5, model=0)
+df_70_75 = temporal_dendos(1970, 1975, cut_input=5, model=0)
+df_75_80 = temporal_dendos(1975, 1980, cut_input=5, model=0)
+df_80_85 = temporal_dendos(1980, 1985, cut_input=5, model=0)
+df_85_90 = temporal_dendos(1985, 1990, cut_input=5, model=0)
+df_90_95 = temporal_dendos(1990, 1995, cut_input=5, model=0)
+df_95_00 = temporal_dendos(1995, 2000, cut_input=5, model=0)
+df_00_05 = temporal_dendos(2000, 2005, cut_input=5, model=0)
+df_05_10 = temporal_dendos(2005, 2010, cut_input=5, model=0)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn [13], line 16[0m
-[1;32m     14[0m ax [38;5;241m=[39m venues_checked[[38;5;124m'[39m[38;5;124mState[39m[38;5;124m'[39m][38;5;241m.[39mvalue_counts()[38;5;241m.[39mplot(kind[38;5;241m=[39m[38;5;124m'[39m[38;5;124mbar[39m[38;5;124m'[39m, figsize[38;5;241m=[39m([38;5;241m10[39m, [38;5;241m6[39m), rot[38;5;241m=[39m[38;5;241m0[39m) [38;5;66;03m# rotate x-labels[39;00m
-[1;32m     15[0m [38;5;28;01mfor[39;00m p [38;5;129;01min[39;00m ax[38;5;241m.[39mpatches: ax[38;5;241m.[39mannotate([38;5;28mstr[39m([38;5;28mround[39m(p[38;5;241m.[39mget_height()[38;5;241m/[39m[38;5;28mlen[39m(venues_checked), [38;5;241m2[39m)), (p[38;5;241m.[39mget_x() [38;5;241m+[39m [38;5;241m0.05[39m, p[38;5;241m.[39mget_height() [38;5;241m*[39m [38;5;241m1.0225[39m))
-[0;32m---> 16[0m [43mplt[49m[38;5;241m.[39mshow()
+Cell [0;32mIn [25], line 106[0m
+[1;32m     90[0m     [38;5;28;01mreturn[39;00m df_period
+[1;32m     92[0m [38;5;66;03m# # use this configuration for first time runnning[39;00m
+[1;32m     93[0m [38;5;66;03m# # this will create a pickle for each time period[39;00m
+[1;32m     94[0m [38;5;66;03m# df_65_70 = temporal_dendos(1965, 1970, cut_input=5, model=None)[39;00m
+[0;32m   (...)[0m
+[1;32m    104[0m [38;5;66;03m# use this configuration for subsequent runs[39;00m
+[1;32m    105[0m [38;5;66;03m# this will load the pickle for each time period[39;00m
+[0;32m--> 106[0m df_65_70 [38;5;241m=[39m [43mtemporal_dendos[49m[43m([49m[38;5;241;43m1965[39;49m[43m,[49m[43m [49m[38;5;241;43m1970[39;49m[43m,[49m[43m [49m[43mcut_input[49m[38;5;241;43m=[39;49m[38;5;241;43m5[39;49m[43m,[49m[43m [49m[43mmodel[49m[38;5;241;43m=[39;49m[38;5;241;43m0[39;49m[43m)[49m
+[1;32m    107[0m df_70_75 [38;5;241m=[39m temporal_dendos([38;5;241m1970[39m, [38;5;241m1975[39m, cut_input[38;5;241m=[39m[38;5;241m5[39m, model[38;5;241m=[39m[38;5;241m0[39m)
+[1;32m    108[0m df_75_80 [38;5;241m=[39m temporal_dendos([38;5;241m1975[39m, [38;5;241m1980[39m, cut_input[38;5;241m=[39m[38;5;241m5[39m, model[38;5;241m=[39m[38;5;241m0[39m)
 
-[0;31mNameError[0m: name 'plt' is not defined
-NameError: name 'plt' is not defined
+Cell [0;32mIn [25], line 55[0m, in [0;36mtemporal_dendos[0;34m(startdt, enddt, cut_input, model)[0m
+[1;32m     49[0m     plt[38;5;241m.[39mannotate(annot, xy[38;5;241m=[39m(i[38;5;241m/[39mdf_period[[38;5;124m'[39m[38;5;124mcluster[39m[38;5;124m'[39m][38;5;241m.[39mnunique()[38;5;241m-[39m[38;5;241m0.1[39m, [38;5;241m0.15[39m), 
+[1;32m     50[0m                 xytext[38;5;241m=[39m(i[38;5;241m/[39mdf_period[[38;5;124m'[39m[38;5;124mcluster[39m[38;5;124m'[39m][38;5;241m.[39mnunique()[38;5;241m-[39m[38;5;241m0.1[39m, [38;5;241m0.15[39m), 
+[1;32m     51[0m                 xycoords[38;5;241m=[39m[38;5;124m'[39m[38;5;124maxes fraction[39m[38;5;124m'[39m, fontsize[38;5;241m=[39m[38;5;241m9[39m, color[38;5;241m=[39m[38;5;124m'[39m[38;5;124mred[39m[38;5;124m'[39m)
+[1;32m     53[0m     [all_words[38;5;241m.[39mappend(i[[38;5;241m0[39m]) [38;5;28;01mfor[39;00m idx,i [38;5;129;01min[39;00m [38;5;28menumerate[39m(get_most_common_word(cluster_docs[[38;5;124m'[39m[38;5;124mclean_text[39m[38;5;124m'[39m]))]
+[0;32m---> 55[0m all_words_to_remove [38;5;241m=[39m [43mfind_duplicates[49m(all_words, occurences[38;5;241m=[39m[38;5;241m2[39m)
+[1;32m     56[0m all_words_to_remove[38;5;241m.[39mextend([[38;5;124m'[39m[38;5;124mj[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mth[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mnd[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mexhibitionexhibited[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mhttp[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mwww[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124misbn[39m[38;5;124m'[39m])
+[1;32m     58[0m [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m df_period[[38;5;124m'[39m[38;5;124mcluster[39m[38;5;124m'[39m][38;5;241m.[39munique():
+
+[0;31mNameError[0m: name 'find_duplicates' is not defined
+NameError: name 'find_duplicates' is not defined
 
