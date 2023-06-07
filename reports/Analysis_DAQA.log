@@ -1,0 +1,208 @@
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+print('###################### PROJECTS ######################')
+
+# load data
+daqa_work = pd.read_csv('data/daqa_work.csv')
+
+print('\nQ: How many projects are recorded in DAQA?')
+count_projects = len(daqa_work)
+print(f'A: There are {count_projects} projects in DAQA.')
+
+# we define a project with an address as one that has a populated "address" field
+print('\nQ: what % of projects have addresses?')
+count_projects_with_address = len(daqa_work[daqa_work.coverage_range.apply(lambda x: "address" in x)])
+prop_projects_with_address = round((count_projects_with_address / count_projects) * 100, 2)
+print(f'A: {prop_projects_with_address}% ({count_projects_with_address}) of DAQA projects have addresses.')
+
+# we define a project with a geocode date as one that has a populated "longitude" field
+print('\nQ: what % of projects have geocodes (lat/long)?')
+count_projects_with_geocodes = len(daqa_work[daqa_work.coverage_range.apply(lambda x: "latitude" in x)])
+prop_projects_with_geocodes = round((count_projects_with_geocodes / count_projects) * 100, 2)
+print(f'A: {prop_projects_with_geocodes}% ({count_projects_with_geocodes}) of DAQA projects have geocodes.')
+
+# we define a project with a completion date as one that has a populated "completion year" field
+print('\nQ: what % of projects have completion dates?')
+count_projects_with_completion_dates = len(daqa_work[daqa_work.coverage_range.apply(lambda x: "date_end" in x)])
+prop_projects_with_completion_dates = round((count_projects_with_completion_dates / count_projects) * 100, 2)
+print(f'A: {prop_projects_with_completion_dates}% ({count_projects_with_completion_dates}) of DAQA projects have completion dates.')
+
+# we conduct a sanity check to see if related people in daqa_work are all architects, we find no non-architects
+# # load data
+# daqa_persons = pd.read_csv('data/daqa_persons.csv')
+# non_architects = daqa_persons[daqa_persons['longterm_roles'].str.contains('non-architect')]['ori_id'].unique()
+# len(daqa_work[daqa_work.related_people.apply(lambda x: pd.json_normalize(eval(x))['subject.ori_id'].values[0] in non_architects if isinstance(x, str) else False)])
+
+# we conduct a sanity check to see if related organisations in daqa_work are all firms, we find no non-firms
+# count_related_organizations_firms = len(daqa_work[daqa_work.related_organizations.apply(lambda x: "firm" in x if isinstance(x, str) else False)])
+# count_related_organizations = len(daqa_work[daqa_work.related_organizations.notnull()])
+# count_related_organizations_firms == count_related_organizations
+
+# we define a project with an associated firm as one that has a populated "related_organizations" field
+print('\nQ: how many projects have associated firms?')
+count_projects_with_firms = len(daqa_work[daqa_work.related_organizations.notnull()])
+prop_projects_with_firms = round((count_projects_with_firms / count_projects) * 100, 2)
+print(f'A: {prop_projects_with_firms}% ({count_projects_with_firms}) of DAQA projects have associated firms.')
+
+# we define a project with no associated architects as one that has no populated "related_people" field
+print('\nQ: what % of projects have associated firms but no architects?')
+count_projects_with_firms_no_architects = len(daqa_work[(daqa_work.related_organizations.notnull()) &\
+                                                        (daqa_work.related_people.isnull())])
+prop_projects_with_firms_no_architects = round((count_projects_with_firms_no_architects / count_projects) * 100, 2)
+print(f'A: {prop_projects_with_firms_no_architects}% ({count_projects_with_firms_no_architects}) of DAQA projects have associated firms but no architects.')
+
+# we define a project with an associated architect as one that has a populated "related_people" field
+print('\nQ: how many projects have associated architects?')
+count_projects_with_architects = len(daqa_work[daqa_work.related_people.notnull()])
+prop_projects_with_architects = round((count_projects_with_architects / count_projects) * 100, 2)
+print(f'A: {prop_projects_with_architects}% ({count_projects_with_architects}) of DAQA projects have associated architects.')
+
+# we define a project with an associated architects as one that has a populated "related people" field
+# and we define a project with no associated firms as one that has a no populated "related organizations" field
+print('\nQ: what % of projects have associated architects but no firms?')
+count_projects_with_architects_no_firms = len(daqa_work[(daqa_work.related_organizations.isnull()) &\
+                                                        (daqa_work.related_people.notnull())])
+prop_projects_with_architects_no_firms = round((count_projects_with_architects_no_firms / count_projects) * 100, 2)
+print(f'A: {prop_projects_with_architects_no_firms}% ({count_projects_with_architects_no_firms}) of DAQA projects have associated architects but no firms.')
+
+print('\n###################### FIRMS ######################')
+
+# load data
+daqa_orgs = pd.read_csv('data/daqa_orgs.csv')
+daqa_firms = daqa_orgs[daqa_orgs['_class_ori'].str.contains('firm')].copy()
+
+print('\nQ: How many firms are recorded in DAQA?')
+count_firms = len(daqa_firms)
+print(f'A: There are {count_firms} firms in DAQA.')
+
+# we define an operating firm as an organisation that has a populated "operation" field with a start date
+print('\nQ: what % of firms have ‘operating years’ recorded (just start)?')
+count_firms_with_operating_start = len(daqa_firms[daqa_firms.operation.apply(lambda x: "date_start" in x if isinstance(x, str) else False)])
+prop_firms_with_operating_start = round((count_firms_with_operating_start / count_firms) * 100, 2)
+print(f'A: {prop_firms_with_operating_start}% ({count_firms_with_operating_start}) of DAQA firms have operating years recorded.')
+
+# we define an operating firm as an organisation that has a populated "operation" field with start and end dates
+print('\nQ: what % of firms have ‘operating years’ recorded (start and end)?')
+count_firms_with_operating_years = len(daqa_firms[daqa_firms.operation.apply(lambda x: ("date_start" in x) & ("date_end" in x) if isinstance(x, str) else False)])
+prop_firms_with_operating_years = round((count_firms_with_operating_years / count_firms) * 100, 2)
+print(f'A: {prop_firms_with_operating_years}% ({count_firms_with_operating_years}) of DAQA firms have operating years recorded.')
+
+# top 5 firms - longest timespan 
+daqa_firms_with_op_yrs = daqa_firms[daqa_firms.operation.apply(lambda x: "date_start" in x if isinstance(x, str) else False)]
+
+# extract the start and end years from the "operation" field
+start_dates = []; end_dates = []
+
+for index, row in daqa_firms_with_op_yrs.iterrows():
+    start_dates.append(int(pd.json_normalize(ast.literal_eval(row['operation']))['date_start.year'].values[0]))
+
+    try: end_dates.append(int(pd.json_normalize(ast.literal_eval(row['operation']))['date_end.year'].values[0]))
+    except: end_dates.append(None)
+
+daqa_firms_with_op_yrs['start_yr'] = start_dates
+daqa_firms_with_op_yrs['end_yr'] = end_dates
+daqa_firms_with_op_yrs['diff'] = abs(daqa_firms_with_op_yrs['end_yr'] - daqa_firms_with_op_yrs['start_yr'])
+
+print('\nQ: What are the top five firms with the longest timespan with the same name? (must have operating start and end years)')
+display(daqa_firms_with_op_yrs.sort_values(by='diff', ascending=False)\
+    .head(5)[['primary_name', 'start_yr', 'end_yr', 'diff']])
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Cell [0;32mIn [2], line 4[0m
+[1;32m      1[0m [38;5;28mprint[39m([38;5;124m'[39m[38;5;124m###################### PROJECTS ######################[39m[38;5;124m'[39m)
+[1;32m      3[0m [38;5;66;03m# load data[39;00m
+[0;32m----> 4[0m daqa_work [38;5;241m=[39m [43mpd[49m[38;5;241;43m.[39;49m[43mread_csv[49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43mdata/daqa_work.csv[39;49m[38;5;124;43m'[39;49m[43m)[49m
+[1;32m      6[0m [38;5;28mprint[39m([38;5;124m'[39m[38;5;130;01m\n[39;00m[38;5;124mQ: How many projects are recorded in DAQA?[39m[38;5;124m'[39m)
+[1;32m      7[0m count_projects [38;5;241m=[39m [38;5;28mlen[39m(daqa_work)
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/util/_decorators.py:211[0m, in [0;36mdeprecate_kwarg.<locals>._deprecate_kwarg.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    209[0m     [38;5;28;01melse[39;00m:
+[1;32m    210[0m         kwargs[new_arg_name] [38;5;241m=[39m new_arg_value
+[0;32m--> 211[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/util/_decorators.py:317[0m, in [0;36mdeprecate_nonkeyword_arguments.<locals>.decorate.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    311[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(args) [38;5;241m>[39m num_allow_args:
+[1;32m    312[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    313[0m         msg[38;5;241m.[39mformat(arguments[38;5;241m=[39marguments),
+[1;32m    314[0m         [38;5;167;01mFutureWarning[39;00m,
+[1;32m    315[0m         stacklevel[38;5;241m=[39mfind_stack_level(inspect[38;5;241m.[39mcurrentframe()),
+[1;32m    316[0m     )
+[0;32m--> 317[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:950[0m, in [0;36mread_csv[0;34m(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)[0m
+[1;32m    935[0m kwds_defaults [38;5;241m=[39m _refine_defaults_read(
+[1;32m    936[0m     dialect,
+[1;32m    937[0m     delimiter,
+[0;32m   (...)[0m
+[1;32m    946[0m     defaults[38;5;241m=[39m{[38;5;124m"[39m[38;5;124mdelimiter[39m[38;5;124m"[39m: [38;5;124m"[39m[38;5;124m,[39m[38;5;124m"[39m},
+[1;32m    947[0m )
+[1;32m    948[0m kwds[38;5;241m.[39mupdate(kwds_defaults)
+[0;32m--> 950[0m [38;5;28;01mreturn[39;00m [43m_read[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[43mkwds[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:605[0m, in [0;36m_read[0;34m(filepath_or_buffer, kwds)[0m
+[1;32m    602[0m _validate_names(kwds[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mnames[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m))
+[1;32m    604[0m [38;5;66;03m# Create the parser.[39;00m
+[0;32m--> 605[0m parser [38;5;241m=[39m [43mTextFileReader[49m[43m([49m[43mfilepath_or_buffer[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwds[49m[43m)[49m
+[1;32m    607[0m [38;5;28;01mif[39;00m chunksize [38;5;129;01mor[39;00m iterator:
+[1;32m    608[0m     [38;5;28;01mreturn[39;00m parser
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1442[0m, in [0;36mTextFileReader.__init__[0;34m(self, f, engine, **kwds)[0m
+[1;32m   1439[0m     [38;5;28mself[39m[38;5;241m.[39moptions[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m] [38;5;241m=[39m kwds[[38;5;124m"[39m[38;5;124mhas_index_names[39m[38;5;124m"[39m]
+[1;32m   1441[0m [38;5;28mself[39m[38;5;241m.[39mhandles: IOHandles [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[0;32m-> 1442[0m [38;5;28mself[39m[38;5;241m.[39m_engine [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_engine[49m[43m([49m[43mf[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mengine[49m[43m)[49m
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1729[0m, in [0;36mTextFileReader._make_engine[0;34m(self, f, engine)[0m
+[1;32m   1727[0m     is_text [38;5;241m=[39m [38;5;28;01mFalse[39;00m
+[1;32m   1728[0m     mode [38;5;241m=[39m [38;5;124m"[39m[38;5;124mrb[39m[38;5;124m"[39m
+[0;32m-> 1729[0m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;241m=[39m [43mget_handle[49m[43m([49m
+[1;32m   1730[0m [43m    [49m[43mf[49m[43m,[49m
+[1;32m   1731[0m [43m    [49m[43mmode[49m[43m,[49m
+[1;32m   1732[0m [43m    [49m[43mencoding[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1733[0m [43m    [49m[43mcompression[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mcompression[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1734[0m [43m    [49m[43mmemory_map[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mmemory_map[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1735[0m [43m    [49m[43mis_text[49m[38;5;241;43m=[39;49m[43mis_text[49m[43m,[49m
+[1;32m   1736[0m [43m    [49m[43merrors[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mencoding_errors[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mstrict[39;49m[38;5;124;43m"[39;49m[43m)[49m[43m,[49m
+[1;32m   1737[0m [43m    [49m[43mstorage_options[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43moptions[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mstorage_options[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m[43m,[49m
+[1;32m   1738[0m [43m[49m[43m)[49m
+[1;32m   1739[0m [38;5;28;01massert[39;00m [38;5;28mself[39m[38;5;241m.[39mhandles [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[1;32m   1740[0m f [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mhandles[38;5;241m.[39mhandle
+
+File [0;32m/opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/io/common.py:857[0m, in [0;36mget_handle[0;34m(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)[0m
+[1;32m    852[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(handle, [38;5;28mstr[39m):
+[1;32m    853[0m     [38;5;66;03m# Check whether the filename is to be opened in binary mode.[39;00m
+[1;32m    854[0m     [38;5;66;03m# Binary mode does not support 'encoding' and 'newline'.[39;00m
+[1;32m    855[0m     [38;5;28;01mif[39;00m ioargs[38;5;241m.[39mencoding [38;5;129;01mand[39;00m [38;5;124m"[39m[38;5;124mb[39m[38;5;124m"[39m [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m ioargs[38;5;241m.[39mmode:
+[1;32m    856[0m         [38;5;66;03m# Encoding[39;00m
+[0;32m--> 857[0m         handle [38;5;241m=[39m [38;5;28;43mopen[39;49m[43m([49m
+[1;32m    858[0m [43m            [49m[43mhandle[49m[43m,[49m
+[1;32m    859[0m [43m            [49m[43mioargs[49m[38;5;241;43m.[39;49m[43mmode[49m[43m,[49m
+[1;32m    860[0m [43m            [49m[43mencoding[49m[38;5;241;43m=[39;49m[43mioargs[49m[38;5;241;43m.[39;49m[43mencoding[49m[43m,[49m
+[1;32m    861[0m [43m            [49m[43merrors[49m[38;5;241;43m=[39;49m[43merrors[49m[43m,[49m
+[1;32m    862[0m [43m            [49m[43mnewline[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    863[0m [43m        [49m[43m)[49m
+[1;32m    864[0m     [38;5;28;01melse[39;00m:
+[1;32m    865[0m         [38;5;66;03m# Binary mode[39;00m
+[1;32m    866[0m         handle [38;5;241m=[39m [38;5;28mopen[39m(handle, ioargs[38;5;241m.[39mmode)
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'data/daqa_work.csv'
+FileNotFoundError: [Errno 2] No such file or directory: 'data/daqa_work.csv'
+

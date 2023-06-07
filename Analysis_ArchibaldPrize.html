@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Archibald Prize</title>
+    <title>Quantifying success: A journey into the Archibald Prize</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Circus Oz Analysis" href="Analysis_CircusOz.html" />
+    <link rel="next" title="Beyond the Big Top: Exploring career trajectories at Circus Oz" href="Analysis_CircusOz.html" />
     <link rel="prev" title="Introduction" href="Analysis_Introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -213,12 +213,12 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Archibald Prize
+   Quantifying success: A journey into the Archibald Prize
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Analysis_CircusOz.html">
-   Circus Oz Analysis
+   Beyond the Big Top: Exploring career trajectories at Circus Oz
   </a>
  </li>
  <li class="toctree-l1">
@@ -228,12 +228,17 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Analysis_DAAOVenues.html">
-   DAAO venues and organisations
+   Natural language processing with DAAO
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAQA.html">
-   DAQA Analysis
+  <a class="reference internal" href="Analysis_DAQA_Part1.html">
+   DAQA: Preliminary analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Analysis_DAQA_Part2.html">
+   DAQA: Extended analysis
   </a>
  </li>
 </ul>
@@ -476,7 +481,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Archibald Prize</h1>
+                <h1>Quantifying success: A journey into the Archibald Prize</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -621,8 +626,8 @@
             
               <div>
                 
-  <div class="section" id="archibald-prize">
-<h1>Archibald Prize<a class="headerlink" href="#archibald-prize" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="quantifying-success-a-journey-into-the-archibald-prize">
+<h1>Quantifying success: A journey into the Archibald Prize<a class="headerlink" href="#quantifying-success-a-journey-into-the-archibald-prize" title="Permalink to this headline">¶</a></h1>
 <style>
   a {
     color: #1ea5a6 !important;
@@ -633,7 +638,7 @@
 <ul class="simple">
 <li><p>participation records</p></li>
 <li><p>prize money records</p></li>
-<li><p>image data of winning potraits</p></li>
+<li><p>image data of winning portraits</p></li>
 <li><p>basic biographical data for winners</p></li>
 </ul>
 <p>The analytical work presented on this page served as the initial exploratory data analysis for a <a class="reference external" href="https://www.theguardian.com/artanddesign/2023/may/05/how-to-win-the-archibald-prize-what-100-years-of-data-tells-us">Guardian article</a> published in May 2023.</p>
@@ -847,7 +852,7 @@
 }
 </style>
 <div class="itables">
-<table id="eebc543d-32e7-43ae-90d4-f3cc7dc1a852" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<table id="bce94f3f-3f03-4b4b-b9e6-d4975ae6d52f" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       
       <th>YEAR</th>
@@ -898,7 +903,7 @@
 
     $(document).ready(function () {
         // Setup - add a text input to each header or footer cell
-$('#eebc543d-32e7-43ae-90d4-f3cc7dc1a852 tfoot th').each(function () {
+$('#bce94f3f-3f03-4b4b-b9e6-d4975ae6d52f tfoot th').each(function () {
     let title = $(this).text();
     $(this).html('<input type="text" placeholder="Search ' +
         // We use encodeURI to avoid this LGTM error:
@@ -907,7 +912,7 @@ $('#eebc543d-32e7-43ae-90d4-f3cc7dc1a852 tfoot th').each(function () {
         '" />');
 });
 
-        $('#eebc543d-32e7-43ae-90d4-f3cc7dc1a852').DataTable(dt_args);
+        $('#bce94f3f-3f03-4b4b-b9e6-d4975ae6d52f').DataTable(dt_args);
     });
 </script>
 </div>
@@ -1758,7 +1763,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 }
 </style>
 <div class="itables">
-<table id="b78fda0b-4938-4e47-b30b-690455279389" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<table id="6919fd35-66d1-4a6f-b5d5-5a19a794a92e" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       
       <th>c_code</th>
@@ -1799,7 +1804,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 
     $(document).ready(function () {
         // Setup - add a text input to each header or footer cell
-$('#b78fda0b-4938-4e47-b30b-690455279389 tfoot th').each(function () {
+$('#6919fd35-66d1-4a6f-b5d5-5a19a794a92e tfoot th').each(function () {
     let title = $(this).text();
     $(this).html('<input type="text" placeholder="Search ' +
         // We use encodeURI to avoid this LGTM error:
@@ -1808,7 +1813,7 @@ $('#b78fda0b-4938-4e47-b30b-690455279389 tfoot th').each(function () {
         '" />');
 });
 
-        $('#b78fda0b-4938-4e47-b30b-690455279389').DataTable(dt_args);
+        $('#6919fd35-66d1-4a6f-b5d5-5a19a794a92e').DataTable(dt_args);
     });
 </script>
 </div>
@@ -3078,7 +3083,7 @@ Name: ANZSCO_1, dtype: float64
     <a class='right-next' id="next-link" href="Analysis_CircusOz.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Circus Oz Analysis</p>
+        <p class="prev-next-title">Beyond the Big Top: Exploring career trajectories at Circus Oz</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

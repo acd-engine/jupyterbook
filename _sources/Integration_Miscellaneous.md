@@ -28,7 +28,10 @@ In addition to current data sources, we found many other interesting Australian/
 
 1. [Archibald, Wynne and Sulman Prizes | Art Gallery of NSW](https://www.artgallery.nsw.gov.au/art/prizes/)
    
-   This is a collection of art prize data from the Art Gallery of NSW. It contains information about the artists, artworks and judges of the prizes. This data collection could add more value to `recognition` level in the ACDEA.
+   This is a collection of art prize data from the Art Gallery of NSW. It contains information about the artists, artworks and judges of the prizes. This data collection could add more value to `recognition` level in the ACDEA. 
+   <br>
+   <br>
+   We provide an example of how to use Archibald Prize data for analytical purposes in the **Data Analysis** chapter of this book. Refer to [**Quantifying success: A journey into the Archibald Prize**](https://acd-engine.github.io/jupyterbook/Analysis_ArchibaldPrize.html).
    <br>
    <br>
 

@@ -213,12 +213,12 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Analysis_ArchibaldPrize.html">
-   Archibald Prize
+   Quantifying success: A journey into the Archibald Prize
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Analysis_CircusOz.html">
-   Circus Oz Analysis
+   Beyond the Big Top: Exploring career trajectories at Circus Oz
   </a>
  </li>
  <li class="toctree-l1">
@@ -228,12 +228,17 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="Analysis_DAAOVenues.html">
-   DAAO venues and organisations
+   Natural language processing with DAAO
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAQA.html">
-   DAQA Analysis
+  <a class="reference internal" href="Analysis_DAQA_Part1.html">
+   DAQA: Preliminary analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Analysis_DAQA_Part2.html">
+   DAQA: Extended analysis
   </a>
  </li>
 </ul>
@@ -368,10 +373,10 @@
 <td><p>A MongoDB database <code class="docutils literal notranslate"><span class="pre">acd_engine</span></code> that consists of 7 collections, including <code class="docutils literal notranslate"><span class="pre">event</span></code>, <code class="docutils literal notranslate"><span class="pre">organisation</span></code>, <code class="docutils literal notranslate"><span class="pre">person</span></code>, <code class="docutils literal notranslate"><span class="pre">place</span></code>, <code class="docutils literal notranslate"><span class="pre">recognition</span></code>, <code class="docutils literal notranslate"><span class="pre">relationship</span></code>, <code class="docutils literal notranslate"><span class="pre">resource</span></code>, <code class="docutils literal notranslate"><span class="pre">work</span></code>. This type of data is intended primarily for development purposes.</p></td>
 </tr>
 <tr class="row-odd"><td><p>CSV</p></td>
-<td><p>Each CSV file corresponds to a specific level in ACDEA and contains data organised according to the attributes of that level. The columns of the CSV file represent the first-level attributes of the corresponding level.</p></td>
+<td><p>Each <code class="docutils literal notranslate"><span class="pre">csv</span></code> file corresponds to a specific level in ACDEA and contains data organised according to the attributes of that level. The columns of the <code class="docutils literal notranslate"><span class="pre">csv</span></code> file represent the first-level attributes of the corresponding level. <br><br> Throughout the <strong>Data Analysis</strong> section of the book, we provide guidance on how on to download <code class="docutils literal notranslate"><span class="pre">csv</span></code> files directly from GoogleDrive using python. Alternatively, you can manually download these unified datasets from the <a class="reference external" href="https://drive.google.com/drive/folders/1_nL5O0wMmkmVC79DbQojvQB14-kpDgWQ?usp=drive_link">ACDE Google Drive repository</a>.</p></td>
 </tr>
 <tr class="row-even"><td><p>JSONL</p></td>
-<td><p>JSONL is a format that stores data records as individual JSON objects separated by a newline character. Each JSONL file corresponds to a specific level in ACDEA, and the data is structured as a list of dictionaries, where each dictionary represents a data record</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">jsonl</span></code> is a format that stores data records as individual json objects separated by a newline character. Each <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> file corresponds to a specific level in ACDEA, and the data is structured as a list of dictionaries, where each dictionary represents a data record. <br><br> Analogous to the <code class="docutils literal notranslate"><span class="pre">csv</span></code> files, you will also be able to effectively download the unified data as <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> files via the <strong>Data Analysis</strong> section of the book, or manually download <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> files from the <a class="reference external" href="https://drive.google.com/drive/folders/1Ug38g_j1MUu7RiY6egLaSCqMXzIr_Fux?usp=drive_link">ACDE Google Drive repository</a>.</p></td>
 </tr>
 <tr class="row-odd"><td><p>XLSX</p></td>
 <td><p>Each XLSX file corresponds to a <strong>10% sample</strong> of the specific level in ACDEA. Similar to the CSV files, the columns of each XLSX file represent the first-level attributes of the corresponding level. This type of data is intended for exploratory purposes. <br><br> You can download the sample files using the download buttons below.</p></td>

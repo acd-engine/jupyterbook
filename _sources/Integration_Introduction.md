@@ -37,10 +37,6 @@ For the sake of brevity and clarity, here are a list of abbreviations will be us
 | DAQA         | [Digital Archive of Queensland Architecture](https://qldarch.net/)                                                                                                   | This digital archive of Queensland architecture comprises thousands of audiovisual and textual files that allow you to explore relationships between people, projects and firms.                                                                                                                           |
 | SFC          | [Summerhayes Family Collection](https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&collectionId=81190473680001951) | The Summerhayes Family Collection represents the work of three generations of the Summerhayes family, Edwin, Reginald and Geoffrey, whose combined practice of architecture in Western Australia extended through the 20th century.
 
-### How to use this repository
----
-This repository contains all the necessary scripts, Jupyter notebooks, and documentations needed to explore and process the data sources for the Australian Cultural Data Engine. This repository serves as a comprehensive resource for anyone interested in the data processing of this project, providing a clear overview of the various steps involved in the Australian Cultural Data Engine construction, as well as the methodologies and tools used to carry out these tasks. 
-
 ### Table of Contents
 ---
 
