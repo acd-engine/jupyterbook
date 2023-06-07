@@ -114,11 +114,43 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_DataSources.html">
-   Data Sources
+  <a class="reference internal" href="Integration_Architecture.html">
+   Australian Cultural Data Engine Architecture
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_Overview.html">
+     Overview of the Australian Cultural Data Engine Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_Construction.html">
+     Construction Workflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_DataReport.html">
+     Data Report
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">
+     Special Considerations for Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Integration_DataSources.html">
+   Data Sources
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -587,24 +619,32 @@
 
 <span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:890,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
 
-<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1049,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_column_data</span><span class="nt">()</span>
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1037,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_column_data</span><span class="nt">()</span>
 
-<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/dtypes/common.py:1434,</span> in <span class="ni">is_extension_array_dtype</span><span class="nt">(arr_or_dtype)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1425</span>     <span class="c1"># Note: if other EA dtypes are ever held in HybridBlock, exclude those</span>
-<span class="g g-Whitespace">   </span><span class="mi">1426</span>     <span class="c1">#  here too.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1427</span>     <span class="c1"># NB: need to check DatetimeTZDtype and not is_datetime64tz_dtype</span>
-<span class="g g-Whitespace">   </span><span class="mi">1428</span>     <span class="c1">#  to exclude ArrowTimestampUSDtype</span>
-<span class="g g-Whitespace">   </span><span class="mi">1429</span>     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">ExtensionDtype</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1430</span>         <span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">DatetimeTZDtype</span><span class="p">,</span> <span class="n">PeriodDtype</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1431</span>     <span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1434</span> <span class="k">def</span> <span class="nf">is_extension_array_dtype</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1435</span>     <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1436</span><span class="sd">     Check if an object is a pandas extension array type.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1437</span><span class="sd"> </span>
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1083,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_tokens</span><span class="nt">()</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1181,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_with_dtype</span><span class="nt">()</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/dtypes/common.py:734,</span> in <span class="ni">is_integer_dtype</span><span class="nt">(arr_or_dtype)</span>
+<span class="g g-Whitespace">    </span><span class="mi">685</span> <span class="k">def</span> <span class="nf">is_integer_dtype</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">686</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">687</span><span class="sd">     Check whether the provided array or dtype is of an integer dtype.</span>
+<span class="g g-Whitespace">    </span><span class="mi">688</span><span class="sd"> </span>
 <span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1477</span><span class="sd">     False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1478</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1479</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="n">arr_or_dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">732</span><span class="sd">     False</span>
+<span class="g g-Whitespace">    </span><span class="mi">733</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">734</span>     <span class="k">return</span> <span class="n">_is_dtype_type</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">,</span> <span class="n">classes_and_not_datetimelike</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">integer</span><span class="p">))</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/dtypes/common.py:157,</span> in <span class="ni">classes_and_not_datetimelike</span><span class="nt">(*klasses)</span>
+<span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="k">def</span> <span class="nf">classes_and_not_datetimelike</span><span class="p">(</span><span class="o">*</span><span class="n">klasses</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">153</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">154</span><span class="sd">     Evaluate if the tipo is a subclass of the klasses</span>
+<span class="g g-Whitespace">    </span><span class="mi">155</span><span class="sd">     and not a datetimelike.</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">157</span>     <span class="k">return</span> <span class="k">lambda</span> <span class="n">tipo</span><span class="p">:</span> <span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span>         <span class="nb">issubclass</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span> <span class="n">klasses</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span>         <span class="ow">and</span> <span class="ow">not</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">tipo</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">timedelta64</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

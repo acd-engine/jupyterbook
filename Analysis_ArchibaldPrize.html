@@ -116,11 +116,43 @@
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_DataSources.html">
-   Data Sources
+  <a class="reference internal" href="Integration_Architecture.html">
+   Australian Cultural Data Engine Architecture
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_Overview.html">
+     Overview of the Australian Cultural Data Engine Architecture
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_Construction.html">
+     Construction Workflow
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_DataReport.html">
+     Data Report
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">
+     Special Considerations for Data Analysis
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="Integration_DataSources.html">
+   Data Sources
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -815,7 +847,7 @@
 }
 </style>
 <div class="itables">
-<table id="a8bf4aee-a076-4c37-9a60-f3a6b6fa0abf" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<table id="eebc543d-32e7-43ae-90d4-f3cc7dc1a852" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       
       <th>YEAR</th>
@@ -866,7 +898,7 @@
 
     $(document).ready(function () {
         // Setup - add a text input to each header or footer cell
-$('#a8bf4aee-a076-4c37-9a60-f3a6b6fa0abf tfoot th').each(function () {
+$('#eebc543d-32e7-43ae-90d4-f3cc7dc1a852 tfoot th').each(function () {
     let title = $(this).text();
     $(this).html('<input type="text" placeholder="Search ' +
         // We use encodeURI to avoid this LGTM error:
@@ -875,7 +907,7 @@ $('#a8bf4aee-a076-4c37-9a60-f3a6b6fa0abf tfoot th').each(function () {
         '" />');
 });
 
-        $('#a8bf4aee-a076-4c37-9a60-f3a6b6fa0abf').DataTable(dt_args);
+        $('#eebc543d-32e7-43ae-90d4-f3cc7dc1a852').DataTable(dt_args);
     });
 </script>
 </div>
@@ -1726,7 +1758,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 }
 </style>
 <div class="itables">
-<table id="61638dbb-6697-4542-b0b9-7572b39e169b" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<table id="b78fda0b-4938-4e47-b30b-690455279389" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       
       <th>c_code</th>
@@ -1767,7 +1799,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 
     $(document).ready(function () {
         // Setup - add a text input to each header or footer cell
-$('#61638dbb-6697-4542-b0b9-7572b39e169b tfoot th').each(function () {
+$('#b78fda0b-4938-4e47-b30b-690455279389 tfoot th').each(function () {
     let title = $(this).text();
     $(this).html('<input type="text" placeholder="Search ' +
         // We use encodeURI to avoid this LGTM error:
@@ -1776,7 +1808,7 @@ $('#61638dbb-6697-4542-b0b9-7572b39e169b tfoot th').each(function () {
         '" />');
 });
 
-        $('#61638dbb-6697-4542-b0b9-7572b39e169b').DataTable(dt_args);
+        $('#b78fda0b-4938-4e47-b30b-690455279389').DataTable(dt_args);
     });
 </script>
 </div>
