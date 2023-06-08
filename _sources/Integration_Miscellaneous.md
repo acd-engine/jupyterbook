@@ -13,13 +13,25 @@ In addition to the ACDE project, we found many other interesting digital humanit
    <br>
    <br>
 
-3. [Experiments | DX Lab - State Library of NSW](https://dxlab.sl.nsw.gov.au/experiments/)
+3. [GLAM Workbench](https://acde-links-yajhxrvxsa-ts.a.run.app/)
+
+   GLAM Workbench is an experimental data exploration interface developed for ACDE. This prototype tool, developed in collaboration with historian and hacker Professor Tim Sherratt, highlights the extensive and largely unexplored connections between Australian cultural databases and global data aggregators.
+   <br>
+   <br>
+
+4. [TLC Map](https://tlcmap.org/)
+
+   TLCMap is a user-friendly time-layered mapping tool designed to support humanities researchers with developing digital maps for cultural colllections. Digital mapping provides one of the most engaging ways to visualise cultural data across space, highlighting connections between geographical areas, trace movement, or highlight geographical density.
+   <br>
+   <br>
+
+5. [Experiments | DX Lab - State Library of NSW](https://dxlab.sl.nsw.gov.au/experiments/)
    
    The DX Lab at the State Library of NSW is a hub for digital experimentation and innovation in the cultural sector. Their website features a collection of projects and prototypes that use emerging technologies to explore new ways of engaging with cultural collections.
    <br>
    <br>
 
-4. [Análisis | Vincent van Gogh](http://infografias.elmercurio.com/20180623-VA-vincentvangogh/)
+6. [Análisis | Vincent van Gogh](http://infografias.elmercurio.com/20180623-VA-vincentvangogh/)
    
    This interactive data visualization by El Mercurio newspaper explores the life and work of Vincent van Gogh through a series of infographics and interactive tools. It provides a new way of understanding the artist's creative process and the social and cultural context in which he lived and worked.
    
