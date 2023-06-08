@@ -51,6 +51,7 @@
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -97,7 +98,7 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="About.html">
+  <a class="reference internal" href="about.html">
    About
   </a>
  </li>
@@ -624,11 +625,24 @@
 
 <span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:890,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
 
-<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1050,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_column_data</span><span class="nt">()</span>
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1049,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_column_data</span><span class="nt">()</span>
 
-<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1388,</span> in <span class="ni">pandas._libs.parsers._maybe_upcast</span><span class="nt">()</span>
-
-<span class="nn">File &lt;__array_function__ internals&gt;:177,</span> in <span class="ni">putmask</span><span class="nt">(*args, **kwargs)</span>
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/dtypes/common.py:1434,</span> in <span class="ni">is_extension_array_dtype</span><span class="nt">(arr_or_dtype)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1425</span>     <span class="c1"># Note: if other EA dtypes are ever held in HybridBlock, exclude those</span>
+<span class="g g-Whitespace">   </span><span class="mi">1426</span>     <span class="c1">#  here too.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1427</span>     <span class="c1"># NB: need to check DatetimeTZDtype and not is_datetime64tz_dtype</span>
+<span class="g g-Whitespace">   </span><span class="mi">1428</span>     <span class="c1">#  to exclude ArrowTimestampUSDtype</span>
+<span class="g g-Whitespace">   </span><span class="mi">1429</span>     <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">ExtensionDtype</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1430</span>         <span class="n">dtype</span><span class="p">,</span> <span class="p">(</span><span class="n">DatetimeTZDtype</span><span class="p">,</span> <span class="n">PeriodDtype</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1431</span>     <span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1434</span> <span class="k">def</span> <span class="nf">is_extension_array_dtype</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1435</span>     <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1436</span><span class="sd">     Check if an object is a pandas extension array type.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1437</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1477</span><span class="sd">     False</span>
+<span class="g g-Whitespace">   </span><span class="mi">1478</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1479</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">arr_or_dtype</span><span class="p">,</span> <span class="s2">&quot;dtype&quot;</span><span class="p">,</span> <span class="n">arr_or_dtype</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
