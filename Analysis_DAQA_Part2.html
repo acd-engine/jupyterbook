@@ -11726,7 +11726,7 @@ Name: object.label, dtype: int64
     <span class="k">return</span> <span class="n">updated_fig1</span><span class="p">,</span> <span class="n">updated_fig2</span><span class="p">,</span> <span class="n">heading_text</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">)</span> <span class="c1"># for local testing</span>
 </pre></div>
 </div>
 </div>
@@ -11735,7 +11735,7 @@ Name: object.label, dtype: int64
         <iframe
             width="900"
             height="1500"
-            src="http://127.0.0.1:8000/"
+            src="http://0.0.0.0:8000/"
             frameborder="0"
             allowfullscreen
             
@@ -11891,7 +11891,7 @@ Name: object.label, dtype: int64
     <span class="k">return</span> <span class="n">updated_fig1</span><span class="p">,</span> <span class="n">updated_fig2</span><span class="p">,</span> <span class="n">heading_text</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">app2</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8008</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+    <span class="n">app2</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8008</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">)</span> <span class="c1"># for local testing</span>
 </pre></div>
 </div>
 </div>
@@ -11900,7 +11900,7 @@ Name: object.label, dtype: int64
         <iframe
             width="900"
             height="1200"
-            src="http://127.0.0.1:8008/"
+            src="http://0.0.0.0:8008/"
             frameborder="0"
             allowfullscreen
             
