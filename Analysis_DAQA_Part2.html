@@ -477,6 +477,28 @@
    Interviews
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#socioeconomic-factors">
+   Socioeconomic factors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abs-data">
+     ABS data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qgso-data">
+     QGSO data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dfat-data">
+     DFAT data
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -628,6 +650,28 @@
   <a class="reference internal nav-link" href="#interviews">
    Interviews
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#socioeconomic-factors">
+   Socioeconomic factors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#abs-data">
+     ABS data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qgso-data">
+     QGSO data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dfat-data">
+     DFAT data
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -11442,6 +11486,428 @@ Name: object.label, dtype: int64
 <blockquote class="epigraph">
 <div><p>On average, interviewed architects have worked for <strong>5 employers</strong>.</p>
 </div></blockquote>
+</div>
+<div class="section" id="socioeconomic-factors">
+<h2>Socioeconomic factors<a class="headerlink" href="#socioeconomic-factors" title="Permalink to this headline">¶</a></h2>
+<p>Below we overlay the DAQA dataset (completed projects) with socioeconomic data from the Australian Bureau of Statistics (ABS), Queensland Government Statistician’s Office (QGSO) and Department of Foreign Affairs and Trade (DFAT). Factors include GDP, overseas migration, interstate migration, employment and buildings approved. Most measures are specific to Queensland.</p>
+<p>As data is recorded in two forms, by calendar year and financial year, we have developed two applications to explore the data. The applications consist of the following demographic variables:</p>
+<div class="section" id="abs-data">
+<h3>ABS data<a class="headerlink" href="#abs-data" title="Permalink to this headline">¶</a></h3>
+<p>Source: 3105.0.65.001 Australian Historical Population Statistics, 2014</p>
+<p>Source: 6204055001TS0004 Labour Force Historical Timeseries, Australia - Labour Force Status by State</p>
+<ul class="simple">
+<li><p>QLD_Overseas_Arrivals_Males_Total_movement:</p></li>
+<li><p>QLD_Overseas_Arrivals_Females_Total_movement</p></li>
+<li><p>QLD_Overseas_Arrivals_Persons_Total_movement</p></li>
+<li><p>QLD_Overseas_Departures_Males_Total_movement</p></li>
+<li><p>QLD_Overseas_Departures_Females_Total_movement</p></li>
+<li><p>QLD_Overseas_Departures_Persons_Total_movement</p></li>
+<li><p>QLD_Males_Employed</p></li>
+<li><p>QLD_Males_Looking for full-time work</p></li>
+<li><p>QLD_Males_Looking for part-time work</p></li>
+<li><p>QLD_Males_Total</p></li>
+<li><p>QLD_Males_Labour force</p></li>
+<li><p>QLD_Males_Not in labour force</p></li>
+<li><p>QLD_Males_Civilian pop’n aged 15 years and over</p></li>
+<li><p>QLD_Females_Employed</p></li>
+<li><p>QLD_Females_Looking for full-time work</p></li>
+<li><p>QLD_Females_Looking for part-time work</p></li>
+<li><p>QLD_Females_Total</p></li>
+<li><p>QLD_Females_Labour force</p></li>
+<li><p>QLD_Females_Not in labour force</p></li>
+<li><p>QLD_Females_Civilian pop’n aged 15 years and over</p></li>
+<li><p>QLD_TotalPersons_Employed</p></li>
+<li><p>QLD_TotalPersons_Looking for full-time work</p></li>
+<li><p>QLD_TotalPersons_Looking for part-time work</p></li>
+<li><p>QLD_TotalPersons_Total</p></li>
+<li><p>QLD_TotalPersons_Labour force</p></li>
+<li><p>QLD_TotalPersons_Not in labour force</p></li>
+<li><p>QLD_TotalPersons_Civilian pop’n aged 15 years and over</p></li>
+<li><p>QLD_Net interstate and overseas migration</p></li>
+<li><p>QLD_Net overseas migration</p></li>
+<li><p>QLD_InterstateMigration_Arrivals_To</p></li>
+<li><p>QLD_InterstateMigration_Departures_from</p></li>
+<li><p>QLD_Net interstate migration</p></li>
+</ul>
+</br>
+</div>
+<div class="section" id="qgso-data">
+<h3>QGSO data<a class="headerlink" href="#qgso-data" title="Permalink to this headline">¶</a></h3>
+<p>Source: https://www.qgso.qld.gov.au/statistics/theme/economy/prices-indexes/consumer-price-index-state</p>
+<ul class="simple">
+<li><p>Brisbane_Index</p></li>
+<li><p>Brisbane_YoY_change</p></li>
+<li><p>Weighted average of eight capital cities_Index</p></li>
+<li><p>Weighted average of eight capital cities_YoY_change</p></li>
+</ul>
+</br>
+<p>Source: https://www.qgso.qld.gov.au/statistics/theme/industry-development/housing-construction/building-approvals</p>
+<ul class="simple">
+<li><p>QLD_BuildingsApproved_Residential houses_Value</p></li>
+<li><p>QLD_BuildingsApproved_Other residential_Value</p></li>
+<li><p>QLD_BuildingsApproved_Alterations, additions and conversions_Value</p></li>
+<li><p>QLD_BuildingsApproved_Total residential_Value</p></li>
+<li><p>QLD_BuildingsApproved_Non-residential_Value</p></li>
+<li><p>QLD_BuildingsApproved_Total_Value</p></li>
+</ul>
+</br>
+</div>
+<div class="section" id="dfat-data">
+<h3>DFAT data<a class="headerlink" href="#dfat-data" title="Permalink to this headline">¶</a></h3>
+<p>Dataset: australias-trade-and-economic-indicators-historical.xlsx</p>
+<p>Source: https://www.dfat.gov.au/trade/trade-and-investment-data-information-and-publications/trade-statistics/trade-time-series-data</p>
+<p>Sheet name: Population</p>
+<ul>
+<li><p><strong>Aus_Population</strong></p>
+<p>Population (1788-2017), Australia, CY (a)(b)</p>
+<p>(a)  Includes estimates of the Indigenous population from 1961 onwards.</p>
+<p>(b) For 2017 only, end September 2017</p>
+</li>
+<li><p><strong>Aus_Short term overseas visitor arrivals</strong></p></li>
+<li><p><strong>Aus_Short term Australian resident departures</strong></p></li>
+</ul>
+</br>
+<p>Sheet name: Economic</p>
+<ul>
+<li><p><strong>AUS_GDP_Current</strong></p>
+<p>Gross Domestic Product, Australia - current price, FY (a)(b)</p>
+<p>(a) Please note there is a time series break in the current price GDP series between 1958-59 and 1959-60.</p>
+<p>(b) Excludes livestock accumulation up to 1948-49.</p>
+</li>
+<li><p><strong>AUS_GDP_Real_2015-16</strong></p>
+<p>Real Gross Domestic Product, Australia - 2015-16 prices, FY</p>
+</li>
+<li><p><strong>AUS_GDP_Real_2015-16_Percentage</strong></p>
+<p>Real Gross Domestic Product Percentage change (%), Australia, FY</p>
+</li>
+<li><p><strong>AUS_Terms of trade Index set to 2015-16</strong></p>
+<p>Terms of trade Index (2015-16=100), Australia, FY</p>
+</li>
+<li><p><strong>AUS_Terms of trade percentage set to 2015-16</strong></p>
+<p>Terms of trade precentage change (%), Australia, FY</p>
+</li>
+<li><p><strong>AUS_Unemployment rate</strong></p>
+<p>Unemployment rate (%), Australia, FY</p>
+</li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">plotly.graph_objects</span> <span class="k">as</span> <span class="nn">go</span>
+<span class="kn">import</span> <span class="nn">dash</span> <span class="c1"># !pip install dash</span>
+<span class="kn">import</span> <span class="nn">dash_core_components</span> <span class="k">as</span> <span class="nn">dcc</span>
+<span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="k">as</span> <span class="nn">html</span>
+<span class="kn">from</span> <span class="nn">dash.dependencies</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Output</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="c1"># get year data</span>
+<span class="n">daqa_works_years</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">daqa_work</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;coverage_range&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span> 
+        <span class="k">if</span> <span class="s2">&quot;date_end&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;coverage_range&#39;</span><span class="p">]:</span>
+            <span class="n">comp_yr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;coverage_range&#39;</span><span class="p">])[</span><span class="s1">&#39;date_range&#39;</span><span class="p">])[</span><span class="s1">&#39;date_end.year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">daqa_works_years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">comp_yr</span><span class="p">))</span>
+
+<span class="n">daqa_works_years</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">daqa_works_years</span><span class="p">))</span>
+
+<span class="c1"># Count the occurrences of each year</span>
+<span class="n">year_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">daqa_works_years</span><span class="p">):</span> <span class="n">year_counts</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">year_counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># Separate the years and counts into separate lists</span>
+<span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">year_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">year_counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+
+<span class="c1"># load data</span>
+<span class="n">socio_econ_cy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/socioecon/SocioEcon_CY.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># if 000 is in column name then multiply column values by 1000 and remove 000 from column name</span>
+<span class="k">for</span> <span class="n">x_col</span> <span class="ow">in</span> <span class="n">socio_econ_cy</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;_000&#39;</span> <span class="ow">in</span> <span class="n">x_col</span><span class="p">:</span> 
+        <span class="n">socio_econ_cy</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">socio_econ_cy</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+        <span class="n">socio_econ_cy</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">x_col</span><span class="p">:</span> <span class="n">x_col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_000&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">counts</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)))</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Completed Buildings by Year, Calendar Year&quot;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+    <span class="c1"># style={&#39;overflow-y&#39;: &#39;hidden&#39;},</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;heading&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="s2">&quot;Set Year Range&quot;</span><span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">RangeSlider</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;year-slider&#39;</span><span class="p">,</span>
+        <span class="nb">min</span><span class="o">=</span><span class="mi">1820</span><span class="p">,</span>
+        <span class="nb">max</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
+        <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="mi">1940</span><span class="p">,</span> <span class="mi">1980</span><span class="p">],</span>
+        <span class="n">marks</span><span class="o">=</span><span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">):</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1820</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
+    <span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;plot1&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig1</span><span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;y-axis-limit&#39;</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">350</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5k&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">2</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35k&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">3</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350k&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5M&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35M&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350M&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">7</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5B&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35B&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">9</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350B&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5T&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">11</span><span class="p">)}</span>
+        <span class="p">],</span>
+        <span class="n">value</span><span class="o">=</span><span class="mi">350000</span><span class="p">,</span>
+        <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Select a y-axis limit&quot;</span>
+    <span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;plot2&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig2</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;plot1&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;plot2&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;heading&#39;</span><span class="p">,</span> <span class="s1">&#39;children&#39;</span><span class="p">),</span>
+    <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;year-slider&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+    <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;y-axis-limit&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">update_plot</span><span class="p">(</span><span class="n">year_range</span><span class="p">,</span> <span class="n">y_axis_limit</span><span class="p">):</span>
+    <span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span> <span class="o">=</span> <span class="n">year_range</span>
+    <span class="n">filtered_years</span> <span class="o">=</span> <span class="p">[</span><span class="n">year</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">start_year</span> <span class="o">&lt;=</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">end_year</span><span class="p">]</span>
+    <span class="n">filtered_counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">count</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span> <span class="k">if</span> <span class="n">start_year</span> <span class="o">&lt;=</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">end_year</span><span class="p">]</span>
+    <span class="n">socio_econ_cy_thisperiod</span> <span class="o">=</span> <span class="n">socio_econ_cy</span><span class="p">[(</span><span class="n">socio_econ_cy</span><span class="p">[</span><span class="s1">&#39;Calendar_Year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start_year</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">socio_econ_cy</span><span class="p">[</span><span class="s1">&#39;Calendar_Year&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">end_year</span><span class="p">)]</span>
+
+    <span class="n">updated_fig1</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    <span class="n">updated_fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">filtered_years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filtered_counts</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)))</span>
+    <span class="n">updated_fig1</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Completed Buildings by Year, Calendar Year&quot;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+
+    <span class="n">updated_fig2</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    <span class="n">cols_used</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x_col</span> <span class="ow">in</span> <span class="n">socio_econ_cy</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x_col</span> <span class="o">!=</span> <span class="s1">&#39;Calendar_Year&#39;</span><span class="p">):</span>
+        <span class="c1"># if (x_col != &#39;Calendar_Year&#39;) &amp; (x_col != &#39;Aus_Population&#39;) &amp; \</span>
+        <span class="c1"># (x_col != &#39;Aus_Short term overseas visitor arrivals&#39;) &amp; (x_col != &#39;Aus_Short term Australian resident departures&#39;) &amp; \</span>
+        <span class="c1"># (&#39;rate&#39; not in x_col):</span>
+            <span class="k">if</span> <span class="n">socio_econ_cy_thisperiod</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">!=</span> <span class="p">(</span><span class="n">end_year</span> <span class="o">-</span> <span class="n">start_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">cols_used</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_col</span><span class="p">)</span>
+                <span class="n">updated_fig2</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">socio_econ_cy</span><span class="p">[</span><span class="s1">&#39;Calendar_Year&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">socio_econ_cy</span><span class="p">[</span><span class="n">x_col</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">x_col</span><span class="p">))</span>
+                <span class="n">updated_fig2</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;Year: %</span><span class="si">{x}</span><span class="s2">&lt;br&gt;Count: %</span><span class="si">{y}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">updated_fig2</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Socioeconomic Trends, Calendar Year&quot;</span><span class="p">,</span>
+        <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+        <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span>
+        <span class="n">xaxis_range</span><span class="o">=</span><span class="p">[</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">],</span>
+        <span class="n">yaxis_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_axis_limit</span><span class="p">],</span>  <span class="c1"># Use the selected y-axis limit</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span>
+
+        <span class="c1"># make legend text font smaller</span>
+
+        <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span>
+                <span class="n">yanchor</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
+                <span class="n">y</span><span class="o">=-</span><span class="mf">1.8</span><span class="p">,</span>
+                <span class="n">xanchor</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mf">7.5</span><span class="p">)</span>
+            <span class="p">)</span>
+    <span class="p">)</span>
+    
+    <span class="n">heading_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Year Range: </span><span class="si">{</span><span class="n">start_year</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">end_year</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="k">return</span> <span class="n">updated_fig1</span><span class="p">,</span> <span class="n">updated_fig2</span><span class="p">,</span> <span class="n">heading_text</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="1500"
+            src="http://127.0.0.1:8000/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get year data</span>
+<span class="n">daqa_works_years_financial</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">daqa_work</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;coverage_range&#39;</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span> 
+        <span class="k">if</span> <span class="s2">&quot;date_end&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;coverage_range&#39;</span><span class="p">]:</span>
+            <span class="n">comp_yr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;coverage_range&#39;</span><span class="p">])[</span><span class="s1">&#39;date_range&#39;</span><span class="p">])[</span><span class="s1">&#39;date_end.year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">comp_yr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">comp_yr</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">comp_yr</span> <span class="o">&lt;</span> <span class="mi">1820</span><span class="p">:</span> <span class="k">continue</span>
+            <span class="n">comp_mon</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;coverage_range&#39;</span><span class="p">])[</span><span class="s1">&#39;date_range&#39;</span><span class="p">])[</span><span class="s1">&#39;date_end.month&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">comp_mon</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">6</span><span class="p">:</span> <span class="n">comp_yr</span> <span class="o">=</span> <span class="n">comp_yr</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">comp_yr</span> <span class="o">=</span> <span class="n">comp_yr</span><span class="o">-</span><span class="mi">1</span>
+            <span class="n">daqa_works_years_financial</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">comp_yr</span><span class="p">)</span>
+
+<span class="c1"># Count the occurrences of each year</span>
+<span class="n">year_counts</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">daqa_works_years_financial</span><span class="p">):</span> <span class="n">year_counts</span><span class="p">[</span><span class="n">year</span><span class="p">]</span> <span class="o">=</span> <span class="n">year_counts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># Separate the years and counts into separate lists</span>
+<span class="n">years</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">year_counts</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">year_counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="n">years_financial</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">year</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># load data</span>
+<span class="n">socio_econ_fy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/socioecon/SocioEcon_FY.csv&#39;</span><span class="p">)</span>
+<span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year_Financial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># if 000 is in column name then multiply column values by 1000 and remove 000 from column name</span>
+<span class="k">for</span> <span class="n">x_col</span> <span class="ow">in</span> <span class="n">socio_econ_fy</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s1">&#39;_Millions&#39;</span> <span class="ow">in</span> <span class="n">x_col</span><span class="p">:</span> 
+        <span class="n">socio_econ_fy</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">socio_econ_fy</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000000</span>
+        <span class="n">socio_econ_fy</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">x_col</span><span class="p">:</span> <span class="n">x_col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_Millions&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">fig1</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">counts</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">)))</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Completed Buildings by Year, Financial Year&quot;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+
+<span class="n">fig2</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+
+<span class="n">app2</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="n">app2</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span>
+    <span class="c1"># style={&#39;height&#39;: None},</span>
+    <span class="n">children</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">H3</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;heading&#39;</span><span class="p">,</span> <span class="n">children</span><span class="o">=</span><span class="s2">&quot;Set Year Range&quot;</span><span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">RangeSlider</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;year-slider&#39;</span><span class="p">,</span>
+        <span class="nb">min</span><span class="o">=</span><span class="mi">1820</span><span class="p">,</span>
+        <span class="nb">max</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
+        <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="mi">1940</span><span class="p">,</span> <span class="mi">1980</span><span class="p">],</span>
+        <span class="n">marks</span><span class="o">=</span><span class="p">{</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">):</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1820</span><span class="p">,</span> <span class="mi">2021</span><span class="p">,</span> <span class="mi">10</span><span class="p">)}</span>
+    <span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;plot1&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig1</span><span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+        <span class="nb">id</span><span class="o">=</span><span class="s1">&#39;y-axis-limit&#39;</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mf">3.5</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">350</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5k&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">2</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35k&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">3</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350k&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5M&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35M&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350M&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">7</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5B&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;35B&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">9</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;350B&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">)},</span>
+            <span class="p">{</span><span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="s1">&#39;3.5T&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="o">*</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">11</span><span class="p">)}</span>
+        <span class="p">],</span>
+        <span class="n">value</span><span class="o">=</span><span class="mi">350000000</span><span class="p">,</span>
+        <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Select a y-axis limit&quot;</span>
+    <span class="p">),</span>
+    <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;plot2&#39;</span><span class="p">,</span> <span class="n">figure</span><span class="o">=</span><span class="n">fig2</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="nd">@app2</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;plot1&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;plot2&#39;</span><span class="p">,</span> <span class="s1">&#39;figure&#39;</span><span class="p">),</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s1">&#39;heading&#39;</span><span class="p">,</span> <span class="s1">&#39;children&#39;</span><span class="p">),</span>
+    <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;year-slider&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">),</span>
+    <span class="n">Input</span><span class="p">(</span><span class="s1">&#39;y-axis-limit&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">update_plot</span><span class="p">(</span><span class="n">year_range</span><span class="p">,</span> <span class="n">y_axis_limit</span><span class="p">):</span>
+    <span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span> <span class="o">=</span> <span class="n">year_range</span>
+    <span class="n">filtered_years</span> <span class="o">=</span> <span class="p">[</span><span class="n">year</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">start_year</span> <span class="o">&lt;=</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">end_year</span><span class="p">]</span>
+    <span class="n">filtered_years_financial</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="o">+</span> <span class="s1">&#39;-&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">year</span><span class="o">+</span><span class="mi">1</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">years</span> <span class="k">if</span> <span class="n">start_year</span> <span class="o">&lt;=</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">end_year</span><span class="p">]</span>
+    <span class="n">filtered_counts</span> <span class="o">=</span> <span class="p">[</span><span class="n">count</span> <span class="k">for</span> <span class="n">year</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">counts</span><span class="p">)</span> <span class="k">if</span> <span class="n">start_year</span> <span class="o">&lt;=</span> <span class="n">year</span> <span class="o">&lt;=</span> <span class="n">end_year</span><span class="p">]</span>
+    <span class="n">socio_econ_fy_thisperiod</span> <span class="o">=</span> <span class="n">socio_econ_fy</span><span class="p">[(</span><span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">start_year</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">end_year</span><span class="p">)]</span>
+
+    
+    <span class="n">updated_fig1</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    <span class="n">updated_fig1</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">filtered_years</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filtered_counts</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">)))</span>
+    <span class="n">updated_fig1</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Completed Buildings by Year, Financial Year&quot;</span><span class="p">,</span> <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">)</span>
+    <span class="n">updated_fig1</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;Year: %</span><span class="si">{text}</span><span class="s2">&lt;br&gt;Count: %</span><span class="si">{y}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">filtered_years_financial</span><span class="p">)</span>
+
+    <span class="c1"># show less ticks on x-axis when ticks are ticktext</span>
+    <span class="n">updated_fig1</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">ticktext</span><span class="o">=</span><span class="n">filtered_years_financial</span><span class="p">,</span> <span class="n">tickvals</span><span class="o">=</span><span class="n">filtered_years</span><span class="p">)</span>
+    <span class="n">updated_fig1</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">tickmode</span><span class="o">=</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="n">tickangle</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span> <span class="n">tickfont</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+
+    <span class="c1"># show year as financial year i.e., 2020-21</span>
+
+    <span class="n">updated_fig2</span> <span class="o">=</span> <span class="n">go</span><span class="o">.</span><span class="n">Figure</span><span class="p">()</span>
+    <span class="n">cols_used</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">x_col</span> <span class="ow">in</span> <span class="n">socio_econ_fy</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x_col</span> <span class="o">!=</span> <span class="s1">&#39;Year_Financial&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x_col</span> <span class="o">!=</span> <span class="s1">&#39;Year&#39;</span><span class="p">):</span>         
+        <span class="c1"># if (x_col != &#39;Year_Financial&#39;) &amp; (x_col != &#39;Year&#39;) &amp; \</span>
+        <span class="c1"># (&#39;rate&#39; not in x_col) &amp; (&#39;YoY_change&#39; not in x_col) &amp; (&#39;ercentage&#39; not in x_col) &amp; (&#39;Index&#39; not in x_col):</span>
+            <span class="k">if</span> <span class="n">socio_econ_fy_thisperiod</span><span class="p">[</span><span class="n">x_col</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">!=</span> <span class="p">(</span><span class="n">end_year</span> <span class="o">-</span> <span class="n">start_year</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">cols_used</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_col</span><span class="p">)</span>
+                <span class="n">updated_fig2</span><span class="o">.</span><span class="n">add_trace</span><span class="p">(</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">socio_econ_fy</span><span class="p">[</span><span class="n">x_col</span><span class="p">],</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">x_col</span><span class="p">))</span>
+                <span class="c1"># add &#39;Year_Financial&#39; to hovertemplate</span>
+                <span class="n">updated_fig2</span><span class="o">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">hovertemplate</span><span class="o">=</span><span class="s2">&quot;Year: %</span><span class="si">{text}</span><span class="s2">&lt;br&gt;Count: %</span><span class="si">{y}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year_Financial&#39;</span><span class="p">])</span>
+
+    <span class="n">updated_fig2</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Socioeconomic Trends, Financial Year&quot;</span><span class="p">,</span>
+        <span class="n">xaxis_title</span><span class="o">=</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span>
+        <span class="n">yaxis_title</span><span class="o">=</span><span class="s2">&quot;Count&quot;</span><span class="p">,</span>
+        <span class="n">xaxis_range</span><span class="o">=</span><span class="p">[</span><span class="n">start_year</span><span class="p">,</span> <span class="n">end_year</span><span class="p">],</span>
+        <span class="n">yaxis_range</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_axis_limit</span><span class="p">],</span>  <span class="c1"># Use the selected y-axis limit</span>
+        <span class="n">height</span><span class="o">=</span><span class="mi">650</span><span class="p">,</span>
+        <span class="n">legend</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;h&quot;</span><span class="p">,</span>
+                <span class="n">yanchor</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
+                <span class="n">y</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                <span class="n">xanchor</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+                <span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                <span class="n">font</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mf">8.5</span><span class="p">)</span>
+                <span class="p">)</span>
+
+        <span class="p">)</span>
+    
+    <span class="c1"># show corresponding &quot;Year_Financial&quot; on x-axis as opposed to &quot;Year&quot;</span>
+    <span class="n">updated_fig2</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">ticktext</span><span class="o">=</span><span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year_Financial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;19&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="n">tickvals</span><span class="o">=</span><span class="n">socio_econ_fy</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">])</span>
+
+    <span class="c1"># show less ticks on x-axis when ticks are ticktext</span>
+    <span class="n">updated_fig2</span><span class="o">.</span><span class="n">update_xaxes</span><span class="p">(</span><span class="n">tickmode</span><span class="o">=</span><span class="s1">&#39;array&#39;</span><span class="p">,</span> <span class="n">tickangle</span><span class="o">=-</span><span class="mi">45</span><span class="p">,</span> <span class="n">tickfont</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+
+
+    <span class="n">heading_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Year Range: </span><span class="si">{</span><span class="n">start_year</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">end_year</span><span class="si">}</span><span class="s2">&quot;</span>
+    
+    <span class="k">return</span> <span class="n">updated_fig1</span><span class="p">,</span> <span class="n">updated_fig2</span><span class="p">,</span> <span class="n">heading_text</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app2</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8008</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s1">&#39;127.0.0.1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="900"
+            height="1200"
+            src="http://127.0.0.1:8008/"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</div>
 </div>
 </div>
 

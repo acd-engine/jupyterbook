@@ -625,14 +625,16 @@
 
 <span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:890,</span> in <span class="ni">pandas._libs.parsers.TextReader._read_rows</span><span class="nt">()</span>
 
-<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1049,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_column_data</span><span class="nt">()</span>
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1037,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_column_data</span><span class="nt">()</span>
 
-<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/dtypes/common.py:1482,</span> in <span class="ni">is_extension_array_dtype</span><span class="nt">(arr_or_dtype)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1480</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">ExtensionDtype</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1481</span>     <span class="k">return</span> <span class="kc">True</span>
-<span class="ne">-&gt; </span><span class="mi">1482</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1483</span>     <span class="k">return</span> <span class="kc">False</span>
-<span class="g g-Whitespace">   </span><span class="mi">1484</span> <span class="k">else</span><span class="p">:</span>
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1083,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_tokens</span><span class="nt">()</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/_libs/parsers.pyx:1205,</span> in <span class="ni">pandas._libs.parsers.TextReader._convert_with_dtype</span><span class="nt">()</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/pandas/core/dtypes/common.py:1336,</span> in <span class="ni">is_bool_dtype</span><span class="nt">(arr_or_dtype)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1333</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">ExtensionDtype</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1334</span>     <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="s2">&quot;_is_boolean&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1336</span> <span class="k">return</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">dtype</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
