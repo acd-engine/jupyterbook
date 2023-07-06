@@ -11490,108 +11490,471 @@ Name: object.label, dtype: int64
 <div class="section" id="socioeconomic-factors">
 <h2>Socioeconomic factors<a class="headerlink" href="#socioeconomic-factors" title="Permalink to this headline">¶</a></h2>
 <p>Below we overlay the DAQA dataset (completed projects) with socioeconomic data from the Australian Bureau of Statistics (ABS), Queensland Government Statistician’s Office (QGSO) and Department of Foreign Affairs and Trade (DFAT). Factors include GDP, overseas migration, interstate migration, employment and buildings approved. Most measures are specific to Queensland.</p>
-<p>As data is recorded in two forms, by calendar year and financial year, we have developed two applications to explore the data. Apps can accessed using the following links:</p>
+<p>As data is recorded in two forms, by calendar year and financial year, we have developed two applications to explore the data. Applications can be accessed using the following links:</p>
 <p><strong>By calendar year</strong>: <a class="reference external" href="https://daqa-socioecon-cy-dashapp.onrender.com">https://daqa-socioecon-cy-dashapp.onrender.com</a></p>
 <p><strong>By financial year</strong>: <a class="reference external" href="https://daqa-socioeconomic-fy.onrender.com">https://daqa-socioeconomic-fy.onrender.com/</a>
 </br></p>
 <p>The applications consist of the following demographic variables:</p>
 <div class="section" id="abs-data">
 <h3>ABS data<a class="headerlink" href="#abs-data" title="Permalink to this headline">¶</a></h3>
-<p>Source: 3105.0.65.001 Australian Historical Population Statistics, 2014</p>
-<p>Source: 6204055001TS0004 Labour Force Historical Timeseries, Australia - Labour Force Status by State</p>
-<ul class="simple">
-<li><p>QLD_Overseas_Arrivals_Males_Total_movement:</p></li>
-<li><p>QLD_Overseas_Arrivals_Females_Total_movement</p></li>
-<li><p>QLD_Overseas_Arrivals_Persons_Total_movement</p></li>
-<li><p>QLD_Overseas_Departures_Males_Total_movement</p></li>
-<li><p>QLD_Overseas_Departures_Females_Total_movement</p></li>
-<li><p>QLD_Overseas_Departures_Persons_Total_movement</p></li>
-<li><p>QLD_Males_Employed</p></li>
-<li><p>QLD_Males_Looking for full-time work</p></li>
-<li><p>QLD_Males_Looking for part-time work</p></li>
-<li><p>QLD_Males_Total</p></li>
-<li><p>QLD_Males_Labour force</p></li>
-<li><p>QLD_Males_Not in labour force</p></li>
-<li><p>QLD_Males_Civilian pop’n aged 15 years and over</p></li>
-<li><p>QLD_Females_Employed</p></li>
-<li><p>QLD_Females_Looking for full-time work</p></li>
-<li><p>QLD_Females_Looking for part-time work</p></li>
-<li><p>QLD_Females_Total</p></li>
-<li><p>QLD_Females_Labour force</p></li>
-<li><p>QLD_Females_Not in labour force</p></li>
-<li><p>QLD_Females_Civilian pop’n aged 15 years and over</p></li>
-<li><p>QLD_TotalPersons_Employed</p></li>
-<li><p>QLD_TotalPersons_Looking for full-time work</p></li>
-<li><p>QLD_TotalPersons_Looking for part-time work</p></li>
-<li><p>QLD_TotalPersons_Total</p></li>
-<li><p>QLD_TotalPersons_Labour force</p></li>
-<li><p>QLD_TotalPersons_Not in labour force</p></li>
-<li><p>QLD_TotalPersons_Civilian pop’n aged 15 years and over</p></li>
-<li><p>QLD_Net interstate and overseas migration</p></li>
-<li><p>QLD_Net overseas migration</p></li>
-<li><p>QLD_InterstateMigration_Arrivals_To</p></li>
-<li><p>QLD_InterstateMigration_Departures_from</p></li>
-<li><p>QLD_Net interstate migration</p></li>
+<p>Dataset: 3105.0.65.001 Australian Historical Population Statistics, Migration, 2014</p>
+<p>Source: <a class="reference external" href="https://www.abs.gov.au/AUSSTATS/abs&#64;.nsf/DetailsPage/3105.0.65.0012014">https://www.abs.gov.au/AUSSTATS/abs&#64;.nsf/DetailsPage/3105.0.65.0012014</a></p>
+<p>Sheet name: Table 7.2</p>
+<ul>
+<li><p><strong>QLD_Net overseas migration</strong>
+</br></p>
+<p>Net overseas migration (a)(b)(c), Queensland, 1972-2011, FY
+</br></p>
+<p>(a)  From September quarter 1971 to June quarter 2006 inclusive, net overseas migration (NOM) was the difference between permanent and long-term arrivals and permanent and long-term departures. For September quarter 2006 onwards estimates for NOM are the difference between the number of incoming travellers who stay in Australia for 12 months or more and are added to the population (NOM arrivals) and the number of outgoing travellers who leave Australia for 12 months or more and are subtracted from the population (NOM departures). See paragraphs 51 to 54 of the Explanatory Notes.</p>
+<p>(b)  Estimates for net overseas migration (NOM) contain a break in time series. Estimates for September quarter 2006 onwards use an improved methodology based on the 12/16 rule and are not comparable with NOM estimates prior to this based on the 12/12 rule. See paragraph 51 of the Explanatory Notes.</p>
+<p>(c)  An adjustment for category jumping (later referred to as migration adjustments) was included for estimates for September quarter 1976 to June quarter 2006, except for September quarter 1997 to June quarter 2001 when it was set to zero. See paragraphs 55 to 57 of the Explanatory Notes.													
+</br></p>
+<p>Sources: ABS data available on request, Population Estimates (for years 1972 - 1981); Australian Demographic Statistics (cat. no. 3101.0) (for years 1982 - 2011)</p>
+</li>
 </ul>
 </br>
+<p>Sheet name: Table 7.3</p>
+<ul>
+<li><p><strong>QLD_InterstateMigration_Arrivals_To</strong>
+</br></p>
+<p>Interstate migration, arrivals, Queensland, 1972-2010, CY
+</br></p>
+<p>Sources: ABS data available on request, Population Estimates (for years 1972 - 1981); Australian Demographic Statistics (cat. no. 3101.0) (1982 - 2010)</p>
+</li>
+<li><p><strong>QLD_InterstateMigration_Departures_from</strong>
+</br></p>
+<p>Interstate migration, departures, Queensland, 1972-2010, CY
+</br></p>
+<p>Sources: ABS data available on request, Population Estimates (for years 1972 - 1981); Australian Demographic Statistics (cat. no. 3101.0) (1982 - 2010)</p>
+</li>
+<li><p><strong>QLD_Net interstate migration</strong>
+</br></p>
+<p>Net interstate migration, arrivals, Queensland, 1972-2010, CY
+</br></p>
+<p>Sources: ABS data available on request, Population Estimates (for years 1972 - 1981); Australian Demographic Statistics (cat. no. 3101.0) (1982 - 2010)</p>
+</li>
+</ul>
+</br>
+<p>Sheet name: Table 7.5</p>
+<ul>
+<li><p><strong>QLD_Net interstate and overseas migration</strong>
+</br></p>
+<p>Net interstate and overseas migration(a)(b)(c), Queensland, 1860-2010, CY
+</br></p>
+<p>(a)  Until June quarter 1971, net overseas migration (NOM) was the difference between total arrivals and total departures, including short-term movements. From September quarter 1971 to June quarter 2006 inclusive, NOM was the difference between permanent and long-term arrivals and permanent and long-term departures. For September quarter 2006 onwards estimates for NOM are the difference between the number of incoming travellers who stay in Australia for 12 months or more and are added to the population (NOM arrivals) and the number of outgoing travellers who leave Australia for 12 months or more and are subtracted from the population (NOM departures). See paragraphs 51 to 54 of the Explanatory Notes.</p>
+<p>(b)  Estimates for net overseas migration (NOM) contain a break in time series. Estimates for September quarter 2006 onwards use an improved methodology based on the 12/16 rule and are not comparable with NOM estimates prior to this based on the 12/12 rule. See paragraph 51 of the Explanatory Notes.</p>
+<p>(c)  An adjustment for category jumping (later referred to as migration adjustments) was included for estimates for September quarter 1976 to June quarter 2006, except for September quarter 1997 to June quarter 2001 when it was set to zero. See paragraphs 55 to 57 of the Explanatory Notes.														
+</br></p>
+<p>Sources: Demography (1910) (for years 1860 - 1901); Australian Demographic Trends, 1997 (cat. no. 3102.0) (for years 1902 - 1980); Australian Demographic Statistics (cat. no. 3101.0) (for years 1981 - 2010)</p>
+</li>
+</ul>
+</br>
+<p>Sheet name: Table 7.6</p>
+<ul>
+<li><p><strong>QLD_Net interstate and overseas migration rate</strong>
+</br></p>
+<p>Net interstate and overseas migration rate(a)(b)(c)(d), Queensland, 1860-2010, CY
+</br></p>
+<p>(a)  Net movement per 1,000 population. The net interstate and overseas migration rate is the number of net movements in a year per 1,000 mid-year (30 June) estimated resident population. For years prior to 1981, the net interstate and overseas migration rate was based on the mean estimated resident population for the calendar year.</p>
+<p>(b) Until June quarter 1971, net overseas migration (NOM) was the difference between total arrivals and total departures, including short-term movements. From September quarter 1971 to June quarter 2006 inclusive, NOM was the difference between permanent and long-term arrivals and permanent and long-term departures. For September quarter 2006 onwards estimates for NOM are the difference between the number of incoming travellers who stay in Australia for 12 months or more and are added to the population (NOM arrivals) and the number of outgoing travellers who leave Australia for 12 months or more and are subtracted from the population (NOM departures). See paragraphs 51 to 54 of the Explanatory Notes.</p>
+<p>(c) Estimates for net overseas migration (NOM) contain a break in time series. Estimates for September quarter 2006 onwards use an improved methodology based on the 12/16 rule and are not comparable with NOM estimates prior to this based on the 12/12 rule. See paragraph 51 of the Explanatory Notes.</p>
+<p>(d) An adjustment for category jumping (later referred to as migration adjustments) was included for estimates for September quarter 1976 to June quarter 2006, except for September quarter 1997 to June quarter 2001 when it was set to zero. See paragraphs 55 to 57 of the Explanatory Notes.														
+</br></p>
+<p>Sources: Demography (1910) (for years 1860 - 1901); Australian Demographic Trends, 1997 (cat. no. 3102.0) (for years 1902 - 1980); Australian Demographic Statistics (cat. no. 3101.0) (for years 1981 - 2010)</p>
+</li>
+</ul>
+</br>
+<p>Dataset: 6204055001TS0004 Labour Force Historical Timeseries, Australia - Labour Force Status by State, Queensland</p>
+<p>Source: https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia-detailed/latest-release</p>
+<ul>
+<li><p><strong>QLD_Males_Employed_000</strong>
+</br></p>
+<p>Labour Force Status, Employed, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Looking for full-time work_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Looking for full-time work, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Looking for part-time work_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Looking for part-time work, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Total_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Total, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Labour force_000</strong>
+</br></p>
+<p>Labour Force Status, Labour force, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Not in labour force_000</strong>
+</br></p>
+<p>Labour Force Status, Not in labour force, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Civilian pop’n aged 15 years and over_000</strong>
+</br></p>
+<p>Labour Force Status, Civilian population aged 15 years and over, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Unemployment rate_%</strong>
+</br></p>
+<p>Labour Force Status, Unemployment Rate, Males, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Males_Partic-ipation rate_%</strong>
+</br></p>
+<p>Labour Force Status, Participation Rate, Males, Queensland - 1966 – 1977, CY</p>
+</li>
+</ul>
+</br>
+<ul>
+<li><p><strong>QLD_Females_Employed_000</strong>
+</br></p>
+<p>Labour Force Status, Employed, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Looking for full-time work_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Looking for full-time work, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Looking for part-time work_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Looking for part-time work, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Total_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Total, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Labour force_000</strong>
+</br></p>
+<p>Labour Force Status, Labour force, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Not in labour force_000</strong>
+</br></p>
+<p>Labour Force Status, Not in labour force, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Civilian pop’n aged 15 years and over_000</strong>
+</br></p>
+<p>Labour Force Status, Civilian population aged 15 years and over, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Unemployment rate_%</strong>
+</br></p>
+<p>Labour Force Status, Unemployment Rate, Females, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_Females_Partic-ipation rate_%</strong>
+</br></p>
+<p>Labour Force Status, Participation Rate, Females, Queensland - 1966 – 1977, CY</p>
+</li>
+</ul>
+</br>
+<ul>
+<li><p><strong>QLD_TotalPersons_Employed_000</strong>
+</br></p>
+<p>Labour Force Status, Employed, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Looking for full-time work_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Looking for full-time work, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Looking for part-time work_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Looking for part-time work, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Total_000</strong>
+</br></p>
+<p>Labour Force Status, Unemployed - Total, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Labour force_000</strong>
+</br></p>
+<p>Labour Force Status, Labour force, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Not in labour force_000</strong>
+</br></p>
+<p>Labour Force Status, Not in labour force, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Civilian pop’n aged 15 years and over_000</strong>
+</br></p>
+<p>Labour Force Status, Civilian population aged 15 years and over, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Unemployment rate_%</strong>
+</br></p>
+<p>Labour Force Status, Unemployment Rate, Persons, Queensland - 1966 – 1977, CY
+</br></p>
+</li>
+<li><p><strong>QLD_TotalPersons_Partic-ipation rate_%</strong>
+</br></p>
+<p>Labour Force Status, Participation Rate, Persons, Queensland - 1966 – 1977, CY</p>
+</li>
+</ul>
+</br>
+<p>Dataset: 3105.0.65.001 Australian Historical Population Statistics, Overseas Arrivals and Departures, 2014</p>
+<p>Source: <a class="reference external" href="https://www.abs.gov.au/AUSSTATS/abs&#64;.nsf/DetailsPage/3105.0.65.0012014">https://www.abs.gov.au/AUSSTATS/abs&#64;.nsf/DetailsPage/3105.0.65.0012014</a></p>
+<p>Sheet name: Table 9.4</p>
+<ul>
+<li><p><strong>QLD_Overseas_Arrivals_Males_Total_movement</strong>
+</br></p>
+<p>Overseas arrivals (b)(c)(d), total movement, Males, Queensland (a), 1901-2010 (h), CY
+</br></p>
+<p>(a) Prior to 1974, data relates to state/territory of disembarkation (for arrivals) or embarkation (for departures). For 1974 and 1975, data relates to state/territory of clearance. From 1976 onwards data relates to state/territory of usual residence.</p>
+<p>(b) Includes arrivals of  troops for the years 1915 to 1920 and departures of troops for the years 1914 to 1919.</p>
+<p>(c) Excludes troop movements for the period September 1939 to June 1947.</p>
+<p>(d) Includes U.S. troops visiting Australia on rest and recreation leave during the years 1970 to 1971.</p>
+<p>(h) Overseas arrivals and departures data are rounded to whole numbers. As a result, sums of the componenets may not add exactly to totals.
+</br></p>
+<p>Sources: Demography (1911, 1922, 1933, 1947, 1949, 1960, 1966) (for years 1901 - 1964); Overseas Arrivals and Departures, Australia (1972) (CBCS ref. no. 4.23) (for years 1965 - 1972); Overseas Arrivals and Departures, Australia (1977) (cat. no. 3404.0) (for years 1973 - 1975); ABS data available on request, Overseas Arrivals and Departures collection (for years 1976 - ); Overseas Arrivals and Departures, Australia (cat. no. 3401.0) (for years 1976 - )
+</br></br></p>
+</li>
+<li><p><strong>QLD_Overseas_Arrivals_Females_Total_movement</strong>
+</br></p>
+<p>Overseas arrivals (b)(c)(d), total movement, Females, Queensland (a), 1901-2010 (h), CY
+</br></p>
+<p>(a) Prior to 1974, data relates to state/territory of disembarkation (for arrivals) or embarkation (for departures). For 1974 and 1975, data relates to state/territory of clearance. From 1976 onwards data relates to state/territory of usual residence.</p>
+<p>(b) Includes arrivals of  troops for the years 1915 to 1920 and departures of troops for the years 1914 to 1919.</p>
+<p>(c) Excludes troop movements for the period September 1939 to June 1947.</p>
+<p>(d) Includes U.S. troops visiting Australia on rest and recreation leave during the years 1970 to 1971.</p>
+<p>(h) Overseas arrivals and departures data are rounded to whole numbers. As a result, sums of the componenets may not add exactly to totals.
+</br></p>
+<p>Sources: Demography (1911, 1922, 1933, 1947, 1949, 1960, 1966) (for years 1901 - 1964); Overseas Arrivals and Departures, Australia (1972) (CBCS ref. no. 4.23) (for years 1965 - 1972); Overseas Arrivals and Departures, Australia (1977) (cat. no. 3404.0) (for years 1973 - 1975); ABS data available on request, Overseas Arrivals and Departures collection (for years 1976 - ); Overseas Arrivals and Departures, Australia (cat. no. 3401.0) (for years 1976 - )
+</br></br></p>
+</li>
+<li><p><strong>QLD_Overseas_Arrivals_Persons_Total_movement</strong>
+</br></p>
+<p>Overseas arrivals (b)(c)(d), total movement, Persons, Queensland (a), 1901-2010 (h), CY
+</br></p>
+<p>(a) Prior to 1974, data relates to state/territory of disembarkation (for arrivals) or embarkation (for departures). For 1974 and 1975, data relates to state/territory of clearance. From 1976 onwards data relates to state/territory of usual residence.</p>
+<p>(b) Includes arrivals of  troops for the years 1915 to 1920 and departures of troops for the years 1914 to 1919.</p>
+<p>(c) Excludes troop movements for the period September 1939 to June 1947.</p>
+<p>(d) Includes U.S. troops visiting Australia on rest and recreation leave during the years 1970 to 1971.</p>
+<p>(h) Overseas arrivals and departures data are rounded to whole numbers. As a result, sums of the componenets may not add exactly to totals.
+</br></p>
+<p>Sources: Demography (1911, 1922, 1933, 1947, 1949, 1960, 1966) (for years 1901 - 1964); Overseas Arrivals and Departures, Australia (1972) (CBCS ref. no. 4.23) (for years 1965 - 1972); Overseas Arrivals and Departures, Australia (1977) (cat. no. 3404.0) (for years 1973 - 1975); ABS data available on request, Overseas Arrivals and Departures collection (for years 1976 - ); Overseas Arrivals and Departures, Australia (cat. no. 3401.0) (for years 1976 - )
+</br></br></p>
+</li>
+<li><p><strong>QLD_Overseas_Departures_Males_Total_movement</strong>
+</br></p>
+<p>Overseas departures (b)(c)(d), total movement, Males, Queensland (a), 1901-2010 (h), CY
+</br></p>
+<p>(a) Prior to 1974, data relates to state/territory of disembarkation (for arrivals) or embarkation (for departures). For 1974 and 1975, data relates to state/territory of clearance. From 1976 onwards data relates to state/territory of usual residence.</p>
+<p>(b) Includes arrivals of  troops for the years 1915 to 1920 and departures of troops for the years 1914 to 1919.</p>
+<p>(c) Excludes troop movements for the period September 1939 to June 1947.</p>
+<p>(d) Includes U.S. troops visiting Australia on rest and recreation leave during the years 1970 to 1971.</p>
+<p>(h) Overseas arrivals and departures data are rounded to whole numbers. As a result, sums of the componenets may not add exactly to totals.
+</br></p>
+<p>Sources: Demography (1911, 1922, 1933, 1947, 1949, 1960, 1966) (for years 1901 - 1964); Overseas Arrivals and Departures, Australia (1972) (CBCS ref. no. 4.23) (for years 1965 - 1972); Overseas Arrivals and Departures, Australia (1977) (cat. no. 3404.0) (for years 1973 - 1975); ABS data available on request, Overseas Arrivals and Departures collection (for years 1976 - ); Overseas Arrivals and Departures, Australia (cat. no. 3401.0) (for years 1976 - )
+</br></br></p>
+</li>
+<li><p><strong>QLD_Overseas_Departures_Females_Total_movement</strong>
+</br></p>
+<p>Overseas departures (b)(c)(d), total movement, Females, Queensland (a), 1901-2010 (h), CY
+</br></p>
+<p>(a) Prior to 1974, data relates to state/territory of disembarkation (for arrivals) or embarkation (for departures). For 1974 and 1975, data relates to state/territory of clearance. From 1976 onwards data relates to state/territory of usual residence.</p>
+<p>(b) Includes arrivals of  troops for the years 1915 to 1920 and departures of troops for the years 1914 to 1919.</p>
+<p>(c) Excludes troop movements for the period September 1939 to June 1947.</p>
+<p>(d) Includes U.S. troops visiting Australia on rest and recreation leave during the years 1970 to 1971.</p>
+<p>(h) Overseas arrivals and departures data are rounded to whole numbers. As a result, sums of the componenets may not add exactly to totals.
+</br></p>
+<p>Sources: Demography (1911, 1922, 1933, 1947, 1949, 1960, 1966) (for years 1901 - 1964); Overseas Arrivals and Departures, Australia (1972) (CBCS ref. no. 4.23) (for years 1965 - 1972); Overseas Arrivals and Departures, Australia (1977) (cat. no. 3404.0) (for years 1973 - 1975); ABS data available on request, Overseas Arrivals and Departures collection (for years 1976 - ); Overseas Arrivals and Departures, Australia (cat. no. 3401.0) (for years 1976 - )
+</br></br></p>
+</li>
+<li><p><strong>QLD_Overseas_Departures_Persons_Total_movement</strong>
+</br></p>
+<p>Overseas departures (b)(c)(d), total movement, Persons, Queensland (a), 1901-2010 (h), CY
+</br></p>
+<p>(a) Prior to 1974, data relates to state/territory of disembarkation (for arrivals) or embarkation (for departures). For 1974 and 1975, data relates to state/territory of clearance. From 1976 onwards data relates to state/territory of usual residence.</p>
+<p>(b) Includes arrivals of  troops for the years 1915 to 1920 and departures of troops for the years 1914 to 1919.</p>
+<p>(c) Excludes troop movements for the period September 1939 to June 1947.</p>
+<p>(d) Includes U.S. troops visiting Australia on rest and recreation leave during the years 1970 to 1971.</p>
+<p>(h) Overseas arrivals and departures data are rounded to whole numbers. As a result, sums of the componenets may not add exactly to totals.
+</br></p>
+<p>Sources: Demography (1911, 1922, 1933, 1947, 1949, 1960, 1966) (for years 1901 - 1964); Overseas Arrivals and Departures, Australia (1972) (CBCS ref. no. 4.23) (for years 1965 - 1972); Overseas Arrivals and Departures, Australia (1977) (cat. no. 3404.0) (for years 1973 - 1975); ABS data available on request, Overseas Arrivals and Departures collection (for years 1976 - ); Overseas Arrivals and Departures, Australia (cat. no. 3401.0) (for years 1976 - )</p>
+</li>
+</ul>
 </div>
 <div class="section" id="qgso-data">
 <h3>QGSO data<a class="headerlink" href="#qgso-data" title="Permalink to this headline">¶</a></h3>
-<p>Source: <a class="reference external" href="https://www.qgso.qld.gov.au/statistics/theme/economy/prices-indexes/consumer-price-index-state">https://www.qgso.qld.gov.au/statistics/theme/economy/prices-indexes/consumer-price-index-state</a></p>
-<ul class="simple">
-<li><p>Brisbane_Index</p></li>
-<li><p>Brisbane_YoY_change</p></li>
-<li><p>Weighted average of eight capital cities_Index</p></li>
-<li><p>Weighted average of eight capital cities_YoY_change</p></li>
+<p>Dataset: cpi-all-groups-brisbane-weighted-average-eight-capital-cities-financial-year-1948-49-2021-22.csv</p>
+<p>Source: <a class="reference external" href="https://www.qgso.qld.gov.au/statistics/theme/economy/prices-indexes/consumer-price-index-state">https://www.qgso.qld.gov.au/statistics/theme/economy/prices-indexes/consumer-price-index-state</a>
+</br></p>
+<ul>
+<li><p><strong>Brisbane_Index</strong>
+</br></p>
+<p>Consumer Price Index (a)(b): Brisbane, 1948-49 to 2021-22, FY
+</br></p>
+<p>(a) 2011-12 = 100</p>
+<p>(b) Average of four quarters.
+</br></p>
+<p>Source: ABS 6401.0, Consumer Price Index, Australia.
+</br></br></p>
+</li>
+<li><p><strong>Brisbane_YoY_change</strong>
+</br></p>
+<p>Consumer Price Index (a)(b): Brisbane, Annual (%) change, 1949-50 to 2021-22, FY
+</br></p>
+<p>(a) 2011-12 = 100</p>
+<p>(b) Average of four quarters.
+</br></p>
+<p>Source: ABS 6401.0, Consumer Price Index, Australia.
+</br></br></p>
+</li>
+<li><p><strong>Weighted average of eight capital cities_Index</strong>
+</br></p>
+<p>Consumer Price Index (a)(b): Weighted average of eight capitals, 1948-49 to 2021-22, FY
+</br></p>
+<p>(a) 2011-12 = 100</p>
+<p>(b) Average of four quarters.
+</br></p>
+<p>Source: ABS 6401.0, Consumer Price Index, Australia.
+</br></br></p>
+</li>
+<li><p><strong>Weighted average of eight capital cities_YoY_change</strong>
+</br></p>
+<p>Consumer Price Index (a)(b): Weighted average of eight capitals, Annual (%) change, 1949-50 to 2021-22, FY
+</br></p>
+<p>(a) 2011-12 = 100</p>
+<p>(b) Average of four quarters.
+</br></p>
+<p>Source: ABS 6401.0, Consumer Price Index, Australia.</p>
+</li>
 </ul>
-</br>
+<p></br></br></p>
+<p>Dataset: building-approvals-value-building-approved-type-qld-1970-71-2021-22.csv</p>
 <p>Source: <a class="reference external" href="https://www.qgso.qld.gov.au/statistics/theme/industry-development/housing-construction/building-approvals">https://www.qgso.qld.gov.au/statistics/theme/industry-development/housing-construction/building-approvals</a></p>
-<ul class="simple">
-<li><p>QLD_BuildingsApproved_Residential houses_Value</p></li>
-<li><p>QLD_BuildingsApproved_Other residential_Value</p></li>
-<li><p>QLD_BuildingsApproved_Alterations, additions and conversions_Value</p></li>
-<li><p>QLD_BuildingsApproved_Total residential_Value</p></li>
-<li><p>QLD_BuildingsApproved_Non-residential_Value</p></li>
-<li><p>QLD_BuildingsApproved_Total_Value</p></li>
-</ul>
 </br>
+<ul>
+<li><p><strong>QLD_BuildingsApproved_Residential houses_Value</strong>
+</br></p>
+<p>Building approvals: value of building approved (a), Residential houses, Queensland, 1970-71 to 2021-22, FY
+</br></p>
+<p>(a) Based on original series as at June 2022.
+</br></p>
+<p>Source: ABS, Building Approvals, Australia.
+</br></br></p>
+</li>
+<li><p><strong>QLD_BuildingsApproved_Other residential_Value</strong>
+</br></p>
+<p>Building approvals: value of building approved (a), Other residential, Queensland, 1970-71 to 2021-22, FY
+</br></p>
+<p>(a) Based on original series as at June 2022.
+</br></p>
+<p>Source: ABS, Building Approvals, Australia.
+</br></br></p>
+</li>
+<li><p><strong>QLD_BuildingsApproved_Alterations, additions and conversions_Value</strong>
+</br></p>
+<p>Building approvals: value of building approved (a), Alterations, additions and conversions, Queensland, 1973-74 to 2021-22, FY
+</br></p>
+<p>(a) Based on original series as at June 2022.
+</br></p>
+<p>Source: ABS, Building Approvals, Australia.
+</br></br></p>
+</li>
+<li><p><strong>QLD_BuildingsApproved_Total residential_Value</strong>
+</br></p>
+<p>Building approvals: value of building approved (a), Total Residential, Queensland, 1973-74 to 2021-22, FY
+</br></p>
+<p>(a) Based on original series as at June 2022.
+</br></p>
+<p>Source: ABS, Building Approvals, Australia.
+</br></br></p>
+</li>
+<li><p><strong>QLD_BuildingsApproved_Non-residential_Value</strong>
+</br></p>
+<p>Building approvals: value of building approved (a), Non-residential, Queensland, 1970-71 to 2021-22, FY
+</br></p>
+<p>(a) Based on original series as at June 2022.
+</br></p>
+<p>Source: ABS, Building Approvals, Australia.
+</br></br></p>
+</li>
+<li><p><strong>QLD_BuildingsApproved_Total_Value</strong>
+</br></p>
+<p>Building approvals: value of building approved (a), Total, Queensland, 1973-74 to 2021-22, FY
+</br></p>
+<p>(a) Based on original series as at June 2022.
+</br></p>
+<p>Source: ABS, Building Approvals, Australia.</p>
+</li>
+</ul>
 </div>
 <div class="section" id="dfat-data">
 <h3>DFAT data<a class="headerlink" href="#dfat-data" title="Permalink to this headline">¶</a></h3>
 <p>Dataset: australias-trade-and-economic-indicators-historical.xlsx</p>
 <p>Source: <a class="reference external" href="https://www.dfat.gov.au/trade/trade-and-investment-data-information-and-publications/trade-statistics/trade-time-series-data">https://www.dfat.gov.au/trade/trade-and-investment-data-information-and-publications/trade-statistics/trade-time-series-data</a></p>
+</br>
 <p>Sheet name: Population</p>
 <ul>
-<li><p><strong>Aus_Population</strong></p>
-<p>Population (1788-2017), Australia, CY (a)(b)</p>
+<li><p><strong>Aus_Population</strong>
+</br></p>
+<p>Population (1788-2017), Australia, CY (a)(b)
+</br></p>
 <p>(a)  Includes estimates of the Indigenous population from 1961 onwards.</p>
-<p>(b) For 2017 only, end September 2017</p>
+<p>(b) For 2017 only, end September 2017
+</br></br></p>
 </li>
-<li><p><strong>Aus_Short term overseas visitor arrivals</strong></p></li>
-<li><p><strong>Aus_Short term Australian resident departures</strong></p></li>
+<li><p><strong>Aus_Short term overseas visitor arrivals</strong>
+</br></p>
+<p>Short-term overseas visitor arrivals (1925-2017), Australia, CY
+</br></p>
+</li>
+<li><p><strong>Aus_Short term Australian resident departures</strong>
+</br></p>
+<p>Short-term Australian resident departures (1925-2017), Australia, CY</p>
+</li>
 </ul>
 </br>
 <p>Sheet name: Economic</p>
 <ul>
-<li><p><strong>AUS_GDP_Current</strong></p>
-<p>Gross Domestic Product, Australia - current price, FY (a)(b)</p>
+<li><p><strong>AUS_GDP_Current</strong>
+</br></p>
+<p>Gross Domestic Product, Australia - current price, 1900-01 - 2016-17, FY (a)(b)
+</br></p>
 <p>(a) Please note there is a time series break in the current price GDP series between 1958-59 and 1959-60.</p>
-<p>(b) Excludes livestock accumulation up to 1948-49.</p>
+<p>(b) Excludes livestock accumulation up to 1948-49.
+</br></br></p>
 </li>
-<li><p><strong>AUS_GDP_Real_2015-16</strong></p>
-<p>Real Gross Domestic Product, Australia - 2015-16 prices, FY</p>
+<li><p><strong>AUS_GDP_Real_2015-16</strong>
+</br></p>
+<p>Real Gross Domestic Product, Australia - 2015-16 prices, 1900-01 - 2016-17, FY
+</br></br></p>
 </li>
-<li><p><strong>AUS_GDP_Real_2015-16_Percentage</strong></p>
-<p>Real Gross Domestic Product Percentage change (%), Australia, FY</p>
+<li><p><strong>AUS_GDP_Real_2015-16_Percentage</strong>
+</br></p>
+<p>Real Gross Domestic Product Percentage change (%), 1901-02 - 2016-17, Australia, FY
+</br></br></p>
 </li>
-<li><p><strong>AUS_Terms of trade Index set to 2015-16</strong></p>
-<p>Terms of trade Index (2015-16=100), Australia, FY</p>
+<li><p><strong>AUS_Terms of trade Index set to 2015-16</strong>
+</br></p>
+<p>Terms of trade Index (2015-16=100), 1900-01 - 2016-17, Australia, FY
+</br></br></p>
 </li>
-<li><p><strong>AUS_Terms of trade percentage set to 2015-16</strong></p>
-<p>Terms of trade precentage change (%), Australia, FY</p>
+<li><p><strong>AUS_Terms of trade percentage set to 2015-16</strong>
+</br></p>
+<p>Terms of trade precentage change (%), 1901-02 - 2016-17, Australia, FY
+</br></br></p>
 </li>
-<li><p><strong>AUS_Unemployment rate</strong></p>
-<p>Unemployment rate (%), Australia, FY</p>
+<li><p><strong>AUS_Unemployment rate</strong>
+</br></p>
+<p>Unemployment rate (%), 1900-01 - 2016-17, Australia, FY</p>
 </li>
 </ul>
 </div>
