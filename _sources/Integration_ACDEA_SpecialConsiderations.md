@@ -5,7 +5,7 @@ As ACDEA is a prototype for integrating existing data sources and is still in a 
 1. **Ambiguous Concepts**: When working with ACDEA, it is important to keep in mind that some of the concepts may have different interpretations across cultural data in different domains. 
    <br><br>
 
-   For example, the entity `project` in DAQA may have a different definition from `work` in DAAO, despite being integrated into the same level `Work`. Similarly, AusStage's `event`, which primarily corresponds to `production` in performing arts, may be defined differently from the general `event` concept seen across other data sources.
+   For example, the entity `project` in DAQA may have a different definition from `work` in DAAO, despite being integrated into the same entity `Work`. Similarly, AusStage's `event`, which primarily corresponds to `production` in performing arts, may be defined differently from the general `event` concept seen across other data sources.
    <br><br>
 
    Hence, it is important to understand the specific concept being used in each data source. Additional efforts in data manipulation might be necessary to construct the specific entities that one wishes to analyse.

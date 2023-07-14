@@ -450,7 +450,7 @@
 <p>The construction of the Australian Cultural Data Engine Architecture (ACDEA) follows a general methodology that integrates a unified data model from all the existing data models of the data sources. This is a bottom-up approach that ensures that all the relevant data is included and organised into a coherent and integrated database.</p>
 <p>Importantly, to achieve this methodology, the construction of ACDEA follows the principles below:</p>
 <ul class="simple">
-<li><p><strong>Refer to the Most Comprehensive Existing Data Models</strong>: ACDEA aims to include all relevant attributes from various cultural data sources into the unified entities (levels). Therefore, the most comprehensive entity structure was referred to and analysed to ensure that ACDEA includes the most relevant and useful attributes of specific entity from all sources. For instance, to construct its own <code class="docutils literal notranslate"><span class="pre">person</span></code> level, ACDEA refers to the <code class="docutils literal notranslate"><span class="pre">person</span></code> data model from DAAO, which is a person-oriented data collection.
+<li><p><strong>Refer to the Most Comprehensive Existing Data Models</strong>: ACDEA aims to include all relevant attributes from various cultural data sources into the unified entities. Therefore, the most comprehensive entity structure was referred to and analysed to ensure that ACDEA includes the most relevant and useful attributes of specific entity from all sources. For instance, to construct the <code class="docutils literal notranslate"><span class="pre">person</span></code> entity structure, ACDEA refers to the <code class="docutils literal notranslate"><span class="pre">person</span></code> data model from DAAO, which is a person-oriented data collection.
 <br><br></p></li>
 <li><p><strong>Keep Differences &amp; Unify Common</strong>: The construction of ACDEA required reconciling differences between the data models of different sources, which is a significant challenge. To maintain the completeness of the original data sources and integrate the similarities of data attributes, ACDEA follows the principle of keeping differences between the data models that are significant and add value to the data, while unifying common elements to ensure consistency and usability. This approach helps to capture the unique characteristics of each data source and ensure that ACDEA includes all relevant information.
 <br><br></p></li>
@@ -472,10 +472,10 @@
 <div class="section" id="data-transformation">
 <h2>Data Transformation<a class="headerlink" href="#data-transformation" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
-<p>This stage focuses on preparing the data for integration into the ACDEA. It involves expanding the data by adding missing attributes or levels, as well as cleansing the data by identifying and correcting errors or inconsistencies.</p>
+<p>This stage focuses on preparing the data for integration into the ACDEA. It involves expanding the data by adding missing attributes or nested levels, as well as cleansing the data by identifying and correcting errors or inconsistencies.</p>
 <div class="section" id="data-expansion">
 <h3>Data Expansion<a class="headerlink" href="#data-expansion" title="Permalink to this headline">¶</a></h3>
-<p>This step involves expanding the data to include additional attributes or levels that are necessary for the integration process. This may involve supplementing missing attributes, projecting similar attributes to the target attributes in ACDEA or expanding the data model to include additional levels or entities. For example, the <code class="docutils literal notranslate"><span class="pre">structure</span></code> entity in DAQA is projected to <code class="docutils literal notranslate"><span class="pre">place</span></code> level as well as <code class="docutils literal notranslate"><span class="pre">work</span></code> level in ACDEA.</p>
+<p>This step involves expanding the data to include additional attributes or nested levels that are necessary for the integration process. This may involve supplementing missing attributes, projecting similar attributes to the target attributes in ACDEA or expanding the data model to include additional nested levels. For example, the <code class="docutils literal notranslate"><span class="pre">structure</span></code> entity in DAQA is projected to the <code class="docutils literal notranslate"><span class="pre">place</span></code> entity structure as well as the <code class="docutils literal notranslate"><span class="pre">work</span></code> entity structure in ACDEA.</p>
 </div>
 <div class="section" id="data-cleansing">
 <h3>Data Cleansing<a class="headerlink" href="#data-cleansing" title="Permalink to this headline">¶</a></h3>
@@ -491,7 +491,7 @@
 <h2>Downstream tasks<a class="headerlink" href="#downstream-tasks" title="Permalink to this headline">¶</a></h2>
 <hr class="docutils" />
 <p>This final stage relates to ongoing downstream tasks such as data analysis and visualisation that can now be conducted given the unification process. Through the investigation of various case studies, the full potential value of the integrated data can be realised.</p>
-<p>Please note that the details of case studies and analytical works carried out by the ACDE can be found in the <a class="reference external" href="https://acd-engine.github.io/jupyterbook/data_analysis_intro.html">Data Analysis</a> chapter.</p>
+<p>Please note that the details of case studies and analytical works carried out by the ACDE can be found in the <a class="reference external" href="https://acd-engine.github.io/jupyterbook/Analysis_Introduction.html">Data Analysis</a> chapter.</p>
 <style>
   a {
     color: #1ea5a6 !important;

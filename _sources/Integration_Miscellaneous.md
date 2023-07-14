@@ -40,7 +40,7 @@ In addition to current data sources, we found many other interesting Australian/
 
 1. [Archibald, Wynne and Sulman Prizes | Art Gallery of NSW](https://www.artgallery.nsw.gov.au/art/prizes/)
    
-   This is a collection of art prize data from the Art Gallery of NSW. It contains information about the artists, artworks and judges of the prizes. This data collection could add more value to `recognition` level in the ACDEA. 
+   This is a collection of art prize data from the Art Gallery of NSW. It contains information about the artists, artworks and judges of the prizes. This data collection could add more value to `recognition` entity in the ACDEA. 
    <br>
    <br>
    We provide an example of how to use Archibald Prize data for analytical purposes in the **Data Analysis** chapter of this book. Refer to [**Quantifying success: A journey into the Archibald Prize**](https://acd-engine.github.io/jupyterbook/Analysis_ArchibaldPrize.html).
@@ -49,19 +49,19 @@ In addition to current data sources, we found many other interesting Australian/
 
 2. [Australian and New Zealand Art Sales Digest](https://www.aasd.com.au/)
    
-   This is a database of sales of Australian and New Zealand art. It includes information about the artwork, artist, sale date, price and sale location. This data collection could strengthen the structure for `work` level in the ACDEA.
+   This is a database of sales of Australian and New Zealand art. It includes information about the artwork, artist, sale date, price and sale location. This data collection could strengthen the structure for `work` entity in the ACDEA.
    <br>
    <br>
 
 3. [Australian Prints + Printmaking](https://www.printsandprintmaking.gov.au/)
    
-   This is an online database of Australian prints and printmaking, maintained by the National Gallery of Australia. It contains information about artists, prints, printmaking techniques, and print collections in Australian museums and galleries. This data collection can add more value to `work`, `resource` and `place` level in the ACDEA enriching the data related to the visual art domain in ACDE.
+   This is an online database of Australian prints and printmaking, maintained by the National Gallery of Australia. It contains information about artists, prints, printmaking techniques, and print collections in Australian museums and galleries. This data collection can add more value to `work`, `resource` and `place` entity in the ACDEA enriching the data related to the visual art domain in ACDE.
    <br>
    <br>
 
 4. [IMDB](https://www.imdb.com/)
    
-   This is a well-known database for information about movies, television shows, and other productions. It includes information about the cast and crew, production companies, release dates, and ratings. This data collection can add more value to the `work` level in the ACDEA.
+   This is a well-known database for information about movies, television shows, and other productions. It includes information about the cast and crew, production companies, release dates, and ratings. This data collection can add more value to the `work` entity in the ACDEA.
    <br>
    <br>
    

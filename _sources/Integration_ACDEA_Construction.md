@@ -6,7 +6,7 @@ The construction of the Australian Cultural Data Engine Architecture (ACDEA) fol
 
 Importantly, to achieve this methodology, the construction of ACDEA follows the principles below:
 
-- **Refer to the Most Comprehensive Existing Data Models**: ACDEA aims to include all relevant attributes from various cultural data sources into the unified entities (levels). Therefore, the most comprehensive entity structure was referred to and analysed to ensure that ACDEA includes the most relevant and useful attributes of specific entity from all sources. For instance, to construct its own `person` level, ACDEA refers to the `person` data model from DAAO, which is a person-oriented data collection.
+- **Refer to the Most Comprehensive Existing Data Models**: ACDEA aims to include all relevant attributes from various cultural data sources into the unified entities. Therefore, the most comprehensive entity structure was referred to and analysed to ensure that ACDEA includes the most relevant and useful attributes of specific entity from all sources. For instance, to construct the `person` entity structure, ACDEA refers to the `person` data model from DAAO, which is a person-oriented data collection.
 <br><br>
 
 - **Keep Differences & Unify Common**: The construction of ACDEA required reconciling differences between the data models of different sources, which is a significant challenge. To maintain the completeness of the original data sources and integrate the similarities of data attributes, ACDEA follows the principle of keeping differences between the data models that are significant and add value to the data, while unifying common elements to ensure consistency and usability. This approach helps to capture the unique characteristics of each data source and ensure that ACDEA includes all relevant information.
@@ -28,10 +28,10 @@ Once the data is collected, the next step is to explore it in order to understan
 
 #### Data Transformation
 ---
-This stage focuses on preparing the data for integration into the ACDEA. It involves expanding the data by adding missing attributes or levels, as well as cleansing the data by identifying and correcting errors or inconsistencies.
+This stage focuses on preparing the data for integration into the ACDEA. It involves expanding the data by adding missing attributes or nested levels, as well as cleansing the data by identifying and correcting errors or inconsistencies.
 
 ##### Data Expansion
-This step involves expanding the data to include additional attributes or levels that are necessary for the integration process. This may involve supplementing missing attributes, projecting similar attributes to the target attributes in ACDEA or expanding the data model to include additional levels or entities. For example, the `structure` entity in DAQA is projected to `place` level as well as `work` level in ACDEA.
+This step involves expanding the data to include additional attributes or nested levels that are necessary for the integration process. This may involve supplementing missing attributes, projecting similar attributes to the target attributes in ACDEA or expanding the data model to include additional nested levels. For example, the `structure` entity in DAQA is projected to the `place` entity structure as well as the `work` entity structure in ACDEA.
 
 ##### Data Cleansing
 In this step, the data is cleaned and standardised to ensure that it is consistent and accurate. This may involve removing redundant texts, and standardising time and place formats and values.
@@ -44,7 +44,7 @@ Once the data is transformed and cleansed, it is loaded into a MongoDB database 
 ---
 This final stage relates to ongoing downstream tasks such as data analysis and visualisation that can now be conducted given the unification process. Through the investigation of various case studies, the full potential value of the integrated data can be realised.
 
-Please note that the details of case studies and analytical works carried out by the ACDE can be found in the [Data Analysis](https://acd-engine.github.io/jupyterbook/data_analysis_intro.html) chapter.
+Please note that the details of case studies and analytical works carried out by the ACDE can be found in the [Data Analysis](https://acd-engine.github.io/jupyterbook/Analysis_Introduction.html) chapter.
 
 <style>
   a {

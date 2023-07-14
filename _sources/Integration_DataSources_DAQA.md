@@ -75,7 +75,7 @@ This pipeline ensures that all relevant records are scraped and loaded into the 
 
 ##### Data Transformation & Loading
 
-As many preparations have been made in the scraping process, the transformation and loading of DAQA data are more straightforward by mapping corresponding entities/attributes to the levels/attributes in ACDEA. The related records of the corresponding original records are aggregated from the relationship level and updated into the related attribute of the original records.
+As many preparations have been made in the scraping process, the transformation and loading of DAQA data are more straightforward by mapping corresponding entities/attributes to the entities/attributes in ACDEA. The related records of the corresponding original records are aggregated from the relationship entity and updated into the related attribute of the original records.
 
 On an entity level, the DAQA entity projection is listed as follows:
 
@@ -96,7 +96,7 @@ On an entity level, the DAQA entity projection is listed as follows:
   }
 </style>
 
-| DAQA Entity (Collection)               | ACDEA Level  |
+| DAQA Entity (Collection)               | ACDEA Entity |
 | -------------------------------------- | ------------ |
 | person                                 | person       |
 | structure                              | work         |

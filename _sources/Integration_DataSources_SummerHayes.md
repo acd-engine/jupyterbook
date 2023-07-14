@@ -66,9 +66,9 @@ For more details in parsing SFC data and loading it into the ACDEA, please refer
 </script>
 <br>
 
-It is important to note that the ACDEA does not assign any sub-level for the resource level, and due to the challenges in re-linking the original SFC records into a hierarchical structure, all the SFC records are loaded solely into the resource level of ACDEA. No new relationship records were constructed during this stage. The original hierarchy information is preserved and stored in the `_class_ori` field.
+It is important to note that the ACDEA does not assign any sub-entity for the resource entity, and due to the challenges in re-linking the original SFC records into a hierarchical structure, all the SFC records are loaded solely into the resource entity of ACDEA. No new relationship records were constructed during this stage. The original hierarchy information is preserved and stored in the `_class_ori` field.
 
-Ultimately, 241 SFC resource records were loaded into the resource level of ACDEA.
+Ultimately, 241 SFC resource records were loaded into the resource entity of ACDEA.
 
 #### References
 ---

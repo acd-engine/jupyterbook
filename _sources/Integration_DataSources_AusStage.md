@@ -40,7 +40,7 @@ Furthermore, to facilitate table joining during data loading, we created several
 
 For more details in creating views for data loading, please refer to the "**Create Views**" section in [AusStage_DBUpdate.ipynb](https://github.com/acd-engine/jupyterbook/blob/main/integration%20notebooks/AusStage_DBUpdate.ipynb) and the corresponding SQL scripts.
 
-With these additional attributes and views, it is now possible to map the corresponding entities and attributes of AusStage to the levels and attributes in the ACDEA. The related records of the corresponding original records are also aggregated from the relationship level and updated into the related attribute of the original records.
+With these additional attributes and views, it is now possible to map the corresponding entities and attributes of AusStage to the entities and attributes in the ACDEA. The related records of the corresponding original records are also aggregated from the relationship entity and updated into the related attribute of the original records.
 
 On an entity level, the AusStage entity projection is listed as follows:
 
@@ -61,7 +61,7 @@ On an entity level, the AusStage entity projection is listed as follows:
   }
 </style>
 
-| AusStage Entity (Collection)  | ACDEA Level  |
+| AusStage Entity (Collection)  | ACDEA Entity |
 | ----------------------------- | ------------ |
 | contributor                   | person       |
 | work                          | work         |

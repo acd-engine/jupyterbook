@@ -776,46 +776,18 @@
     <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">),</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
 
-<span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">acdedata</span><span class="o">=</span><span class="s1">&#39;organization&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;googledrive&#39;</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_202305080816.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
+<span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">acdedata</span><span class="o">=</span><span class="s1">&#39;organization&#39;</span><span class="p">):</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_202307131040.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
 
     <span class="c1"># first check if the data exists in current directory</span>
     <span class="n">data_from_path</span> <span class="o">=</span> <span class="n">check_if_csv_exists_in_folder</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">data_from_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">data_from_path</span>
 
-    <span class="n">download_url</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">github_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">.gz&quot;</span>
+    <span class="n">urls</span> <span class="o">=</span> <span class="n">fetch_small_data_from_github</span><span class="p">(</span><span class="s1">&#39;acde_data_gdrive_urls.csv&#39;</span><span class="p">)</span>
+    <span class="n">sharelink</span> <span class="o">=</span> <span class="n">urls</span><span class="p">[</span><span class="n">urls</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">acdedata</span><span class="p">][</span><span class="n">filetype</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://drive.google.com/u/0/uc?id=</span><span class="si">{</span><span class="n">sharelink</span><span class="si">}</span><span class="s1">&amp;export=download&amp;confirm=yes&#39;</span>
 
-    <span class="k">if</span> <span class="n">source</span> <span class="o">==</span> <span class="s1">&#39;googledrive&#39;</span><span class="p">:</span>
-        <span class="n">urls</span> <span class="o">=</span> <span class="n">fetch_small_data_from_github</span><span class="p">(</span><span class="s1">&#39;acde_data_gdrive_urls.csv&#39;</span><span class="p">)</span>
-        <span class="n">sharelink</span> <span class="o">=</span> <span class="n">urls</span><span class="p">[</span><span class="n">urls</span><span class="o">.</span><span class="n">data</span> <span class="o">==</span> <span class="n">acdedata</span><span class="p">][</span><span class="n">filetype</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;https://drive.google.com/u/0/uc?id=</span><span class="si">{</span><span class="n">sharelink</span><span class="si">}</span><span class="s1">&amp;export=download&amp;confirm=yes&#39;</span>
-
-    <span class="k">elif</span> <span class="n">source</span> <span class="o">==</span> <span class="s1">&#39;github&#39;</span><span class="p">:</span> <span class="n">url</span> <span class="o">=</span> <span class="n">github_url</span>
-    <span class="k">else</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
-    
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">sha</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;oid sha256:&#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-        <span class="n">size</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;size &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-        <span class="c1"># Step 1: Create the JSON object</span>
-        <span class="n">json_data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;operation&quot;</span><span class="p">:</span> <span class="s2">&quot;download&quot;</span><span class="p">,</span> <span class="s2">&quot;transfer&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;basic&quot;</span><span class="p">],</span> <span class="s2">&quot;objects&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;oid&quot;</span><span class="p">:</span> <span class="n">sha</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">size</span><span class="p">)}]}</span>
-
-        <span class="c1"># Step 2: Send a POST request to the LFS API</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://github.com/acd-engine/jupyterbook.git/info/lfs/objects/batch&quot;</span>
-        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/vnd.git-lfs+json&quot;</span><span class="p">,</span><span class="s2">&quot;Content-type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_data</span><span class="p">))</span>
-        <span class="n">response_json</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-        <span class="c1"># Step 3: Extract the download URL from the response</span>
-        <span class="n">download_url</span> <span class="o">=</span> <span class="n">response_json</span><span class="p">[</span><span class="s2">&quot;objects&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;actions&quot;</span><span class="p">][</span><span class="s2">&quot;download&quot;</span><span class="p">][</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">pass</span>
-
-    <span class="k">if</span> <span class="n">download_url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">download_url</span><span class="p">)</span>
-
     <span class="n">decompressed_data</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
     <span class="n">decompressed_buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">decompressed_data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
 
@@ -1308,12 +1280,12 @@
       <td>0.002</td>
     </tr>
     <tr>
-      <th>Person_RelatedPlace</th>
+      <th>Organization_RelatedPerson</th>
       <td>7</td>
       <td>0.000</td>
     </tr>
     <tr>
-      <th>Organization_RelatedPerson</th>
+      <th>Person_RelatedPlace</th>
       <td>7</td>
       <td>0.000</td>
     </tr>
@@ -3403,35 +3375,35 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   </thead>
   <tbody>
     <tr>
-      <th>400</th>
+      <th>21223</th>
       <td>"Evans Deakin &amp; Company (Engineers &amp; Shipbuild...</td>
       <td>1910</td>
       <td>1980.0</td>
       <td>70.0</td>
     </tr>
     <tr>
-      <th>771</th>
+      <th>21594</th>
       <td>"Bates Smart &amp; McCutcheon"</td>
       <td>1926</td>
       <td>1995.0</td>
       <td>69.0</td>
     </tr>
     <tr>
-      <th>342</th>
+      <th>21165</th>
       <td>"Brown and Broad LTD"</td>
       <td>1905</td>
       <td>1967.0</td>
       <td>62.0</td>
     </tr>
     <tr>
-      <th>86</th>
+      <th>20909</th>
       <td>"Queensland Housing Commission"</td>
       <td>1945</td>
       <td>2004.0</td>
       <td>59.0</td>
     </tr>
     <tr>
-      <th>341</th>
+      <th>21164</th>
       <td>"George Brockwell Gill Architect and Agent"</td>
       <td>1889</td>
       <td>1943.0</td>
@@ -3672,21 +3644,21 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   </thead>
   <tbody>
     <tr>
-      <th>934</th>
+      <th>21757</th>
       <td>"Backhouse &amp; Taylor"</td>
       <td>3838.0</td>
       <td>1862</td>
       <td>1863.0</td>
     </tr>
     <tr>
-      <th>936</th>
+      <th>21759</th>
       <td>"Furnival &amp; Taylor"</td>
       <td>3846.0</td>
       <td>1864</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>442</th>
+      <th>21265</th>
       <td>"T Taylor"</td>
       <td>4795.0</td>
       <td>1967</td>
@@ -3752,175 +3724,175 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   </thead>
   <tbody>
     <tr>
-      <th>108</th>
+      <th>20931</th>
       <td>"C.W. Chambers Architect and Consulting Engineer"</td>
       <td>4415.0</td>
       <td>1893</td>
       <td>1910.0</td>
     </tr>
     <tr>
-      <th>109</th>
+      <th>20932</th>
       <td>"McCredie Bros &amp; Chambers"</td>
       <td>4416.0</td>
       <td>1899</td>
       <td>1892.0</td>
     </tr>
     <tr>
-      <th>733</th>
+      <th>21556</th>
       <td>"H.W. Atkinson &amp; Chas. McLay"</td>
       <td>2338.0</td>
       <td>1907</td>
       <td>1918.0</td>
     </tr>
     <tr>
-      <th>892</th>
+      <th>21715</th>
       <td>"Chambers and Powell"</td>
       <td>2499.0</td>
       <td>1911</td>
       <td>1920.0</td>
     </tr>
     <tr>
-      <th>450</th>
+      <th>21273</th>
       <td>"Arnold Henry Conrad Architect"</td>
       <td>4808.0</td>
       <td>1917</td>
       <td>1917.0</td>
     </tr>
     <tr>
-      <th>88</th>
+      <th>20911</th>
       <td>"Atkinson and Conrad (1918-1927)"</td>
       <td>4316.0</td>
       <td>1918</td>
       <td>1927.0</td>
     </tr>
     <tr>
-      <th>850</th>
+      <th>21673</th>
       <td>"H.W. Atkinson &amp; A.H. Conrad (1918-1927)"</td>
       <td>2456.0</td>
       <td>1918</td>
       <td>1927.0</td>
     </tr>
     <tr>
-      <th>708</th>
+      <th>21531</th>
       <td>"Chambers &amp; Ford"</td>
       <td>2310.0</td>
       <td>1920</td>
       <td>1935.0</td>
     </tr>
     <tr>
-      <th>111</th>
+      <th>20934</th>
       <td>"Powell &amp; Hutton Architects"</td>
       <td>4419.0</td>
       <td>1922</td>
       <td>1924.0</td>
     </tr>
     <tr>
-      <th>803</th>
+      <th>21626</th>
       <td>"Lange Powell Architect"</td>
       <td>2408.0</td>
       <td>1924</td>
       <td>1927.0</td>
     </tr>
     <tr>
-      <th>768</th>
+      <th>21591</th>
       <td>"Atkinson, Powell &amp; Conrad (1927-1931)"</td>
       <td>2373.0</td>
       <td>1927</td>
       <td>1931.0</td>
     </tr>
     <tr>
-      <th>749</th>
+      <th>21572</th>
       <td>"H.W Atkinson &amp; A.H Conrad (1931-1939)"</td>
       <td>2354.0</td>
       <td>1931</td>
       <td>1939.0</td>
     </tr>
     <tr>
-      <th>110</th>
+      <th>20933</th>
       <td>"Lange L Powell &amp; Geo Rae Architects"</td>
       <td>4417.0</td>
       <td>1931</td>
       <td>1933.0</td>
     </tr>
     <tr>
-      <th>893</th>
+      <th>21716</th>
       <td>"Chambers &amp; Hutton"</td>
       <td>2500.0</td>
       <td>1931</td>
       <td>1940.0</td>
     </tr>
     <tr>
-      <th>814</th>
+      <th>21637</th>
       <td>"Lange Powell"</td>
       <td>2419.0</td>
       <td>1933</td>
       <td>1938.0</td>
     </tr>
     <tr>
-      <th>868</th>
+      <th>21691</th>
       <td>"(Lange L.) Powell, Dods &amp; Thorpe (PDT)"</td>
       <td>2475.0</td>
       <td>1938</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>841</th>
+      <th>21664</th>
       <td>"A.H Conrad &amp; T.B.F Gargett"</td>
       <td>2447.0</td>
       <td>1939</td>
       <td>1965.0</td>
     </tr>
     <tr>
-      <th>789</th>
+      <th>21612</th>
       <td>"Ford, Hutton &amp; Newell"</td>
       <td>2394.0</td>
       <td>1952</td>
       <td>1958.0</td>
     </tr>
     <tr>
-      <th>772</th>
+      <th>21595</th>
       <td>"Lund, Hutton &amp; Newell"</td>
       <td>2377.0</td>
       <td>1959</td>
       <td>1959.0</td>
     </tr>
     <tr>
-      <th>881</th>
+      <th>21704</th>
       <td>"Lund, Hutton, Newell, Black &amp; Paulsen"</td>
       <td>2488.0</td>
       <td>1960</td>
       <td>1964.0</td>
     </tr>
     <tr>
-      <th>473</th>
+      <th>21296</th>
       <td>"Ian Black and Company (Cairns)"</td>
       <td>4852.0</td>
       <td>1964</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>843</th>
+      <th>21666</th>
       <td>"Conrad Gargett &amp; Partners (1965-1972)"</td>
       <td>2449.0</td>
       <td>1964</td>
       <td>1966.0</td>
     </tr>
     <tr>
-      <th>281</th>
+      <th>21104</th>
       <td>"Lund Hutton Newell Paulsen Pty Ltd"</td>
       <td>4628.0</td>
       <td>1965</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>840</th>
+      <th>21663</th>
       <td>"Conrad Gargett &amp; Partners (1972-1995)"</td>
       <td>2446.0</td>
       <td>1972</td>
       <td>1995.0</td>
     </tr>
     <tr>
-      <th>595</th>
+      <th>21418</th>
       <td>"Conrad &amp; Gargett"</td>
       <td>5027.0</td>
       <td>1995</td>
@@ -3986,56 +3958,56 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   </thead>
   <tbody>
     <tr>
-      <th>782</th>
+      <th>21605</th>
       <td>"John Hall &amp; Son"</td>
       <td>2387.0</td>
       <td>1864</td>
       <td>1896.0</td>
     </tr>
     <tr>
-      <th>751</th>
+      <th>21574</th>
       <td>"Hall &amp; Dods"</td>
       <td>2356.0</td>
       <td>1896</td>
       <td>1916.0</td>
     </tr>
     <tr>
-      <th>501</th>
+      <th>21324</th>
       <td>"HENNESSY AND HENNESSY AND F.R. HALL"</td>
       <td>4890.0</td>
       <td>1916</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>502</th>
+      <th>21325</th>
       <td>"F.R. HALL AND W. ALAN DEVEREUX"</td>
       <td>4891.0</td>
       <td>1923</td>
       <td>1927.0</td>
     </tr>
     <tr>
-      <th>503</th>
+      <th>21326</th>
       <td>"F R Hall Architect"</td>
       <td>4892.0</td>
       <td>1927</td>
       <td>1930.0</td>
     </tr>
     <tr>
-      <th>84</th>
+      <th>20907</th>
       <td>"F.R Hall and Cook"</td>
       <td>4286.0</td>
       <td>1930</td>
       <td>1939.0</td>
     </tr>
     <tr>
-      <th>851</th>
+      <th>21674</th>
       <td>"Harold M Cook &amp; Walter J E Kerrison"</td>
       <td>2457.0</td>
       <td>1939</td>
       <td>1962.0</td>
     </tr>
     <tr>
-      <th>601</th>
+      <th>21424</th>
       <td>"Cook &amp; Kerrison &amp; Partners"</td>
       <td>5033.0</td>
       <td>1963</td>
@@ -4101,105 +4073,105 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   </thead>
   <tbody>
     <tr>
-      <th>908</th>
+      <th>21731</th>
       <td>"Arthur W. F. Bligh"</td>
       <td>3574.0</td>
       <td>1926</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>940</th>
+      <th>21763</th>
       <td>"Bligh &amp; Jessup"</td>
       <td>3870.0</td>
       <td>1947</td>
       <td>1952.0</td>
     </tr>
     <tr>
-      <th>153</th>
+      <th>20976</th>
       <td>"Bligh Jessup &amp; Partners"</td>
       <td>4499.0</td>
       <td>1953</td>
       <td>1956.0</td>
     </tr>
     <tr>
-      <th>839</th>
+      <th>21662</th>
       <td>"Bligh Jessup Bretnall &amp; Partners"</td>
       <td>2445.0</td>
       <td>1957</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>229</th>
+      <th>21052</th>
       <td>"Colin W Jessup"</td>
       <td>4576.0</td>
       <td>1961</td>
       <td>1975.0</td>
     </tr>
     <tr>
-      <th>121</th>
+      <th>20944</th>
       <td>"Callaghan Robinson Architects"</td>
       <td>4459.0</td>
       <td>1972</td>
       <td>1972.0</td>
     </tr>
     <tr>
-      <th>122</th>
+      <th>20945</th>
       <td>"Noel Robinson Architects (&amp; Partners)"</td>
       <td>4460.0</td>
       <td>1973</td>
       <td>1977.0</td>
     </tr>
     <tr>
-      <th>123</th>
+      <th>20946</th>
       <td>"Noel Robinson Built Environments"</td>
       <td>4461.0</td>
       <td>1977</td>
       <td>1986.0</td>
     </tr>
     <tr>
-      <th>890</th>
+      <th>21713</th>
       <td>"Bligh Jessup Robinson"</td>
       <td>2497.0</td>
       <td>1987</td>
       <td>1960.0</td>
     </tr>
     <tr>
-      <th>124</th>
+      <th>20947</th>
       <td>"Bligh Robinson"</td>
       <td>4462.0</td>
       <td>1989</td>
       <td>1990.0</td>
     </tr>
     <tr>
-      <th>835</th>
+      <th>21658</th>
       <td>"Noel Robinson Architects (2)"</td>
       <td>2440.0</td>
       <td>1990</td>
       <td>1999.0</td>
     </tr>
     <tr>
-      <th>791</th>
+      <th>21614</th>
       <td>"Bligh Voller Nield"</td>
       <td>2396.0</td>
       <td>1997</td>
       <td>2009.0</td>
     </tr>
     <tr>
-      <th>125</th>
+      <th>20948</th>
       <td>"Design Inc"</td>
       <td>4463.0</td>
       <td>2000</td>
       <td>2010.0</td>
     </tr>
     <tr>
-      <th>938</th>
+      <th>21761</th>
       <td>"BVN Architecture"</td>
       <td>3868.0</td>
       <td>2009</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>126</th>
+      <th>20949</th>
       <td>"NRACOLAB"</td>
       <td>4464.0</td>
       <td>2010</td>
@@ -4265,98 +4237,98 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   </thead>
   <tbody>
     <tr>
-      <th>918</th>
+      <th>21741</th>
       <td>"Job &amp; Collin"</td>
       <td>3636.0</td>
       <td>1938</td>
       <td>1954.0</td>
     </tr>
     <tr>
-      <th>871</th>
+      <th>21694</th>
       <td>"C W T Fulton in Assn with A H Job &amp; J M Collin"</td>
       <td>2478.0</td>
       <td>1954</td>
       <td>1955.0</td>
     </tr>
     <tr>
-      <th>826</th>
+      <th>21649</th>
       <td>"Aubrey H.  Job &amp; R. P.  Froud (Job &amp; Froud)"</td>
       <td>2431.0</td>
       <td>1955</td>
       <td>1976.0</td>
     </tr>
     <tr>
-      <th>915</th>
+      <th>21738</th>
       <td>"C W T Fulton in Assn with J M Collin"</td>
       <td>3633.0</td>
       <td>1955</td>
       <td>1960.0</td>
     </tr>
     <tr>
-      <th>165</th>
+      <th>20988</th>
       <td>"JM Collin  &amp;  CWT Fulton"</td>
       <td>4511.0</td>
       <td>1961</td>
       <td>1966.0</td>
     </tr>
     <tr>
-      <th>191</th>
+      <th>21014</th>
       <td>"J G Gilmour"</td>
       <td>4537.0</td>
       <td>1961</td>
       <td>1966.0</td>
     </tr>
     <tr>
-      <th>563</th>
+      <th>21386</th>
       <td>"G B Boys"</td>
       <td>4994.0</td>
       <td>1961</td>
       <td>1966.0</td>
     </tr>
     <tr>
-      <th>894</th>
+      <th>21717</th>
       <td>"J M Collin &amp; C W T Fulton"</td>
       <td>2501.0</td>
       <td>1961</td>
       <td>1966.0</td>
     </tr>
     <tr>
-      <th>808</th>
+      <th>21631</th>
       <td>"Fulton Collin Boys Gilmour Trotter &amp; Partners"</td>
       <td>2413.0</td>
       <td>1966</td>
       <td>1981.0</td>
     </tr>
     <tr>
-      <th>653</th>
+      <th>21476</th>
       <td>"C W T Fulton"</td>
       <td>5085.0</td>
       <td>1967</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>181</th>
+      <th>21004</th>
       <td>"RP Froud Architect"</td>
       <td>4527.0</td>
       <td>1974</td>
       <td>1986.0</td>
     </tr>
     <tr>
-      <th>916</th>
+      <th>21739</th>
       <td>"Fulton Gilmour Trotter &amp; Moss"</td>
       <td>3634.0</td>
       <td>1981</td>
       <td>1998.0</td>
     </tr>
     <tr>
-      <th>917</th>
+      <th>21740</th>
       <td>"Fulton Trotter Moss"</td>
       <td>3635.0</td>
       <td>1998</td>
       <td>2002.0</td>
     </tr>
     <tr>
-      <th>731</th>
+      <th>21554</th>
       <td>"Fulton Trotter Architects"</td>
       <td>2336.0</td>
       <td>2002</td>
@@ -4476,17 +4448,17 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>1</th>
-      <td>Marion Sully</td>
+      <td>Richard Stringer</td>
       <td>person</td>
-      <td>Employment</td>
+      <td>WorkedWith</td>
       <td>Mitchell Library</td>
       <td>government</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Richard Stringer</td>
+      <td>Marion Sully</td>
       <td>person</td>
-      <td>WorkedWith</td>
+      <td>Employment</td>
       <td>Mitchell Library</td>
       <td>government</td>
     </tr>
@@ -4563,7 +4535,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>2</th>
-      <td>Arne Fink</td>
+      <td>Louis Henry Hailey</td>
       <td>person</td>
       <td>Employment</td>
       <td>Brisbane City Council</td>
@@ -4579,9 +4551,9 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>4</th>
-      <td>Louis Henry Hailey</td>
+      <td>Ruth Woods</td>
       <td>person</td>
-      <td>Employment</td>
+      <td>WorkedWith</td>
       <td>Brisbane City Council</td>
       <td>firm</td>
     </tr>
@@ -4595,7 +4567,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>6</th>
-      <td>Frank Costello</td>
+      <td>Richard Stringer</td>
       <td>person</td>
       <td>Employment</td>
       <td>Brisbane City Council</td>
@@ -4611,30 +4583,6 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>8</th>
-      <td>Richard Stringer</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Brisbane City Council</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>John M. Railton</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Brisbane City Council</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>Ruth Woods</td>
-      <td>person</td>
-      <td>Reference</td>
-      <td>Brisbane City Council</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>11</th>
       <td>Peter Roy</td>
       <td>person</td>
       <td>Employment</td>
@@ -4642,10 +4590,34 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>12</th>
+      <th>9</th>
       <td>Ruth Woods</td>
       <td>person</td>
-      <td>WorkedWith</td>
+      <td>Reference</td>
+      <td>Brisbane City Council</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Frank Costello</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Brisbane City Council</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>John M. Railton</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Brisbane City Council</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Arne Fink</td>
+      <td>person</td>
+      <td>Employment</td>
       <td>Brisbane City Council</td>
       <td>firm</td>
     </tr>
@@ -4722,15 +4694,15 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   <tbody>
     <tr>
       <th>0</th>
-      <td>Marion Sully</td>
+      <td>Don(ald) C. Roderick</td>
       <td>person</td>
-      <td>Reference</td>
+      <td>Employment</td>
       <td>Commonwealth Department of Works</td>
       <td>firm</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Harold Paulsen</td>
+      <td>George Hallandale</td>
       <td>person</td>
       <td>Employment</td>
       <td>Commonwealth Department of Works</td>
@@ -4754,46 +4726,6 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>4</th>
-      <td>Aubrey Clayton Mudd</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Commonwealth Department of Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Athol Bretnall</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Commonwealth Department of Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Margaret Ward</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Commonwealth Department of Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Don(ald) C. Roderick</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Commonwealth Department of Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>James Birrell</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Commonwealth Department of Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>9</th>
       <td>John Dalton</td>
       <td>person</td>
       <td>Employment</td>
@@ -4801,7 +4733,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>5</th>
       <td>George Owen Cowlishaw</td>
       <td>person</td>
       <td>Employment</td>
@@ -4809,7 +4741,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>6</th>
       <td>Roman Pavylshyn</td>
       <td>person</td>
       <td>Employment</td>
@@ -4817,15 +4749,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>12</th>
-      <td>Balwant Saini</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Commonwealth Department of Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>13</th>
+      <th>7</th>
       <td>Ian Black</td>
       <td>person</td>
       <td>Employment</td>
@@ -4833,15 +4757,15 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>14</th>
-      <td>Marion Sully</td>
+      <th>8</th>
+      <td>Margaret Ward</td>
       <td>person</td>
       <td>Employment</td>
       <td>Commonwealth Department of Works</td>
       <td>firm</td>
     </tr>
     <tr>
-      <th>15</th>
+      <th>9</th>
       <td>Allan Jago</td>
       <td>person</td>
       <td>Employment</td>
@@ -4849,7 +4773,23 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>16</th>
+      <th>10</th>
+      <td>Marion Sully</td>
+      <td>person</td>
+      <td>Reference</td>
+      <td>Commonwealth Department of Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Balwant Saini</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Commonwealth Department of Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>12</th>
       <td>Leonard (Lynn) J. Gamble</td>
       <td>person</td>
       <td>Employment</td>
@@ -4857,7 +4797,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>17</th>
+      <th>13</th>
       <td>Edwin Oribin</td>
       <td>person</td>
       <td>Employment</td>
@@ -4865,7 +4805,31 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>18</th>
+      <th>14</th>
+      <td>Athol Bretnall</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Commonwealth Department of Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Aubrey Clayton Mudd</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Commonwealth Department of Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Marion Sully</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Commonwealth Department of Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>17</th>
       <td>Harold Anderson</td>
       <td>person</td>
       <td>Employment</td>
@@ -4873,7 +4837,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>18</th>
       <td>Donald Watson</td>
       <td>person</td>
       <td>Employment</td>
@@ -4881,8 +4845,16 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
+      <th>19</th>
+      <td>James Birrell</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Commonwealth Department of Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
       <th>20</th>
-      <td>George Hallandale</td>
+      <td>Harold Paulsen</td>
       <td>person</td>
       <td>Employment</td>
       <td>Commonwealth Department of Works</td>
@@ -4898,7 +4870,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>22</th>
-      <td>Ted Crofts</td>
+      <td>Judy Kraatz</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Housing</td>
@@ -4906,7 +4878,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>23</th>
-      <td>Judy Kraatz</td>
+      <td>Ted Crofts</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Housing</td>
@@ -4958,7 +4930,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
   <tbody>
     <tr>
       <th>0</th>
-      <td>Francis Drummond Greville Stanley</td>
+      <td>Arnold Henry Conrad</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -4966,7 +4938,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>1</th>
-      <td>Charles Ford Whitcombe</td>
+      <td>Ursula Koroloff</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -4974,7 +4946,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>2</th>
-      <td>Harold John Hitch</td>
+      <td>Bruce Paulsen</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -4982,7 +4954,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>3</th>
-      <td>Ury Stukoff</td>
+      <td>Campbell R. Scott</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -4990,7 +4962,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>4</th>
-      <td>John Dalton</td>
+      <td>Nellie McCredie</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -4998,7 +4970,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>5</th>
-      <td>Ruth Woods</td>
+      <td>William Hodgen</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -5006,7 +4978,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>6</th>
-      <td>Ronald James Corbett</td>
+      <td>Cec Fergo</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -5014,7 +4986,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>7</th>
-      <td>Thomas Ramsay Hall</td>
+      <td>Colin S. Tannett</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -5022,14 +4994,6 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>8</th>
-      <td>Susan Savage</td>
-      <td>person</td>
-      <td>WorkedWith</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>9</th>
       <td>Malcolm Bunzli</td>
       <td>person</td>
       <td>Employment</td>
@@ -5037,8 +5001,16 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
+      <th>9</th>
+      <td>Alf Carnells</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
       <th>10</th>
-      <td>Jiri Svoboda</td>
+      <td>Harold John Hitch</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -5046,7 +5018,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>11</th>
-      <td>David Mercer</td>
+      <td>Charles Ford Whitcombe</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -5062,15 +5034,15 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>13</th>
-      <td>Peter Prystupa</td>
+      <td>Susan Savage</td>
       <td>person</td>
-      <td>Employment</td>
+      <td>WorkedWith</td>
       <td>Queensland Government Department of Public Works</td>
       <td>firm</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>Margaret West</td>
+      <td>Fiona Gardiner</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -5078,30 +5050,6 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
     </tr>
     <tr>
       <th>15</th>
-      <td>Garry May</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Frank Cullen</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Campbell R. Scott</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>18</th>
       <td>Neville Twidale</td>
       <td>person</td>
       <td>Employment</td>
@@ -5109,79 +5057,7 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>19</th>
-      <td>Charles Tiffin</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>Charles McLay</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>William Hodgen</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>Ronald W. Voller</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>David Hunter</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>Ursula Koroloff</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>Colin S. Tannett</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>Bruce Paulsen</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>Roman Pavylshyn</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>28</th>
+      <th>16</th>
       <td>Juanita Pye</td>
       <td>person</td>
       <td>Employment</td>
@@ -5189,127 +5065,31 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>29</th>
-      <td>Arnold Henry Conrad</td>
+      <th>17</th>
+      <td>John Dalton</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
       <td>firm</td>
     </tr>
     <tr>
-      <th>30</th>
-      <td>Alex Brown Wilson</td>
+      <th>18</th>
+      <td>Jiri Svoboda</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
       <td>firm</td>
     </tr>
     <tr>
-      <th>31</th>
-      <td>Eunice Slaughter</td>
+      <th>19</th>
+      <td>Thomas Ramsay Hall</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
       <td>firm</td>
     </tr>
     <tr>
-      <th>32</th>
-      <td>Edwin T. Codd</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>Nellie McCredie</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>Alf Carnells</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>Paul Memmott</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>Ralph Tyrell</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>Ronald James Voller</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>Graham de Gruchy</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>John James Clark</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>Eric P. Trewern</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>Henry Atkinson</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>Cec Fergo</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>Dorothy Brennan</td>
-      <td>person</td>
-      <td>Employment</td>
-      <td>Queensland Government Department of Public Works</td>
-      <td>firm</td>
-    </tr>
-    <tr>
-      <th>44</th>
+      <th>20</th>
       <td>Deborah Carlile</td>
       <td>person</td>
       <td>Employment</td>
@@ -5317,15 +5097,31 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
-      <th>45</th>
-      <td>Ian T. Sinnamon</td>
+      <th>21</th>
+      <td>Peter Prystupa</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
       <td>firm</td>
     </tr>
     <tr>
-      <th>46</th>
+      <th>22</th>
+      <td>Eunice Slaughter</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Ronald James Corbett</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>24</th>
       <td>Alfred Barton Brady</td>
       <td>person</td>
       <td>Employment</td>
@@ -5333,8 +5129,184 @@ Q: What are the top five firms with the longest timespan with the same name? (mu
       <td>firm</td>
     </tr>
     <tr>
+      <th>25</th>
+      <td>Ian T. Sinnamon</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Charles McLay</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Paul Memmott</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Frank Cullen</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Eric P. Trewern</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Edwin T. Codd</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>John James Clark</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Roman Pavylshyn</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Graham de Gruchy</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>David Hunter</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Charles Tiffin</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Henry Atkinson</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Alex Brown Wilson</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Ury Stukoff</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Ronald James Voller</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Garry May</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Ruth Woods</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Margaret West</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Ralph Tyrell</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Ronald W. Voller</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>David Mercer</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Francis Drummond Greville Stanley</td>
+      <td>person</td>
+      <td>Employment</td>
+      <td>Queensland Government Department of Public Works</td>
+      <td>firm</td>
+    </tr>
+    <tr>
       <th>47</th>
-      <td>Fiona Gardiner</td>
+      <td>Dorothy Brennan</td>
       <td>person</td>
       <td>Employment</td>
       <td>Queensland Government Department of Public Works</td>
@@ -5502,7 +5474,7 @@ There are 873 (39.63%) projects with no completion dates.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of persons with a related project between 1940-1980: 117
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of persons with a related project between 1940-1980: 113
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -5535,7 +5507,7 @@ There are 873 (39.63%) projects with no completion dates.
   <tbody>
     <tr>
       <th>architect</th>
-      <td>116</td>
+      <td>112</td>
       <td>0.991</td>
     </tr>
     <tr>
@@ -5654,23 +5626,23 @@ There are 873 (39.63%) projects with no completion dates.
   <tbody>
     <tr>
       <th>"Photograph"</th>
-      <td>294</td>
-      <td>0.624</td>
+      <td>288</td>
+      <td>0.611</td>
     </tr>
     <tr>
       <th>"LineDrawing"</th>
-      <td>65</td>
-      <td>0.138</td>
+      <td>67</td>
+      <td>0.142</td>
     </tr>
     <tr>
       <th>"Image"</th>
-      <td>60</td>
-      <td>0.127</td>
+      <td>62</td>
+      <td>0.132</td>
     </tr>
     <tr>
       <th>"article"</th>
-      <td>48</td>
-      <td>0.102</td>
+      <td>47</td>
+      <td>0.100</td>
     </tr>
     <tr>
       <th>"interview"</th>
@@ -5679,8 +5651,13 @@ There are 873 (39.63%) projects with no completion dates.
     </tr>
     <tr>
       <th>"Portrait"</th>
-      <td>1</td>
-      <td>0.002</td>
+      <td>2</td>
+      <td>0.004</td>
+    </tr>
+    <tr>
+      <th>"publication"</th>
+      <td>2</td>
+      <td>0.004</td>
     </tr>
   </tbody>
 </table>
@@ -5730,7 +5707,7 @@ There are 873 (39.63%) projects with no completion dates.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of relationships for entities related to 1940-1980 works: 8440
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of relationships for entities related to 1940-1980 works: 8399
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -5763,27 +5740,27 @@ There are 873 (39.63%) projects with no completion dates.
   <tbody>
     <tr>
       <th>Work_RelatedResource</th>
-      <td>2018</td>
-      <td>0.239</td>
+      <td>2017</td>
+      <td>0.240</td>
     </tr>
     <tr>
       <th>Person_RelatedWork</th>
-      <td>1470</td>
-      <td>0.174</td>
+      <td>1472</td>
+      <td>0.175</td>
     </tr>
     <tr>
       <th>Person_RelatedPerson</th>
-      <td>1281</td>
-      <td>0.152</td>
+      <td>1218</td>
+      <td>0.145</td>
     </tr>
     <tr>
       <th>Organization_RelatedWork</th>
       <td>1091</td>
-      <td>0.129</td>
+      <td>0.130</td>
     </tr>
     <tr>
       <th>Person_RelatedOrganization</th>
-      <td>909</td>
+      <td>903</td>
       <td>0.108</td>
     </tr>
     <tr>
@@ -5793,17 +5770,17 @@ There are 873 (39.63%) projects with no completion dates.
     </tr>
     <tr>
       <th>Person_RelatedResource</th>
-      <td>285</td>
-      <td>0.034</td>
+      <td>293</td>
+      <td>0.035</td>
     </tr>
     <tr>
       <th>Resource_RelatedPerson</th>
-      <td>243</td>
-      <td>0.029</td>
+      <td>253</td>
+      <td>0.030</td>
     </tr>
     <tr>
       <th>Organization_RelatedOrganization</th>
-      <td>184</td>
+      <td>183</td>
       <td>0.022</td>
     </tr>
     <tr>
@@ -5812,13 +5789,18 @@ There are 873 (39.63%) projects with no completion dates.
       <td>0.020</td>
     </tr>
     <tr>
+      <th>Resource_RelatedResource</th>
+      <td>49</td>
+      <td>0.006</td>
+    </tr>
+    <tr>
       <th>Organization_RelatedResource</th>
       <td>43</td>
       <td>0.005</td>
     </tr>
     <tr>
       <th>Resource_RelatedOrganization</th>
-      <td>41</td>
+      <td>43</td>
       <td>0.005</td>
     </tr>
     <tr>
@@ -5827,33 +5809,33 @@ There are 873 (39.63%) projects with no completion dates.
       <td>0.005</td>
     </tr>
     <tr>
-      <th>Resource_RelatedResource</th>
-      <td>37</td>
-      <td>0.004</td>
-    </tr>
-    <tr>
       <th>Person_RelatedRecognition</th>
-      <td>24</td>
+      <td>22</td>
       <td>0.003</td>
     </tr>
     <tr>
       <th>Work_RelatedPerson</th>
-      <td>17</td>
+      <td>15</td>
       <td>0.002</td>
     </tr>
     <tr>
       <th>Organization_RelatedPerson</th>
-      <td>6</td>
+      <td>5</td>
       <td>0.001</td>
     </tr>
     <tr>
-      <th>Resource_RelatedPlace</th>
+      <th>Resource_RelatedRecognition</th>
       <td>3</td>
       <td>0.000</td>
     </tr>
     <tr>
-      <th>Person_RelatedPlace</th>
+      <th>Resource_RelatedPlace</th>
       <td>2</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>Person_RelatedPlace</th>
+      <td>1</td>
       <td>0.000</td>
     </tr>
   </tbody>
@@ -5891,23 +5873,23 @@ There are 873 (39.63%) projects with no completion dates.
   <tbody>
     <tr>
       <th>WorkedOn</th>
-      <td>2290</td>
-      <td>0.271</td>
+      <td>2303</td>
+      <td>0.274</td>
     </tr>
     <tr>
       <th>HasMedia</th>
-      <td>2280</td>
-      <td>0.270</td>
+      <td>2288</td>
+      <td>0.272</td>
     </tr>
     <tr>
       <th>Employment</th>
-      <td>759</td>
+      <td>760</td>
       <td>0.090</td>
     </tr>
     <tr>
       <th>Reference</th>
-      <td>614</td>
-      <td>0.073</td>
+      <td>602</td>
+      <td>0.072</td>
     </tr>
     <tr>
       <th>LocatedIn</th>
@@ -5916,33 +5898,33 @@ There are 873 (39.63%) projects with no completion dates.
     </tr>
     <tr>
       <th>RelatedTo</th>
-      <td>424</td>
-      <td>0.050</td>
-    </tr>
-    <tr>
-      <th>WorkedWith</th>
-      <td>259</td>
-      <td>0.031</td>
+      <td>436</td>
+      <td>0.052</td>
     </tr>
     <tr>
       <th>TaughtBy</th>
-      <td>238</td>
-      <td>0.028</td>
+      <td>245</td>
+      <td>0.029</td>
+    </tr>
+    <tr>
+      <th>WorkedWith</th>
+      <td>230</td>
+      <td>0.027</td>
     </tr>
     <tr>
       <th>InfluencedBy</th>
-      <td>169</td>
-      <td>0.020</td>
+      <td>160</td>
+      <td>0.019</td>
     </tr>
     <tr>
       <th>StudiedWith</th>
-      <td>117</td>
-      <td>0.014</td>
+      <td>110</td>
+      <td>0.013</td>
     </tr>
     <tr>
       <th>KnewSocially</th>
-      <td>112</td>
-      <td>0.013</td>
+      <td>104</td>
+      <td>0.012</td>
     </tr>
     <tr>
       <th>PrecededBy</th>
@@ -5950,53 +5932,53 @@ There are 873 (39.63%) projects with no completion dates.
       <td>0.011</td>
     </tr>
     <tr>
-      <th>KnewProfessionally</th>
-      <td>89</td>
-      <td>0.011</td>
+      <th>succeededby</th>
+      <td>86</td>
+      <td>0.010</td>
     </tr>
     <tr>
-      <th>succeededby</th>
-      <td>87</td>
+      <th>KnewProfessionally</th>
+      <td>85</td>
       <td>0.010</td>
     </tr>
     <tr>
       <th>StudiedAt</th>
-      <td>59</td>
+      <td>57</td>
       <td>0.007</td>
     </tr>
     <tr>
       <th>PartnerOf</th>
-      <td>55</td>
-      <td>0.007</td>
+      <td>54</td>
+      <td>0.006</td>
     </tr>
     <tr>
-      <th>DesignedBy</th>
+      <th>IsInvolvedIn</th>
       <td>40</td>
       <td>0.005</td>
     </tr>
     <tr>
-      <th>IsInvolvedIn</th>
-      <td>36</td>
-      <td>0.004</td>
+      <th>DesignedBy</th>
+      <td>38</td>
+      <td>0.005</td>
     </tr>
     <tr>
       <th>KnewOf</th>
-      <td>33</td>
+      <td>30</td>
       <td>0.004</td>
     </tr>
     <tr>
-      <th>TravelledTo</th>
-      <td>21</td>
+      <th>CollaboratedWith</th>
+      <td>19</td>
       <td>0.002</td>
     </tr>
     <tr>
-      <th>CollaboratedWith</th>
-      <td>18</td>
+      <th>TravelledTo</th>
+      <td>15</td>
       <td>0.002</td>
     </tr>
     <tr>
       <th>ClientOf</th>
-      <td>12</td>
+      <td>11</td>
       <td>0.001</td>
     </tr>
     <tr>
@@ -6011,16 +5993,16 @@ There are 873 (39.63%) projects with no completion dates.
     </tr>
     <tr>
       <th>Founded</th>
-      <td>8</td>
-      <td>0.001</td>
-    </tr>
-    <tr>
-      <th>Became</th>
       <td>7</td>
       <td>0.001</td>
     </tr>
     <tr>
-      <th>Attended</th>
+      <th>Became</th>
+      <td>6</td>
+      <td>0.001</td>
+    </tr>
+    <tr>
+      <th>Awarded</th>
       <td>5</td>
       <td>0.001</td>
     </tr>
@@ -6030,22 +6012,22 @@ There are 873 (39.63%) projects with no completion dates.
       <td>0.000</td>
     </tr>
     <tr>
+      <th>Attended</th>
+      <td>3</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
       <th>TaughtAt</th>
       <td>3</td>
       <td>0.000</td>
     </tr>
     <tr>
-      <th>DoneIn</th>
-      <td>3</td>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>Awarded</th>
+      <th>MergedWith</th>
       <td>2</td>
       <td>0.000</td>
     </tr>
     <tr>
-      <th>MergedWith</th>
+      <th>DoneIn</th>
       <td>2</td>
       <td>0.000</td>
     </tr>
@@ -6137,14 +6119,14 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>structure</td>
       <td>WorkedOn</td>
-      <td>1339</td>
+      <td>1352</td>
     </tr>
     <tr>
       <th>1</th>
       <td>architect</td>
       <td>structure</td>
       <td>Reference</td>
-      <td>93</td>
+      <td>86</td>
     </tr>
     <tr>
       <th>2</th>
@@ -6158,27 +6140,27 @@ Total number of Person-Work relations: 1487
       <td>structure</td>
       <td>architect</td>
       <td>DesignedBy</td>
-      <td>16</td>
+      <td>14</td>
     </tr>
     <tr>
       <th>4</th>
       <td>architect</td>
       <td>structure</td>
       <td>StudiedAt</td>
-      <td>5</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>5</th>
       <td>architect</td>
       <td>structure</td>
-      <td>TravelledTo</td>
-      <td>5</td>
+      <td>Employment</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>6</th>
       <td>architect</td>
       <td>structure</td>
-      <td>Employment</td>
+      <td>TravelledTo</td>
       <td>3</td>
     </tr>
     <tr>
@@ -6218,13 +6200,6 @@ Total number of Person-Work relations: 1487
     </tr>
     <tr>
       <th>12</th>
-      <td>architect</td>
-      <td>structure</td>
-      <td>RelatedTo</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>13</th>
       <td>structure</td>
       <td>architect</td>
       <td>ClientOf</td>
@@ -6232,7 +6207,7 @@ Total number of Person-Work relations: 1487
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Person relations: 1281
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Person relations: 1218
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -6264,43 +6239,43 @@ Total number of Person-Work relations: 1487
       <th>0</th>
       <td>architect</td>
       <td>architect</td>
-      <td>WorkedWith</td>
-      <td>238</td>
+      <td>TaughtBy</td>
+      <td>232</td>
     </tr>
     <tr>
       <th>1</th>
       <td>architect</td>
       <td>architect</td>
-      <td>TaughtBy</td>
-      <td>222</td>
+      <td>WorkedWith</td>
+      <td>209</td>
     </tr>
     <tr>
       <th>2</th>
       <td>architect</td>
       <td>architect</td>
       <td>Reference</td>
-      <td>191</td>
+      <td>180</td>
     </tr>
     <tr>
       <th>3</th>
       <td>architect</td>
       <td>architect</td>
       <td>InfluencedBy</td>
-      <td>132</td>
+      <td>127</td>
     </tr>
     <tr>
       <th>4</th>
       <td>architect</td>
       <td>architect</td>
       <td>StudiedWith</td>
-      <td>107</td>
+      <td>100</td>
     </tr>
     <tr>
       <th>5</th>
       <td>architect</td>
       <td>architect</td>
       <td>KnewSocially</td>
-      <td>106</td>
+      <td>99</td>
     </tr>
     <tr>
       <th>6</th>
@@ -6314,21 +6289,21 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>architect</td>
       <td>KnewProfessionally</td>
-      <td>73</td>
+      <td>71</td>
     </tr>
     <tr>
       <th>8</th>
       <td>architect</td>
       <td>architect</td>
       <td>KnewOf</td>
-      <td>29</td>
+      <td>26</td>
     </tr>
     <tr>
       <th>9</th>
       <td>architect</td>
       <td>non-architect</td>
       <td>KnewProfessionally</td>
-      <td>15</td>
+      <td>13</td>
     </tr>
     <tr>
       <th>10</th>
@@ -6361,55 +6336,55 @@ Total number of Person-Work relations: 1487
     <tr>
       <th>14</th>
       <td>architect</td>
-      <td>non-architect</td>
-      <td>TaughtBy</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>architect</td>
-      <td>non-architect</td>
-      <td>WorkedWith</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>architect</td>
-      <td>architect</td>
-      <td>PartnerOf</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>architect</td>
-      <td>non-architect</td>
-      <td>KnewSocially</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>architect</td>
       <td>architect</td>
       <td>CollaboratedWith</td>
       <td>5</td>
     </tr>
     <tr>
-      <th>19</th>
+      <th>15</th>
+      <td>architect</td>
+      <td>architect</td>
+      <td>PartnerOf</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>architect</td>
+      <td>non-architect</td>
+      <td>KnewSocially</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>17</th>
       <td>architect</td>
       <td>non-architect</td>
       <td>CollaboratedWith</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>architect</td>
+      <td>non-architect</td>
+      <td>WorkedWith</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>non-architect</td>
+      <td>architect</td>
+      <td>ClientOf</td>
       <td>4</td>
     </tr>
     <tr>
       <th>20</th>
       <td>architect</td>
       <td>non-architect</td>
-      <td>InfluencedBy</td>
-      <td>4</td>
+      <td>TaughtBy</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>21</th>
-      <td>non-architect</td>
+      <td>architect</td>
       <td>architect</td>
       <td>ClientOf</td>
       <td>3</td>
@@ -6417,8 +6392,8 @@ Total number of Person-Work relations: 1487
     <tr>
       <th>22</th>
       <td>architect</td>
-      <td>architect</td>
-      <td>ClientOf</td>
+      <td>non-architect</td>
+      <td>InfluencedBy</td>
       <td>3</td>
     </tr>
     <tr>
@@ -6451,7 +6426,7 @@ Total number of Person-Work relations: 1487
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Organization relations: 915
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Organization relations: 908
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -6484,21 +6459,21 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>firm</td>
       <td>Employment</td>
-      <td>650</td>
+      <td>652</td>
     </tr>
     <tr>
       <th>1</th>
       <td>architect</td>
       <td>education</td>
       <td>StudiedAt</td>
-      <td>54</td>
+      <td>53</td>
     </tr>
     <tr>
       <th>2</th>
       <td>architect</td>
       <td>firm</td>
       <td>Reference</td>
-      <td>52</td>
+      <td>49</td>
     </tr>
     <tr>
       <th>3</th>
@@ -6512,21 +6487,21 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>education</td>
       <td>Employment</td>
-      <td>16</td>
+      <td>15</td>
     </tr>
     <tr>
       <th>5</th>
       <td>architect</td>
       <td>firm</td>
       <td>InfluencedBy</td>
-      <td>14</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>6</th>
       <td>architect</td>
       <td>firm</td>
       <td>WorkedWith</td>
-      <td>10</td>
+      <td>11</td>
     </tr>
     <tr>
       <th>7</th>
@@ -6540,181 +6515,104 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>firm</td>
       <td>Founded</td>
-      <td>8</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>architect</td>
-      <td>education</td>
-      <td>Reference</td>
       <td>7</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>9</th>
       <td>architect</td>
       <td>firm</td>
       <td>CollaboratedWith</td>
       <td>6</td>
     </tr>
     <tr>
-      <th>11</th>
-      <td>architect</td>
-      <td>organisation</td>
-      <td>Became</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>architect</td>
-      <td>organisation</td>
-      <td>WorkedWith</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>13</th>
+      <th>10</th>
       <td>architect</td>
       <td>education</td>
-      <td>InfluencedBy</td>
-      <td>3</td>
+      <td>Reference</td>
+      <td>5</td>
     </tr>
     <tr>
-      <th>14</th>
+      <th>11</th>
       <td>architect</td>
       <td>education</td>
       <td>Read</td>
       <td>3</td>
     </tr>
     <tr>
-      <th>18</th>
-      <td>firm</td>
+      <th>12</th>
       <td>architect</td>
-      <td>KnewOf</td>
-      <td>2</td>
+      <td>education</td>
+      <td>InfluencedBy</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>architect</td>
+      <td>organisation</td>
+      <td>Became</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>architect</td>
+      <td>government</td>
+      <td>WorkedWith</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>20</th>
-      <td>architect</td>
-      <td>organisation</td>
-      <td>Employment</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>architect</td>
-      <td>education</td>
-      <td>TravelledTo</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>firm</td>
-      <td>architect</td>
-      <td>ClientOf</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>non-architect</td>
-      <td>firm</td>
-      <td>Reference</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>15</th>
       <td>architect</td>
       <td>firm</td>
       <td>StudiedWith</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>19</th>
+      <td>non-architect</td>
       <td>firm</td>
-      <td>architect</td>
-      <td>Became</td>
-      <td>1</td>
+      <td>Reference</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>22</th>
-      <td>firm</td>
-      <td>architect</td>
-      <td>MergedWith</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>23</th>
+      <th>18</th>
       <td>architect</td>
       <td>organisation</td>
       <td>Reference</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>24</th>
-      <td>non-architect</td>
+      <th>17</th>
       <td>firm</td>
-      <td>Employment</td>
-      <td>1</td>
+      <td>architect</td>
+      <td>KnewOf</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>25</th>
+      <th>15</th>
       <td>architect</td>
-      <td>education</td>
-      <td>Attended</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>architect</td>
-      <td>government</td>
+      <td>organisation</td>
       <td>WorkedWith</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
     <tr>
-      <th>27</th>
+      <th>16</th>
+      <td>architect</td>
+      <td>organisation</td>
+      <td>Employment</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>29</th>
       <td>architect</td>
       <td>firm</td>
       <td>WasInfluenceBy</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>28</th>
+      <th>35</th>
       <td>architect</td>
       <td>education</td>
       <td>ClientOf</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>architect</td>
-      <td>firm</td>
-      <td>KnewOf</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>architect</td>
-      <td>firm</td>
-      <td>ClientOf</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>architect</td>
-      <td>education</td>
-      <td>WorkedOn</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>architect</td>
-      <td>education</td>
-      <td>TaughtAt</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>architect</td>
-      <td>education</td>
-      <td>CollaboratedWith</td>
       <td>1</td>
     </tr>
     <tr>
@@ -6724,9 +6622,100 @@ Total number of Person-Work relations: 1487
       <td>KnewProfessionally</td>
       <td>1</td>
     </tr>
+    <tr>
+      <th>33</th>
+      <td>architect</td>
+      <td>organisation</td>
+      <td>Attended</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>architect</td>
+      <td>firm</td>
+      <td>KnewOf</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>architect</td>
+      <td>organisation</td>
+      <td>CollaboratedWith</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>architect</td>
+      <td>education</td>
+      <td>WorkedOn</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>architect</td>
+      <td>education</td>
+      <td>TaughtAt</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>architect</td>
+      <td>education</td>
+      <td>TravelledTo</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>firm</td>
+      <td>architect</td>
+      <td>Became</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>firm</td>
+      <td>architect</td>
+      <td>ClientOf</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>architect</td>
+      <td>education</td>
+      <td>CollaboratedWith</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>firm</td>
+      <td>architect</td>
+      <td>MergedWith</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>non-architect</td>
+      <td>firm</td>
+      <td>Employment</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>architect</td>
+      <td>organisation</td>
+      <td>RelatedTo</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>architect</td>
+      <td>education</td>
+      <td>Awarded</td>
+      <td>1</td>
+    </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Resource relations: 528
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Resource relations: 546
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -6759,28 +6748,28 @@ Total number of Person-Work relations: 1487
       <td>interview</td>
       <td>architect</td>
       <td>Reference</td>
-      <td>174</td>
+      <td>176</td>
     </tr>
     <tr>
       <th>1</th>
       <td>architect</td>
       <td>Photograph</td>
       <td>HasMedia</td>
-      <td>111</td>
+      <td>107</td>
     </tr>
     <tr>
       <th>2</th>
       <td>interview</td>
       <td>architect</td>
       <td>RelatedTo</td>
-      <td>52</td>
+      <td>57</td>
     </tr>
     <tr>
       <th>3</th>
       <td>architect</td>
       <td>interview</td>
       <td>RelatedTo</td>
-      <td>50</td>
+      <td>55</td>
     </tr>
     <tr>
       <th>4</th>
@@ -6794,39 +6783,53 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>interview</td>
       <td>IsInvolvedIn</td>
-      <td>34</td>
+      <td>39</td>
     </tr>
     <tr>
       <th>6</th>
       <td>architect</td>
       <td>Portrait</td>
       <td>HasMedia</td>
-      <td>22</td>
+      <td>23</td>
     </tr>
     <tr>
       <th>7</th>
       <td>interview</td>
       <td>non-architect</td>
       <td>RelatedTo</td>
-      <td>17</td>
+      <td>18</td>
     </tr>
     <tr>
       <th>8</th>
       <td>non-architect</td>
       <td>interview</td>
       <td>RelatedTo</td>
-      <td>17</td>
+      <td>18</td>
     </tr>
     <tr>
       <th>9</th>
+      <td>interview</td>
+      <td>non-architect</td>
+      <td>Reference</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>architect</td>
+      <td>publication</td>
+      <td>Reference</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>11</th>
       <td>non-architect</td>
       <td>interview</td>
       <td>IsInvolvedIn</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Recognition relations: 24
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Recognition relations: 22
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -6859,45 +6862,38 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>award</td>
       <td>TravelledTo</td>
-      <td>12</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>1</th>
       <td>architect</td>
       <td>award</td>
-      <td>Reference</td>
+      <td>Awarded</td>
       <td>4</td>
     </tr>
     <tr>
       <th>2</th>
       <td>architect</td>
       <td>award</td>
-      <td>Attended</td>
-      <td>2</td>
+      <td>Reference</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>architect</td>
-      <td>award</td>
-      <td>Awarded</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
       <td>architect</td>
       <td>award</td>
       <td>Became</td>
       <td>2</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>4</th>
       <td>architect</td>
       <td>award</td>
       <td>Read</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>5</th>
       <td>architect</td>
       <td>award</td>
       <td>WasInfluenceBy</td>
@@ -6905,7 +6901,7 @@ Total number of Person-Work relations: 1487
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Place relations: 2
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Person-Place relations: 1
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -6938,14 +6934,14 @@ Total number of Person-Work relations: 1487
       <td>architect</td>
       <td>place</td>
       <td>TravelledTo</td>
-      <td>2</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
 </div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>###################### WORK RELATIONSHIPS ######################
 
 
-Total number of Work-Resource relations: 2056
+Total number of Work-Resource relations: 2055
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -6978,14 +6974,14 @@ Total number of Work-Resource relations: 2056
       <td>structure</td>
       <td>Photograph</td>
       <td>HasMedia</td>
-      <td>1476</td>
+      <td>1477</td>
     </tr>
     <tr>
       <th>1</th>
       <td>structure</td>
       <td>LineDrawing</td>
       <td>HasMedia</td>
-      <td>399</td>
+      <td>397</td>
     </tr>
     <tr>
       <th>2</th>
@@ -7138,7 +7134,7 @@ Total number of Organization-Work relations: 1259
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Organization-Organization relations: 184
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Organization-Organization relations: 183
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -7178,7 +7174,7 @@ Total number of Organization-Work relations: 1259
       <td>firm</td>
       <td>firm</td>
       <td>succeededby</td>
-      <td>87</td>
+      <td>86</td>
     </tr>
     <tr>
       <th>2</th>
@@ -7243,7 +7239,7 @@ Total number of Organization-Work relations: 1259
 </div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>###################### RESOURCE RELATIONSHIPS ######################
 
 
-Total number of Resource-Resource relations: 37
+Total number of Resource-Resource relations: 49
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -7276,32 +7272,32 @@ Total number of Resource-Resource relations: 37
       <td>article</td>
       <td>Article</td>
       <td>HasMedia</td>
-      <td>28</td>
+      <td>36</td>
     </tr>
     <tr>
       <th>1</th>
       <td>interview</td>
       <td>Audio</td>
       <td>HasMedia</td>
-      <td>5</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>2</th>
       <td>interview</td>
       <td>Transcript</td>
       <td>HasMedia</td>
-      <td>3</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>3</th>
       <td>interview</td>
       <td>Youtube</td>
       <td>HasMedia</td>
-      <td>1</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Resource-Organization relations: 84
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Resource-Organization relations: 86
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -7364,9 +7360,23 @@ Total number of Resource-Resource relations: 37
       <td>HasMedia</td>
       <td>1</td>
     </tr>
+    <tr>
+      <th>5</th>
+      <td>interview</td>
+      <td>education</td>
+      <td>Reference</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>interview</td>
+      <td>organisation</td>
+      <td>Reference</td>
+      <td>1</td>
+    </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Resource-Place relations: 3
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Resource-Place relations: 2
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -7399,11 +7409,11 @@ Total number of Resource-Resource relations: 37
       <td>interview</td>
       <td>place</td>
       <td>DoneIn</td>
-      <td>3</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
-</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Resource-Recognition relations: 0
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of Resource-Recognition relations: 3
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -7431,6 +7441,13 @@ Total number of Resource-Resource relations: 37
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>0</th>
+      <td>interview</td>
+      <td>award</td>
+      <td>Reference</td>
+      <td>3</td>
+    </tr>
   </tbody>
 </table>
 </div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
@@ -7877,12 +7894,12 @@ A: 17.86% (197) of people with education year data.
     </tr>
     <tr>
       <th>1</th>
-      <td>QUT, UQ</td>
+      <td>OHIO_STATE_UNIandQUT</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>OHIO_STATE_UNIandQUT</td>
+      <td>QUT, UQ</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -8007,211 +8024,211 @@ Below we provide all the eductional records with unconventional values in the en
     <tr style="text-align: right;">
       <th></th>
       <th>name</th>
+      <th>type</th>
       <th>qual</th>
       <th>place</th>
       <th>end_year</th>
       <th>ori_id</th>
-      <th>type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>UQ</td>
-      <td>BArch</td>
-      <td>QLD</td>
-      <td>1969?</td>
-      <td>117</td>
-      <td>UNI</td>
-    </tr>
-    <tr>
       <th>0</th>
       <td>UQ</td>
-      <td>NaN</td>
-      <td>QLD</td>
-      <td>incomplete</td>
-      <td>736</td>
       <td>UNI</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>UQ</td>
-      <td>DipArch</td>
-      <td>QLD</td>
-      <td>1945?</td>
-      <td>376</td>
-      <td>UNI</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>UQ</td>
-      <td>DipArch</td>
-      <td>QLD</td>
-      <td>incomplete</td>
-      <td>384</td>
-      <td>UNI</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>UQ</td>
       <td>NaN</td>
       <td>QLD</td>
       <td>incomplete</td>
       <td>254</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>UQ</td>
+      <td>UNI</td>
       <td>BArch</td>
       <td>Qld</td>
       <td>incomplete</td>
       <td>267</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>UQ</td>
       <td>UNI</td>
+      <td>DipArch</td>
+      <td>QLD</td>
+      <td>incomplete</td>
+      <td>384</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>UQ</td>
+      <td>UNI</td>
+      <td>DipArch</td>
+      <td>QLD</td>
+      <td>1945?</td>
+      <td>376</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>UQ</td>
+      <td>UNI</td>
+      <td>NaN</td>
+      <td>QLD</td>
+      <td>incomplete</td>
+      <td>736</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>UQ</td>
+      <td>UNI</td>
+      <td>BArch</td>
+      <td>QLD</td>
+      <td>1969?</td>
+      <td>117</td>
     </tr>
     <tr>
       <th>3</th>
       <td>UNSW</td>
+      <td>UNI</td>
       <td>Archives</td>
       <td>NSW</td>
       <td>incomplete</td>
       <td>384</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>STC</td>
+      <td>NSW</td>
       <td>NaN</td>
       <td>Colle</td>
       <td>incom</td>
       <td>538</td>
-      <td>NSW</td>
     </tr>
     <tr>
       <th>2</th>
       <td>QUT, UQ</td>
+      <td>UNI</td>
       <td>PhD (hon)</td>
       <td>QLD</td>
       <td>2003, 2008</td>
       <td>174</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968?</td>
       <td>13</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
-      <td>CERT</td>
-      <td>QLD</td>
-      <td>1968?</td>
-      <td>10</td>
       <td>INSTITUTE</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>QIT</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968?</td>
       <td>14</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
+      <td>CERT</td>
+      <td>QLD</td>
+      <td>1968?</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>QIT</td>
+      <td>COLLEGE</td>
       <td>DipArch</td>
       <td>QLD</td>
       <td>1979?</td>
       <td>380</td>
-      <td>COLLEGE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>NANGLE IoT</td>
+      <td>DISTANCE EDUCATION</td>
       <td>DipArch</td>
       <td>SYDNEY</td>
       <td>1960s</td>
       <td>355</td>
-      <td>DISTANCE EDUCATION</td>
     </tr>
     <tr>
       <th>0</th>
       <td>Melbourne</td>
+      <td>UNI</td>
       <td>BArch</td>
       <td>VIC</td>
       <td>1939?</td>
       <td>349</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Durhan</td>
+      <td>UNI</td>
       <td>Landscape</td>
       <td>UK</td>
       <td>1965?</td>
       <td>713</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>Budapest</td>
+      <td>UNI</td>
       <td>NaN</td>
       <td>Hungary</td>
       <td>incomplete</td>
       <td>584</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>BCTC</td>
+      <td>COLLEGE</td>
       <td>CertArch</td>
       <td>QLD</td>
       <td>1961?</td>
       <td>627</td>
-      <td>COLLEGE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>BCTC</td>
+      <td>COLLEGE</td>
       <td>BArch</td>
       <td>QLD</td>
       <td>incomplete</td>
       <td>273</td>
-      <td>COLLEGE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>AA</td>
+      <td>INDEPENDENT</td>
       <td>DipArch</td>
       <td>UK</td>
       <td>1890?</td>
       <td>636</td>
-      <td>INDEPENDENT</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>BACHELOR OF ARCHITECTURE</td>
-      <td>NaN</td>
-      <td>1968?</td>
-      <td>4</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>Vienna</td>
       <td>1940s</td>
       <td>166</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>NaN</td>
+      <td>UNI</td>
+      <td>BACHELOR OF ARCHITECTURE</td>
+      <td>NaN</td>
+      <td>1968?</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -8237,139 +8254,139 @@ Below we provide all the eductional records with unconventional values in the en
     <tr style="text-align: right;">
       <th></th>
       <th>name</th>
+      <th>type</th>
       <th>qual</th>
       <th>place</th>
       <th>end_year</th>
       <th>ori_id</th>
-      <th>type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>UQ</td>
-      <td>BArch</td>
-      <td>QLD</td>
-      <td>1969?</td>
-      <td>117</td>
-      <td>UNI</td>
-    </tr>
-    <tr>
       <th>0</th>
       <td>UQ</td>
+      <td>UNI</td>
       <td>DipArch</td>
       <td>QLD</td>
       <td>1945?</td>
       <td>376</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>UQ</td>
       <td>UNI</td>
+      <td>BArch</td>
+      <td>QLD</td>
+      <td>1969?</td>
+      <td>117</td>
     </tr>
     <tr>
       <th>2</th>
       <td>QUT, UQ</td>
+      <td>UNI</td>
       <td>PhD (hon)</td>
       <td>QLD</td>
       <td>2003, 2008</td>
       <td>174</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
-      <td>DipArch</td>
-      <td>QLD</td>
-      <td>1979?</td>
-      <td>380</td>
-      <td>COLLEGE</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968?</td>
       <td>13</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968?</td>
       <td>14</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968?</td>
       <td>10</td>
-      <td>INSTITUTE</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>QIT</td>
+      <td>COLLEGE</td>
+      <td>DipArch</td>
+      <td>QLD</td>
+      <td>1979?</td>
+      <td>380</td>
     </tr>
     <tr>
       <th>0</th>
       <td>NANGLE IoT</td>
+      <td>DISTANCE EDUCATION</td>
       <td>DipArch</td>
       <td>SYDNEY</td>
       <td>1960s</td>
       <td>355</td>
-      <td>DISTANCE EDUCATION</td>
     </tr>
     <tr>
       <th>0</th>
       <td>Melbourne</td>
+      <td>UNI</td>
       <td>BArch</td>
       <td>VIC</td>
       <td>1939?</td>
       <td>349</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Durhan</td>
+      <td>UNI</td>
       <td>Landscape</td>
       <td>UK</td>
       <td>1965?</td>
       <td>713</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>BCTC</td>
+      <td>COLLEGE</td>
       <td>CertArch</td>
       <td>QLD</td>
       <td>1961?</td>
       <td>627</td>
-      <td>COLLEGE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>AA</td>
+      <td>INDEPENDENT</td>
       <td>DipArch</td>
       <td>UK</td>
       <td>1890?</td>
       <td>636</td>
-      <td>INDEPENDENT</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>BACHELOR OF ARCHITECTURE</td>
-      <td>NaN</td>
-      <td>1968?</td>
-      <td>4</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>Vienna</td>
       <td>1940s</td>
       <td>166</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>NaN</td>
+      <td>UNI</td>
+      <td>BACHELOR OF ARCHITECTURE</td>
+      <td>NaN</td>
+      <td>1968?</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -8395,139 +8412,139 @@ Below we provide all the eductional records with unconventional values in the en
     <tr style="text-align: right;">
       <th></th>
       <th>name</th>
+      <th>type</th>
       <th>qual</th>
       <th>place</th>
       <th>end_year</th>
       <th>ori_id</th>
-      <th>type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>UQ</td>
-      <td>BArch</td>
-      <td>QLD</td>
-      <td>1969</td>
-      <td>117</td>
-      <td>UNI</td>
-    </tr>
-    <tr>
       <th>0</th>
       <td>UQ</td>
+      <td>UNI</td>
       <td>DipArch</td>
       <td>QLD</td>
       <td>1945</td>
       <td>376</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>UQ</td>
       <td>UNI</td>
+      <td>BArch</td>
+      <td>QLD</td>
+      <td>1969</td>
+      <td>117</td>
     </tr>
     <tr>
       <th>2</th>
       <td>QUT, UQ</td>
+      <td>UNI</td>
       <td>PhD (hon)</td>
       <td>QLD</td>
       <td>2003, 2008</td>
       <td>174</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
-      <td>DipArch</td>
-      <td>QLD</td>
-      <td>1979</td>
-      <td>380</td>
-      <td>COLLEGE</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968</td>
       <td>13</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968</td>
       <td>14</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968</td>
       <td>10</td>
-      <td>INSTITUTE</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>QIT</td>
+      <td>COLLEGE</td>
+      <td>DipArch</td>
+      <td>QLD</td>
+      <td>1979</td>
+      <td>380</td>
     </tr>
     <tr>
       <th>0</th>
       <td>NANGLE IoT</td>
+      <td>DISTANCE EDUCATION</td>
       <td>DipArch</td>
       <td>SYDNEY</td>
       <td>1960</td>
       <td>355</td>
-      <td>DISTANCE EDUCATION</td>
     </tr>
     <tr>
       <th>0</th>
       <td>Melbourne</td>
+      <td>UNI</td>
       <td>BArch</td>
       <td>VIC</td>
       <td>1939</td>
       <td>349</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Durhan</td>
+      <td>UNI</td>
       <td>Landscape</td>
       <td>UK</td>
       <td>1965</td>
       <td>713</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>BCTC</td>
+      <td>COLLEGE</td>
       <td>CertArch</td>
       <td>QLD</td>
       <td>1961</td>
       <td>627</td>
-      <td>COLLEGE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>AA</td>
+      <td>INDEPENDENT</td>
       <td>DipArch</td>
       <td>UK</td>
       <td>1890</td>
       <td>636</td>
-      <td>INDEPENDENT</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>BACHELOR OF ARCHITECTURE</td>
-      <td>NaN</td>
-      <td>1968</td>
-      <td>4</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>Vienna</td>
       <td>1940</td>
       <td>166</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>NaN</td>
+      <td>UNI</td>
+      <td>BACHELOR OF ARCHITECTURE</td>
+      <td>NaN</td>
+      <td>1968</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -8553,139 +8570,139 @@ Below we provide all the eductional records with unconventional values in the en
     <tr style="text-align: right;">
       <th></th>
       <th>name</th>
+      <th>type</th>
       <th>qual</th>
       <th>place</th>
       <th>end_year</th>
       <th>ori_id</th>
-      <th>type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>UQ</td>
-      <td>BArch</td>
-      <td>QLD</td>
-      <td>1969</td>
-      <td>117</td>
-      <td>UNI</td>
-    </tr>
-    <tr>
       <th>0</th>
       <td>UQ</td>
+      <td>UNI</td>
       <td>DipArch</td>
       <td>QLD</td>
       <td>1945</td>
       <td>376</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>UQ</td>
       <td>UNI</td>
+      <td>BArch</td>
+      <td>QLD</td>
+      <td>1969</td>
+      <td>117</td>
     </tr>
     <tr>
       <th>2</th>
       <td>QUT, UQ</td>
+      <td>UNI</td>
       <td>PhD (hon)</td>
       <td>QLD</td>
       <td>2008</td>
       <td>174</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
-      <td>DipArch</td>
-      <td>QLD</td>
-      <td>1979</td>
-      <td>380</td>
-      <td>COLLEGE</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968</td>
       <td>13</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968</td>
       <td>14</td>
-      <td>INSTITUTE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>QIT</td>
+      <td>INSTITUTE</td>
       <td>CERT</td>
       <td>QLD</td>
       <td>1968</td>
       <td>10</td>
-      <td>INSTITUTE</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>QIT</td>
+      <td>COLLEGE</td>
+      <td>DipArch</td>
+      <td>QLD</td>
+      <td>1979</td>
+      <td>380</td>
     </tr>
     <tr>
       <th>0</th>
       <td>NANGLE IoT</td>
+      <td>DISTANCE EDUCATION</td>
       <td>DipArch</td>
       <td>SYDNEY</td>
       <td>1960</td>
       <td>355</td>
-      <td>DISTANCE EDUCATION</td>
     </tr>
     <tr>
       <th>0</th>
       <td>Melbourne</td>
+      <td>UNI</td>
       <td>BArch</td>
       <td>VIC</td>
       <td>1939</td>
       <td>349</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Durhan</td>
+      <td>UNI</td>
       <td>Landscape</td>
       <td>UK</td>
       <td>1965</td>
       <td>713</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
       <td>BCTC</td>
+      <td>COLLEGE</td>
       <td>CertArch</td>
       <td>QLD</td>
       <td>1961</td>
       <td>627</td>
-      <td>COLLEGE</td>
     </tr>
     <tr>
       <th>0</th>
       <td>AA</td>
+      <td>INDEPENDENT</td>
       <td>DipArch</td>
       <td>UK</td>
       <td>1890</td>
       <td>636</td>
-      <td>INDEPENDENT</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>BACHELOR OF ARCHITECTURE</td>
-      <td>NaN</td>
-      <td>1968</td>
-      <td>4</td>
-      <td>UNI</td>
     </tr>
     <tr>
       <th>0</th>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>Vienna</td>
       <td>1940</td>
       <td>166</td>
+    </tr>
+    <tr>
+      <th>1</th>
       <td>NaN</td>
+      <td>UNI</td>
+      <td>BACHELOR OF ARCHITECTURE</td>
+      <td>NaN</td>
+      <td>1968</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
@@ -8816,8 +8833,9 @@ A: There are 57 (29.53%) education records from BCTC/QIT/QUT between 1940-Presen
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Q: Who has 50 or more related works?&#39;</span><span class="p">)</span>
 <span class="n">person_ids_with_over50works</span> <span class="o">=</span> <span class="n">person_ids_related_works</span><span class="p">[</span><span class="n">person_ids_related_works</span><span class="p">[</span><span class="s1">&#39;count_cat&#39;</span><span class="p">]</span><span class="o">==</span><span class="s1">&#39;+50&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">daqa_persons</span><span class="p">[</span><span class="s1">&#39;ori_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">daqa_persons</span><span class="p">[</span><span class="s1">&#39;ori_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
-<span class="n">top_six</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">daqa_persons</span><span class="p">[</span><span class="n">daqa_persons</span><span class="p">[</span><span class="s1">&#39;ori_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">person_ids_with_over50works</span><span class="p">)][[</span><span class="s1">&#39;ori_id&#39;</span><span class="p">,</span><span class="s1">&#39;display_name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ori_id&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">}),</span>
+<span class="n">top_six</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">daqa_persons</span><span class="p">[</span><span class="n">daqa_persons</span><span class="p">[</span><span class="s1">&#39;ori_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">person_ids_with_over50works</span><span class="p">)][[</span><span class="s1">&#39;ori_id&#39;</span><span class="p">,</span><span class="s1">&#39;display_name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;ori_id&#39;</span><span class="p">:</span> <span class="s1">&#39;id&#39;</span><span class="p">}),</span>
          <span class="n">person_ids_related_works</span><span class="p">[</span><span class="n">person_ids_related_works</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">person_ids_with_over50works</span><span class="p">)],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
 
 <span class="c1"># get person records with 50 or more related works</span>
@@ -8889,6 +8907,36 @@ A: There are 57 (29.53%) education records from BCTC/QIT/QUT between 1940-Presen
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <th>3</th>
+      <td>"Lange Powell"</td>
+      <td>145</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>"Karl Langer"</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>"Graham W. Bligh"</td>
+      <td>78</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>"Rex Addison"</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>"Robin Gibson"</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>"John Dalton"</td>
+      <td>67</td>
+    </tr>
   </tbody>
 </table>
 </div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>###################### PARETO PRINCIPLE ######################
@@ -9060,7 +9108,7 @@ A: There are 57 (29.53%) education records from BCTC/QIT/QUT between 1940-Presen
   <tbody>
     <tr>
       <th>Frequency</th>
-      <td>730</td>
+      <td>524</td>
       <td>63</td>
       <td>44</td>
       <td>40</td>
@@ -9324,12 +9372,12 @@ Below is a list of the top 20 architects with the highest number of associated p
     </tr>
     <tr>
       <th>11</th>
-      <td>Peter Heathwood</td>
+      <td>Donald Spencer</td>
       <td>10</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>Donald Spencer</td>
+      <td>Peter Heathwood</td>
       <td>10</td>
     </tr>
     <tr>
@@ -9344,12 +9392,12 @@ Below is a list of the top 20 architects with the highest number of associated p
     </tr>
     <tr>
       <th>15</th>
-      <td>Christina Metcalfe</td>
+      <td>Martin Louis Conrad</td>
       <td>8</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>Martin Louis Conrad</td>
+      <td>Christina Metcalfe</td>
       <td>8</td>
     </tr>
     <tr>
@@ -9359,34 +9407,34 @@ Below is a list of the top 20 architects with the highest number of associated p
     </tr>
     <tr>
       <th>18</th>
-      <td>Lindy Wissler</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>19</th>
       <td>Robert Froud</td>
       <td>6</td>
     </tr>
     <tr>
-      <th>20</th>
+      <th>19</th>
       <td>Gabriel Poole</td>
       <td>6</td>
     </tr>
     <tr>
-      <th>21</th>
+      <th>20</th>
       <td>Alexander Ian Ferrier</td>
       <td>6</td>
     </tr>
     <tr>
-      <th>22</th>
+      <th>21</th>
       <td>Geoffrey Pie</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Lindy Wissler</td>
       <td>6</td>
     </tr>
   </tbody>
 </table>
 </div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>###################### FIRMS WITH THE HIGHEST NUMBER OF ASSOCIATED PROJECTS (1940-1980) ######################
 
-There 115 unique firms with associated projects between 1940-1980.
+There 113 unique firms with associated projects between 1940-1980.
 Below is a list of the top 20 firms with the highest number of associated projects within this period.
 </pre></div>
 </div>
@@ -9429,7 +9477,7 @@ Below is a list of the top 20 firms with the highest number of associated projec
       <td>29</td>
     </tr>
     <tr>
-      <th>30</th>
+      <th>31</th>
       <td>"Robin Gibson &amp; Partners"</td>
       <td>21</td>
     </tr>
@@ -9444,14 +9492,14 @@ Below is a list of the top 20 firms with the highest number of associated projec
       <td>18</td>
     </tr>
     <tr>
-      <th>27</th>
-      <td>"Fulton Trotter Architects"</td>
-      <td>16</td>
-    </tr>
-    <tr>
       <th>67</th>
       <td>"Hayes &amp; Scott"</td>
-      <td>15</td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>"Fulton Trotter Architects"</td>
+      <td>16</td>
     </tr>
     <tr>
       <th>48</th>
@@ -9459,18 +9507,18 @@ Below is a list of the top 20 firms with the highest number of associated projec
       <td>14</td>
     </tr>
     <tr>
+      <th>64</th>
+      <td>"A.H Conrad &amp; T.B.F Gargett"</td>
+      <td>11</td>
+    </tr>
+    <tr>
       <th>82</th>
       <td>"S.G. Barnes &amp; Oribin"</td>
       <td>11</td>
     </tr>
     <tr>
-      <th>24</th>
+      <th>25</th>
       <td>"W L Douglas &amp; B Barnes"</td>
-      <td>10</td>
-    </tr>
-    <tr>
-      <th>64</th>
-      <td>"A.H Conrad &amp; T.B.F Gargett"</td>
       <td>10</td>
     </tr>
     <tr>
@@ -9479,13 +9527,13 @@ Below is a list of the top 20 firms with the highest number of associated projec
       <td>9</td>
     </tr>
     <tr>
-      <th>38</th>
-      <td>"Cullen Hargraves Mooney"</td>
+      <th>81</th>
+      <td>"Lund, Hutton, Newell, Black &amp; Paulsen"</td>
       <td>8</td>
     </tr>
     <tr>
-      <th>81</th>
-      <td>"Lund, Hutton, Newell, Black &amp; Paulsen"</td>
+      <th>38</th>
+      <td>"Cullen Hargraves Mooney"</td>
       <td>8</td>
     </tr>
     <tr>
@@ -9499,6 +9547,11 @@ Below is a list of the top 20 firms with the highest number of associated projec
       <td>7</td>
     </tr>
     <tr>
+      <th>68</th>
+      <td>"James Birrell &amp; Partners"</td>
+      <td>6</td>
+    </tr>
+    <tr>
       <th>61</th>
       <td>"Prangley &amp; Crofts"</td>
       <td>6</td>
@@ -9506,11 +9559,6 @@ Below is a list of the top 20 firms with the highest number of associated projec
     <tr>
       <th>66</th>
       <td>"Conrad Gargett &amp; Partners (1965-1972)"</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>68</th>
-      <td>"James Birrell &amp; Partners"</td>
       <td>6</td>
     </tr>
   </tbody>
@@ -9523,46 +9571,15 @@ Below is a list of the top 20 firms with the highest number of associated projec
 <p>Below we identify all registered architects in the DAQA dataset by searching for the relevant keywords in their respective <code class="docutils literal notranslate"><span class="pre">summary</span></code> field. We list these architects along with their registration year and completion year of first degree. Note that not all architects have corresponding education data. From the subset of registered architects with education data, we visualise a comparison of registration year and degree completion year for each architect.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
-
-<span class="k">def</span> <span class="nf">find_word_with_regis</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="c1"># Split the text into individual words</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b\w+\b&#39;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
-
-    <span class="c1"># Search for a word that contains &quot;regis&quot; or &quot;Regis&quot;</span>
-    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;regis|Regis&#39;</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
-            <span class="k">return</span> <span class="n">word</span>
-
-    <span class="k">return</span> <span class="kc">None</span>  <span class="c1"># No matching word found</span>
-
-<span class="k">def</span> <span class="nf">find_closest_4_digit_number</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="n">target_word</span><span class="o">=</span><span class="s2">&quot;registering&quot;</span><span class="p">):</span>
-    <span class="n">numbers</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d</span><span class="si">{4}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>  <span class="c1"># Find all 4-digit numbers in the string</span>
-    
-    <span class="n">closest_number</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">min_distance</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
-    
-    <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">distance</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">target_word</span><span class="p">)</span> <span class="o">-</span> <span class="n">string</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">number</span><span class="p">))</span>
-            <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">min_distance</span><span class="p">:</span>
-                <span class="n">closest_number</span> <span class="o">=</span> <span class="n">number</span>
-                <span class="n">min_distance</span> <span class="o">=</span> <span class="n">distance</span>
-        <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
-    
-    <span class="k">return</span> <span class="n">closest_number</span>
-
-<span class="n">registered_architects</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">registered_architects</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">registered_architects_years</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span><span class="n">row</span> <span class="ow">in</span> <span class="n">daqapersons_1940_80</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="p">(</span><span class="s2">&quot;registering&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="s2">&quot;registered&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">])</span> <span class="o">|</span> \
-        <span class="p">(</span><span class="s2">&quot;Registered&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="s2">&quot;architectural registration&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">])</span> <span class="o">|</span> <span class="p">(</span><span class="s2">&quot;Registration&quot;</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]):</span>
+        <span class="n">reg_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;career&#39;</span><span class="p">])[</span><span class="s1">&#39;registrations&#39;</span><span class="p">])</span>
+        <span class="n">reg_df</span> <span class="o">=</span> <span class="n">reg_df</span><span class="p">[</span><span class="n">reg_df</span><span class="p">[</span><span class="s1">&#39;coverage.date.year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;coverage.date.year&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">reg_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">closest_year</span> <span class="o">=</span> <span class="n">reg_df</span><span class="p">[</span><span class="s1">&#39;coverage.date.year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
             <span class="n">registered_architects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">[[</span><span class="s1">&#39;display_name&#39;</span><span class="p">,</span><span class="s1">&#39;ori_id&#39;</span><span class="p">,</span> <span class="s1">&#39;gender&#39;</span><span class="p">]])</span>
-            <span class="n">this_summary</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;summary&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;. &#39;</span><span class="p">))</span>
-            <span class="n">register_pos</span> <span class="o">=</span> <span class="n">this_summary</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;regis|Regis&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">find_word_with_regis</span><span class="p">(</span><span class="n">this_summary</span><span class="p">[</span><span class="n">register_pos</span><span class="p">])</span>
-            <span class="n">closest_year</span> <span class="o">=</span> <span class="n">find_closest_4_digit_number</span><span class="p">(</span><span class="n">this_summary</span><span class="p">[</span><span class="n">register_pos</span><span class="p">],</span> <span class="n">target_word</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
             <span class="n">registered_architects_years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">closest_year</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span> <span class="k">pass</span>
 
@@ -9583,16 +9600,15 @@ Below is a list of the top 20 firms with the highest number of associated projec
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">There are </span><span class="si">{</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> architects (active in 1940-1980) with registration details in their biographical summary.&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">registered_architects</span><span class="p">[</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;&quot;male&quot;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;of these are male architects.&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">registered_architects</span><span class="p">[</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;&quot;female&quot;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;of these are female architects.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">registered_architects</span><span class="p">[</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;Missing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;of these does not have a recorded gender.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># print(&#39;-&#39;,registered_architects[registered_architects.gender == &#39;Missing&#39;].shape[0], &#39;of these does not have a recorded gender.\n&#39;)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;reg_year&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 41 architects (active in 1940-1980) with registration details in their biographical summary.
-- 37 of these are male architects.
-- 3 of these are female architects.
-- 1 of these does not have a recorded gender.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 86 architects (active in 1940-1980) with registration details in their biographical summary.
+- 77 of these are male architects.
+- 9 of these are female architects.
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -9622,7 +9638,31 @@ Below is a list of the top 20 firms with the highest number of associated projec
   </thead>
   <tbody>
     <tr>
-      <th>24</th>
+      <th>54</th>
+      <td>"Richard Gailey"</td>
+      <td>100</td>
+      <td>"male"</td>
+      <td>1866</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>"John Buckeridge"</td>
+      <td>540</td>
+      <td>"male"</td>
+      <td>1892</td>
+      <td>1878</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>"George Rae"</td>
+      <td>240</td>
+      <td>"male"</td>
+      <td>1923</td>
+      <td>1920</td>
+    </tr>
+    <tr>
+      <th>48</th>
       <td>"Sidney Barnes"</td>
       <td>680</td>
       <td>"male"</td>
@@ -9630,311 +9670,39 @@ Below is a list of the top 20 firms with the highest number of associated projec
       <td>1928</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>"Arthur Bligh"</td>
-      <td>239</td>
+      <th>45</th>
+      <td>"Frank Costello"</td>
+      <td>59</td>
       <td>"male"</td>
+      <td>1927</td>
       <td>1928</td>
-      <td>1926</td>
     </tr>
     <tr>
-      <th>30</th>
-      <td>"Robert Cummings"</td>
-      <td>152</td>
-      <td>"male"</td>
-      <td>1931</td>
-      <td>1923</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>"Charles W. T. Fulton"</td>
-      <td>338</td>
-      <td>"male"</td>
-      <td>1931</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>"Edwin Ray Orchard"</td>
-      <td>366</td>
-      <td>"male"</td>
-      <td>1933</td>
-      <td>1913</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>"Ronald W. Voller"</td>
-      <td>113</td>
-      <td>"male"</td>
-      <td>1936</td>
-      <td>1936</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>"Guilford Bell"</td>
-      <td>358</td>
-      <td>"male"</td>
-      <td>1936</td>
-      <td>1935</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>"Athol Bretnall"</td>
-      <td>342</td>
-      <td>"male"</td>
-      <td>1938</td>
-      <td>1938</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>"Robert Froud"</td>
-      <td>219</td>
-      <td>"male"</td>
-      <td>1941</td>
-      <td>1941</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>"Dean S. Prangley"</td>
-      <td>679</td>
-      <td>"male"</td>
-      <td>1941</td>
-      <td>1944</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>"Colin Tesch"</td>
-      <td>111</td>
-      <td>"male"</td>
-      <td>1945</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>"Arthur John Dickenson"</td>
-      <td>3835</td>
-      <td>"male"</td>
-      <td>1948</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>"Brian H. Hackett"</td>
-      <td>583</td>
-      <td>"male"</td>
-      <td>1948</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>"Ury Stukoff"</td>
-      <td>173</td>
-      <td>"male"</td>
-      <td>1950</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>"Keith Henry Frost"</td>
-      <td>587</td>
-      <td>"male"</td>
-      <td>1950</td>
-      <td>1950</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>"Roman Pavylshyn"</td>
-      <td>446</td>
-      <td>"male"</td>
-      <td>1951</td>
-      <td>1945</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>"Bryan (Barney) T. Lynn"</td>
-      <td>576</td>
-      <td>"male"</td>
-      <td>1952</td>
-      <td>1951</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>"John Gilmour"</td>
-      <td>748</td>
-      <td>"male"</td>
-      <td>1953</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>"Arthur Pretty"</td>
-      <td>72</td>
-      <td>"male"</td>
-      <td>1953</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>"Neville H. Lund"</td>
-      <td>558</td>
-      <td>"male"</td>
-      <td>1954</td>
-      <td>1954</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>"Colin Russell Gibbins"</td>
-      <td>3823</td>
-      <td>"male"</td>
-      <td>1954</td>
-      <td>1953</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>"Theodore Berman"</td>
-      <td>3590</td>
-      <td>"male"</td>
-      <td>1954</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>"William Douglas"</td>
-      <td>327</td>
-      <td>"male"</td>
-      <td>1955</td>
-      <td>1954</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>"Blair M. Wilson"</td>
-      <td>646</td>
-      <td>"male"</td>
-      <td>1955</td>
-      <td>1955</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>"Barry Barnes"</td>
-      <td>81</td>
-      <td>"male"</td>
-      <td>1955</td>
-      <td>1955</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>"Paquita Day"</td>
-      <td>678</td>
-      <td>"female"</td>
-      <td>1955</td>
-      <td>1955</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>"Ian D. Charlton"</td>
-      <td>628</td>
-      <td>"male"</td>
-      <td>1956</td>
-      <td>1955</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>"David (Dan) A. Nutter"</td>
-      <td>662</td>
-      <td>"male"</td>
-      <td>1956</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>"Robin Gibson"</td>
-      <td>606</td>
-      <td>"male"</td>
-      <td>1956</td>
-      <td>1955</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>"James Gibson"</td>
-      <td>4006</td>
-      <td>"male"</td>
-      <td>1957</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>"Pat(rick) J. Moroney"</td>
-      <td>505</td>
-      <td>"male"</td>
-      <td>1958</td>
-      <td>1957</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>"Graham W. Bligh"</td>
-      <td>649</td>
-      <td>"male"</td>
-      <td>1958</td>
-      <td>1958</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>"Malcolm R. Cummings"</td>
-      <td>436</td>
-      <td>"male"</td>
-      <td>1960</td>
-      <td>1960</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>"John M. Railton"</td>
-      <td>267</td>
-      <td>"male"</td>
-      <td>1962</td>
-      <td>1960</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>32</th>
-      <td>"Bob Cleland"</td>
-      <td>355</td>
+      <td>"Diane Ball"</td>
+      <td>640</td>
+      <td>"female"</td>
+      <td>1978</td>
+      <td>1975</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>"Rex Addison"</td>
+      <td>248</td>
       <td>"male"</td>
-      <td>1962</td>
-      <td>1960</td>
+      <td>1978</td>
+      <td>1970</td>
     </tr>
     <tr>
-      <th>23</th>
-      <td>"Geoffrey Pie"</td>
-      <td>123</td>
-      <td>"male"</td>
-      <td>1962</td>
-      <td>1962</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>"Graham de Gruchy"</td>
-      <td>272</td>
-      <td>"male"</td>
-      <td>1962</td>
-      <td>1947</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>"Leslie Jones"</td>
-      <td>588</td>
-      <td>"male"</td>
-      <td>1967</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>"Joseph M. Turnbull"</td>
-      <td>4950</td>
-      <td>Missing</td>
-      <td>1972</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>27</th>
+      <th>28</th>
       <td>"Deborah Carlile"</td>
       <td>3901</td>
       <td>"female"</td>
@@ -9942,15 +9710,24 @@ Below is a list of the top 20 firms with the highest number of associated projec
       <td>1979</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>"Pamella Mircovich"</td>
-      <td>4017</td>
+      <th>73</th>
+      <td>"Ruth Woods"</td>
+      <td>3923</td>
       <td>"female"</td>
       <td>1981</td>
-      <td>1976</td>
+      <td>1980</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>"Marian Graham"</td>
+      <td>4239</td>
+      <td>"female"</td>
+      <td>1988</td>
+      <td>1983</td>
     </tr>
   </tbody>
 </table>
+<p>86 rows × 5 columns</p>
 </div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -9974,7 +9751,7 @@ Below is a list of the top 20 firms with the highest number of associated projec
             <span class="n">registered_architects_with_qual</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span> <span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;value2&#39;</span><span class="p">)</span>
  
 <span class="c1"># add legend under title and make horizontal</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.065</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.03</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
            <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Completion year of first qualification&#39;</span><span class="p">,</span> <span class="s1">&#39;Registration year&#39;</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">registered_architects_with_qual</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> 
@@ -9988,7 +9765,7 @@ Below is a list of the top 20 firms with the highest number of associated projec
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 
 <span class="c1"># make plot longer </span>
-<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">set_size_inches</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 
 <span class="c1"># Show the graph</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -10000,7 +9777,7 @@ Below is a list of the top 20 firms with the highest number of associated projec
 </div>
 </div>
 <blockquote class="epigraph">
-<div><p>Based on the 29 registered architects with corresponding education data, we find that architects tend to become registered <strong>one</strong> year after completing their first education qualification.</p>
+<div><p>Based on the 78 registered architects with corresponding education data, we find that architects tend to become registered <strong>one</strong> year after completing their first education qualification.</p>
 </div></blockquote>
 </div>
 <div class="section" id="women-with-related-works">
@@ -10221,7 +9998,7 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part2_64_0.png" src="_images/Analysis_DAQA_Part2_64_0.png" />
+<img alt="_images/Analysis_DAQA_Part2_66_0.png" src="_images/Analysis_DAQA_Part2_66_0.png" />
 </div>
 </div>
 <div class="section" id="top-5-architects">
@@ -10882,7 +10659,7 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
     <tr>
       <th>3</th>
       <td>"Hayes &amp; Scott"</td>
-      <td>14</td>
+      <td>16</td>
     </tr>
     <tr>
       <th>0</th>
@@ -10923,9 +10700,9 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>"Bligh Jessup Bretnall &amp; Partners"</td>
-      <td>17</td>
+      <td>18</td>
     </tr>
     <tr>
       <th>1</th>
@@ -10943,8 +10720,8 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
       <td>5</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>"Prangley &amp; Crofts"</td>
+      <th>3</th>
+      <td>"Theo Thynne &amp; Associates"</td>
       <td>4</td>
     </tr>
   </tbody>
@@ -10976,13 +10753,8 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>"Cullen Hargraves Mooney"</td>
-      <td>6</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>"Bligh Jessup Bretnall &amp; Partners"</td>
       <td>6</td>
     </tr>
     <tr>
@@ -10996,8 +10768,13 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
       <td>5</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>"Karl Langer Architect"</td>
+      <th>4</th>
+      <td>"Bligh Jessup Bretnall &amp; Partners"</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>"Goodsir Baker Wilde"</td>
       <td>3</td>
     </tr>
   </tbody>
@@ -11135,7 +10912,7 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
   </thead>
   <tbody>
     <tr>
-      <th>2</th>
+      <th>1</th>
       <td>"A.H Conrad &amp; T.B.F Gargett"</td>
       <td>3</td>
     </tr>
@@ -11155,8 +10932,8 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
       <td>2</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>"Ford, Hutton &amp; Newell"</td>
+      <th>2</th>
+      <td>"James Birrell &amp; Partners"</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -11188,7 +10965,7 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
   </thead>
   <tbody>
     <tr>
-      <th>3</th>
+      <th>2</th>
       <td>"S.G. Barnes"</td>
       <td>4</td>
     </tr>
@@ -11198,7 +10975,7 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
       <td>4</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>1</th>
       <td>"A.H Conrad &amp; T.B.F Gargett"</td>
       <td>2</td>
     </tr>
@@ -11208,8 +10985,8 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
       <td>1</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>"Sydney Hospital Projects Office"</td>
+      <th>3</th>
+      <td>"Theo Thynne &amp; Associates"</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -11399,6 +11176,11 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
       <td>"Karl Langer Architect"</td>
       <td>1</td>
     </tr>
+    <tr>
+      <th>1</th>
+      <td>"Bligh Jessup Bretnall &amp; Partners"</td>
+      <td>1</td>
+    </tr>
   </tbody>
 </table>
 </div></div></div>
@@ -11445,7 +11227,7 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part2_70_0.png" src="_images/Analysis_DAQA_Part2_70_0.png" />
+<img alt="_images/Analysis_DAQA_Part2_72_0.png" src="_images/Analysis_DAQA_Part2_72_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -11474,8 +11256,8 @@ A: 32.87% (94) of architects associated with projects completed after 1980 were 
 Queensland Government Department of Public Works    12
 Bligh Jessup Bretnall &amp; Partners                    11
 The University of Queensland                         8
-A.H Conrad &amp; T.B.F Gargett                           7
 Commonwealth Department of Works                     7
+A.H Conrad &amp; T.B.F Gargett                           7
 Conrad Gargett &amp; Partners (1972-1995)                6
 Brisbane City Council                                5
 Name: object.label, dtype: int64

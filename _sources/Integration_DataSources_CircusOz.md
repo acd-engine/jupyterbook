@@ -39,7 +39,7 @@ On an entity level, the CircusOz entity projection is listed as follows:
   }
 </style>
 
-| CircusOz Entity (Collection)               | ACDEA Level  |
+| CircusOz Entity (Collection)               | ACDEA Entity |
 | ------------------------------------------ | ------------ |
 | person                                     | person       |
 | -                                          | work         |

@@ -25,7 +25,7 @@ So far, there are five cultural data sources authorised and provided by the [ACD
 
 #### Summary
 
-The table below summarises the information realting to the data fetching method of each data source.
+The table below summarises the information relating to the data fetching method of each data source.
 
 <style>
   /* CSS for zebra-striped table */

@@ -447,7 +447,7 @@
     <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">acdedata</span><span class="o">=</span><span class="s1">&#39;organization&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="s1">&#39;googledrive&#39;</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_202305080816.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_202307131040.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
 
     <span class="c1"># first check if the data exists in current directory</span>
     <span class="n">data_from_path</span> <span class="o">=</span> <span class="n">check_if_csv_exists_in_folder</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -1352,17 +1352,130 @@ Name: TopResultName2, dtype: int64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processed 23/196
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Processed 24/196
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">33</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span>     <span class="c1"># Print progress and data being saved</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processed </span><span class="si">{</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">33</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="c1"># Create a new dataframe from the result data</span>
-<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;daao_bios&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">daao_bios</span>
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># Iterate over the rows - this takes 5 mins</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="c1"># Send a GET request to the search page</span>
+<span class="ne">---&gt; </span><span class="mi">17</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">ori_url</span> <span class="o">+</span> <span class="s1">&#39;/biography&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span>     <span class="c1"># Extract bio</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/api.py:73,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     :rtype: requests.Response</span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/api.py:59,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="c1"># By using the &#39;with&#39; statement we are sure the session is closed, thus we</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="c1"># avoid leaving sockets open which can trigger a ResourceWarning in some</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/sessions.py:587,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">582</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">583</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">584</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">586</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">587</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span> <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/sessions.py:723,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="k">if</span> <span class="n">allow_redirects</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span>     <span class="c1"># Redirect resolving generator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span>     <span class="n">gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_redirects</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">723</span>     <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">resp</span> <span class="k">for</span> <span class="n">resp</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">724</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/sessions.py:723,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">720</span> <span class="k">if</span> <span class="n">allow_redirects</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">721</span>     <span class="c1"># Redirect resolving generator.</span>
+<span class="g g-Whitespace">    </span><span class="mi">722</span>     <span class="n">gen</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">resolve_redirects</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">723</span>     <span class="n">history</span> <span class="o">=</span> <span class="p">[</span><span class="n">resp</span> <span class="k">for</span> <span class="n">resp</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">724</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/sessions.py:266,</span> in <span class="ni">SessionRedirectMixin.resolve_redirects</span><span class="nt">(self, resp, req, stream, timeout, verify, cert, proxies, yield_requests, **adapter_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span>     <span class="k">yield</span> <span class="n">req</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">266</span>     <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span>         <span class="n">req</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">268</span>         <span class="n">stream</span><span class="o">=</span><span class="n">stream</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">269</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span>         <span class="n">verify</span><span class="o">=</span><span class="n">verify</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span>         <span class="n">cert</span><span class="o">=</span><span class="n">cert</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">272</span>         <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span>         <span class="n">allow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span>         <span class="o">**</span><span class="n">adapter_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span>     <span class="n">extract_cookies_to_jar</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cookies</span><span class="p">,</span> <span class="n">prepared_request</span><span class="p">,</span> <span class="n">resp</span><span class="o">.</span><span class="n">raw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>     <span class="c1"># extract redirect url, if any, for the next loop</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/sessions.py:738,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_redirects</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">737</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">738</span>         <span class="n">r</span><span class="o">.</span><span class="n">_next</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">739</span>             <span class="bp">self</span><span class="o">.</span><span class="n">resolve_redirects</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">yield_requests</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">740</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">741</span>     <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">742</span>         <span class="k">pass</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/sessions.py:245,</span> in <span class="ni">SessionRedirectMixin.resolve_redirects</span><span class="nt">(self, resp, req, stream, timeout, verify, cert, proxies, yield_requests, **adapter_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">242</span> <span class="n">prepared_request</span><span class="o">.</span><span class="n">prepare_cookies</span><span class="p">(</span><span class="n">prepared_request</span><span class="o">.</span><span class="n">_cookies</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span> <span class="c1"># Rebuild auth and proxy information.</span>
+<span class="ne">--&gt; </span><span class="mi">245</span> <span class="n">proxies</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rebuild_proxies</span><span class="p">(</span><span class="n">prepared_request</span><span class="p">,</span> <span class="n">proxies</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">246</span> <span class="bp">self</span><span class="o">.</span><span class="n">rebuild_auth</span><span class="p">(</span><span class="n">prepared_request</span><span class="p">,</span> <span class="n">resp</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="c1"># A failed tell() sets `_body_position` to `object()`. This non-None</span>
+<span class="g g-Whitespace">    </span><span class="mi">249</span> <span class="c1"># value ensures `rewindable` will be True, allowing us to raise an</span>
+<span class="g g-Whitespace">    </span><span class="mi">250</span> <span class="c1"># UnrewindableBodyError, instead of hanging the connection.</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/sessions.py:317,</span> in <span class="ni">SessionRedirectMixin.rebuild_proxies</span><span class="nt">(self, prepared_request, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">315</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">prepared_request</span><span class="o">.</span><span class="n">headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">316</span> <span class="n">scheme</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">prepared_request</span><span class="o">.</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span>
+<span class="ne">--&gt; </span><span class="mi">317</span> <span class="n">new_proxies</span> <span class="o">=</span> <span class="n">resolve_proxies</span><span class="p">(</span><span class="n">prepared_request</span><span class="p">,</span> <span class="n">proxies</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">trust_env</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">if</span> <span class="s2">&quot;Proxy-Authorization&quot;</span> <span class="ow">in</span> <span class="n">headers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">320</span>     <span class="k">del</span> <span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Proxy-Authorization&quot;</span><span class="p">]</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/utils.py:874,</span> in <span class="ni">resolve_proxies</span><span class="nt">(request, proxies, trust_env)</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span> <span class="n">no_proxy</span> <span class="o">=</span> <span class="n">proxies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;no_proxy&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span> <span class="n">new_proxies</span> <span class="o">=</span> <span class="n">proxies</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">874</span> <span class="k">if</span> <span class="n">trust_env</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">should_bypass_proxies</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">no_proxy</span><span class="o">=</span><span class="n">no_proxy</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>     <span class="n">environ_proxies</span> <span class="o">=</span> <span class="n">get_environ_proxies</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">no_proxy</span><span class="o">=</span><span class="n">no_proxy</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>     <span class="n">proxy</span> <span class="o">=</span> <span class="n">environ_proxies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">scheme</span><span class="p">,</span> <span class="n">environ_proxies</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">))</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/site-packages/requests/utils.py:809,</span> in <span class="ni">should_bypass_proxies</span><span class="nt">(url, no_proxy)</span>
+<span class="g g-Whitespace">    </span><span class="mi">806</span> <span class="k">with</span> <span class="n">set_environ</span><span class="p">(</span><span class="s2">&quot;no_proxy&quot;</span><span class="p">,</span> <span class="n">no_proxy_arg</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">807</span>     <span class="c1"># parsed.hostname can be `None` in cases such as a file URI.</span>
+<span class="g g-Whitespace">    </span><span class="mi">808</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">809</span>         <span class="n">bypass</span> <span class="o">=</span> <span class="n">proxy_bypass</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">hostname</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">810</span>     <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">gaierror</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">811</span>         <span class="n">bypass</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/urllib/request.py:2647,</span> in <span class="ni">proxy_bypass</span><span class="nt">(host)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2645</span>     <span class="k">return</span> <span class="n">proxy_bypass_environment</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">proxies</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2646</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2647</span>     <span class="k">return</span> <span class="n">proxy_bypass_macosx_sysconf</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/urllib/request.py:2624,</span> in <span class="ni">proxy_bypass_macosx_sysconf</span><span class="nt">(host)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2622</span> <span class="k">def</span> <span class="nf">proxy_bypass_macosx_sysconf</span><span class="p">(</span><span class="n">host</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2623</span>     <span class="n">proxy_settings</span> <span class="o">=</span> <span class="n">_get_proxy_settings</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">2624</span>     <span class="k">return</span> <span class="n">_proxy_bypass_macosx_sysconf</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">proxy_settings</span><span class="p">)</span>
+
+<span class="nn">File /opt/miniconda3/envs/tf2/lib/python3.9/urllib/request.py:2592,</span> in <span class="ni">_proxy_bypass_macosx_sysconf</span><span class="nt">(host, proxy_settings)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2590</span> <span class="k">if</span> <span class="n">hostIP</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2591</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2592</span>         <span class="n">hostIP</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">gethostbyname</span><span class="p">(</span><span class="n">hostonly</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2593</span>         <span class="n">hostIP</span> <span class="o">=</span> <span class="n">ip2num</span><span class="p">(</span><span class="n">hostIP</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2594</span>     <span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>

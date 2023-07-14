@@ -69,7 +69,7 @@ For more details in cleansing date fields in DAAO, please refer to this jupyter 
 
 ##### Data Loading
 
-After making extensive preparations during the transformation process, it is now possible to map the corresponding entities/attributes of DAAO to the levels/attributes in ACDEA. Finally, related records were aggregated from the relationship level and updated into the related attribute of the original records.
+After making extensive preparations during the transformation process, it is now possible to map the corresponding entities/attributes of DAAO to the entities/attributes in ACDEA. Finally, related records were aggregated from the relationship entity and updated into the related attribute of the original records.
 
 On entity level, the DAAO entity projection is listed as follows:
 
@@ -90,7 +90,7 @@ On entity level, the DAAO entity projection is listed as follows:
   }
 </style>
 
-| DAAO Entity (Collection) | ACDEA Level  |
+| DAAO Entity (Collection) | ACDEA Entity |
 | ------------------------ | ------------ |
 | xparty.person            | person       |
 | xwork.work               | work         |

@@ -6,7 +6,7 @@ The arts and culture are what make us human. From going to the theatre and liste
 
 We are interested in who is participating in arts and cultural activity in Australia and where and how it happens. We argue that a better understanding of Australia’s vibrant culture landscape should shape and inform government policy and support for the Arts and other key sectors. 
 
-#### Key Research Questions 
+**Key Research Questions**
 
 - How might different levels of analysis (biographical data, organisational dynamics, national trends, individual creative works) tell new stories about the past, present and future of art and culture? 
 
@@ -14,7 +14,7 @@ We are interested in who is participating in arts and cultural activity in Austr
 
 - Which innovative computer science methods can we employ to improve cultural data ontologies, and broaden the scale and accessibility of cultural data collections? 
 
-#### ACD-Engine Projects
+**ACD-Engine Projects**
 
 Our thematic projects highlight the possibilities to be realised by the Engine when we can geolocate and visualise organisations, individuals, events, organisational and market dynamics, and other concentration indices in arts and humanities data.
 
@@ -25,6 +25,13 @@ Our thematic projects highlight the possibilities to be realised by the Engine w
 - [Cultural Diffusion and Arts Diplomacy](https://www.acd-engine.org/projects/cultural-diffusion-and-arts-diplomacy)
 
 - [Environmental Politics and the Arts](https://www.acd-engine.org/projects/environmental-politics-and-the-arts)
+
+
+**Suggested Citation**
+
+To cite this jupyter book, you may use the following suggested format:
+
+> Justin Munoz, Ivy Zheng and the ACD-Engine Team, *Australian Cultural Data Engine: Cultural Data Workbook*, June 2023, [https://acd-engine.github.io/jupyterbook](https://acd-engine.github.io/jupyterbook).
 
 
 <style>
