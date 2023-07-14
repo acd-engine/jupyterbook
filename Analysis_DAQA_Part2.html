@@ -9568,7 +9568,7 @@ Below is a list of the top 20 firms with the highest number of associated projec
 </div>
 <div class="section" id="registered-architects">
 <h3>Registered architects<a class="headerlink" href="#registered-architects" title="Permalink to this headline">¶</a></h3>
-<p>Below we identify all registered architects in the DAQA dataset by searching for the relevant keywords in their respective <code class="docutils literal notranslate"><span class="pre">summary</span></code> field. We list these architects along with their registration year and completion year of first degree. Note that not all architects have corresponding education data. From the subset of registered architects with education data, we visualise a comparison of registration year and degree completion year for each architect.</p>
+<p>Below we identify all registered architects in the DAQA dataset. This information is embedded within the <code class="docutils literal notranslate"><span class="pre">career</span></code> field of each person record. We visualise a comparison of registration year and degree completion year for each architect. Note that not all architects have corresponding education data.</p>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">registered_architects</span> <span class="o">=</span> <span class="p">[]</span>
@@ -9601,7 +9601,7 @@ Below is a list of the top 20 firms with the highest number of associated projec
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">registered_architects</span><span class="p">[</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;&quot;male&quot;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;of these are male architects.&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">registered_architects</span><span class="p">[</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">gender</span> <span class="o">==</span> <span class="s1">&#39;&quot;female&quot;&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;of these are female architects.&#39;</span><span class="p">)</span>
 <span class="c1"># print(&#39;-&#39;,registered_architects[registered_architects.gender == &#39;Missing&#39;].shape[0], &#39;of these does not have a recorded gender.\n&#39;)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">registered_architects</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;reg_year&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="c1"># display(registered_architects.sort_values(&#39;reg_year&#39;, ascending=True).head())</span>
 </pre></div>
 </div>
 </div>
@@ -9611,124 +9611,7 @@ Below is a list of the top 20 firms with the highest number of associated projec
 - 9 of these are female architects.
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>display_name</th>
-      <th>ori_id</th>
-      <th>gender</th>
-      <th>reg_year</th>
-      <th>completion_year_first_qualification</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>54</th>
-      <td>"Richard Gailey"</td>
-      <td>100</td>
-      <td>"male"</td>
-      <td>1866</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>59</th>
-      <td>"John Buckeridge"</td>
-      <td>540</td>
-      <td>"male"</td>
-      <td>1892</td>
-      <td>1878</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>"George Rae"</td>
-      <td>240</td>
-      <td>"male"</td>
-      <td>1923</td>
-      <td>1920</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>"Sidney Barnes"</td>
-      <td>680</td>
-      <td>"male"</td>
-      <td>1925</td>
-      <td>1928</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>"Frank Costello"</td>
-      <td>59</td>
-      <td>"male"</td>
-      <td>1927</td>
-      <td>1928</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>"Diane Ball"</td>
-      <td>640</td>
-      <td>"female"</td>
-      <td>1978</td>
-      <td>1975</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>"Rex Addison"</td>
-      <td>248</td>
-      <td>"male"</td>
-      <td>1978</td>
-      <td>1970</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>"Deborah Carlile"</td>
-      <td>3901</td>
-      <td>"female"</td>
-      <td>1980</td>
-      <td>1979</td>
-    </tr>
-    <tr>
-      <th>73</th>
-      <td>"Ruth Woods"</td>
-      <td>3923</td>
-      <td>"female"</td>
-      <td>1981</td>
-      <td>1980</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>"Marian Graham"</td>
-      <td>4239</td>
-      <td>"female"</td>
-      <td>1988</td>
-      <td>1983</td>
-    </tr>
-  </tbody>
-</table>
-<p>86 rows × 5 columns</p>
-</div></div></div>
+</div>
 </div>
 <div class="cell tag_hide-input docutils container">
 <div class="cell_input docutils container">
