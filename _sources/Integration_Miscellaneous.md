@@ -43,7 +43,7 @@ In addition to current data sources, we found many other interesting Australian/
    This is a collection of art prize data from the Art Gallery of NSW. It contains information about the artists, artworks and judges of the prizes. This data collection could add more value to `recognition` entity in the ACDEA. 
    <br>
    <br>
-   We provide an example of how to use Archibald Prize data for analytical purposes in the **Data Analysis** chapter of this book. Refer to [**Quantifying success: A journey into the Archibald Prize**](https://acd-engine.github.io/jupyterbook/Analysis_ArchibaldPrize.html).
+   We provide an example of how to use Archibald Prize data for analytical purposes in the **Data Analysis** chapter of this book. Refer to [**Exploring success quantitatively using Archibald Prize data**](https://acd-engine.github.io/jupyterbook/Analysis_ArchibaldPrize.html).
    <br>
    <br>
 
@@ -62,6 +62,9 @@ In addition to current data sources, we found many other interesting Australian/
 4. [IMDB](https://www.imdb.com/)
    
    This is a well-known database for information about movies, television shows, and other productions. It includes information about the cast and crew, production companies, release dates, and ratings. This data collection can add more value to the `work` entity in the ACDEA.
+   <br>
+   <br>
+   We provide an example of how to use IMDb data for analytical purposes in the **Data Analysis** chapter of this book. Refer to [**Exploring intersections of external data**](https://acd-engine.github.io/jupyterbook/Analysis_ExternalDatasets.html).
    <br>
    <br>
    

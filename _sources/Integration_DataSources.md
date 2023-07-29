@@ -51,6 +51,7 @@ The table below summarises the information relating to the data fetching method 
 | DAAO        | Person      | Database Dump (MongoDB)           | 2021-08       |
 | DAQA        | Person      | Web Scraping (storing in MongoDB) | 2023-04       |
 | SFC         | Resource    | Static file (xml)                 | 2022-11       |
+
 <br>
 
 The following sections will provide a general introduction, specific data processing workflow and integration data report for each data source.

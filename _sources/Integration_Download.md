@@ -37,7 +37,7 @@ For more details of static files exported for ACDE, please refer to this jupyter
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+<!-- <style>
 .btn {
   background-color: #f39c52;
   border: none;
@@ -47,13 +47,25 @@ For more details of static files exported for ACDE, please refer to this jupyter
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-</style>
-
+</style> -->
 
 </head>
 <body>
 
 <div style="text-align: center;">
+	<button id="download-btn-event" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>Event Sample (xlsx)</button>
+	<button id="download-btn-org" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>Organisation Sample (xlsx)</button>
+	<button id="download-btn-person" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>Person Sample (xlsx)</button>
+	<button id="download-btn-place" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>Place Sample (xlsx)</button>
+</div>
+<br>
+<div style="text-align: center;">
+	<button id="download-btn-recog" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>Recognition Sample (xlsx)</button>
+	<button id="download-btn-resource" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>Resource Sample (xlsx)</button>
+	<button id="download-btn-work" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>Work Sample (xlsx)</button>
+</div>
+
+<!-- <div style="text-align: center;">
 	<button id="download-btn-event" class="btn"><i class="fa fa-download"></i> Download <br>Event Sample (xlsx)</button>
 	<button id="download-btn-org" class="btn"><i class="fa fa-download"></i> Download <br>Organisation Sample (xlsx)</button>
 	<button id="download-btn-person" class="btn"><i class="fa fa-download"></i> Download <br>Person Sample (xlsx)</button>
@@ -64,28 +76,102 @@ For more details of static files exported for ACDE, please refer to this jupyter
 	<button id="download-btn-recog" class="btn"><i class="fa fa-download"></i> Download <br>Recognition Sample (xlsx)</button>
 	<button id="download-btn-resource" class="btn"><i class="fa fa-download"></i> Download <br>Resource Sample (xlsx)</button>
 	<button id="download-btn-work" class="btn"><i class="fa fa-download"></i> Download <br>Work Sample (xlsx)</button>
-</div>
+</div> -->
 
 </body>
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/filesaver.js"></script>
 <script>
-  // Define the URL of the CSV file
-  const csvUrl_event = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_eventSample_202307131040.xlsx";
+  // Function to initialize string
+  function fetchDateSuffix() {
+    return new Promise((resolve, reject) => {
+      const url = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/analysis/date_suffix";
+      const xhr = new XMLHttpRequest();
 
-  const csvUrl_org = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_organizationSample_202307131040.xlsx";
+      xhr.open("GET", url);
 
-  const csvUrl_person = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_personSample_202307131040.xlsx";
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            const rawdata = xhr.responseText;
+            const dateSuffix = rawdata.substring(0, 12);
+            resolve(dateSuffix);
+          } else {
+            reject("Failed to fetch date suffix.");
+          }
+        }
+      };
 
-  const csvUrl_place = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_placeSample_202307131040.xlsx";
+      xhr.send();
+    });
+  }
 
-  const csvUrl_recog = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_recognitionSample_202307131040.xlsx";
+  function generateCsvUrl(sampleName) {
+    return fetchDateSuffix().then((newstr) => {
+      const baseUrl = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/";
+      const csvUrl = `${baseUrl}${sampleName}_${newstr}.xlsx`;
+      return csvUrl;
+    }).catch((error) => {
+      console.error(error);
+      return null; // Handle error appropriately, return a default value, or rethrow the error.
+    });
+  }
 
-  const csvUrl_resource = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_resourceSample_202307131040.xlsx";
+  // IIFE to get the generated CSV URL and store it in the constant.
+  (async () => {
+    csvUrl_event = await generateCsvUrl("acde_eventSample");
 
-  const csvUrl_work = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_workSample_202307131040.xlsx";
-  
+    // Now you can use the constant csvUrl_event outside the IIFE or in other parts of your code.
+    console.log(csvUrl_event);
+
+    csvUrl_org = await generateCsvUrl("acde_organizationSample");
+
+    // Now you can use the constant csvUrl_event outside the IIFE or in other parts of your code.
+    console.log(csvUrl_org);
+
+    csvUrl_person = await generateCsvUrl("acde_personSample");
+
+    // Now you can use the constant csvUrl_event outside the IIFE or in other parts of your code.
+    console.log(csvUrl_person);
+
+    csvUrl_place = await generateCsvUrl("acde_placeSample");
+
+    // Now you can use the constant csvUrl_event outside the IIFE or in other parts of your code.
+    console.log(csvUrl_place);
+
+    csvUrl_recog = await generateCsvUrl("acde_recognitionSample");
+
+    // Now you can use the constant csvUrl_event outside the IIFE or in other parts of your code.
+    console.log(csvUrl_recog);
+
+    csvUrl_resource = await generateCsvUrl("acde_resourceSample");
+
+    // Now you can use the constant csvUrl_event outside the IIFE or in other parts of your code.
+    console.log(csvUrl_resource);
+
+    csvUrl_work = await generateCsvUrl("acde_workSample");
+
+    // Now you can use the constant csvUrl_event outside the IIFE or in other parts of your code.
+    console.log(csvUrl_work);
+  })();
+
+  <!-- const csvUrl_event = generateCsvUrl("acde_eventSample"); -->
+
+  <!-- const csvUrl_event = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_eventSample_202307131040.xlsx"; -->
+
+  <!-- const csvUrl_org = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_organizationSample_202307131040.xlsx"; -->
+
+  <!-- const csvUrl_person = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_personSample_202307131040.xlsx"; -->
+
+  <!-- const csvUrl_place = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_placeSample_202307131040.xlsx"; -->
+
+  <!-- const csvUrl_recog = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_recognitionSample_202307131040.xlsx"; -->
+
+  <!-- const csvUrl_resource = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_resourceSample_202307131040.xlsx"; -->
+
+  <!-- const csvUrl_work = "https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/xlsx/acde_workSample_202307131040.xlsx"; -->
+
   // Add a click event listener to the button
   document.getElementById("download-btn-event").addEventListener("click", () => {
     // Load the CSV file from the URL using an XMLHttpRequest

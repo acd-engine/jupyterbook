@@ -141,7 +141,7 @@ To obtain more detailed information about the specific attributes within each en
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+<!-- <style>
 .btn {
   background-color: #f39c52;
   border: none;
@@ -151,14 +151,14 @@ To obtain more detailed information about the specific attributes within each en
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-</style>
+</style> -->
 
 
 </head>
 <body>
 
 <div style="text-align: center;">
-	<button id="download-btn" class="btn"><i class="fa fa-download"></i> Download <br>ACDEA data dictionary</button>
+	<button id="download-btn" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>ACDEA data dictionary</button>
 </div>
 
 </body>

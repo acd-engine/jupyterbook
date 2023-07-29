@@ -4,347 +4,718 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The DAAO 500</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>DAAO 500</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-      
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-R8Q003ZY5N');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Analysis_DAAO500';</script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Natural language processing with DAAO" href="Analysis_DAAOVenues.html" />
-    <link rel="prev" title="Beyond the Big Top: Exploring career trajectories at Circus Oz" href="Analysis_CircusOz.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-R8Q003ZY5N');
-                </script>
-
+    <link rel="next" title="DAQA - Preliminary analysis" href="Analysis_DAQA_Part1.html" />
+    <link rel="prev" title="Career trajectories at Circus Oz" href="Analysis_CircusOz.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="_static/ACDElogo.png" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="about.html">
-   About
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Data infrastructure and integration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_Architecture.html">
-   Australian Cultural Data Engine Architecture
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_Overview.html">
-     Overview of the Australian Cultural Data Engine Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_Construction.html">
-     Construction Workflow
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_DataReport.html">
-     Data Report
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">
-     Special Considerations for Data Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_DataSources.html">
-   Data Sources
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_AusStage.html">
-     The Australian Live Performance Database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_CircusOz.html">
-     The Circus Oz Living Archive collection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_DAAO.html">
-     Design &amp; Art Australia Online
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_DAQA.html">
-     Digital Archive of Queensland Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_SummerHayes.html">
-     Summerhayes Family Collection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Download.html">
-   Integrated Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_FutureWorks.html">
-   Future Works
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Miscellaneous.html">
-   More Interesting Works and Cultural Data Sources
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Data analysis
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_ArchibaldPrize.html">
-   Quantifying success: A journey into the Archibald Prize
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_CircusOz.html">
-   Beyond the Big Top: Exploring career trajectories at Circus Oz
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   The DAAO 500
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAAOVenues.html">
-   Natural language processing with DAAO
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAQA_Part1.html">
-   DAQA: Preliminary analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAQA_Part2.html">
-   DAQA: Extended analysis
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+  <div id="navbar-start">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
+    
+  
 
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+
+<a class="navbar-brand logo" href="about.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/ACDElogo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/ACDElogo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Analysis_DAAO500.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
 
-            <!-- Source interaction buttons -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Architecture.html">
+                        Australian Cultural Data Engine Architecture
+                      </a>
+                    </li>
+                
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2FAnalysis_DAAO500.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_DataSources.html">
+                        Data Sources
+                      </a>
+                    </li>
+                
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Download.html">
+                        Integrated Data
+                      </a>
+                    </li>
+                
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_FutureWorks.html">
+                        Future Works
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Miscellaneous.html">
+                        More Interesting Works and Cultural Data Sources
+                      </a>
+                    </li>
+                
 
-            <!-- Launch buttons -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/acd-engine/jupyterbook/master?urlpath=tree/docs/Analysis_DAAO500.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_CircusOz.html">
+                        Career trajectories at Circus Oz
+                      </a>
+                    </li>
+                
 
-        </div>
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        DAAO 500
+                      </a>
+                    </li>
+                
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part1.html">
+                        DAQA - Preliminary analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part2.html">
+                        DAQA - Extended analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ExternalDatasets.html">
+                        Exploring intersections of external data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ArchibaldPrize.html">
+                        Exploring success quantitatively using Archibald Prize data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO_InternationalPresence.html">
+                        International presence of indigenous artists
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAOVenues.html">
+                        Natural language processing with DAAO
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_TLC_Workshop.html">
+                        Tracing the evolution of Melbourne’s music scene
+                      </a>
+                    </li>
+                
+                </div>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Architecture.html">
+                        Australian Cultural Data Engine Architecture
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_DataSources.html">
+                        Data Sources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Download.html">
+                        Integrated Data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_FutureWorks.html">
+                        Future Works
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Miscellaneous.html">
+                        More Interesting Works and Cultural Data Sources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_CircusOz.html">
+                        Career trajectories at Circus Oz
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        DAAO 500
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part1.html">
+                        DAQA - Preliminary analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part2.html">
+                        DAQA - Extended analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ExternalDatasets.html">
+                        Exploring intersections of external data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ArchibaldPrize.html">
+                        Exploring success quantitatively using Archibald Prize data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO_InternationalPresence.html">
+                        International presence of indigenous artists
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAOVenues.html">
+                        Natural language processing with DAAO
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_TLC_Workshop.html">
+                        Tracing the evolution of Melbourne’s music scene
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="about.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/ACDElogo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/ACDElogo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="about.html">
+                    About
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data infrastructure and integration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Integration_Introduction.html">Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Integration_Architecture.html">Australian Cultural Data Engine Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_Overview.html">Overview of the Australian Cultural Data Engine Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_Construction.html">Construction Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_DataReport.html">Data Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">Special Considerations for Data Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Integration_DataSources.html">Data Sources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_AusStage.html">The Australian Live Performance Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_CircusOz.html">The Circus Oz Living Archive collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_DAAO.html">Design &amp; Art Australia Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_DAQA.html">Digital Archive of Queensland Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_SummerHayes.html">Summerhayes Family Collection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_Download.html">Integrated Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_FutureWorks.html">Future Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_Miscellaneous.html">More Interesting Works and Cultural Data Sources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Analysis_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_CircusOz.html">Career trajectories at Circus Oz</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DAAO 500</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAQA_Part1.html">DAQA - Preliminary analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAQA_Part2.html">DAQA - Extended analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_ExternalDatasets.html">Exploring intersections of external data</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Analysis_ArchibaldPrize.html">Exploring success quantitatively using Archibald Prize data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAO_InternationalPresence.html">International presence of indigenous artists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAOVenues.html">Natural language processing with DAAO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_TLC_Workshop.html">Tracing the evolution of Melbourne’s music scene</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/acd-engine/jupyterbook" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2FAnalysis_DAAO500.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="_sources/Analysis_DAAO500.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DAAO 500</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-packages-and-pre-process-data">
@@ -486,165 +857,11 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The DAAO 500</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-packages-and-pre-process-data">
-   Import packages and pre-process data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gender-distribution">
-   Gender distribution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#age-distribution">
-   Age distribution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#lifespan-distribution">
-   Lifespan distribution
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#birthplace">
-   Birthplace
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#roles-most-frequently-occurring">
-   Roles, most frequently occurring
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#number-of-roles">
-   Number of roles
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#association-rule-mining-roles">
-   Association rule mining, Roles
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exhibitions-artist-analysis">
-   Exhibitions, Artist Analysis
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exhibition-partipication-over-time-males-and-females">
-   Exhibition partipication over time, Males and Females
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#frequency-of-daao-records-with-exhibition-data">
-   Frequency of DAAO records with exhibition data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drilldown-into-roles">
-   Drilldown into roles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#painter">
-     1. Painter
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cartoonist-illustrator">
-     2. Cartoonist / Illustrator
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#printmaker">
-     3. Printmaker
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sculptor">
-     4. Sculptor
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#draughtsman">
-     5. Draughtsman
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#photographer">
-     6. Photographer
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#mixed-media-artist">
-     7. Mixed Media Artist
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#installation-artist">
-     8. Installation Artist
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ceramist">
-     9. Ceramist
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#textile-artist-fashion-designer">
-     10. Textile Artist / Fashion Designer
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#other-roles-not-in-top-10">
-   Other roles not in top 10
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ausstage-roles">
-   AusStage Roles
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#actor-to-director">
-     Actor to Director
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exhibitions-spatial-analysis">
-   Exhibitions, Spatial Analysis
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
-                
-  <div class="section" id="the-daao-500">
-<h1>The DAAO 500<a class="headerlink" href="#the-daao-500" title="Permalink to this headline">¶</a></h1>
+            <article class="bd-article" role="main">
+              
+  <section id="daao-500">
+<h1>DAAO 500<a class="headerlink" href="#daao-500" title="Permalink to this headline">#</a></h1>
 <style>
   a {
     color: #1ea5a6 !important;
@@ -661,10 +878,15 @@
 <p>The analytical work presented on this page served as the initial exploratory data analysis for a <a class="reference external" href="https://pursuit.unimelb.edu.au/articles/gendered-labour-in-the-australian-arts">Pursuit piece</a> published in March 2023.</p>
 <br>
 <a class="bg-primary reference internal image-reference" href="_images/PursuitArticle.png"><img alt="PursuitArticle" class="bg-primary" src="_images/PursuitArticle.png" style="width: 850px;" /></a>
-<div class="section" id="import-packages-and-pre-process-data">
-<h2>Import packages and pre-process data<a class="headerlink" href="#import-packages-and-pre-process-data" title="Permalink to this headline">¶</a></h2>
+<section id="import-packages-and-pre-process-data">
+<h2>Import packages and pre-process data<a class="headerlink" href="#import-packages-and-pre-process-data" title="Permalink to this headline">#</a></h2>
 <p>We have provided the code used to generate the DAAO 500 data, but for the sake of brevity we will not run the pre-processing code here. Instead, we will import pre-processed data from the <a class="reference external" href="https://github.com/acd-engine/jupyterbook/tree/main/data/analysis">data/analysis folder</a> located in Github.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for data mgmt</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -696,12 +918,19 @@
     <span class="n">rawdata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">rawdata</span><span class="p">))</span>
 
+<span class="k">def</span> <span class="nf">fetch_date_suffix</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/analysis/date_suffix&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">rawdata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="n">rawdata</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+
 <span class="k">def</span> <span class="nf">check_if_csv_exists_in_folder</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">),</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">acdedata</span><span class="o">=</span><span class="s1">&#39;organization&#39;</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_202307131040.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">fetch_date_suffix</span><span class="p">()</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
 
     <span class="c1"># first check if the data exists in current directory</span>
     <span class="n">data_from_path</span> <span class="o">=</span> <span class="n">check_if_csv_exists_in_folder</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -743,12 +972,18 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-</div>
-<div class="section" id="gender-distribution">
-<h2>Gender distribution<a class="headerlink" href="#gender-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="gender-distribution">
+<h2>Gender distribution<a class="headerlink" href="#gender-distribution" title="Permalink to this headline">#</a></h2>
 <p>We use a donut chart to explore how gender has been recorded; 55.8% of the data has been recorded as <code class="docutils literal notranslate"><span class="pre">Male</span></code> and 44.2% as <code class="docutils literal notranslate"><span class="pre">Female</span></code>.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Gender Proportion</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
@@ -779,16 +1014,22 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_4_0.png" src="_images/Analysis_DAAO500_4_0.png" />
+<img alt="_images/cba5713b1d4ee45926aa21c23ca70662dcffeed71d7bc1dc18643801c853537a.png" src="_images/cba5713b1d4ee45926aa21c23ca70662dcffeed71d7bc1dc18643801c853537a.png" />
 </div>
 </div>
-</div>
-<div class="section" id="age-distribution">
-<h2>Age distribution<a class="headerlink" href="#age-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="age-distribution">
+<h2>Age distribution<a class="headerlink" href="#age-distribution" title="Permalink to this headline">#</a></h2>
 <p>Next we review the current age of people in the DAAO data. As shown in the histogram below, most of the data consists of artists born between 1945 to 1960. The youngest artists in the data are just over 30.</p>
 <p>We also compare age of <code class="docutils literal notranslate"><span class="pre">Male</span></code> and <code class="docutils literal notranslate"><span class="pre">Female</span></code> records in the following layered histogram.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -796,26 +1037,38 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_6_0.png" src="_images/Analysis_DAAO500_6_0.png" />
+<img alt="_images/ef117f36e0e80782680cab5c6b4339e741a49b3265fff3fb06e34d46c451165b.png" src="_images/ef117f36e0e80782680cab5c6b4339e741a49b3265fff3fb06e34d46c451165b.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_3.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_7_0.png" src="_images/Analysis_DAAO500_7_0.png" />
+<img alt="_images/5e623abe064e8e0287cf29140193fe5215a9ed440eb505fb136b201eb5e88120.png" src="_images/5e623abe064e8e0287cf29140193fe5215a9ed440eb505fb136b201eb5e88120.png" />
 </div>
 </div>
-</div>
-<div class="section" id="lifespan-distribution">
-<h2>Lifespan distribution<a class="headerlink" href="#lifespan-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="lifespan-distribution">
+<h2>Lifespan distribution<a class="headerlink" href="#lifespan-distribution" title="Permalink to this headline">#</a></h2>
 <p>As we have birth and death records for a subset of the data, we can assess the average lifespan according to DAAO records. On average, artists live to approx. 80 years old. However there are some cases where we have artists not surpassing the age of 40.</p>
 <p>We also compare lifespan of <code class="docutils literal notranslate"><span class="pre">Male</span></code> and <code class="docutils literal notranslate"><span class="pre">Female</span></code> records in the following layered histogram. As expected, female artists live longer than male artists.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_copy</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -868,11 +1121,17 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_9_0.png" src="_images/Analysis_DAAO500_9_0.png" />
+<img alt="_images/1711bb95a9245777738ee2420c9fe35b72688659bb75c45b3fbb88b59438002b.png" src="_images/1711bb95a9245777738ee2420c9fe35b72688659bb75c45b3fbb88b59438002b.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set figure size</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -906,28 +1165,35 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_10_0.png" src="_images/Analysis_DAAO500_10_0.png" />
+<img alt="_images/7ad08b84d26de56860e4ee7c665adfa5109091ad21ef6bdc001a46b0b078d619.png" src="_images/7ad08b84d26de56860e4ee7c665adfa5109091ad21ef6bdc001a46b0b078d619.png" />
 </div>
 </div>
-</div>
-<div class="section" id="birthplace">
-<h2>Birthplace<a class="headerlink" href="#birthplace" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="birthplace">
+<h2>Birthplace<a class="headerlink" href="#birthplace" title="Permalink to this headline">#</a></h2>
 <p>Below we highlight the top 10 values for birthplace for DAAO records. A majority of birthplace data is missing, and other values require more cleansing.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_6.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_12_0.png" src="_images/Analysis_DAAO500_12_0.png" />
+<img alt="_images/e2ce3ace5ae15ad8b62d5eea983fec8773747d163db35c624c03e7e04ce3f719.png" src="_images/e2ce3ace5ae15ad8b62d5eea983fec8773747d163db35c624c03e7e04ce3f719.png" />
 </div>
 </div>
-</div>
-<div class="section" id="roles-most-frequently-occurring">
-<h2>Roles, most frequently occurring<a class="headerlink" href="#roles-most-frequently-occurring" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="roles-most-frequently-occurring">
+<h2>Roles, most frequently occurring<a class="headerlink" href="#roles-most-frequently-occurring" title="Permalink to this headline">#</a></h2>
 <p>Next, we take a deep dive into the recorded roles across the DAAO data. A person can have many roles, and this is usually the case in the DAAO artist records.</p>
 <p>We first review the distribution across role types by treating each role for a given person as one record. <code class="docutils literal notranslate"><span class="pre">Painter</span></code> has the most records making up 35% of the data. This is followed by <code class="docutils literal notranslate"><span class="pre">Cartoonist/Illustrator</span></code> and <code class="docutils literal notranslate"><span class="pre">Printmaker</span></code>.</p>
 <p>We begin to see some interesting differences in frequency when we segregate the data by <code class="docutils literal notranslate"><span class="pre">Male</span></code> and <code class="docutils literal notranslate"><span class="pre">Female</span></code> records.</p>
@@ -937,30 +1203,42 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">Textile</span> <span class="pre">Artist/Fashion</span> <span class="pre">Designer</span></code> appears to be mostly <code class="docutils literal notranslate"><span class="pre">Female</span></code> records.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_7.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_14_0.png" src="_images/Analysis_DAAO500_14_0.png" />
+<img alt="_images/4ee6c2ed94d169f610e28cab5a288a6e3cc7d69696bf6b2bda4096e2f575e925.png" src="_images/4ee6c2ed94d169f610e28cab5a288a6e3cc7d69696bf6b2bda4096e2f575e925.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_8.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_15_0.png" src="_images/Analysis_DAAO500_15_0.png" />
+<img alt="_images/70541ea3f40e05619b3da8c1a013d1ef38e6030e4a9e22df92cd1a2560fd7089.png" src="_images/70541ea3f40e05619b3da8c1a013d1ef38e6030e4a9e22df92cd1a2560fd7089.png" />
 </div>
 </div>
-</div>
-<div class="section" id="number-of-roles">
-<h2>Number of roles<a class="headerlink" href="#number-of-roles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="number-of-roles">
+<h2>Number of roles<a class="headerlink" href="#number-of-roles" title="Permalink to this headline">#</a></h2>
 <p>We explore whether on average certain roles occur standalone or as an addition to other roles. The visualisaiton below highlights the median number of roles given a role type. We list our main findings.</p>
 <ul class="simple">
 <li><p>On average, <code class="docutils literal notranslate"><span class="pre">Furtiture</span> <span class="pre">Designers/Cabinetmakers</span></code> tend to not have any additional roles.</p></li>
@@ -975,30 +1253,42 @@
 <li><p>On average, male <code class="docutils literal notranslate"><span class="pre">Mixed</span> <span class="pre">Media</span> <span class="pre">Artists</span></code> hold 1 less role than female <code class="docutils literal notranslate"><span class="pre">Mixed</span> <span class="pre">Media</span> <span class="pre">Artists</span></code>.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_AvgNoRoles.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_17_0.png" src="_images/Analysis_DAAO500_17_0.png" />
+<img alt="_images/7baf023dece6a97938639eedc07d34fcbbca702fcfcaf13e6c758c8c01dc7a8b.png" src="_images/7baf023dece6a97938639eedc07d34fcbbca702fcfcaf13e6c758c8c01dc7a8b.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_RoleDifferences_Gender.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_18_0.png" src="_images/Analysis_DAAO500_18_0.png" />
+<img alt="_images/5090c1d1828b72c6ebfbab8991fb3003dcf567fef3bb89d7706b3e071b9ccf68.png" src="_images/5090c1d1828b72c6ebfbab8991fb3003dcf567fef3bb89d7706b3e071b9ccf68.png" />
 </div>
 </div>
-</div>
-<div class="section" id="association-rule-mining-roles">
-<h2>Association rule mining, Roles<a class="headerlink" href="#association-rule-mining-roles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="association-rule-mining-roles">
+<h2>Association rule mining, Roles<a class="headerlink" href="#association-rule-mining-roles" title="Permalink to this headline">#</a></h2>
 <p>Now we assess the occurrences of multiple roles happening together. We adopt association rule mining as it can help us answer questions such as what’s the likelihood of a <code class="docutils literal notranslate"><span class="pre">Painter</span></code> also being a <code class="docutils literal notranslate"><span class="pre">Printmaker</span></code>.</p>
 <p>We generate association rules for <code class="docutils literal notranslate"><span class="pre">Male</span></code> data and <code class="docutils literal notranslate"><span class="pre">Female</span></code> data, and compare the confidence of the rules to highlight any significant differences. Below are rules with a difference larger than 10%.</p>
 <ul class="simple">
@@ -1021,49 +1311,72 @@
 </ul>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_RoleAssociations_Males.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_21_0.png" src="_images/Analysis_DAAO500_21_0.png" />
+<img alt="_images/0384d0c747c801f1a2adfef38747a3972e623c8fb421c62cc8f65f839ef30bf7.png" src="_images/0384d0c747c801f1a2adfef38747a3972e623c8fb421c62cc8f65f839ef30bf7.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_RoleAssociations_Females.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_22_0.png" src="_images/Analysis_DAAO500_22_0.png" />
+<img alt="_images/2dd43066231d69342fdc18804833f3300d32177f46712dc7a2d5dccd21202844.png" src="_images/2dd43066231d69342fdc18804833f3300d32177f46712dc7a2d5dccd21202844.png" />
 </div>
 </div>
-</div>
-<div class="section" id="exhibitions-artist-analysis">
-<h2>Exhibitions, Artist Analysis<a class="headerlink" href="#exhibitions-artist-analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exhibitions-artist-analysis">
+<h2>Exhibitions, Artist Analysis<a class="headerlink" href="#exhibitions-artist-analysis" title="Permalink to this headline">#</a></h2>
 <p>As we have event records for a subset of the DAAO artists/designers, we inspect the people with the most participation records, specifically for exhibitions. Below we highlight the top 10 artists. Gwyn Hanssen Pigott leads having been involved in 241 exhibitions, she is followed by Mike Parr and Patricia Joy Roggenkamp.</p>
 <p>Orange bars signify that the artist has won either an Archibald, Wynne or Sulman prize.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the following visualisations were produced in R</span>
 <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;images/images_analysis/DAAO500_Rplot_TopArtists_highlighted.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_24_0.png" src="_images/Analysis_DAAO500_24_0.png" />
+<img alt="_images/40d958c04bba1d6f9f6f77957fea66630cc4a192b098776e0ceda55845cb0b4b.png" src="_images/40d958c04bba1d6f9f6f77957fea66630cc4a192b098776e0ceda55845cb0b4b.png" />
 </div>
 </div>
-</div>
-<div class="section" id="exhibition-partipication-over-time-males-and-females">
-<h2>Exhibition partipication over time, Males and Females<a class="headerlink" href="#exhibition-partipication-over-time-males-and-females" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exhibition-partipication-over-time-males-and-females">
+<h2>Exhibition partipication over time, Males and Females<a class="headerlink" href="#exhibition-partipication-over-time-males-and-females" title="Permalink to this headline">#</a></h2>
 <p>The two visualisations below show exhibition participation rates for <code class="docutils literal notranslate"><span class="pre">Males</span></code> and <code class="docutils literal notranslate"><span class="pre">Females</span></code> over time (aggregated into decades). The former compares <code class="docutils literal notranslate"><span class="pre">Males</span></code> and <code class="docutils literal notranslate"><span class="pre">Females</span></code> by frequency and the latter compares by proportion. It is evident that <code class="docutils literal notranslate"><span class="pre">Males</span></code> tend to participate in more exhibitions than <code class="docutils literal notranslate"><span class="pre">Females</span></code>, however the proportional gap has decreased in recent decades.</p>
 <p><em>It should be noted that an older version of the first visualisation was used in the aforementioned <a class="reference external" href="https://pursuit.unimelb.edu.au/articles/gendered-labour-in-the-australian-arts">Pursuit article</a>. The below visualisation is an updated version using data from a recent extraction.</em></p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exhibition_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
@@ -1100,8 +1413,14 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exhibition_data</span><span class="p">[</span><span class="s1">&#39;date_range.date_start.year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exhibition_data</span><span class="p">[</span><span class="s1">&#39;date_range.date_start.year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 <span class="n">exhibition_data</span><span class="p">[</span><span class="s1">&#39;start_year_decade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> 
@@ -1167,16 +1486,22 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_27_0.png" src="_images/Analysis_DAAO500_27_0.png" />
-<img alt="_images/Analysis_DAAO500_27_1.png" src="_images/Analysis_DAAO500_27_1.png" />
+<img alt="_images/13072cff3f4e1f094832bb5b64ef5c52a5405236cbeaa679d9923d3babceb2bd.png" src="_images/13072cff3f4e1f094832bb5b64ef5c52a5405236cbeaa679d9923d3babceb2bd.png" />
+<img alt="_images/a31e3b3d1d3c3d7c6204829c5e274cad2f92ffac52d7bcc31658f089db121b22.png" src="_images/a31e3b3d1d3c3d7c6204829c5e274cad2f92ffac52d7bcc31658f089db121b22.png" />
 </div>
 </div>
-</div>
-<div class="section" id="frequency-of-daao-records-with-exhibition-data">
-<h2>Frequency of DAAO records with exhibition data<a class="headerlink" href="#frequency-of-daao-records-with-exhibition-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="frequency-of-daao-records-with-exhibition-data">
+<h2>Frequency of DAAO records with exhibition data<a class="headerlink" href="#frequency-of-daao-records-with-exhibition-data" title="Permalink to this headline">#</a></h2>
 <p>We review the most frequent roles attached to exhibition participants. Note that these only consider people with exhibition records that consist of a date.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create dummy variables for roles</span>
 <span class="n">roles_dummy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">exhibition_data</span><span class="p">[</span><span class="s1">&#39;roles_expanded&#39;</span><span class="p">]</span>\
@@ -1191,6 +1516,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -1330,6 +1656,11 @@
 </div></div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Painter&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">byrole</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;roles_expanded&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">role</span><span class="p">)]</span>
@@ -1395,247 +1726,337 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-</div>
-<div class="section" id="drilldown-into-roles">
-<h2>Drilldown into roles<a class="headerlink" href="#drilldown-into-roles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="drilldown-into-roles">
+<h2>Drilldown into roles<a class="headerlink" href="#drilldown-into-roles" title="Permalink to this headline">#</a></h2>
 <p>We now will consider the same visualisations as above however drill down on certain roles. This will allow us to identify any role-specific trends across gender and time. We inspect the top ten roles with the largest frequency in the DAAO data.</p>
-<div class="section" id="painter">
-<h3>1. Painter<a class="headerlink" href="#painter" title="Permalink to this headline">¶</a></h3>
+<section id="painter">
+<h3>1. Painter<a class="headerlink" href="#painter" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Male painters participate in more exhibitions than female painters.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Painter&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_34_0.png" src="_images/Analysis_DAAO500_34_0.png" />
-<img alt="_images/Analysis_DAAO500_34_1.png" src="_images/Analysis_DAAO500_34_1.png" />
+<img alt="_images/d6c0905a081282ad3ef359a26c3866df3e94ad3537b25fc24ba3d043367d5c52.png" src="_images/d6c0905a081282ad3ef359a26c3866df3e94ad3537b25fc24ba3d043367d5c52.png" />
+<img alt="_images/60da7fe1d2890970daf97c5e398e661ed33c979b91bd2b91c3e479a7cdc1dadd.png" src="_images/60da7fe1d2890970daf97c5e398e661ed33c979b91bd2b91c3e479a7cdc1dadd.png" />
 </div>
 </div>
-</div>
-<div class="section" id="cartoonist-illustrator">
-<h3>2. Cartoonist / Illustrator<a class="headerlink" href="#cartoonist-illustrator" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cartoonist-illustrator">
+<h3>2. Cartoonist / Illustrator<a class="headerlink" href="#cartoonist-illustrator" title="Permalink to this headline">#</a></h3>
 <p><em>It should be noted that this role is the second highest entry in DAAO. However there are very few exhibition records for cartoonists and illustrators.</em></p>
 <blockquote class="epigraph">
 <div><p>Male cartoonists/illustrators participate in more exhibitions than female cartoonists/illustrators. Across most decades, this is an 80-20 proportion.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Cartoonist / Illustrator&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_37_0.png" src="_images/Analysis_DAAO500_37_0.png" />
-<img alt="_images/Analysis_DAAO500_37_1.png" src="_images/Analysis_DAAO500_37_1.png" />
+<img alt="_images/f3d5599a7ad2c1b9c65337b5160ae39640e7cfcc525ff481ab7e5b3db1a3a533.png" src="_images/f3d5599a7ad2c1b9c65337b5160ae39640e7cfcc525ff481ab7e5b3db1a3a533.png" />
+<img alt="_images/0c044dcff7a9c5d59b1572fa41f0704aeba50a7f19fc324beb88dae66ee266f9.png" src="_images/0c044dcff7a9c5d59b1572fa41f0704aeba50a7f19fc324beb88dae66ee266f9.png" />
 </div>
 </div>
-</div>
-<div class="section" id="printmaker">
-<h3>3. Printmaker<a class="headerlink" href="#printmaker" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="printmaker">
+<h3>3. Printmaker<a class="headerlink" href="#printmaker" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Historically, male printmakers participate in more exhibitions than female printmakers, however the proportional gap has decreased in recent decades.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Printmaker&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_40_0.png" src="_images/Analysis_DAAO500_40_0.png" />
-<img alt="_images/Analysis_DAAO500_40_1.png" src="_images/Analysis_DAAO500_40_1.png" />
+<img alt="_images/eb3b18031f57b0cd7f38e4d6d1f701b79d6d0bb6e17fed06cbacb4a81f92b001.png" src="_images/eb3b18031f57b0cd7f38e4d6d1f701b79d6d0bb6e17fed06cbacb4a81f92b001.png" />
+<img alt="_images/ac69060f35e876db989fff99f9ad4bce701943cd52e16bc334dd85cf25a56258.png" src="_images/ac69060f35e876db989fff99f9ad4bce701943cd52e16bc334dd85cf25a56258.png" />
 </div>
 </div>
-</div>
-<div class="section" id="sculptor">
-<h3>4. Sculptor<a class="headerlink" href="#sculptor" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="sculptor">
+<h3>4. Sculptor<a class="headerlink" href="#sculptor" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Male sculptors participate in more exhibitions than female sculptors.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Sculptor&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_43_0.png" src="_images/Analysis_DAAO500_43_0.png" />
-<img alt="_images/Analysis_DAAO500_43_1.png" src="_images/Analysis_DAAO500_43_1.png" />
+<img alt="_images/99600e74bb8cd9b55f739d5293127e81d57a12cbf9b19a0523cd956e8134fd92.png" src="_images/99600e74bb8cd9b55f739d5293127e81d57a12cbf9b19a0523cd956e8134fd92.png" />
+<img alt="_images/8ca28a21886e1a958b91e4a3c16b9a1881cf483368d64a33d6dc197ff844d342.png" src="_images/8ca28a21886e1a958b91e4a3c16b9a1881cf483368d64a33d6dc197ff844d342.png" />
 </div>
 </div>
-</div>
-<div class="section" id="draughtsman">
-<h3>5. Draughtsman<a class="headerlink" href="#draughtsman" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="draughtsman">
+<h3>5. Draughtsman<a class="headerlink" href="#draughtsman" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Male draughtsman participate in more exhibitions than female draughtsman.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Draughtsman&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_46_0.png" src="_images/Analysis_DAAO500_46_0.png" />
-<img alt="_images/Analysis_DAAO500_46_1.png" src="_images/Analysis_DAAO500_46_1.png" />
+<img alt="_images/a5fcc7e2707c0d122eb2dff3ea6cdb8bf6d7dc072e8f0ed49c34d60c8be70fd8.png" src="_images/a5fcc7e2707c0d122eb2dff3ea6cdb8bf6d7dc072e8f0ed49c34d60c8be70fd8.png" />
+<img alt="_images/fc7aafdddac72643597c57b25f0a52f7f84dc17a554852ea96f828a5b0996efa.png" src="_images/fc7aafdddac72643597c57b25f0a52f7f84dc17a554852ea96f828a5b0996efa.png" />
 </div>
 </div>
-</div>
-<div class="section" id="photographer">
-<h3>6. Photographer<a class="headerlink" href="#photographer" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="photographer">
+<h3>6. Photographer<a class="headerlink" href="#photographer" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Historically, male photographers participated in more exhibitions than female photographers, however in recent decades this has shifted.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Photographer&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_49_0.png" src="_images/Analysis_DAAO500_49_0.png" />
-<img alt="_images/Analysis_DAAO500_49_1.png" src="_images/Analysis_DAAO500_49_1.png" />
+<img alt="_images/8ee1cab59187e7938c72c03e21895cbe05380879b176d9d4e54702d531b9481a.png" src="_images/8ee1cab59187e7938c72c03e21895cbe05380879b176d9d4e54702d531b9481a.png" />
+<img alt="_images/cbe8bcf61dc4bd4e00d754e04867b2b78704132fac4439aea7821ba80ec4789c.png" src="_images/cbe8bcf61dc4bd4e00d754e04867b2b78704132fac4439aea7821ba80ec4789c.png" />
 </div>
 </div>
-</div>
-<div class="section" id="mixed-media-artist">
-<h3>7. Mixed Media Artist<a class="headerlink" href="#mixed-media-artist" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="mixed-media-artist">
+<h3>7. Mixed Media Artist<a class="headerlink" href="#mixed-media-artist" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Male mixed media artists participate in more exhibitions than female mixed media artists.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Mixed Media Artist&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_52_0.png" src="_images/Analysis_DAAO500_52_0.png" />
-<img alt="_images/Analysis_DAAO500_52_1.png" src="_images/Analysis_DAAO500_52_1.png" />
+<img alt="_images/51eaf98825108cef7dae24f9e41fa49f0995012ced1593e3999b310c78dce36b.png" src="_images/51eaf98825108cef7dae24f9e41fa49f0995012ced1593e3999b310c78dce36b.png" />
+<img alt="_images/2c559af79aa185f18971eef6800670ee4978b05e4d345f6dc043a66b4a44bc4e.png" src="_images/2c559af79aa185f18971eef6800670ee4978b05e4d345f6dc043a66b4a44bc4e.png" />
 </div>
 </div>
-</div>
-<div class="section" id="installation-artist">
-<h3>8. Installation Artist<a class="headerlink" href="#installation-artist" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="installation-artist">
+<h3>8. Installation Artist<a class="headerlink" href="#installation-artist" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Male installation artists participate in more exhibitions than female installation artists, however the proportional gap has decreased in recent decades. DAAO contains no exhibition records for installation artists pre-1950s</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Installation Artist&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_55_0.png" src="_images/Analysis_DAAO500_55_0.png" />
-<img alt="_images/Analysis_DAAO500_55_1.png" src="_images/Analysis_DAAO500_55_1.png" />
+<img alt="_images/769b3055b19111bd6f23496d19659f2f31a1000eac991e11e9584145413419a3.png" src="_images/769b3055b19111bd6f23496d19659f2f31a1000eac991e11e9584145413419a3.png" />
+<img alt="_images/3591cbb400a860ec360b3bc97361cf2e7c14137d57ad9c2e3553a1774594b0ea.png" src="_images/3591cbb400a860ec360b3bc97361cf2e7c14137d57ad9c2e3553a1774594b0ea.png" />
 </div>
 </div>
-</div>
-<div class="section" id="ceramist">
-<h3>9. Ceramist<a class="headerlink" href="#ceramist" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="ceramist">
+<h3>9. Ceramist<a class="headerlink" href="#ceramist" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Female ceramists participated in more exhibitions than male ceramists. A significant peak can be seen in the 1990s.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Ceramist&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_58_0.png" src="_images/Analysis_DAAO500_58_0.png" />
-<img alt="_images/Analysis_DAAO500_58_1.png" src="_images/Analysis_DAAO500_58_1.png" />
+<img alt="_images/97ff52a799cb3985d70949d8fc928d3ae2075fcd870723db0b0f004cc3bba687.png" src="_images/97ff52a799cb3985d70949d8fc928d3ae2075fcd870723db0b0f004cc3bba687.png" />
+<img alt="_images/5d5629a2a9b34fd16a346ac535ef93387d5d8009b9470da1fd504d8a5575d738.png" src="_images/5d5629a2a9b34fd16a346ac535ef93387d5d8009b9470da1fd504d8a5575d738.png" />
 </div>
 </div>
-</div>
-<div class="section" id="textile-artist-fashion-designer">
-<h3>10. Textile Artist / Fashion Designer<a class="headerlink" href="#textile-artist-fashion-designer" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="textile-artist-fashion-designer">
+<h3>10. Textile Artist / Fashion Designer<a class="headerlink" href="#textile-artist-fashion-designer" title="Permalink to this headline">#</a></h3>
 <blockquote class="epigraph">
 <div><p>Historically, female textile artist/fashion designers participated in more exhibitions than male textile artist/fashion designers, however in recent decades the proportional gap has stabilised.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Textile Artist / Fashion Designer&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_61_0.png" src="_images/Analysis_DAAO500_61_0.png" />
-<img alt="_images/Analysis_DAAO500_61_1.png" src="_images/Analysis_DAAO500_61_1.png" />
+<img alt="_images/43daaabb0be6d1ef2ed61d824e285ddba5beec510c0c6c0492562fb371d4e71d.png" src="_images/43daaabb0be6d1ef2ed61d824e285ddba5beec510c0c6c0492562fb371d4e71d.png" />
+<img alt="_images/837811186cade0a00ca282b83531df30a137bccc82df952c654ab2816acffdfa.png" src="_images/837811186cade0a00ca282b83531df30a137bccc82df952c654ab2816acffdfa.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="other-roles-not-in-top-10">
-<h2>Other roles not in top 10<a class="headerlink" href="#other-roles-not-in-top-10" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="other-roles-not-in-top-10">
+<h2>Other roles not in top 10<a class="headerlink" href="#other-roles-not-in-top-10" title="Permalink to this headline">#</a></h2>
 <p>We noticed that the initial top 10 roles frequently occurring in the DAAO does not correspond with the top roles across exhibition participants, therefore we also inspect roles with high frequency among exhibition participants.</p>
 <blockquote class="epigraph">
 <div><p>Male performance artists participated in more exhibitions than female performance artists. Data begins post-1950s.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Performance Artist&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_64_0.png" src="_images/Analysis_DAAO500_64_0.png" />
-<img alt="_images/Analysis_DAAO500_64_1.png" src="_images/Analysis_DAAO500_64_1.png" />
+<img alt="_images/444401b0b8687d7fae570d23ce036e5d0399a408bfb4e416d8e545201c2e7cd8.png" src="_images/444401b0b8687d7fae570d23ce036e5d0399a408bfb4e416d8e545201c2e7cd8.png" />
+<img alt="_images/d0180674d1b40f8026c1951074504a8819dc56b2c5fe4cbdb8dc62622dc4a107.png" src="_images/d0180674d1b40f8026c1951074504a8819dc56b2c5fe4cbdb8dc62622dc4a107.png" />
 </div>
 </div>
 <blockquote class="epigraph">
 <div><p>Female video artists participated in more exhibitions than male video artists, however the proportional gap has decreased in recent decades. Data begins post-1960s.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Video Artist&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_66_0.png" src="_images/Analysis_DAAO500_66_0.png" />
-<img alt="_images/Analysis_DAAO500_66_1.png" src="_images/Analysis_DAAO500_66_1.png" />
+<img alt="_images/e9420918e05ec856317e5b372e4873404c9565014ff0865aea04fb4c497770f6.png" src="_images/e9420918e05ec856317e5b372e4873404c9565014ff0865aea04fb4c497770f6.png" />
+<img alt="_images/800f4a7172040e61fc77a4503b18cb0b7fea9d32692042898b20ed6506d64505.png" src="_images/800f4a7172040e61fc77a4503b18cb0b7fea9d32692042898b20ed6506d64505.png" />
 </div>
 </div>
 <blockquote class="epigraph">
 <div><p>Male screen artists participated in more exhibitions than female screen artists. Data begins post-1960s. There are very little records for female screen artists.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Screen Artist&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_68_0.png" src="_images/Analysis_DAAO500_68_0.png" />
-<img alt="_images/Analysis_DAAO500_68_1.png" src="_images/Analysis_DAAO500_68_1.png" />
+<img alt="_images/4e10c5d085b453c4588a48fdd510773c51a5a6ee7e7446ad2e77b63b5fe74520.png" src="_images/4e10c5d085b453c4588a48fdd510773c51a5a6ee7e7446ad2e77b63b5fe74520.png" />
+<img alt="_images/4b81dc6dd5010dbafbc766334606afee1f08b66e0b56e414a3b9efe22ae7d51a.png" src="_images/4b81dc6dd5010dbafbc766334606afee1f08b66e0b56e414a3b9efe22ae7d51a.png" />
 </div>
 </div>
 <blockquote class="epigraph">
 <div><p>Male digital artists/designers participated in more exhibitions than female digital artists/designers, however the proportional gap has decreased in recent decades. Data begins post-1960s.</p>
 </div></blockquote>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drilldown_by_role</span><span class="p">(</span><span class="n">role</span><span class="o">=</span><span class="s1">&#39;Digital Artist/Designer&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">exhibition_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_70_0.png" src="_images/Analysis_DAAO500_70_0.png" />
-<img alt="_images/Analysis_DAAO500_70_1.png" src="_images/Analysis_DAAO500_70_1.png" />
+<img alt="_images/e4eb043ec961ecf1f8e19390c89be57c2f3c10317c81b096fd70bbec9fcda167.png" src="_images/e4eb043ec961ecf1f8e19390c89be57c2f3c10317c81b096fd70bbec9fcda167.png" />
+<img alt="_images/6a443266bb77d7fcd92a6800e87f88991343e2f1c1846b055c3ce3344fa46b44.png" src="_images/6a443266bb77d7fcd92a6800e87f88991343e2f1c1846b055c3ce3344fa46b44.png" />
 </div>
 </div>
-</div>
-<div class="section" id="ausstage-roles">
-<h2>AusStage Roles<a class="headerlink" href="#ausstage-roles" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="ausstage-roles">
+<h2>AusStage Roles<a class="headerlink" href="#ausstage-roles" title="Permalink to this headline">#</a></h2>
 <p>We extend our analysis on roles by looking at roles within <a class="reference external" href="https://www.ausstage.edu.au/">AusStage</a> data, specifically actors and directors. Overall, the AusStage data consists of over 177k <code class="docutils literal notranslate"><span class="pre">Male</span></code> and <code class="docutils literal notranslate"><span class="pre">Female</span></code> records corresponding to approximately 106k event records.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">acde_persons</span> <span class="o">=</span> <span class="n">fetch_data</span><span class="p">(</span><span class="n">acdedata</span><span class="o">=</span><span class="s1">&#39;person&#39;</span><span class="p">)</span> <span class="c1"># 16s</span>
 <span class="n">ausstage_cond</span> <span class="o">=</span> <span class="n">acde_persons</span><span class="o">.</span><span class="n">data_source</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;AusStage&#39;</span><span class="p">)</span>
@@ -1672,14 +2093,20 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="section" id="actor-to-director">
-<h3>Actor to Director<a class="headerlink" href="#actor-to-director" title="Permalink to this headline">¶</a></h3>
+<section id="actor-to-director">
+<h3>Actor to Director<a class="headerlink" href="#actor-to-director" title="Permalink to this headline">#</a></h3>
 <p>Our main focus is to evaluate the time it takes actors to progress into directors. We hypothesise that the duration will differ for male and female trajectories. To assess this, we first look at some high-level summary statistics to further understand the data. These are listed below as question-answers, and are also visualised in a bar chart.</p>
 <p>We are particularly interested in event records of actors who have been listed as a director in a subsequent event. This way we can estimate the time (in years) it took for an actor to make their directorial debut.</p>
 <p>When we filter the AusStage data down, we found that there are 1,684 female actors who subsequently became directors and 2,945 male actors who subsequently became directors. These actor-turned-directors make up approximately 75% of all directors in the data for each respective gender.</p>
 <p><em>It should be noted that the annotated numbers in the second visualisation in the aforementioned <a class="reference external" href="https://pursuit.unimelb.edu.au/articles/gendered-labour-in-the-australian-arts">Pursuit article</a> were generated using a early version of the data. The numbers have since changed due to a recent extraction and hence why the annotated numbers in the visualisation below slightly differ.</em></p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_stats</span><span class="p">(</span><span class="n">surpassyear</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="s1">&#39;Female&#39;</span><span class="p">,</span> <span class="n">printstuff</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">addfilter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">females</span> <span class="o">=</span> <span class="n">ausstage_persons</span><span class="p">[(</span><span class="n">ausstage_persons</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">gender</span><span class="p">))]</span>    
@@ -1823,6 +2250,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>How many Females? 80155
 How many Females are listed as actors? 42450 (52.96%)
@@ -1844,7 +2272,7 @@ How many Males are listed as actors &amp; directors? 3907 (4.22%)
 Out of these 3907, how many started their careers as actors and progressed into directors? 2945 (75.38%)
 </pre></div>
 </div>
-<img alt="_images/Analysis_DAAO500_74_4.png" src="_images/Analysis_DAAO500_74_4.png" />
+<img alt="_images/ed2d7d961ca2e12aeaa42280dd2deb1f5ad56c43de15e84426bda5f5242994db.png" src="_images/ed2d7d961ca2e12aeaa42280dd2deb1f5ad56c43de15e84426bda5f5242994db.png" />
 </div>
 </div>
 <p>We visualised these actor-turned-director records over time (aggregated into 25-year bins). Each point in the graph marks the median number of years it took for an actor to make their directorial debut (orange for female averages and blue for male averages). We also annotate the male-female median difference in years for each 25-year periodm, along with a ratio of male to female actor-turned-directors as shown in brackets. The latter annotation highlights the disparity and sparsity of female records in earlier periods.</p>
@@ -1853,6 +2281,11 @@ Out of these 3907, how many started their careers as actors and progressed into 
 <li><p>The male-female median difference gradually decreases over time. In the most recent period, it takes male and female actors five and half years to progress from actor to director.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decades</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="s1">&#39;start_year_decade&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 <span class="n">decades</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
@@ -1923,41 +2356,42 @@ Out of these 3907, how many started their careers as actors and progressed into 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_76_0.png" src="_images/Analysis_DAAO500_76_0.png" />
+<img alt="_images/784b9512a9ae7f7426be49c5fe5dddb61f5860277155aaf517b3f8e77b201341.png" src="_images/784b9512a9ae7f7426be49c5fe5dddb61f5860277155aaf517b3f8e77b201341.png" />
 </div>
 </div>
 <blockquote class="epigraph">
 <div><p>Female actors have historically needed to wait longer to progress into directors. Currently, the average time for an actor to reach their directorial debut is <strong>five to six</strong> years.</p>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="exhibitions-spatial-analysis">
-<h2>Exhibitions, Spatial Analysis<a class="headerlink" href="#exhibitions-spatial-analysis" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="exhibitions-spatial-analysis">
+<h2>Exhibitions, Spatial Analysis<a class="headerlink" href="#exhibitions-spatial-analysis" title="Permalink to this headline">#</a></h2>
 <p>A majority of the DAAO exhibition data consists of geocodes allowing us to visualise the location of exhibitions on a map. We illustrate four snapshots of DAAO exhibitions over time (1930, 1960, 1990 and 2020).</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_79_0.png" src="_images/Analysis_DAAO500_79_0.png" />
+<img alt="_images/8f4ad4103c075b45c407cf032f5d243d3acc8406cf284710b9f13bd01c16eeb1.png" src="_images/8f4ad4103c075b45c407cf032f5d243d3acc8406cf284710b9f13bd01c16eeb1.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_80_0.png" src="_images/Analysis_DAAO500_80_0.png" />
+<img alt="_images/5810e2ed5c2d22ce43da472f983050105c2dce2a36d69f0a517ec3d03d016bcf.png" src="_images/5810e2ed5c2d22ce43da472f983050105c2dce2a36d69f0a517ec3d03d016bcf.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_81_0.png" src="_images/Analysis_DAAO500_81_0.png" />
+<img alt="_images/4954942c8776e52713297db6e5845e0575f127048eaa07ef666851324d2a8e3a.png" src="_images/4954942c8776e52713297db6e5845e0575f127048eaa07ef666851324d2a8e3a.png" />
 </div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAAO500_82_0.png" src="_images/Analysis_DAAO500_82_0.png" />
+<img alt="_images/d29f7ddc4ec1873050f45a29b570ff71e71843039ec42c36774189b78c5427f9.png" src="_images/d29f7ddc4ec1873050f45a29b570ff71e71843039ec42c36774189b78c5427f9.png" />
 </div>
 </div>
 <p>We have also developed a live application which can be used to dynamically compare DAAO events with other cultural datasets with an <a class="reference external" href="https://jmunoz.shinyapps.io/ACDE_Map/">interactive map</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1971,7 +2405,7 @@ Out of these 3907, how many started their careers as actors and progressed into 
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1979,43 +2413,228 @@ Out of these 3907, how many started their careers as actors and progressed into 
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
+            </article>
             
+
+            
+            
+            <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Analysis_CircusOz.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Beyond the Big Top: Exploring career trajectories at Circus Oz</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Analysis_DAAOVenues.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Natural language processing with DAAO</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Australian Cultural Data Engine<br/>
-    
-  </p>
-</footer>
-</main>
-
-
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="Analysis_CircusOz.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Career trajectories at Circus Oz</p>
       </div>
-    </div>
+  </a>
+  <a class='right-next' id="next-link" href="Analysis_DAQA_Part1.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">DAQA - Preliminary analysis</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-packages-and-pre-process-data">
+   Import packages and pre-process data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gender-distribution">
+   Gender distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#age-distribution">
+   Age distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lifespan-distribution">
+   Lifespan distribution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#birthplace">
+   Birthplace
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roles-most-frequently-occurring">
+   Roles, most frequently occurring
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#number-of-roles">
+   Number of roles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#association-rule-mining-roles">
+   Association rule mining, Roles
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exhibitions-artist-analysis">
+   Exhibitions, Artist Analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exhibition-partipication-over-time-males-and-females">
+   Exhibition partipication over time, Males and Females
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#frequency-of-daao-records-with-exhibition-data">
+   Frequency of DAAO records with exhibition data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#drilldown-into-roles">
+   Drilldown into roles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#painter">
+     1. Painter
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cartoonist-illustrator">
+     2. Cartoonist / Illustrator
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#printmaker">
+     3. Printmaker
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sculptor">
+     4. Sculptor
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#draughtsman">
+     5. Draughtsman
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#photographer">
+     6. Photographer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixed-media-artist">
+     7. Mixed Media Artist
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#installation-artist">
+     8. Installation Artist
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ceramist">
+     9. Ceramist
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#textile-artist-fashion-designer">
+     10. Textile Artist / Fashion Designer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#other-roles-not-in-top-10">
+   Other roles not in top 10
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ausstage-roles">
+   AusStage Roles
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#actor-to-director">
+     Actor to Director
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exhibitions-spatial-analysis">
+   Exhibitions, Spatial Analysis
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Australian Cultural Data Engine
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>

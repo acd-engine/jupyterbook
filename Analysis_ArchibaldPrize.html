@@ -4,347 +4,718 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quantifying success: A journey into the Archibald Prize</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>Exploring success quantitatively using Archibald Prize data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-      
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-R8Q003ZY5N');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Analysis_ArchibaldPrize';</script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Beyond the Big Top: Exploring career trajectories at Circus Oz" href="Analysis_CircusOz.html" />
-    <link rel="prev" title="Introduction" href="Analysis_Introduction.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-R8Q003ZY5N');
-                </script>
-
+    <link rel="next" title="International presence of indigenous artists" href="Analysis_DAAO_InternationalPresence.html" />
+    <link rel="prev" title="Exploring intersections of external data" href="Analysis_ExternalDatasets.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="_static/ACDElogo.png" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="about.html">
-   About
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Data infrastructure and integration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_Architecture.html">
-   Australian Cultural Data Engine Architecture
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_Overview.html">
-     Overview of the Australian Cultural Data Engine Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_Construction.html">
-     Construction Workflow
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_DataReport.html">
-     Data Report
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">
-     Special Considerations for Data Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_DataSources.html">
-   Data Sources
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_AusStage.html">
-     The Australian Live Performance Database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_CircusOz.html">
-     The Circus Oz Living Archive collection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_DAAO.html">
-     Design &amp; Art Australia Online
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_DAQA.html">
-     Digital Archive of Queensland Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_SummerHayes.html">
-     Summerhayes Family Collection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Download.html">
-   Integrated Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_FutureWorks.html">
-   Future Works
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Miscellaneous.html">
-   More Interesting Works and Cultural Data Sources
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Data analysis
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Quantifying success: A journey into the Archibald Prize
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_CircusOz.html">
-   Beyond the Big Top: Exploring career trajectories at Circus Oz
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAAO500.html">
-   The DAAO 500
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAAOVenues.html">
-   Natural language processing with DAAO
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAQA_Part1.html">
-   DAQA: Preliminary analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAQA_Part2.html">
-   DAQA: Extended analysis
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+  <div id="navbar-start">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
+    
+  
 
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+
+<a class="navbar-brand logo" href="about.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/ACDElogo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/ACDElogo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Analysis_ArchibaldPrize.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
 
-            <!-- Source interaction buttons -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Architecture.html">
+                        Australian Cultural Data Engine Architecture
+                      </a>
+                    </li>
+                
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2FAnalysis_ArchibaldPrize.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_DataSources.html">
+                        Data Sources
+                      </a>
+                    </li>
+                
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Download.html">
+                        Integrated Data
+                      </a>
+                    </li>
+                
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_FutureWorks.html">
+                        Future Works
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Miscellaneous.html">
+                        More Interesting Works and Cultural Data Sources
+                      </a>
+                    </li>
+                
 
-            <!-- Launch buttons -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/acd-engine/jupyterbook/master?urlpath=tree/docs/Analysis_ArchibaldPrize.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_CircusOz.html">
+                        Career trajectories at Circus Oz
+                      </a>
+                    </li>
+                
 
-        </div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO500.html">
+                        DAAO 500
+                      </a>
+                    </li>
+                
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part1.html">
+                        DAQA - Preliminary analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part2.html">
+                        DAQA - Extended analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ExternalDatasets.html">
+                        Exploring intersections of external data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Exploring success quantitatively using Archibald Prize data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO_InternationalPresence.html">
+                        International presence of indigenous artists
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAOVenues.html">
+                        Natural language processing with DAAO
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_TLC_Workshop.html">
+                        Tracing the evolution of Melbourne’s music scene
+                      </a>
+                    </li>
+                
+                </div>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Architecture.html">
+                        Australian Cultural Data Engine Architecture
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_DataSources.html">
+                        Data Sources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Download.html">
+                        Integrated Data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_FutureWorks.html">
+                        Future Works
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Miscellaneous.html">
+                        More Interesting Works and Cultural Data Sources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_CircusOz.html">
+                        Career trajectories at Circus Oz
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO500.html">
+                        DAAO 500
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part1.html">
+                        DAQA - Preliminary analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part2.html">
+                        DAQA - Extended analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ExternalDatasets.html">
+                        Exploring intersections of external data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Exploring success quantitatively using Archibald Prize data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO_InternationalPresence.html">
+                        International presence of indigenous artists
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAOVenues.html">
+                        Natural language processing with DAAO
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_TLC_Workshop.html">
+                        Tracing the evolution of Melbourne’s music scene
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="about.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/ACDElogo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/ACDElogo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="about.html">
+                    About
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data infrastructure and integration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Integration_Introduction.html">Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Integration_Architecture.html">Australian Cultural Data Engine Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_Overview.html">Overview of the Australian Cultural Data Engine Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_Construction.html">Construction Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_DataReport.html">Data Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">Special Considerations for Data Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Integration_DataSources.html">Data Sources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_AusStage.html">The Australian Live Performance Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_CircusOz.html">The Circus Oz Living Archive collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_DAAO.html">Design &amp; Art Australia Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_DAQA.html">Digital Archive of Queensland Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_SummerHayes.html">Summerhayes Family Collection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_Download.html">Integrated Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_FutureWorks.html">Future Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_Miscellaneous.html">More Interesting Works and Cultural Data Sources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Analysis_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_CircusOz.html">Career trajectories at Circus Oz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAO500.html">DAAO 500</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAQA_Part1.html">DAQA - Preliminary analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAQA_Part2.html">DAQA - Extended analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_ExternalDatasets.html">Exploring intersections of external data</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring success quantitatively using Archibald Prize data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAO_InternationalPresence.html">International presence of indigenous artists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAOVenues.html">Natural language processing with DAAO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_TLC_Workshop.html">Tracing the evolution of Melbourne’s music scene</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/acd-engine/jupyterbook" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2FAnalysis_ArchibaldPrize.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="_sources/Analysis_ArchibaldPrize.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring success quantitatively using Archibald Prize data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#import-packages-and-pre-process-data">
@@ -478,157 +849,11 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Quantifying success: A journey into the Archibald Prize</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#import-packages-and-pre-process-data">
-   Import packages and pre-process data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#gender-distribution">
-   Gender distribution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#male-and-female-distribution-for-archibald-winners">
-     Male and female distribution for Archibald winners
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#male-and-female-distribution-of-sitters-for-winning-archibald-portraits">
-     Male and female distribution of sitters for winning Archibald portraits
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#do-males-paint-males">
-     Do males paint males?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#male-and-female-distribution-over-time">
-     Male and female distribution over time
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#winning-age-for-archibald-winners">
-     Winning age for Archibald winners
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#winning-age-by-year">
-     Winning age by year
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#winning-age-for-archibald-winners-cont">
-     Winning age for Archibald winners (cont.)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#winning-age-for-archibald-winners-by-vicennium">
-     Winning age for Archibald winners by vicennium
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#colour-and-brightness">
-   Colour and Brightness
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colour-averaging">
-     Colour averaging
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colour-over-time">
-     Colour over time
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#colour-averaging-and-categorisation">
-     Colour averaging and categorisation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#brightness-over-time">
-     Brightness over time
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#participation">
-   Participation
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#participation-over-time">
-     Participation over time
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prize-money">
-     Prize Money
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prize-money-before-sponsors">
-     Prize money before sponsors
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#prize-money-with-sponsors-post-1980">
-     Prize money with sponsors (post-1980)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#participant-characteristics">
-     Participant characteristics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#archibald-prize-participation-trajectory">
-     Archibald Prize participation trajectory
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#who-is-in-the-portrait">
-   Who is in the portrait?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#online-presence-of-recent-winners">
-   Online presence of recent winners
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
-                
-  <div class="section" id="quantifying-success-a-journey-into-the-archibald-prize">
-<h1>Quantifying success: A journey into the Archibald Prize<a class="headerlink" href="#quantifying-success-a-journey-into-the-archibald-prize" title="Permalink to this headline">¶</a></h1>
+            <article class="bd-article" role="main">
+              
+  <section id="exploring-success-quantitatively-using-archibald-prize-data">
+<h1>Exploring success quantitatively using Archibald Prize data<a class="headerlink" href="#exploring-success-quantitatively-using-archibald-prize-data" title="Permalink to this headline">#</a></h1>
 <style>
   a {
     color: #1ea5a6 !important;
@@ -645,10 +870,15 @@
 <p>The analytical work presented on this page served as the initial exploratory data analysis for a <a class="reference external" href="https://www.theguardian.com/artanddesign/2023/may/05/how-to-win-the-archibald-prize-what-100-years-of-data-tells-us">Guardian article</a> published in May 2023.</p>
 <br>
 <a class="bg-primary reference internal image-reference" href="_images/GuardianArticle.png"><img alt="GuardianArticle" class="bg-primary" src="_images/GuardianArticle.png" style="width: 600px;" /></a>
-<div class="section" id="import-packages-and-pre-process-data">
-<h2>Import packages and pre-process data<a class="headerlink" href="#import-packages-and-pre-process-data" title="Permalink to this headline">¶</a></h2>
+<section id="import-packages-and-pre-process-data">
+<h2>Import packages and pre-process data<a class="headerlink" href="#import-packages-and-pre-process-data" title="Permalink to this headline">#</a></h2>
 <p>We have provided the code used to scrape the raw data from the Art Gallery NSW website that is processed in this analysis, but for the sake of brevity we will not run the scraping code here. Instead, we will import pre-processed data from the <a class="reference external" href="https://github.com/acd-engine/jupyterbook/tree/main/data/analysis">data/analysis folder</a> located in Github.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -678,8 +908,14 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">########## Collect data from the Art Gallery of NSW website ###########</span>
 <span class="k">global</span> <span class="n">mainURL</span>
@@ -793,7 +1029,7 @@
 
     <span class="c1"># Convert dictionary as dataframe and write as csv file</span>
     <span class="n">archies</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">archibald_data_dict</span><span class="p">)</span>
-    <span class="n">archies</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/data_analysis/archies.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">archies</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/local/archies.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="c1"># Convert participant data as dataframe and write as csv file</span>
     <span class="n">partipants_names</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -803,7 +1039,7 @@
         <span class="n">this_yr</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">archibald_data_dict</span><span class="p">[</span><span class="s1">&#39;Year&#39;</span><span class="p">][</span><span class="n">idx</span><span class="p">]</span>
         <span class="n">partipants_names</span> <span class="o">=</span> <span class="n">partipants_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">this_yr</span><span class="p">)</span>
         
-    <span class="n">partipants_names</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/data_analysis/archies_allparticipants_byyear.csv&#39;</span><span class="p">)</span>
+    <span class="n">partipants_names</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data/local/archies_allparticipants_byyear.csv&#39;</span><span class="p">)</span>
 
 <span class="c1"># uncomment the line below to repeat the data collection process</span>
 <span class="c1"># note this will export a file into your local directory - change this accordingly</span>
@@ -829,6 +1065,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style>.itables table td {
     text-overflow: ellipsis;
@@ -853,7 +1090,7 @@
 }
 </style>
 <div class="itables">
-<table id="3e15d8ef-db9e-48ea-b1aa-0d62f48f260a" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<table id="621f7432-a482-4b68-b893-e09a587f42e0" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       
       <th>YEAR</th>
@@ -904,7 +1141,7 @@
 
     $(document).ready(function () {
         // Setup - add a text input to each header or footer cell
-$('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
+$('#621f7432-a482-4b68-b893-e09a587f42e0 tfoot th').each(function () {
     let title = $(this).text();
     $(this).html('<input type="text" placeholder="Search ' +
         // We use encodeURI to avoid this LGTM error:
@@ -913,20 +1150,25 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
         '" />');
 });
 
-        $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a').DataTable(dt_args);
+        $('#621f7432-a482-4b68-b893-e09a587f42e0').DataTable(dt_args);
     });
 </script>
 </div>
 </div></div>
 </div>
-</div>
-<div class="section" id="gender-distribution">
-<h2>Gender distribution<a class="headerlink" href="#gender-distribution" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="male-and-female-distribution-for-archibald-winners">
-<h3>Male and female distribution for Archibald winners<a class="headerlink" href="#male-and-female-distribution-for-archibald-winners" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="gender-distribution">
+<h2>Gender distribution<a class="headerlink" href="#gender-distribution" title="Permalink to this headline">#</a></h2>
+<section id="male-and-female-distribution-for-archibald-winners">
+<h3>Male and female distribution for Archibald winners<a class="headerlink" href="#male-and-female-distribution-for-archibald-winners" title="Permalink to this headline">#</a></h3>
 <p>We use a donut chart to first explore how gender has been recorded for Archibald winners; 88% of the data has been recorded as Male and 12% as Female.</p>
 <p>It should be noted that for three years (1964, 1980 and 1991), there were no Archibald prize winners.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Gender Proportion</span>
 <span class="n">df_gender</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">archies</span><span class="p">[</span><span class="s2">&quot;GENDER&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
@@ -955,15 +1197,21 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_6_0.png" src="_images/Analysis_ArchibaldPrize_6_0.png" />
+<img alt="_images/b8c85161ea5400abdef6fd93b86e85460a267dcb1aa01284b84022e0f0acc94a.png" src="_images/b8c85161ea5400abdef6fd93b86e85460a267dcb1aa01284b84022e0f0acc94a.png" />
 </div>
 </div>
-</div>
-<div class="section" id="male-and-female-distribution-of-sitters-for-winning-archibald-portraits">
-<h3>Male and female distribution of sitters for winning Archibald portraits<a class="headerlink" href="#male-and-female-distribution-of-sitters-for-winning-archibald-portraits" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="male-and-female-distribution-of-sitters-for-winning-archibald-portraits">
+<h3>Male and female distribution of sitters for winning Archibald portraits<a class="headerlink" href="#male-and-female-distribution-of-sitters-for-winning-archibald-portraits" title="Permalink to this headline">#</a></h3>
 <p>Beyond the winning painter, we also assess the gender distribution of the sitters within the winning portraits Again we use a donut chart to explore the distribution. According data collected from various online sources, we found that 82% of sitters were recorded as Male, and 18% as Female.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Gender Proportion</span>
 <span class="n">df_gender</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">archies</span><span class="p">[</span><span class="s2">&quot;PORTRAIT_GENDER&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
@@ -998,15 +1246,21 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_8_0.png" src="_images/Analysis_ArchibaldPrize_8_0.png" />
+<img alt="_images/8c19814d91593a28f89f37819cd1ca735c7b446f8e5209b8ff40e339fafacfcc.png" src="_images/8c19814d91593a28f89f37819cd1ca735c7b446f8e5209b8ff40e339fafacfcc.png" />
 </div>
 </div>
-</div>
-<div class="section" id="do-males-paint-males">
-<h3>Do males paint males?<a class="headerlink" href="#do-males-paint-males" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="do-males-paint-males">
+<h3>Do males paint males?<a class="headerlink" href="#do-males-paint-males" title="Permalink to this headline">#</a></h3>
 <p>We also consider the gender distribution of sitters by male and female Archibald winners. The clustered bar chart shows that 86% of winning portraits painted by males consisted of male sitters. This differs quite a bit to winning portraits painted by females, which consists of an even distribution (50% male sitters, 50% female sitters). It should be noted that there are 12 winning portraits painted by females.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a crosstab table</span>
 <span class="n">df_crosstab</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">archies</span><span class="p">[</span><span class="s1">&#39;GENDER&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">archies</span><span class="p">[</span><span class="s1">&#39;PORTRAIT_GENDER&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
@@ -1044,15 +1298,21 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_10_0.png" src="_images/Analysis_ArchibaldPrize_10_0.png" />
+<img alt="_images/08801c7d392f9580a8b96bad86c0fe954872fefefea61efe07e9491682e5ceb6.png" src="_images/08801c7d392f9580a8b96bad86c0fe954872fefefea61efe07e9491682e5ceb6.png" />
 </div>
 </div>
-</div>
-<div class="section" id="male-and-female-distribution-over-time">
-<h3>Male and female distribution over time<a class="headerlink" href="#male-and-female-distribution-over-time" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="male-and-female-distribution-over-time">
+<h3>Male and female distribution over time<a class="headerlink" href="#male-and-female-distribution-over-time" title="Permalink to this headline">#</a></h3>
 <p>The two time series visualisations below showcase the number of Archibald winners and sitters across twenty-year brackets. The data for Archibald winners reveals that only in recent decades have females won a higher proportion of Archibald prizes in comparison to their corresponding vicennium. The trend for sitters also shares a similar pattern to the Archibald winners time series. Following our previous insights, this suggests that as more female artists win Archibalds, there is a corresponding increase in the number of female sitters being painted.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### create a new column for the year of the vicennium</span>
 <span class="n">archies</span><span class="p">[</span><span class="s1">&#39;year_vicennium&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">/</span><span class="mi">20</span><span class="p">)</span> <span class="o">*</span> <span class="mi">20</span><span class="p">)</span> 
@@ -1158,18 +1418,24 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_12_0.png" src="_images/Analysis_ArchibaldPrize_12_0.png" />
-<img alt="_images/Analysis_ArchibaldPrize_12_1.png" src="_images/Analysis_ArchibaldPrize_12_1.png" />
+<img alt="_images/ec2b83cb3be3e9ee259218ef9182ac099579544855e4588ae9d33b0d6f4689eb.png" src="_images/ec2b83cb3be3e9ee259218ef9182ac099579544855e4588ae9d33b0d6f4689eb.png" />
+<img alt="_images/29ea86da90cbc2a987fde3ebf5f834140c3f597b96a62cd8096fde25d7085acd.png" src="_images/29ea86da90cbc2a987fde3ebf5f834140c3f597b96a62cd8096fde25d7085acd.png" />
 </div>
 </div>
-</div>
-<div class="section" id="winning-age-for-archibald-winners">
-<h3>Winning age for Archibald winners<a class="headerlink" href="#winning-age-for-archibald-winners" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="winning-age-for-archibald-winners">
+<h3>Winning age for Archibald winners<a class="headerlink" href="#winning-age-for-archibald-winners" title="Permalink to this headline">#</a></h3>
 <p>We use a histogram chart to explore the distribution of winning age. The histogram exhibits a relatively bi-modal shape with some painters winning the Archibald prize much later in their career. However, the majority cluster around the mid-40s.</p>
 <p>The youngest painter to win the Archibald Prize was Nora Heysen at the age of 27 years (1938) and the oldest being John Olsen wininng at the age of 77 years (2005).</p>
 <p>Furthermore, we calculate the median winning age by gender of winning painter, and found that males (45) on average win later than females (39).</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">upper_rugplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mf">.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">matplotlib.collections</span> <span class="kn">import</span> <span class="n">LineCollection</span>
@@ -1192,36 +1458,37 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_14_0.png" src="_images/Analysis_ArchibaldPrize_14_0.png" />
+<img alt="_images/b54573207e02225acf4f62ed5e4ecf8b2823232fe4e2f04b88053f7eda242bb7.png" src="_images/b54573207e02225acf4f62ed5e4ecf8b2823232fe4e2f04b88053f7eda242bb7.png" />
 </div>
 </div>
-</div>
-<div class="section" id="winning-age-by-year">
-<h3>Winning age by year<a class="headerlink" href="#winning-age-by-year" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="winning-age-by-year">
+<h3>Winning age by year<a class="headerlink" href="#winning-age-by-year" title="Permalink to this headline">#</a></h3>
 <p>The first line plot below shows the age of Archibald winners per year. At first glance, the winning age appears to fluctuate randomly, but there are some observable patterns prior to 1960. Upon closer examination, we discover that these gradual changes are the result of the same individuals winning the Archibald Prize multiple times.</p>
 <p>We list five of the most frequent Archibald winners - all of which have more than three prizes.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Artist</p></th>
-<th class="text-align:right head"><p>Number of Archibald prizes</p></th>
+<tr class="row-odd"><th class="text-left head"><p>Artist</p></th>
+<th class="text-right head"><p>Number of Archibald prizes</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p>William Dargie</p></td>
-<td class="text-align:right"><p>8</p></td>
+<tr class="row-even"><td class="text-left"><p>William Dargie</p></td>
+<td class="text-right"><p>8</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>W B McInnes</p></td>
-<td class="text-align:right"><p>7</p></td>
+<tr class="row-odd"><td class="text-left"><p>W B McInnes</p></td>
+<td class="text-right"><p>7</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>John Longstaff</p></td>
-<td class="text-align:right"><p>5</p></td>
+<tr class="row-even"><td class="text-left"><p>John Longstaff</p></td>
+<td class="text-right"><p>5</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:left"><p>Ivor Hele</p></td>
-<td class="text-align:right"><p>5</p></td>
+<tr class="row-odd"><td class="text-left"><p>Ivor Hele</p></td>
+<td class="text-right"><p>5</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:left"><p>William Pidgeon</p></td>
-<td class="text-align:right"><p>4</p></td>
+<tr class="row-even"><td class="text-left"><p>William Pidgeon</p></td>
+<td class="text-right"><p>4</p></td>
 </tr>
 </tbody>
 </table>
@@ -1233,6 +1500,11 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 <li><p>We see a lot more distribution amongst painters in recent decades, with less occurence of repeat winners.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### plot winning age by year</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -1300,18 +1572,24 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_16_0.png" src="_images/Analysis_ArchibaldPrize_16_0.png" />
-<img alt="_images/Analysis_ArchibaldPrize_16_1.png" src="_images/Analysis_ArchibaldPrize_16_1.png" />
+<img alt="_images/67f1e20eb29822dccaf4e01a7b9a9d1a01e0d67d48fd4f0bcf6e54ff8b149c3a.png" src="_images/67f1e20eb29822dccaf4e01a7b9a9d1a01e0d67d48fd4f0bcf6e54ff8b149c3a.png" />
+<img alt="_images/ce364733fbb49b8a6b27eeaa6ac244d49ebc159e912a85346aa4b86cad3843d1.png" src="_images/ce364733fbb49b8a6b27eeaa6ac244d49ebc159e912a85346aa4b86cad3843d1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="winning-age-for-archibald-winners-cont">
-<h3>Winning age for Archibald winners (cont.)<a class="headerlink" href="#winning-age-for-archibald-winners-cont" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="winning-age-for-archibald-winners-cont">
+<h3>Winning age for Archibald winners (cont.)<a class="headerlink" href="#winning-age-for-archibald-winners-cont" title="Permalink to this headline">#</a></h3>
 <p>To consider multi-winners, we assess the average winning age at different milestones in relation to the Archibald Prize (1st win, 2nd winm, etc.). The bar plot shows a similar average (43.5) for first-time winners (highlighted in orange) when compared with the overall median (44). This is likely due to the fact that most artists have only won the prize once (62 artists).</p>
 <p>When considering second wins, the average winning age increases to 48.5, but then decreases for subsequent wins. This pattern may be a result of small sample sizes, but also suggests that multi-winners tend to experience early success. The only exception is John Longstaff, who won all his prizes after the age of 64.</p>
 <p>Interestingly, William Dargie, who won his eighth and final Archibald Prize, was 44 years old, which is the same as the overall median winning age.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### plot winning age at different milestones</span>
 <span class="n">archies</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1362,11 +1640,17 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_18_0.png" src="_images/Analysis_ArchibaldPrize_18_0.png" />
+<img alt="_images/bc2c26bb476223dd2de55dbaba9c72e80e0107dc08085492ecc2a6a82ae0fed1.png" src="_images/bc2c26bb476223dd2de55dbaba9c72e80e0107dc08085492ecc2a6a82ae0fed1.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def upper_rugplot(data, height=.05, ax=None, **kwargs):</span>
 <span class="c1">#     from matplotlib.collections import LineCollection</span>
@@ -1427,19 +1711,25 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_19_0.png" src="_images/Analysis_ArchibaldPrize_19_0.png" />
+<img alt="_images/d9fe328d7be826ebe89373a9d3fb8698ca8db50108a27a00a74b00854d3203fd.png" src="_images/d9fe328d7be826ebe89373a9d3fb8698ca8db50108a27a00a74b00854d3203fd.png" />
 </div>
 </div>
 <blockquote class="epigraph">
 <div><p>By the time the average participant achieves their first Archibald Prize, William Dargie had already secured his eighth Archibald win.</p>
 </div></blockquote>
-</div>
-<div class="section" id="winning-age-for-archibald-winners-by-vicennium">
-<h3>Winning age for Archibald winners by vicennium<a class="headerlink" href="#winning-age-for-archibald-winners-by-vicennium" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="winning-age-for-archibald-winners-by-vicennium">
+<h3>Winning age for Archibald winners by vicennium<a class="headerlink" href="#winning-age-for-archibald-winners-by-vicennium" title="Permalink to this headline">#</a></h3>
 <p>By analysing the winning age data by milestone and decade, we can observe that the average winning age for first-time winners has experienced fluctuations over time. During the 1920-1940 period, the median winning age for first-time winners was 35. However, this average rose to 46.5 over the next forty years and then dropped back to 40 in the 2000s. A similar pattern was observed for second-time winners, with a peak median of 60.5 in the 1980-2000 period.</p>
 <p>As illustrated in previous visualisations, third-time winners and beyond tend to occur more often in earlier decades. The last artist to win three Archibald prizes was Eric John Smith in 1982 at the age of 63.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
@@ -1468,17 +1758,18 @@ $('#3e15d8ef-db9e-48ea-b1aa-0d62f48f260a tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_22_0.png" src="_images/Analysis_ArchibaldPrize_22_0.png" />
+<img alt="_images/2decd89c96ced2b944f67448a0098ab08751ea8f1428908cbbafe94252c564db.png" src="_images/2decd89c96ced2b944f67448a0098ab08751ea8f1428908cbbafe94252c564db.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="colour-and-brightness">
-<h2>Colour and Brightness<a class="headerlink" href="#colour-and-brightness" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="colour-and-brightness">
+<h2>Colour and Brightness<a class="headerlink" href="#colour-and-brightness" title="Permalink to this headline">#</a></h2>
 <p>The below visualisations explore the colour and brightness of winning Archibald portraits. We first discuss our methodology of colour extraction and colour averaging before exploring the results.</p>
-<div class="section" id="colour-averaging">
-<h3>Colour averaging<a class="headerlink" href="#colour-averaging" title="Permalink to this headline">¶</a></h3>
+<section id="colour-averaging">
+<h3>Colour averaging<a class="headerlink" href="#colour-averaging" title="Permalink to this headline">#</a></h3>
 <p>An image can be summarised down into one average color by taking the average color of all pixels in the image.</p>
 <ul class="simple">
 <li><p>Each pixel in an image is represented by a combination of three color values: red, green, and blue (RGB).</p></li>
@@ -1563,11 +1854,16 @@ An image is often represented as a two-dimensional array of numbers, where each 
 </tbody>
 </table>
 <p>In this case, each pixel is represented by a three-element array, with each element representing the intensity of the red, green, and blue channels, respectively. For example, the pixel in the top-left corner of the image has a red intensity of 10, a green intensity of 20, and a blue intensity of 30.</p>
-</div>
-<div class="section" id="colour-over-time">
-<h3>Colour over time<a class="headerlink" href="#colour-over-time" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="colour-over-time">
+<h3>Colour over time<a class="headerlink" href="#colour-over-time" title="Permalink to this headline">#</a></h3>
 <p>We first consider the average colour of winning portraits by decade.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch colour data for every Archibald winning potrait</span>
 <span class="k">def</span> <span class="nf">get_avg_color</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
@@ -1621,23 +1917,24 @@ An image is often represented as a two-dimensional array of numbers, where each 
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_25_0.png" src="_images/Analysis_ArchibaldPrize_25_0.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_1.png" src="_images/Analysis_ArchibaldPrize_25_1.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_2.png" src="_images/Analysis_ArchibaldPrize_25_2.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_3.png" src="_images/Analysis_ArchibaldPrize_25_3.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_4.png" src="_images/Analysis_ArchibaldPrize_25_4.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_5.png" src="_images/Analysis_ArchibaldPrize_25_5.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_6.png" src="_images/Analysis_ArchibaldPrize_25_6.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_7.png" src="_images/Analysis_ArchibaldPrize_25_7.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_8.png" src="_images/Analysis_ArchibaldPrize_25_8.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_9.png" src="_images/Analysis_ArchibaldPrize_25_9.png" />
-<img alt="_images/Analysis_ArchibaldPrize_25_10.png" src="_images/Analysis_ArchibaldPrize_25_10.png" />
+<img alt="_images/025f3881001c4d15658989a513615cb4ae0ae7eaa0592c48f85b45d271a0ed09.png" src="_images/025f3881001c4d15658989a513615cb4ae0ae7eaa0592c48f85b45d271a0ed09.png" />
+<img alt="_images/ce4c8d0ba1aabda7b667e5f58d0a6e87fb64330d467e6a43118f11f9b87c1479.png" src="_images/ce4c8d0ba1aabda7b667e5f58d0a6e87fb64330d467e6a43118f11f9b87c1479.png" />
+<img alt="_images/c8d8a04fa522bf8949d08cc2bd02f3a62007a035a117451c0e30aa02b458c985.png" src="_images/c8d8a04fa522bf8949d08cc2bd02f3a62007a035a117451c0e30aa02b458c985.png" />
+<img alt="_images/8aae64b0df19689e6919e85dd5187e4b0efe09bc9956cee14cd5c3fbacf5120d.png" src="_images/8aae64b0df19689e6919e85dd5187e4b0efe09bc9956cee14cd5c3fbacf5120d.png" />
+<img alt="_images/2af5362eec7cc80be8bd97136190d144349b5710af4136ec499e10ff4c5f0b19.png" src="_images/2af5362eec7cc80be8bd97136190d144349b5710af4136ec499e10ff4c5f0b19.png" />
+<img alt="_images/3db9a89994b791fdf00c7cccbf6e3ca2aff7940952fbd809065580c4dbd954a9.png" src="_images/3db9a89994b791fdf00c7cccbf6e3ca2aff7940952fbd809065580c4dbd954a9.png" />
+<img alt="_images/3e96e04baad42d723461497a92c4c0ce10d957702b5b5c7745a0748652364db8.png" src="_images/3e96e04baad42d723461497a92c4c0ce10d957702b5b5c7745a0748652364db8.png" />
+<img alt="_images/43967ba7fa1c28ea0a7b4da7e77a1af816af8df7a63335e6b336fae66fce68c9.png" src="_images/43967ba7fa1c28ea0a7b4da7e77a1af816af8df7a63335e6b336fae66fce68c9.png" />
+<img alt="_images/c0751b0b7ee72c45aa216b762558b06c8a3f6a98033b0efb78b3557da7e0480c.png" src="_images/c0751b0b7ee72c45aa216b762558b06c8a3f6a98033b0efb78b3557da7e0480c.png" />
+<img alt="_images/10282d70d726f685fb2117e2aed2bdb5b101972e07ad17f8ac76a279b0ea32aa.png" src="_images/10282d70d726f685fb2117e2aed2bdb5b101972e07ad17f8ac76a279b0ea32aa.png" />
+<img alt="_images/9a04c3ace398ee8722d55673479bfe689dbae999d0a378943e6f881e95d79a4c.png" src="_images/9a04c3ace398ee8722d55673479bfe689dbae999d0a378943e6f881e95d79a4c.png" />
 </div>
 </div>
-</div>
-<div class="section" id="colour-averaging-and-categorisation">
-<h3>Colour averaging and categorisation<a class="headerlink" href="#colour-averaging-and-categorisation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="colour-averaging-and-categorisation">
+<h3>Colour averaging and categorisation<a class="headerlink" href="#colour-averaging-and-categorisation" title="Permalink to this headline">#</a></h3>
 <p>The below visualisations were constructed using python code which extracts and categorises colors from each image of the winning portrait. The code begins by importing various libraries, including PIL, OpenCV, and matplotlib, which are used for image manipulation and visualization, as well as external packages like extcolors and colormath for colour extraction and categorisation.</p>
 <p><strong>Step 1</strong>
 <br>
@@ -1652,6 +1949,11 @@ Next, the code reads in a list of image file names from a directory and uses the
 Finally, the resulting colour data is concatenated into a single dataframe for further analysis.</p>
 <p><em>Note we commented out the code for the colour extraction and categorisation process as it takes 3 minutes to run. Instead, we saved the resulting dataframe as a csv file and imported it into the notebook from the ACDE Github repository.</em></p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Takes 3 minutes to run</span>
 
@@ -1728,7 +2030,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 <span class="c1">#     # df_colors = df_colors.append(df_color, ignore_index=True)</span>
 <span class="c1">#     df_colors = pd.concat([df_colors, df_color], ignore_index=True)</span>
 
-<span class="c1"># df_colors.to_csv(&#39;data/data_analysis/archies_colors.csv&#39;, index=False)          </span>
+<span class="c1"># df_colors.to_csv(&#39;data/local/archies_colors.csv&#39;, index=False)          </span>
 
 <span class="c1"># From github, fetch colour data for every Archibald winning potrait</span>
 <span class="c1"># fetch data from github</span>
@@ -1740,6 +2042,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><style>.itables table td {
     text-overflow: ellipsis;
@@ -1764,7 +2067,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 }
 </style>
 <div class="itables">
-<table id="b109a0ed-69a6-4cb7-8352-3b2c5976194e" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
+<table id="274d4491-b457-4bfe-80aa-dc0974433df5" class="display nowrap"style="table-layout:auto;width:auto;margin:auto;caption-side:bottom"><thead>
     <tr style="text-align: right;">
       
       <th>c_code</th>
@@ -1805,7 +2108,7 @@ Finally, the resulting colour data is concatenated into a single dataframe for f
 
     $(document).ready(function () {
         // Setup - add a text input to each header or footer cell
-$('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
+$('#274d4491-b457-4bfe-80aa-dc0974433df5 tfoot th').each(function () {
     let title = $(this).text();
     $(this).html('<input type="text" placeholder="Search ' +
         // We use encodeURI to avoid this LGTM error:
@@ -1814,13 +2117,18 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
         '" />');
 });
 
-        $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e').DataTable(dt_args);
+        $('#274d4491-b457-4bfe-80aa-dc0974433df5').DataTable(dt_args);
     });
 </script>
 </div>
 </div></div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new column for the year in 10 year intervals</span>
 <span class="n">df_colors</span><span class="p">[</span><span class="s1">&#39;year_vicennium&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_colors</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">20</span><span class="p">)</span>
@@ -1908,15 +2216,21 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_28_0.png" src="_images/Analysis_ArchibaldPrize_28_0.png" />
-<img alt="_images/Analysis_ArchibaldPrize_28_1.png" src="_images/Analysis_ArchibaldPrize_28_1.png" />
-<img alt="_images/Analysis_ArchibaldPrize_28_2.png" src="_images/Analysis_ArchibaldPrize_28_2.png" />
-<img alt="_images/Analysis_ArchibaldPrize_28_3.png" src="_images/Analysis_ArchibaldPrize_28_3.png" />
-<img alt="_images/Analysis_ArchibaldPrize_28_4.png" src="_images/Analysis_ArchibaldPrize_28_4.png" />
+<img alt="_images/c0787790001a00dc29424067f41d1d5b25ad5001735ff1c0dc71a81a68152a2a.png" src="_images/c0787790001a00dc29424067f41d1d5b25ad5001735ff1c0dc71a81a68152a2a.png" />
+<img alt="_images/738c1d1e9a77086f4e9c70a8e3f188461ce01cdb130b152a720d45964a806a37.png" src="_images/738c1d1e9a77086f4e9c70a8e3f188461ce01cdb130b152a720d45964a806a37.png" />
+<img alt="_images/de625ba4af714ec9516cd14e6b2cb1181cfce5d04ea4b0ba8fecd0409d809511.png" src="_images/de625ba4af714ec9516cd14e6b2cb1181cfce5d04ea4b0ba8fecd0409d809511.png" />
+<img alt="_images/3cdfdf4c4bf2f5ab182ada462144ce82b2f3c06c2b8c9f5ea2c0e94c39bad5f9.png" src="_images/3cdfdf4c4bf2f5ab182ada462144ce82b2f3c06c2b8c9f5ea2c0e94c39bad5f9.png" />
+<img alt="_images/d23fa5ac61a10c18790d784aece45c367c36bfb7cc8e05727856d1a55616add4.png" src="_images/d23fa5ac61a10c18790d784aece45c367c36bfb7cc8e05727856d1a55616add4.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top30cols</span> <span class="o">=</span> <span class="n">df_colors</span>\
             <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;year_vicennium&#39;</span><span class="p">,</span><span class="s1">&#39;color_name&#39;</span><span class="p">])</span>\
@@ -1976,15 +2290,21 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_29_0.png" src="_images/Analysis_ArchibaldPrize_29_0.png" />
+<img alt="_images/4fec1a046daa4d32158d57de4853557334a307a3b2da6b1d4c0ff9d8fa9764ef.png" src="_images/4fec1a046daa4d32158d57de4853557334a307a3b2da6b1d4c0ff9d8fa9764ef.png" />
 </div>
 </div>
-</div>
-<div class="section" id="brightness-over-time">
-<h3>Brightness over time<a class="headerlink" href="#brightness-over-time" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="brightness-over-time">
+<h3>Brightness over time<a class="headerlink" href="#brightness-over-time" title="Permalink to this headline">#</a></h3>
 <p>We next consider the average brightness of winning portraits over time.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def brightness( im_file ):</span>
 <span class="c1">#     im = Image.open(im_file)</span>
@@ -2128,16 +2448,22 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_31_0.png" src="_images/Analysis_ArchibaldPrize_31_0.png" />
+<img alt="_images/c7345ddb6125d0c29ae0c506fdadc84e4f3b63c0d1009bff4d15b4315dbd2826.png" src="_images/c7345ddb6125d0c29ae0c506fdadc84e4f3b63c0d1009bff4d15b4315dbd2826.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="participation">
-<h2>Participation<a class="headerlink" href="#participation" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="participation">
+<h2>Participation<a class="headerlink" href="#participation" title="Permalink to this headline">#</a></h2>
 <p>We explore participation rates over time, comparing the number of entries and the number of finalists. We also investigate the relationship between the number of entries and change in prize money.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
@@ -2186,11 +2512,17 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 </div>
-<div class="section" id="participation-over-time">
-<h3>Participation over time<a class="headerlink" href="#participation-over-time" title="Permalink to this headline">¶</a></h3>
+<section id="participation-over-time">
+<h3>Participation over time<a class="headerlink" href="#participation-over-time" title="Permalink to this headline">#</a></h3>
 <p>As shown in the visual below, the finalist conditions of the Archbald prize changed in 1947. For reference, the median number of finalists post-1947 is 31.5, while the median number of finalists pre-1947 is 86.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">year</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">no_entries</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2245,15 +2577,21 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_35_0.png" src="_images/Analysis_ArchibaldPrize_35_0.png" />
+<img alt="_images/296663d76efa8aaaf3d72ca06c797ee4d0a21d73578167d6bb319bc85177c06e.png" src="_images/296663d76efa8aaaf3d72ca06c797ee4d0a21d73578167d6bb319bc85177c06e.png" />
 </div>
 </div>
-</div>
-<div class="section" id="prize-money">
-<h3>Prize Money<a class="headerlink" href="#prize-money" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="prize-money">
+<h3>Prize Money<a class="headerlink" href="#prize-money" title="Permalink to this headline">#</a></h3>
 <p>It should be noted that we imported the prize money data from the ACDE Github repository. The data was originally sourced from financial reports of the Art Gallery of NSW. Temporal information of sponsors can be found across the AGNSW website for each respective Archibald prize.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fetch data from github</span>
 <span class="n">prize_money</span> <span class="o">=</span> <span class="n">fetch_small_data_from_github</span><span class="p">(</span><span class="s2">&quot;archies_prizemoney.csv&quot;</span><span class="p">)</span>
@@ -2304,24 +2642,30 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 
-<span class="c1"># save figure</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;prize_money.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">330</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+<span class="c1"># # save figure</span>
+<span class="c1"># plt.savefig(&#39;prize_money.png&#39;, dpi=330, bbox_inches=&#39;tight&#39;)</span>
 
 <span class="c1"># Show the plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_37_0.png" src="_images/Analysis_ArchibaldPrize_37_0.png" />
+<img alt="_images/d8a012370873c7e7688d955dde355b2166511cd649bcc68a9d8624d47cf41992.png" src="_images/d8a012370873c7e7688d955dde355b2166511cd649bcc68a9d8624d47cf41992.png" />
 </div>
 </div>
-</div>
-<div class="section" id="prize-money-before-sponsors">
-<h3>Prize money before sponsors<a class="headerlink" href="#prize-money-before-sponsors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="prize-money-before-sponsors">
+<h3>Prize money before sponsors<a class="headerlink" href="#prize-money-before-sponsors" title="Permalink to this headline">#</a></h3>
 <p>The visuals below show the prize money before sponsors are taken into account. The prize money was originally in pounds, but we have converted it to Australian dollars for ease of interpretation.</p>
 <p>We compute the correlation between the number of entries and the change in prize money. We find that the correlation is 0.51, which is a moderate positive correlation. This suggests that the number of entries is positively associated with the change in prize money.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
@@ -2365,11 +2709,17 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_39_0.png" src="_images/Analysis_ArchibaldPrize_39_0.png" />
+<img alt="_images/80b0fde2c2fee29029e43d81f94a51ae6d92b9c55446c27919f978d4717fe186.png" src="_images/80b0fde2c2fee29029e43d81f94a51ae6d92b9c55446c27919f978d4717fe186.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
@@ -2424,16 +2774,22 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_40_0.png" src="_images/Analysis_ArchibaldPrize_40_0.png" />
+<img alt="_images/7b93ea9033ee1163cffd5b8571a42a0cbf2280765b9b81cc9603f4c6af722482.png" src="_images/7b93ea9033ee1163cffd5b8571a42a0cbf2280765b9b81cc9603f4c6af722482.png" />
 </div>
 </div>
-</div>
-<div class="section" id="prize-money-with-sponsors-post-1980">
-<h3>Prize money with sponsors (post-1980)<a class="headerlink" href="#prize-money-with-sponsors-post-1980" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="prize-money-with-sponsors-post-1980">
+<h3>Prize money with sponsors (post-1980)<a class="headerlink" href="#prize-money-with-sponsors-post-1980" title="Permalink to this headline">#</a></h3>
 <p>The visuals below show the prize money after sponsors are taken into account. There have been six sponsors/partners since 1980.</p>
 <p>We compute the correlation between the number of entries and the change in prize money during this period. We find that the correlation is 0.84, which is a strong positive correlation. In contrast to the pre-sponsor period, the correlation is much stronger, which suggests that the number of entries is more strongly associated with the change in prize money during this period.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
@@ -2482,11 +2838,17 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_42_0.png" src="_images/Analysis_ArchibaldPrize_42_0.png" />
+<img alt="_images/b5b82d533b6bd9312460e805251f88fee7560779d8b1f1b8beb252bce410050f.png" src="_images/b5b82d533b6bd9312460e805251f88fee7560779d8b1f1b8beb252bce410050f.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
@@ -2566,13 +2928,14 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_43_0.png" src="_images/Analysis_ArchibaldPrize_43_0.png" />
+<img alt="_images/3fabf78e9d5244ff78a2ac7482ad56aeca7b18b79b0190e208b2caa7a3fc2048.png" src="_images/3fabf78e9d5244ff78a2ac7482ad56aeca7b18b79b0190e208b2caa7a3fc2048.png" />
 </div>
 </div>
-</div>
-<div class="section" id="participant-characteristics">
-<h3>Participant characteristics<a class="headerlink" href="#participant-characteristics" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="participant-characteristics">
+<h3>Participant characteristics<a class="headerlink" href="#participant-characteristics" title="Permalink to this headline">#</a></h3>
 <p>Below we output some summary statistics of the Archibald participant data. the main findings are listed below:</p>
 <ul class="simple">
 <li><p>There are 62 distinct winners of the Archibald prize.</p></li>
@@ -2580,6 +2943,11 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 <li><p>While most winning painters participate in the Archibald prize for roughly 10 to 30 years, there are some outliers who participate for much longer. For example, Joshua Smith participated for 64 years, with his first entry at the age of 19 and last entry at the age of 81.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">artist_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Archibald Winner&#39;</span><span class="p">,</span><span class="s1">&#39;Age at first participation&#39;</span><span class="p">,</span> 
                         <span class="s1">&#39;Age at last participation&#39;</span><span class="p">,</span><span class="s1">&#39;Diff. between first and last&#39;</span><span class="p">]</span>
@@ -2595,6 +2963,7 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
@@ -2724,12 +3093,17 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="archibald-prize-participation-trajectory">
-<h3>Archibald Prize participation trajectory<a class="headerlink" href="#archibald-prize-participation-trajectory" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="archibald-prize-participation-trajectory">
+<h3>Archibald Prize participation trajectory<a class="headerlink" href="#archibald-prize-participation-trajectory" title="Permalink to this headline">#</a></h3>
 <p>We visualise the participation trajectory of winners by illustrating a painter’s association with the Archibald over time, where time is reflected by their age. This allows us to compare the participation trajectory of winners normalised by age.</p>
 <p>We order the winners by their age at their first win and highlight this first win by a dashed red line. In terms of the y-axis, <code class="docutils literal notranslate"><span class="pre">Participation</span></code> represents an Archibald participation (with no win) and <code class="docutils literal notranslate"><span class="pre">Win</span></code> represents an Archibald win. In other words, high peaks represent Archibald wins and low peaks represent Archibald participations (with no win). This representation allows us to see how often each artist participated in the Archibald prize. In most cases, this occurs in clusters.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tt</span> <span class="o">=</span> <span class="n">artist_df</span><span class="o">.</span><span class="n">T</span>
 
@@ -2781,26 +3155,33 @@ $('#b109a0ed-69a6-4cb7-8352-3b2c5976194e tfoot th').each(function () {
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_47_0.png" src="_images/Analysis_ArchibaldPrize_47_0.png" />
+<img alt="_images/ed35e9f627187407b176ca569c70ab2ff460c1d9426c1072112ae2dc89d1aaf9.png" src="_images/ed35e9f627187407b176ca569c70ab2ff460c1d9426c1072112ae2dc89d1aaf9.png" />
 </div>
 </div>
 <p>We also considered used a sankey diagram to visualise trajectories, however more efforts are needed to make the visual easier to interpret.</p>
 <br>
 <a class="bg-secondary reference internal image-reference" href="_images/archies_test_sankey.png"><img alt="Archibald Sankey" class="bg-secondary" src="_images/archies_test_sankey.png" style="width: 850px;" /></a>
-</div>
-</div>
-<div class="section" id="who-is-in-the-portrait">
-<h2>Who is in the portrait?<a class="headerlink" href="#who-is-in-the-portrait" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="who-is-in-the-portrait">
+<h2>Who is in the portrait?<a class="headerlink" href="#who-is-in-the-portrait" title="Permalink to this headline">#</a></h2>
 <p>We investigate sitter characteristics of winning portraits such as their occupation and/or relationship with painter. We use the ANZSCO classification system to categorise the occupation of the sitter. The ANZSCO classification system is a skill-based classification system used to classify all occupations and jobs in the Australian and New Zealand labour markets.</p>
 <p>Below we see the proportions of winning portraits by sitter occupation. The most common occupation is Arts and Media Professionals (58%).</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">archies</span><span class="p">[</span><span class="s1">&#39;ANZSCO_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;Uncategorised&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">archies</span><span class="p">[</span><span class="s1">&#39;ANZSCO_1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arts and Media Professionals                                0.578431
 Chief Executives, General Managers and Legislators          0.127451
@@ -2818,6 +3199,11 @@ Name: ANZSCO_1, dtype: float64
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">archies</span><span class="p">[</span><span class="s1">&#39;Decade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> 
                        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">archies</span><span class="p">[</span><span class="s2">&quot;YEAR&quot;</span><span class="p">])]</span>
@@ -2855,11 +3241,17 @@ Name: ANZSCO_1, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_51_0.png" src="_images/Analysis_ArchibaldPrize_51_0.png" />
+<img alt="_images/ff187f98c0f7b09ec6abb83686a166ba1a85087ee207b371588bea6dce629920.png" src="_images/ff187f98c0f7b09ec6abb83686a166ba1a85087ee207b371588bea6dce629920.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">archies</span><span class="p">[</span><span class="s1">&#39;Decade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> 
                        <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">archies</span><span class="p">[</span><span class="s2">&quot;YEAR&quot;</span><span class="p">])]</span>
@@ -2921,13 +3313,14 @@ Name: ANZSCO_1, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_52_0.png" src="_images/Analysis_ArchibaldPrize_52_0.png" />
+<img alt="_images/fbd335233d1af651581cbe605083883c28a41a26372eb1e9cbcc9a654e3cd242.png" src="_images/fbd335233d1af651581cbe605083883c28a41a26372eb1e9cbcc9a654e3cd242.png" />
 </div>
 </div>
-</div>
-<div class="section" id="online-presence-of-recent-winners">
-<h2>Online presence of recent winners<a class="headerlink" href="#online-presence-of-recent-winners" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="online-presence-of-recent-winners">
+<h2>Online presence of recent winners<a class="headerlink" href="#online-presence-of-recent-winners" title="Permalink to this headline">#</a></h2>
 <p>Lastly, we investigate the online presence of recent winners through quantifed measures extracted from <strong>Google Trends</strong> data. Numbers on the y-axis represent search interest relative to the highest point on the chart for the given region and time. A value of 100 is the peak popularity for the term. A value of 50 means that the term is half as popular. A score of 0 means that there was not enough data for this term.</p>
 <p>We focus on the five most recent winners.</p>
 <ul class="simple">
@@ -2938,6 +3331,11 @@ Name: ANZSCO_1, dtype: float64
 <li><p>2022: Blak Douglas</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data from github</span>
 <span class="n">googletrends</span> <span class="o">=</span> <span class="n">fetch_small_data_from_github</span><span class="p">(</span><span class="s1">&#39;archies_Last5winners.csv&#39;</span><span class="p">)</span>
@@ -3042,12 +3440,13 @@ Name: ANZSCO_1, dtype: float64
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_ArchibaldPrize_54_0.png" src="_images/Analysis_ArchibaldPrize_54_0.png" />
+<img alt="_images/bde9d1c10c7c2a4148d6ba68c3f927d95619fd64bf4a17820e2ba32cb130ee07.png" src="_images/bde9d1c10c7c2a4148d6ba68c3f927d95619fd64bf4a17820e2ba32cb130ee07.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3061,7 +3460,7 @@ Name: ANZSCO_1, dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -3069,43 +3468,220 @@ Name: ANZSCO_1, dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
+            </article>
             
+
+            
+            
+            <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Analysis_Introduction.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introduction</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Analysis_CircusOz.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Beyond the Big Top: Exploring career trajectories at Circus Oz</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Australian Cultural Data Engine<br/>
-    
-  </p>
-</footer>
-</main>
-
-
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="Analysis_ExternalDatasets.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">Exploring intersections of external data</p>
       </div>
-    </div>
+  </a>
+  <a class='right-next' id="next-link" href="Analysis_DAAO_InternationalPresence.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">International presence of indigenous artists</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-packages-and-pre-process-data">
+   Import packages and pre-process data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gender-distribution">
+   Gender distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#male-and-female-distribution-for-archibald-winners">
+     Male and female distribution for Archibald winners
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#male-and-female-distribution-of-sitters-for-winning-archibald-portraits">
+     Male and female distribution of sitters for winning Archibald portraits
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#do-males-paint-males">
+     Do males paint males?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#male-and-female-distribution-over-time">
+     Male and female distribution over time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winning-age-for-archibald-winners">
+     Winning age for Archibald winners
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winning-age-by-year">
+     Winning age by year
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winning-age-for-archibald-winners-cont">
+     Winning age for Archibald winners (cont.)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#winning-age-for-archibald-winners-by-vicennium">
+     Winning age for Archibald winners by vicennium
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#colour-and-brightness">
+   Colour and Brightness
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#colour-averaging">
+     Colour averaging
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#colour-over-time">
+     Colour over time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#colour-averaging-and-categorisation">
+     Colour averaging and categorisation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#brightness-over-time">
+     Brightness over time
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#participation">
+   Participation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#participation-over-time">
+     Participation over time
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prize-money">
+     Prize Money
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prize-money-before-sponsors">
+     Prize money before sponsors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#prize-money-with-sponsors-post-1980">
+     Prize money with sponsors (post-1980)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#participant-characteristics">
+     Participant characteristics
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#archibald-prize-participation-trajectory">
+     Archibald Prize participation trajectory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#who-is-in-the-portrait">
+   Who is in the portrait?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#online-presence-of-recent-winners">
+   Online presence of recent winners
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Australian Cultural Data Engine
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>

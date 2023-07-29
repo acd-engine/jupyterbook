@@ -261,9 +261,9 @@ function highlightFilter(filter) {
                             >
                                 <option selected>Select a Node by ID</option>
                                 
-                                    <option value="Furnival & Taylor">Furnival & Taylor</option>
-                                
                                     <option value="T Taylor">T Taylor</option>
+                                
+                                    <option value="Furnival & Taylor">Furnival & Taylor</option>
                                 
                                     <option value="Backhouse & Taylor">Backhouse & Taylor</option>
                                 
@@ -319,7 +319,7 @@ function highlightFilter(filter) {
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"color": "blue", "id": "Furnival \u0026 Taylor", "label": "Furnival \u0026 Taylor", "shape": "dot", "title": "Furnival \u0026 Taylor \nStart: 1864 \nEnd: nan"}, {"color": "blue", "id": "T Taylor", "label": "T Taylor", "shape": "dot", "title": "T Taylor \nStart: 1967 \nEnd: nan"}, {"color": "blue", "id": "Backhouse \u0026 Taylor", "label": "Backhouse \u0026 Taylor", "shape": "dot", "title": "Backhouse \u0026 Taylor \nStart: 1862 \nEnd: 1863.0"}]);
+                  nodes = new vis.DataSet([{"color": "blue", "id": "T Taylor", "label": "T Taylor", "shape": "dot", "title": "T Taylor \nStart: 1967 \nEnd: nan"}, {"color": "blue", "id": "Furnival \u0026 Taylor", "label": "Furnival \u0026 Taylor", "shape": "dot", "title": "Furnival \u0026 Taylor \nStart: 1864 \nEnd: nan"}, {"color": "blue", "id": "Backhouse \u0026 Taylor", "label": "Backhouse \u0026 Taylor", "shape": "dot", "title": "Backhouse \u0026 Taylor \nStart: 1862 \nEnd: 1863.0"}]);
                   edges = new vis.DataSet([{"arrows": "to", "color": "red", "from": "Furnival \u0026 Taylor", "title": "succeededby", "to": "T Taylor"}, {"arrows": "to", "color": "red", "from": "Backhouse \u0026 Taylor", "title": "succeededby", "to": "Furnival \u0026 Taylor"}]);
 
                   nodeColors = {};

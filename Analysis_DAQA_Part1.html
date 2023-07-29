@@ -4,347 +4,718 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DAQA: Preliminary analysis</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>DAQA - Preliminary analysis</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/bootstrap.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=796348d33e8b1d947c94" rel="stylesheet">
 
-    
-      
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=796348d33e8b1d947c94" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2">
 
-    
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=4ec06e9971c5264fbd345897d5258098f11cc577" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystyles.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94">
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94">
 
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=8bf782fb4ee92b3d3646425e50f299c4e1fd152d"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-R8Q003ZY5N');
+            </script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Analysis_DAQA_Part1';</script>
     <link rel="author" title="About these documents" href="about.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="DAQA: Extended analysis" href="Analysis_DAQA_Part2.html" />
-    <link rel="prev" title="Natural language processing with DAAO" href="Analysis_DAAOVenues.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R8Q003ZY5N"></script>
-<script>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){ dataLayer.push(arguments); }
-                    gtag('js', new Date());
-                    gtag('config', 'G-R8Q003ZY5N');
-                </script>
-
+    <link rel="next" title="DAQA - Extended analysis" href="Analysis_DAQA_Part2.html" />
+    <link rel="prev" title="DAAO 500" href="Analysis_DAAO500.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="docsearch:language" content="None">
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  <input type="checkbox" class="sidebar-toggle" name="__primary" id="__primary">
+  <label class="overlay overlay-primary" for="__primary"></label>
+
+  
+  <input type="checkbox" class="sidebar-toggle" name="__secondary" id="__secondary">
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="_static/ACDElogo.png" class="logo" alt="logo">
-      
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="about.html">
-   About
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Data infrastructure and integration
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_Architecture.html">
-   Australian Cultural Data Engine Architecture
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+  </div>
+
+  
+  <nav class="bd-header navbar navbar-expand-lg bd-navbar" id="navbar-main"><div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+      <span class="fa-solid fa-bars"></span>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_Overview.html">
-     Overview of the Australian Cultural Data Engine Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_Construction.html">
-     Construction Workflow
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_DataReport.html">
-     Data Report
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">
-     Special Considerations for Data Analysis
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="Integration_DataSources.html">
-   Data Sources
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_AusStage.html">
-     The Australian Live Performance Database
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_CircusOz.html">
-     The Circus Oz Living Archive collection
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_DAAO.html">
-     Design &amp; Art Australia Online
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_DAQA.html">
-     Digital Archive of Queensland Architecture
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Integration_DataSources_SummerHayes.html">
-     Summerhayes Family Collection
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Download.html">
-   Integrated Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_FutureWorks.html">
-   Future Works
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Integration_Miscellaneous.html">
-   More Interesting Works and Cultural Data Sources
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Data analysis
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_Introduction.html">
-   Introduction
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_ArchibaldPrize.html">
-   Quantifying success: A journey into the Archibald Prize
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_CircusOz.html">
-   Beyond the Big Top: Exploring career trajectories at Circus Oz
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAAO500.html">
-   The DAAO 500
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAAOVenues.html">
-   Natural language processing with DAAO
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   DAQA: Preliminary analysis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Analysis_DAQA_Part2.html">
-   DAQA: Extended analysis
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+  <div id="navbar-start">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
+    
+  
 
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+
+<a class="navbar-brand logo" href="about.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/ACDElogo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/ACDElogo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    
+  </div>
+
+  
+  <div class="col-lg-9 navbar-header-items">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Analysis_DAQA_Part1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
 
-            <!-- Source interaction buttons -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Architecture.html">
+                        Australian Cultural Data Engine Architecture
+                      </a>
+                    </li>
+                
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/acd-engine/jupyterbook"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2FAnalysis_DAQA_Part1.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_DataSources.html">
+                        Data Sources
+                      </a>
+                    </li>
+                
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Download.html">
+                        Integrated Data
+                      </a>
+                    </li>
+                
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_FutureWorks.html">
+                        Future Works
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Miscellaneous.html">
+                        More Interesting Works and Cultural Data Sources
+                      </a>
+                    </li>
+                
 
-            <!-- Launch buttons -->
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/acd-engine/jupyterbook/master?urlpath=tree/docs/Analysis_DAQA_Part1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_CircusOz.html">
+                        Career trajectories at Circus Oz
+                      </a>
+                    </li>
+                
 
-        </div>
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO500.html">
+                        DAAO 500
+                      </a>
+                    </li>
+                
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        DAQA - Preliminary analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part2.html">
+                        DAQA - Extended analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ExternalDatasets.html">
+                        Exploring intersections of external data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ArchibaldPrize.html">
+                        Exploring success quantitatively using Archibald Prize data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO_InternationalPresence.html">
+                        International presence of indigenous artists
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAOVenues.html">
+                        Natural language processing with DAAO
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_TLC_Workshop.html">
+                        Tracing the evolution of Melbourne’s music scene
+                      </a>
+                    </li>
+                
+                </div>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            
+    </ul>
+</nav>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+        <div class="navbar-end-item navbar-persistent--container">
+          
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+        </div>
+      
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+
+
+  
+  
+    <div class="navbar-persistent--mobile">
+<button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-toggle="tooltip">
+  <i class="fa-solid fa-magnifying-glass"></i>
+</button>
+    </div>
+  
+
+  
+  <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+  </label>
+  
+
+</div>
+  </nav>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+      
+      <div class="navbar-center-item">
+        <nav class="navbar-nav">
+    <p class="sidebar-header-items__title" role="heading" aria-level="1" aria-label="Site Navigation">
+        Site Navigation
+    </p>
+    <ul id="navbar-main-elements" class="navbar-nav">
+        
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Architecture.html">
+                        Australian Cultural Data Engine Architecture
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_DataSources.html">
+                        Data Sources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Download.html">
+                        Integrated Data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_FutureWorks.html">
+                        Future Works
+                      </a>
+                    </li>
+                
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Integration_Miscellaneous.html">
+                        More Interesting Works and Cultural Data Sources
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_Introduction.html">
+                        Introduction
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_CircusOz.html">
+                        Career trajectories at Circus Oz
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO500.html">
+                        DAAO 500
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        DAQA - Preliminary analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAQA_Part2.html">
+                        DAQA - Extended analysis
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ExternalDatasets.html">
+                        Exploring intersections of external data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_ArchibaldPrize.html">
+                        Exploring success quantitatively using Archibald Prize data
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAO_InternationalPresence.html">
+                        International presence of indigenous artists
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_DAAOVenues.html">
+                        Natural language processing with DAAO
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="Analysis_TLC_Workshop.html">
+                        Tracing the evolution of Melbourne’s music scene
+                      </a>
+                    </li>
+                
+                </div>
+            </div>
+            
+    </ul>
+</nav>
+      </div>
+      
+      </div>
+    
+
+    
+    
+    <div class="sidebar-header-items__end">
+      
+      <div class="navbar-end-item">
+        <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+</button>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+    
+  </div>
+
+  
+  <div class="sidebar-start-items sidebar-primary__section">
+    <div class="sidebar-start-items__item">
+  
+
+
+<a class="navbar-brand logo" href="about.html">
+
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <img src="_static/ACDElogo.png" class="logo__image only-light" alt="Logo image">
+    <img src="_static/ACDElogo.png" class="logo__image only-dark" alt="Logo image">
+  
+  
+</a>
+    </div>
+    <div class="sidebar-start-items__item">
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+    </div>
+    <div class="sidebar-start-items__item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="about.html">
+                    About
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data infrastructure and integration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Integration_Introduction.html">Introduction</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Integration_Architecture.html">Australian Cultural Data Engine Architecture</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_Overview.html">Overview of the Australian Cultural Data Engine Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_Construction.html">Construction Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_DataReport.html">Data Report</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_ACDEA_SpecialConsiderations.html">Special Considerations for Data Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Integration_DataSources.html">Data Sources</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_AusStage.html">The Australian Live Performance Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_CircusOz.html">The Circus Oz Living Archive collection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_DAAO.html">Design &amp; Art Australia Online</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_DAQA.html">Digital Archive of Queensland Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Integration_DataSources_SummerHayes.html">Summerhayes Family Collection</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_Download.html">Integrated Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_FutureWorks.html">Future Works</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Integration_Miscellaneous.html">More Interesting Works and Cultural Data Sources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Analysis_Introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_CircusOz.html">Career trajectories at Circus Oz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAO500.html">DAAO 500</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DAQA - Preliminary analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAQA_Part2.html">DAQA - Extended analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_ExternalDatasets.html">Exploring intersections of external data</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Analysis_ArchibaldPrize.html">Exploring success quantitatively using Archibald Prize data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAO_InternationalPresence.html">International presence of indigenous artists</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_DAAOVenues.html">Natural language processing with DAAO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Analysis_TLC_Workshop.html">Tracing the evolution of Melbourne’s music scene</a></li>
+</ul>
+
+    </div>
+</nav>
+    </div>
+  </div>
+  
+
+  
+  <div class="sidebar-end-items sidebar-primary__section">
+    <div class="sidebar-end-items__item">
+    </div>
+  </div>
+
+  
+  <div id="rtd-footer-container"></div>
+
+      </div>
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+        <div class="bd-content">
+          <div class="bd-article-container">
+            
+            <div class="bd-header-article">
+                
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        <label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" data-toggle="tooltip" data-placement="right" title="Toggle primary sidebar">
+            <span class="fa-solid fa-bars"></span>
+        </label>
+    </div>
+    <div class="header-article__right">
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+  </ul>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<div class="dropdown dropdown-repository-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="https://github.com/acd-engine/jupyterbook" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">repository</span>
+</a>
+</a>
+      
+      <li><a href="https://github.com/acd-engine/jupyterbook/issues/new?title=Issue%20on%20page%20%2FAnalysis_DAQA_Part1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">open issue</span>
+</a>
+</a>
+      
+  </ul>
+</div>
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      <li><a href="_sources/Analysis_DAQA_Part1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</a>
+      
+      <li>
+<button onclick="printPdf(this)"
+  class="btn btn-sm dropdown-item"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</a>
+      
+  </ul>
+</div>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary" data-toggle="tooltip" data-placement="left" title="Toggle secondary sidebar">
+            <span class="fa-solid fa-list"></span>
+        </label>
+    </div>
+</div>
+            </div>
+            
+            
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DAQA - Preliminary analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#daqa-persons">
@@ -391,70 +762,11 @@
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>DAQA: Preliminary analysis</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#daqa-persons">
-   DAQA Persons
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#education-experiences">
-     Education experiences
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#how-many-qualifications-do-persons-in-the-the-daqa-hold">
-       How many qualifications do persons in the the DAQA hold?
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#education-qualification-types">
-       Education qualification types
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#education-over-time">
-       Education over time
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#education-over-time-only-queensland">
-       Education over time (only Queensland)
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#daqa-organisations">
-   DAQA Organisations
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
-                
-  <div class="section" id="daqa-preliminary-analysis">
-<h1>DAQA: Preliminary analysis<a class="headerlink" href="#daqa-preliminary-analysis" title="Permalink to this headline">¶</a></h1>
+            <article class="bd-article" role="main">
+              
+  <section id="daqa-preliminary-analysis">
+<h1>DAQA - Preliminary analysis<a class="headerlink" href="#daqa-preliminary-analysis" title="Permalink to this headline">#</a></h1>
 <style>
   a {
     color: #1ea5a6 !important;
@@ -463,6 +775,11 @@
 <p>This is an exploratory data analysis of collected data from <a class="reference external" href="https://qldarch.net/">DAQA</a> with a focus on people, education affliation and organisations. The work presented below form part of ACDE’s presentation at <a class="reference external" href="https://www.eventbrite.com.au/e/data-futures-for-architectural-history-and-cultural-heritage-in-person-tickets-451462856557"><em>Data Futures for Architectural History and Cultural Heritage</em></a>, a collaborative workshop held in November 2022 with DAQA and Curtin University Library. This analysis was followed up with a more detailled analysis which can found in the following page, <a class="reference external" href="https://acd-engine.github.io/jupyterbook/Analysis_DAQA_Part2.html">DAQA: Extended Analysis</a>.</p>
 <p>First, we display the number of records for each entity as per the ACDEA.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for data mgmt</span>
 <span class="kn">import</span> <span class="nn">json</span>
@@ -498,12 +815,19 @@
     <span class="n">rawdata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">rawdata</span><span class="p">))</span>
 
+<span class="k">def</span> <span class="nf">fetch_date_suffix</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://raw.githubusercontent.com/acd-engine/jupyterbook/master/data/analysis/date_suffix&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">rawdata</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="n">rawdata</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+
 <span class="k">def</span> <span class="nf">check_if_csv_exists_in_folder</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span> <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">folder_name</span><span class="p">,</span> <span class="n">filename</span><span class="p">),</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">except</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
 
 <span class="k">def</span> <span class="nf">fetch_data</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">acdedata</span><span class="o">=</span><span class="s1">&#39;organization&#39;</span><span class="p">):</span>
-    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_202307131040.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;acde_</span><span class="si">{</span><span class="n">acdedata</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">fetch_date_suffix</span><span class="p">()</span><span class="si">}</span><span class="s1">.</span><span class="si">{</span><span class="n">filetype</span><span class="si">}</span><span class="s1">&#39;</span>
 
     <span class="c1"># first check if the data exists in current directory</span>
     <span class="n">data_from_path</span> <span class="o">=</span> <span class="n">check_if_csv_exists_in_folder</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -534,8 +858,14 @@
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print number of records for each entity</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of records for each entity in DAQA dataset&#39;</span><span class="p">)</span>
@@ -544,6 +874,7 @@
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of records for each entity in DAQA dataset
 _________________________________________________
@@ -559,8 +890,8 @@ work: 2203
 </div>
 </div>
 </div>
-<div class="section" id="daqa-persons">
-<h2>DAQA Persons<a class="headerlink" href="#daqa-persons" title="Permalink to this headline">¶</a></h2>
+<section id="daqa-persons">
+<h2>DAQA Persons<a class="headerlink" href="#daqa-persons" title="Permalink to this headline">#</a></h2>
 <p>There are 1103 person records in DAQA. The following bar charts show the proportion of certain characteristics of persons in DAQA. We list the main findings below:</p>
 <ul class="simple">
 <li><p>When we consider <code class="docutils literal notranslate"><span class="pre">null</span></code> cases, we find that males make up almost two-thirds of the persons records.</p></li>
@@ -570,6 +901,11 @@ work: 2203
 <li><p>Lastly, we find that 60% of the persons recorded in DAQA practiced in Queensland.</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Gender Proportion</span>
 <span class="n">df_gender</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">df_daqa_dict</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">][</span><span class="s2">&quot;gender&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
@@ -620,12 +956,18 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_4_0.png" src="_images/Analysis_DAQA_Part1_4_0.png" />
-<img alt="_images/Analysis_DAQA_Part1_4_1.png" src="_images/Analysis_DAQA_Part1_4_1.png" />
+<img alt="_images/5102c280da6d9defc57e88a7fe6858b33c7907d82b14a096f71aa2d29cb8797b.png" src="_images/5102c280da6d9defc57e88a7fe6858b33c7907d82b14a096f71aa2d29cb8797b.png" />
+<img alt="_images/22cd0ca57ed2ad38d2f4c97766ff4ac6a62bb4362973dc915e1ef9945da613fc.png" src="_images/22cd0ca57ed2ad38d2f4c97766ff4ac6a62bb4362973dc915e1ef9945da613fc.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion of is_architect field </span>
 <span class="n">df_isarch</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">df_daqa_dict</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">][</span><span class="s2">&quot;is_architect&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
@@ -654,11 +996,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_5_0.png" src="_images/Analysis_DAQA_Part1_5_0.png" />
+<img alt="_images/8f93fb28b56593218c45f15701debd0d259e50ff4b85caac77b8add794b03895.png" src="_images/8f93fb28b56593218c45f15701debd0d259e50ff4b85caac77b8add794b03895.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># categorical associations  - gender and is_architect</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df_daqa_dict</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">][</span><span class="s1">&#39;gender&#39;</span><span class="p">],</span> 
@@ -670,11 +1018,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_6_0.png" src="_images/Analysis_DAQA_Part1_6_0.png" />
+<img alt="_images/9939f462aaff9d5c0b6c96f26570e1fd20bac40343f3af1dfce2040facc3b2c2.png" src="_images/9939f462aaff9d5c0b6c96f26570e1fd20bac40343f3af1dfce2040facc3b2c2.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Proportion of architects practicing in Queensland</span>
 <span class="n">df_isarchfromqld</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">df_daqa_dict</span><span class="p">[</span><span class="s1">&#39;person&#39;</span><span class="p">][</span><span class="s2">&quot;is_practiceInQueensland&quot;</span><span class="p">]))</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span>
@@ -703,12 +1057,13 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_7_0.png" src="_images/Analysis_DAQA_Part1_7_0.png" />
+<img alt="_images/268f017eaf12de6e88191a20d0b140fb00f6fdd3c0dbd57ae14362a463fbd522.png" src="_images/268f017eaf12de6e88191a20d0b140fb00f6fdd3c0dbd57ae14362a463fbd522.png" />
 </div>
 </div>
-<div class="section" id="education-experiences">
-<h3>Education experiences<a class="headerlink" href="#education-experiences" title="Permalink to this headline">¶</a></h3>
+<section id="education-experiences">
+<h3>Education experiences<a class="headerlink" href="#education-experiences" title="Permalink to this headline">#</a></h3>
 <p>Next we analyse the educational affliations of persons in DAQA. First we clean the data by removing rows with missing data and tidying inconsistent values, and assess the summary statistics of the data.</p>
 <ul class="simple">
 <li><p>We find that out of the 1103 persons in DAQA, only 163 person records (15%) have populated education fields. As there are 210 education records, this suggests that most persons have one completed education record. However, there are some cases where a person has four education records i.e., <code class="docutils literal notranslate"><span class="pre">Robert</span> <span class="pre">Riddel</span></code>.</p></li>
@@ -717,6 +1072,11 @@ work: 2203
 <li><p>Over two-thirds of education records are associated with a Queensland education institution (163 records).</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># inspect data</span>
 <span class="n">ee_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
@@ -750,8 +1110,14 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clean qualification data</span>
 <span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;organization.qualification&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;organization.qualification&#39;</span><span class="p">]</span>
@@ -840,8 +1206,14 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># clean place/school data</span>
 <span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;coverage_range.place&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(((</span><span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;coverage_range.place&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;VIC&#39;</span><span class="p">)</span> <span class="o">&amp;</span>
@@ -948,6 +1320,7 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary statistics:
 </pre></div>
@@ -1009,8 +1382,8 @@ work: 2203
 </table>
 </div></div></div>
 </div>
-<div class="section" id="how-many-qualifications-do-persons-in-the-the-daqa-hold">
-<h4>How many qualifications do persons in the the DAQA hold?<a class="headerlink" href="#how-many-qualifications-do-persons-in-the-the-daqa-hold" title="Permalink to this headline">¶</a></h4>
+<section id="how-many-qualifications-do-persons-in-the-the-daqa-hold">
+<h4>How many qualifications do persons in the the DAQA hold?<a class="headerlink" href="#how-many-qualifications-do-persons-in-the-the-daqa-hold" title="Permalink to this headline">#</a></h4>
 <p>Upon further inspection, we find that most persons in DAQA have one qualification (79%), with 15% having two qualifications and 6% having three or more qualifications. Below we list the persons with three or more qualifications. We find that most of these persons have a PhD.</p>
 <p><strong>Person records with three education qualifications:</strong></p>
 <ul class="simple">
@@ -1029,6 +1402,11 @@ work: 2203
 <li><p>Robert Riddel (DipArch, Masters, DipArch, PhD)</p></li>
 </ul>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## bar chart of number of qualifications</span>
 <span class="n">df_persons_with_qual</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;display_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>\
@@ -1066,16 +1444,22 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_13_0.png" src="_images/Analysis_DAQA_Part1_13_0.png" />
+<img alt="_images/5c9c349880ca2ee3de49dc8e92bf036ebf33a0dbe9551315d71c7f726cf0ee7d.png" src="_images/5c9c349880ca2ee3de49dc8e92bf036ebf33a0dbe9551315d71c7f726cf0ee7d.png" />
 </div>
 </div>
-</div>
-<div class="section" id="education-qualification-types">
-<h4>Education qualification types<a class="headerlink" href="#education-qualification-types" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="education-qualification-types">
+<h4>Education qualification types<a class="headerlink" href="#education-qualification-types" title="Permalink to this headline">#</a></h4>
 <p>Firstly, we plot the number of education records for each qualification type. We further aggregate the education qualifications into six broad categories. We find that most persons in DAQA have a Diploma (34% of records), followed by a Bachelor (29% of records). Next, we inspect the distribution of the location of the qualifications. Beyond Queensland, other locations with a high number of education records include New South Wales, Victoria, the United Kingdom and the United States. The last bar chart reveals the number of education records by education institution. We only show the top eight universities, with the University of Queensland being the most common.</p>
 <p>It should be noted that BCTC, QIT and QUT refer to the same institution, but have changed names over time. AA refers to the Architectural Association School of Architecture (based in the UK) and STC refers to the Sydney Technical College.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># keep last education record</span>
 <span class="n">ee_df_last</span> <span class="o">=</span> <span class="n">ee_df</span>\
@@ -1115,11 +1499,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_15_0.png" src="_images/Analysis_DAQA_Part1_15_0.png" />
+<img alt="_images/1285e0f65b8cbbb41b43db2a54954af0c5b64169bdb0257cff431acc587657ba.png" src="_images/1285e0f65b8cbbb41b43db2a54954af0c5b64169bdb0257cff431acc587657ba.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bar chart of qualification type</span>
 <span class="n">ee_freq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ee_df_last</span><span class="p">[</span><span class="s1">&#39;organization.qualification2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -1151,11 +1541,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_16_0.png" src="_images/Analysis_DAQA_Part1_16_0.png" />
+<img alt="_images/debd27ee722679eb51ee5aef3345a0ac508909f51fe5e15665b23cb198b09383.png" src="_images/debd27ee722679eb51ee5aef3345a0ac508909f51fe5e15665b23cb198b09383.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bar chart of location of education institution</span>
 <span class="n">ee_freq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ee_df_last</span><span class="p">[</span><span class="s1">&#39;coverage_range.place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -1187,11 +1583,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_17_0.png" src="_images/Analysis_DAQA_Part1_17_0.png" />
+<img alt="_images/12653288d9252d0db999b9e13956118b4c0b79233a0259437deaf661ff3352f2.png" src="_images/12653288d9252d0db999b9e13956118b4c0b79233a0259437deaf661ff3352f2.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bar chart of education institution</span>
 <span class="n">ee_freq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">ee_df_last</span><span class="p">[</span><span class="s1">&#39;organization.name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
@@ -1229,15 +1631,21 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_18_0.png" src="_images/Analysis_DAQA_Part1_18_0.png" />
+<img alt="_images/2f7ab4cf56b9260a5d42ba07c10d7ef3f9fa579ca054adc7445411864bb55a46.png" src="_images/2f7ab4cf56b9260a5d42ba07c10d7ef3f9fa579ca054adc7445411864bb55a46.png" />
 </div>
 </div>
-</div>
-<div class="section" id="education-over-time">
-<h4>Education over time<a class="headerlink" href="#education-over-time" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="education-over-time">
+<h4>Education over time<a class="headerlink" href="#education-over-time" title="Permalink to this headline">#</a></h4>
 <p>We continue the analysis by visualising education records with respect to year. The histogram below highlights that most education records are from the 1960s and 1970s. We also plot the number of education records by year and education qualification.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Histogram of year of education completion</span>
 <span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;coverage_range.date_range.date_end.year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;coverage_range.date_range.date_end.year&#39;</span><span class="p">]</span>\
@@ -1250,11 +1658,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_20_0.png" src="_images/Analysis_DAQA_Part1_20_0.png" />
+<img alt="_images/0b1f6885f3fbe852988c9e72fdf30e74af9dec66f1e5641338711ccfc897e586.png" src="_images/0b1f6885f3fbe852988c9e72fdf30e74af9dec66f1e5641338711ccfc897e586.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## line chart by decade of education completion</span>
 <span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;date_end_decade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">year</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span> 
@@ -1275,11 +1689,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_21_0.png" src="_images/Analysis_DAQA_Part1_21_0.png" />
+<img alt="_images/f8685b89c3d1ac2d24f69213b7397ba1d4918a6574691ffbe06091686919ce26.png" src="_images/f8685b89c3d1ac2d24f69213b7397ba1d4918a6574691ffbe06091686919ce26.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># line chart by decade of education completion (outside AUS)</span>
 <span class="n">ee_df_notqld</span> <span class="o">=</span> <span class="n">ee_df</span><span class="p">[</span><span class="o">~</span><span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;coverage_range.place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;QLD&#39;</span><span class="p">,</span><span class="s1">&#39;TAS&#39;</span><span class="p">,</span><span class="s1">&#39;NSW&#39;</span><span class="p">,</span><span class="s1">&#39;VIC&#39;</span><span class="p">])]</span>
@@ -1300,15 +1720,21 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_22_0.png" src="_images/Analysis_DAQA_Part1_22_0.png" />
+<img alt="_images/8122d04087f83d11391dd48e3b911e8d243670741d8dbf0be6a35530ce87ac28.png" src="_images/8122d04087f83d11391dd48e3b911e8d243670741d8dbf0be6a35530ce87ac28.png" />
 </div>
 </div>
-</div>
-<div class="section" id="education-over-time-only-queensland">
-<h4>Education over time (only Queensland)<a class="headerlink" href="#education-over-time-only-queensland" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="education-over-time-only-queensland">
+<h4>Education over time (only Queensland)<a class="headerlink" href="#education-over-time-only-queensland" title="Permalink to this headline">#</a></h4>
 <p>Next we focus solely on education records from Queensland. A shift in the adoption of education qualification type is observed around the 1960s. This shift is particularly emphasised in the second visualisation where proportions of Bachelor and Diploma records are plotted. For further context, we also provide visualisations with respect to education institution and education qualification.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># line chart by decade of education completion (only queensland)</span>
 <span class="n">ee_df_qld</span> <span class="o">=</span> <span class="n">ee_df</span><span class="p">[</span><span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;coverage_range.place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;QLD&#39;</span><span class="p">])]</span>
@@ -1329,11 +1755,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_24_0.png" src="_images/Analysis_DAQA_Part1_24_0.png" />
+<img alt="_images/a6c4358fe4904813a811a380c2dfbca4090bbbf2ba3ac6134dc5e9ac0dcbaf10.png" src="_images/a6c4358fe4904813a811a380c2dfbca4090bbbf2ba3ac6134dc5e9ac0dcbaf10.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bachelor/diploma proportion over decade (only queensland)</span>
 <span class="n">ee_df2</span> <span class="o">=</span> <span class="n">ee_df</span><span class="p">[(</span><span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;organization.qualification2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Bachelor&#39;</span><span class="p">,</span><span class="s1">&#39;Diploma&#39;</span><span class="p">]))</span> <span class="o">&amp;</span>
@@ -1354,11 +1786,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_25_0.png" src="_images/Analysis_DAQA_Part1_25_0.png" />
+<img alt="_images/f949acc9c36c522a95ace02e302b8a7407023424eb8a2b517516c4e61b5dee12.png" src="_images/f949acc9c36c522a95ace02e302b8a7407023424eb8a2b517516c4e61b5dee12.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bachelor/diploma over decade by qld institutions</span>
 <span class="n">ee_df2</span> <span class="o">=</span> <span class="n">ee_df</span><span class="p">[(</span><span class="n">ee_df</span><span class="p">[</span><span class="s1">&#39;organization.qualification2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Bachelor&#39;</span><span class="p">,</span><span class="s1">&#39;Diploma&#39;</span><span class="p">]))</span> <span class="o">&amp;</span>
@@ -1380,11 +1818,17 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_26_0.png" src="_images/Analysis_DAQA_Part1_26_0.png" />
+<img alt="_images/1e8446ac72265e802ddcfd7bec1a29c6f1eae1a749077203e08f7ff5dcffc29e.png" src="_images/1e8446ac72265e802ddcfd7bec1a29c6f1eae1a749077203e08f7ff5dcffc29e.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bachelor/diploma over decade by qld institutions, summarised</span>
 <span class="n">ee_df2</span><span class="p">[</span><span class="s1">&#39;main_qld_unis&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">ee_df2</span><span class="p">[</span><span class="s1">&#39;organization.name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;BCTC&#39;</span><span class="p">,</span><span class="s1">&#39;QUT&#39;</span><span class="p">,</span><span class="s1">&#39;QIT&#39;</span><span class="p">]),</span>
@@ -1404,17 +1848,23 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="_images/Analysis_DAQA_Part1_27_0.png" src="_images/Analysis_DAQA_Part1_27_0.png" />
+<img alt="_images/544dcda89956b035ada71f18c35d862727dc9c6b53ac3b2f4f05f15880c82f51.png" src="_images/544dcda89956b035ada71f18c35d862727dc9c6b53ac3b2f4f05f15880c82f51.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="daqa-organisations">
-<h2>DAQA Organisations<a class="headerlink" href="#daqa-organisations" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="daqa-organisations">
+<h2>DAQA Organisations<a class="headerlink" href="#daqa-organisations" title="Permalink to this headline">#</a></h2>
 <p>There are 967 organisation records in DAQA. The bar chart below shows the proportion of organisations by type, with the majority being architectural firms. We also plot the number of types of person-organisation relationships. We find that three-quarters of these relationships are employment-related.</p>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bar chart of organisation type</span>
 <span class="n">type_freq</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df_daqa_dict</span><span class="p">[</span><span class="s1">&#39;organization&#39;</span><span class="p">][</span><span class="s1">&#39;_class_ori&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -1445,15 +1895,21 @@ work: 2203
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>            &quot;firm&quot;  &quot;education&quot;  &quot;organisation&quot;  &quot;government&quot;
 _class_ori     907           39              15             6 
 </pre></div>
 </div>
-<img alt="_images/Analysis_DAQA_Part1_54_1.png" src="_images/Analysis_DAQA_Part1_54_1.png" />
+<img alt="_images/1ddde2c2d17b0db76d6378985738f116d8fc33cd3e21299a16c4b7bf8b3687bc.png" src="_images/1ddde2c2d17b0db76d6378985738f116d8fc33cd3e21299a16c4b7bf8b3687bc.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daqa_person_orgs</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -1497,15 +1953,16 @@ _class_ori     907           39              15             6
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 1575 person-organisation relation records.
 </pre></div>
 </div>
-<img alt="_images/Analysis_DAQA_Part1_55_1.png" src="_images/Analysis_DAQA_Part1_55_1.png" />
+<img alt="_images/6a9a1388c202753514673d307ac45e8fda3e19094bfe96e7712cfbfb98b69e25.png" src="_images/6a9a1388c202753514673d307ac45e8fda3e19094bfe96e7712cfbfb98b69e25.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1519,7 +1976,7 @@ _class_ori     907           39              15             6
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1527,43 +1984,133 @@ _class_ori     907           39              15             6
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
-              
+            </article>
             
+
+            
+            
+            <footer class="bd-footer-article">
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="Analysis_DAAOVenues.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Natural language processing with DAAO</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Analysis_DAQA_Part2.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DAQA: Extended analysis</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Australian Cultural Data Engine<br/>
-    
-  </p>
-</footer>
-</main>
-
-
+<div class='prev-next-area'>
+  <a class='left-prev' id="prev-link" href="Analysis_DAAO500.html" title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+          <p class="prev-next-subtitle">previous</p>
+          <p class="prev-next-title">DAAO 500</p>
       </div>
-    </div>
+  </a>
+  <a class='right-next' id="next-link" href="Analysis_DAQA_Part2.html" title="next page">
+  <div class="prev-next-info">
+      <p class="prev-next-subtitle">next</p>
+      <p class="prev-next-title">DAQA - Extended analysis</p>
+  </div>
+  <i class="fa-solid fa-angle-right"></i>
+  </a>
+</div>
+            </footer>
+            
+          </div>
+          
+          
+          
+            <div class="bd-sidebar-secondary bd-toc">
+              
+<div class="toc-item">
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<div class="tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+</div>
+<nav id="bd-toc-nav" class="page-toc">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#daqa-persons">
+   DAQA Persons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#education-experiences">
+     Education experiences
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#how-many-qualifications-do-persons-in-the-the-daqa-hold">
+       How many qualifications do persons in the the DAQA hold?
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#education-qualification-types">
+       Education qualification types
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#education-over-time">
+       Education over time
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#education-over-time-only-queensland">
+       Education over time (only Queensland)
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#daqa-organisations">
+   DAQA Organisations
+  </a>
+ </li>
+</ul>
+
+</nav>
+</div>
+
+            </div>
+          
+          
+        </div>
+        <footer class="bd-footer-content">
+          <div class="bd-footer-content__inner">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Australian Cultural Data Engine
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+Last updated on None.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </div>
+        </footer>
+        
+
+      </main>
+    </div>
+  </div>
+
+  
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=796348d33e8b1d947c94"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=796348d33e8b1d947c94"></script>
 
   </body>
 </html>

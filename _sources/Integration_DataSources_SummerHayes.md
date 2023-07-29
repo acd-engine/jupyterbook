@@ -24,7 +24,7 @@ For more details in parsing SFC data and loading it into the ACDEA, please refer
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Add icon library -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+<!-- <style>
 .btn {
   background-color: #f39c52;
   border: none;
@@ -34,13 +34,13 @@ For more details in parsing SFC data and loading it into the ACDEA, please refer
   font-size: 15px;
   border-radius: 5px; /* Make the button rounder */
 }
-</style>
+</style> -->
 
 </head>
 <body>
 
 <div style="text-align: center;">
-	<button id="download-btn" class="btn"><i class="fa fa-download"></i> Download <br>SFC data dictionary</button>
+	<button id="download-btn" class="btn" style="background-color: #f39c52; color: white; border: none; color: white; padding: 12px 30px; cursor: pointer; font-size: 15px; border-radius: 5px;"> <i class="fa fa-download"></i> Download <br>SFC data dictionary</button>
 </div>
 
 </body>
@@ -73,7 +73,7 @@ Ultimately, 241 SFC resource records were loaded into the resource entity of ACD
 #### References
 ---
 - [Summerhayes Family Collection](https://catalogue.curtin.edu.au/discovery/collectionDiscovery?vid=61CUR_INST:CUR_SPECIAL_COLLECTIONS&collectionId=81190473680001951)
-- [MARC Standards](https://www.loc.gov/marc/[MARC STANDARDS (Network Development and MARC Standards Office, Library of Congress)](https://www.loc.gov/marc/))
+- [MARC Standards](https://www.loc.gov/marc/)
 
 <style>
   a {
