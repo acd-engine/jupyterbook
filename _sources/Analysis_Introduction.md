@@ -12,7 +12,7 @@ The following sections are included in this chapter:
 <br><br> -->
 
 - [**AusStage - Preliminary analysis:**](https://acd-engine.github.io/jupyterbook/Analysis_AusStage.html)
-  This is an exploratory data analysis of collected data from [AusStage](https://www.ausstage.edu.au/pages/browse/) with a focus on gender and roles.
+  This is an exploratory data analysis of collected data from AusStage with a focus on gender and roles.
 <br><br>
 
 - [**Career trajectories at Circus Oz:**](https://acd-engine.github.io/jupyterbook/Analysis_CircusOz.html)
@@ -48,7 +48,7 @@ The following sections are included in this chapter:
 <br><br>
 
 - [**Tracing the evolution of Melbourne's music scene:**](https://acd-engine.github.io/jupyterbook/Analysis_TLC_Workshop.html)
-  We use data extracted from setlist.fm, Discogs and Spotifyfocus to investigate the relationship between venues and artists in terms of event frequency and genre evolution.
+  We use data extracted from setlist.fm, Discogs and Spotify focus to investigate the relationship between venues and artists in terms of event frequency and genre evolution.
 <br><br>
 
 ````
