@@ -11,9 +11,9 @@ The following sections are included in this chapter:
   Insert text here
 <br><br> -->
 
-<!-- - [**AusStage - Preliminary analysis:**](https://acd-engine.github.io/jupyterbook/Analysis_AusStage.html)
-  Insert text here
-<br><br> -->
+- [**AusStage - Preliminary analysis:**](https://acd-engine.github.io/jupyterbook/Analysis_AusStage.html)
+  This is an exploratory data analysis of collected data from [AusStage](https://www.ausstage.edu.au/pages/browse/) with a focus on gender and roles.
+<br><br>
 
 - [**Career trajectories at Circus Oz:**](https://acd-engine.github.io/jupyterbook/Analysis_CircusOz.html)
   We provide an exploratory data analysis of the career trajectories of Circus Oz performers.
