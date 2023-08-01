@@ -7,9 +7,9 @@ This chapter showcases a series of analytical works conducted on various aspects
 ````{card}
 The following sections are included in this chapter:
 ^^^
-<!-- - [**ACDE Map:**](https://acd-engine.github.io/jupyterbook/Analysis_ACDE_Map.html)
-  Insert text here
-<br><br> -->
+- [**ACDE Map:**](https://acd-engine.github.io/jupyterbook/Analysis_ACDE_Map.html)
+  The ACDE Map is a web-based interactive map that allows users to explore the ACDEA data in a visual and intuitive way.
+<br><br>
 
 - [**AusStage - Preliminary analysis:**](https://acd-engine.github.io/jupyterbook/Analysis_AusStage.html)
   This is an exploratory data analysis of collected data from AusStage with a focus on gender and roles.
